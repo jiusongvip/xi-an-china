@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AttractionCard from "../../components/AttractionCard.astro";
+import { Icon } from "astro-icon/components";
+
+const pageTitle = "Top 12 Xi'an Attractions — 2026 Guide";
+const pageDesc = "Discover the best things to do in Xi'an: Terracotta Warriors, City Wall cycling, Muslim Quarter food, Big Wild Goose Pagoda, and more top attractions.";
+const attractions = [
+  { name: "Terracotta Warriors", url: "https://xi-an-china.com/attractions/terracotta-warriors" },
+  { name: "Ancient City Wall", url: "https://xi-an-china.com/attractions/city-wall" },
+  { name: "Muslim Quarter", url: "https://xi-an-china.com/attractions/muslim-quarter" },
+  { name: "Mount Huashan", url: "https://xi-an-china.com/attractions/mount-huashan" },
+  { name: "Big Wild Goose Pagoda", url: "https://xi-an-china.com/attractions/big-wild-goose-pagoda" },
+  { name: "Shaanxi History Museum", url: "https://xi-an-china.com/attractions/shaanxi-history-museum" },
+  { name: "Huaqing Hot Springs", url: "https://xi-an-china.com/attractions/huaqing-pool" },
+  { name: "Bell & Drum Towers", url: "https://xi-an-china.com/attractions/bell-drum-tower" },
+  { name: "Han Yangling Mausoleum", url: "https://xi-an-china.com/attractions/han-yangling" },
+  { name: "Tang Paradise", url: "https://xi-an-china.com/attractions/tang-paradise" },
+  { name: "Daming Palace Ruins", url: "https://xi-an-china.com/attractions/daming-palace" },
+];
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"ItemList","name":"Xi'an Attractions","itemListElement":attractions.map((a,i)=>({"@type":"ListItem","position":i+1,"name":a.name,"url":a.url}))},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Attractions","item":"https://xi-an-china.com/attractions"}]}]};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Xi'an Guide Team" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-7xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    <div class="text-center mb-12">
+      <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-4">Attractions</p>
+      <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900">Must-See Attractions in Xi'an</h1>
+      <p class="mt-4 text-stone-500 max-w-xl mx-auto">
+        From the world-famous Terracotta Warriors to hidden local gems. 12 attractions with practical guides on tickets, timing, and insider tips.
+      </p>
+    </div>
+
+    <!-- Quick guide -->
+    <section class="max-w-3xl mx-auto mb-12">
+      <div class="rounded-2xl bg-stone-50 border border-stone-200 p-6">
+        <h2 class="text-lg font-semibold text-stone-900 mb-3">Quick Decision Guide</h2>
+        <p class="text-sm text-stone-600 leading-relaxed mb-4">First time in Xi'an with limited time? Here is how to prioritize:</p>
+        <div class="space-y-3 text-sm">
+          <div class="flex gap-3">
+            <span class="inline-flex items-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold px-2 py-0.5 shrink-0 mt-0.5">1 day</span>
+            <span class="text-stone-600">Terracotta Warriors (morning) + City Wall at sunset. That is the essential Xi'an experience.</span>
+          </div>
+          <div class="flex gap-3">
+            <span class="inline-flex items-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold px-2 py-0.5 shrink-0 mt-0.5">3 days</span>
+            <span class="text-stone-600">Add Muslim Quarter food crawl + Shaanxi History Museum + Big Wild Goose Pagoda.</span>
+          </div>
+          <div class="flex gap-3">
+            <span class="inline-flex items-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold px-2 py-0.5 shrink-0 mt-0.5">5 days</span>
+            <span class="text-stone-600">Add Mount Huashan day trip + Han Yangling + Tang Paradise at night. You will have seen the best of Xi'an.</span>
+          </div>
+        </div>
+        <p class="text-sm text-stone-500 mt-4">Each attraction below has a full guide with ticket prices, opening hours, how to get there, insider tips, and FAQs. Click through for everything you need.</p>
+      </div>
+    </section>
+
+<!-- Category guide -->
+    <section class="max-w-3xl mx-auto mb-10">
+      <h2 class="text-xl font-semibold text-stone-900 mb-4 text-center">What Kind of Traveler Are You?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+        <div class="rounded-xl border border-stone-200 p-4 text-center">
+          <Icon name="lucide:landmark" class="h-7 w-7 text-champagne-500 mx-auto mb-2" stroke-width="1.5" aria-hidden="true" />
+          <p class="font-semibold text-stone-800 mb-1">History Buff</p>
+          <p class="text-xs text-stone-500">Terracotta Warriors, Shaanxi Museum, Han Yangling, Daming Palace, Bell & Drum Towers</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4 text-center">
+          <Icon name="lucide:utensils" class="h-7 w-7 text-champagne-500 mx-auto mb-2" stroke-width="1.5" aria-hidden="true" />
+          <p class="font-semibold text-stone-800 mb-1">Food Lover</p>
+          <p class="text-xs text-stone-500">Muslim Quarter, endless street food, night markets, local noodle shops</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4 text-center">
+          <Icon name="lucide:camera" class="h-7 w-7 text-champagne-500 mx-auto mb-2" stroke-width="1.5" aria-hidden="true" />
+          <p class="font-semibold text-stone-800 mb-1">Photographer</p>
+          <p class="text-xs text-stone-500">City Wall at sunset, Big Wild Goose Pagoda at night, Tang Paradise lanterns</p>
+        </div>
+      </div>
+    </section>
+
+<!-- Quick comparison -->
+    <section class="max-w-3xl mx-auto mb-12">
+      <h2 class="text-xl font-semibold text-stone-900 mb-4 text-center">At a Glance: Attraction Comparison</h2>
+      <div class="rounded-xl border border-stone-200 overflow-hidden text-xs">
+        <table class="w-full">
+          <thead class="bg-stone-50 border-b"><tr><th class="text-left px-3 py-2 font-medium">Attraction</th><th class="text-left px-3 py-2 font-medium">Time</th><th class="text-left px-3 py-2 font-medium">Cost</th><th class="text-left px-3 py-2 font-medium">Type</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="px-3 py-2">Terracotta Warriors</td><td class="px-3 py-2">3-4h</td><td class="px-3 py-2">$18</td><td class="px-3 py-2">Archaeology</td></tr>
+            <tr><td class="px-3 py-2">City Wall</td><td class="px-3 py-2">2-3h</td><td class="px-3 py-2">$8</td><td class="px-3 py-2">Outdoor/Active</td></tr>
+            <tr><td class="px-3 py-2">Muslim Quarter</td><td class="px-3 py-2">2-3h</td><td class="px-3 py-2">Free</td><td class="px-3 py-2">Food/Culture</td></tr>
+            <tr><td class="px-3 py-2">Shaanxi Museum</td><td class="px-3 py-2">2-4h</td><td class="px-3 py-2">Free</td><td class="px-3 py-2">Museum</td></tr>
+            <tr><td class="px-3 py-2">Mount Huashan</td><td class="px-3 py-2">Full day</td><td class="px-3 py-2">$24</td><td class="px-3 py-2">Hiking</td></tr>
+            <tr><td class="px-3 py-2">Big Wild Goose Pagoda</td><td class="px-3 py-2">1-2h</td><td class="px-3 py-2">$6</td><td class="px-3 py-2">Architecture</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-stone-400 mt-2 text-center">Tap any card below for a full guide with tickets, hours, tips, and FAQ.</p>
+    </section>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <AttractionCard href="/attractions/terracotta-warriors" image="/images/terracotta-warriors.webp" imageAlt="Rows of terracotta warriors in Pit 1 at the Terracotta Army Museum" title="Terracotta Warriors" subtitle="The 8th Wonder of the World" icon="lucide:swords" badge="Must See" color="terracotta" highlights={["8,000 life-sized soldiers in Pit 1", "Arrive at 8:30 AM for empty halls", "Book online 7 days ahead"]} />
+      <AttractionCard href="/attractions/city-wall" image="/images/city-wall.webp" imageAlt="Xi'an Ancient City Wall with the South Gate tower" title="Ancient City Wall" subtitle="China's best-preserved fortification" icon="lucide:bike" badge="Must See" color="terracotta" highlights={["Cycle the 14km loop (2-3 hours)", "Sunset rides at South Gate", "Red lanterns after dark"]} />
+      <AttractionCard href="/attractions/muslim-quarter" image="/images/muslim-quarter.webp" imageAlt="Beiyuanmen street in Xi'an's Muslim Quarter lined with food stalls" title="Muslim Quarter" subtitle="Street food paradise" icon="lucide:utensils" badge="Must See" color="amber" highlights={["Go after 7 PM for peak energy", "Biangbiang noodles + lamb skewers", "1,300 years of Hui culture"]} />
+      <AttractionCard href="/attractions/mount-huashan" image="/images/mount-huashan.webp" imageAlt="The Chess Pavilion perched on Mount Huashan's rocky summit" title="Mount Huashan" subtitle="China's most dramatic hike" icon="lucide:mountain" badge="Adventure" color="rose" highlights={["The famous Plank Walk", "30 min by high-speed train", "Sunrise from East Peak"]} />
+      <AttractionCard href="/attractions/big-wild-goose-pagoda" image="/images/big-wild-goose-pagoda.webp" imageAlt="Big Wild Goose Pagoda beside Da Ci'en Temple" title="Big Wild Goose Pagoda" subtitle="1,300-year-old Buddhist landmark" icon="lucide:landmark" badge="Worth It" color="amber" highlights={["Free musical fountain show", "Climb for city skyline views", "Great Tang Mall at night"]} />
+      <AttractionCard href="/attractions/shaanxi-history-museum" image="/images/shaanxi-history-museum.webp" imageAlt="Tang-style architecture of the Shaanxi History Museum" title="Shaanxi History Museum" subtitle="China's best provincial museum" icon="lucide:archive" badge="Worth It" color="terracotta" highlights={["Free (must book online)", "Tang Dynasty gold and jade", "1.7 million artifacts"]} />
+      <AttractionCard href="/attractions/huaqing-pool" image="/images/huaqing-pool.webp" imageAlt="Huaqing Hot Springs palace pavilions below Mount Li" title="Huaqing Hot Springs" subtitle="Tang Dynasty imperial baths" icon="lucide:flame" badge="Worth It" color="rose" highlights={["10 min from Terracotta Warriors", "Winter hot springs in snow", "Night show: Song of Sorrow"]} />
+      <AttractionCard href="/attractions/bell-drum-tower" image="/images/bell-drum-tower.webp" imageAlt="Xi'an Bell Tower at the center of the old city" title="Bell & Drum Towers" subtitle="The heart of the old city" icon="lucide:bell" badge="Quick Stop" color="amber" highlights={["360-degree city views", "Live drum performances", "Gateway to Muslim Quarter"]} />
+      <AttractionCard href="/attractions/han-yangling" image="/images/han-yangling.webp" imageAlt="Excavated soldiers and pottery at the Han Yangling Mausoleum" title="Han Yangling Mausoleum" subtitle="The quieter mausoleum" icon="lucide:globe" badge="Hidden Gem" color="emerald" highlights={["Glass-floored museum walkways", "Almost zero crowds on weekdays", "Miniature Han Dynasty figurines"]} />
+      <AttractionCard href="/attractions/tang-paradise" image="/images/tang-paradise.webp" imageAlt="Classical garden and pavilions of Tang Paradise in the evening" title="Tang Paradise" subtitle="Tang Dynasty theme park" icon="lucide:lamp" badge="Worth It" color="rose" highlights={["Nightly water and light show", "Best visited after dusk", "Costume rentals for photos"]} />
+      <AttractionCard href="/attractions/daming-palace" image="/images/daming-palace.webp" imageAlt="Hanyuan Hall reconstruction in Daming Palace Heritage Park" title="Daming Palace Ruins" subtitle="Largest palace ever built" icon="lucide:castle" badge="Hidden Gem" color="emerald" highlights={["4.5x the size of Forbidden City", "Tang Dynasty imperial palace", "Underground museum"]} />
+      <AttractionCard href="/comparison" title="Compare Attractions" subtitle="Side-by-side comparison tool" icon="lucide:scale" badge="Tool" color="terracotta" highlights={["Compare any two attractions", "Prices, crowds, best times", "Find your perfect match"]} />
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="/comparison" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98] shadow-lg shadow-terracotta-900/20">
+        Try the Comparison Tool <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

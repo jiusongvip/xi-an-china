@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+const faqs = [
+  { q: "How much do tickets cost for Xi'an attractions?", a: "Terracotta Warriors: $18 (peak Mar-Nov) or $15 (off-peak Dec-Feb). City Wall: $8. Huaqing Pool: $18. Big Wild Goose Pagoda: $6. Mount Huashan: $24 (+ cable car $12-$21). Shaanxi History Museum: Free (must book online). Bell & Drum Towers: $7. Han Yangling: $10. Students and seniors 60+ get 50% off at most sites. <a href='/tickets' class='text-terracotta-600 hover:text-terracotta-700 underline'>See our full ticket breakdown →</a>" },
+  { q: "What is the best time to visit Xi'an?", a: "April, May, September, and October (after Oct 8) are ideal. Spring offers cherry blossoms and mild temperatures (12-24°C). Autumn brings golden light and crisp air (10-22°C). Avoid Chinese New Year (late Jan/Feb) and Golden Week (Oct 1-7) when attractions sell out and hotels triple in price. Winter (Dec-Feb) is cheapest with half-price tickets and zero queues. <a href='/weather' class='text-terracotta-600 hover:text-terracotta-700 underline'>See our month-by-month weather guide →</a>" },
+  { q: "How do I get to Xi'an?", a: "Fly into Xi'an Xianyang International Airport (XIY) — direct flights from Beijing, Shanghai, Guangzhou, Seoul, and Bangkok. High-speed train from Beijing (4.5h, $75), Shanghai (6h, $100), or Chengdu (3.5h, $39). From the airport, Metro Line 14 connects to the city center in 40 minutes ($1). <a href='/transportation' class='text-terracotta-600 hover:text-terracotta-700 underline'>Full transportation guide →</a>" },
+  { q: "How many days do I need in Xi'an?", a: "3 full days is the sweet spot: Day 1 Terracotta Warriors + Huaqing Pool, Day 2 City Wall + Muslim Quarter + Bell Tower, Day 3 Shaanxi Museum + Big Wild Goose Pagoda + Tang Paradise. 5 days adds Mount Huashan and Han Yangling. 1 day works for a whistle-stop — hit the Terracotta Warriors in the morning and the City Wall at sunset. <a href='/itineraries' class='text-terracotta-600 hover:text-terracotta-700 underline'>See our itinerary plans →</a>" },
+  { q: "Do I need a visa for China?", a: "Most foreign visitors need a Chinese tourist visa (L visa) before arrival. Apply at your nearest Chinese embassy or visa center. Processing takes 4-7 business days. The 240-hour (10-day) transit visa is available through Xi'an for citizens of 54 countries including the US, UK, EU, and Australia. Your passport must be valid for at least 6 months beyond your planned departure. <a href='/china-240-hour-transit-visa' class='text-terracotta-600 hover:text-terracotta-700 underline'>Full transit visa guide →</a>" },
+  { q: "How do I pay for things in Xi'an?", a: "China runs on mobile payments. Set up WeChat Pay or Alipay with your international Visa/Mastercard before you arrive. Both apps now accept foreign cards. Get a Chinese SIM card first (needed for registration), then download WeChat, add your card, and verify your identity. The process takes about 30 minutes. Cash is accepted but increasingly rare. Credit cards work only at hotels and large restaurants. <a href='/payment-guide' class='text-terracotta-600 hover:text-terracotta-700 underline'>Complete payment setup guide →</a>" },
+  { q: "Is English widely spoken in Xi'an?", a: "Limited. Major hotels and the Terracotta Warriors museum have some English signage and audio guides. The metro has English announcements. In restaurants, the Muslim Quarter, and on buses, English is rare. Download Google Translate's offline Chinese pack and save our <a href='/phrasebook' class='text-terracotta-600 hover:text-terracotta-700 underline'>Chinese phrasebook</a> — tap any phrase to copy the Chinese text and show it to drivers or vendors." },
+  { q: "Is Xi'an safe for solo travelers?", a: "Yes. Xi'an is very safe. Violent crime is extremely rare. The main practical risks are pickpocketing in crowded areas (especially the Muslim Quarter at night) and taxi drivers overcharging at the airport. Use the metro or ride-hailing apps (Didi) instead. Solo female travelers report feeling safe walking in the city center even after dark." },
+  { q: "Where should I stay in Xi'an?", a: "Inside the City Wall (Beilin District) is best for first-timers — walk to the Bell Tower, Muslim Quarter, and South Gate. Hotels from $22-$120/night. Yanta District near the Big Wild Goose Pagoda is quieter with newer hotels. Lintong District (near the Terracotta Warriors) is convenient if that is your main focus but far from everything else. <a href='/hotels' class='text-terracotta-600 hover:text-terracotta-700 underline'>Full accommodation guide →</a>" },
+  { q: "What food should I try in Xi'an?", a: "Biangbiang noodles (thick, hand-pulled noodles), yangrou paomo (lamb soup with torn bread), roujiamo (Chinese hamburger), lamb skewers from the Muslim Quarter, liangpi (cold skin noodles), and persimmon cakes. The Muslim Quarter is the epicenter of Xi'an street food — go after 7 PM when it really comes alive. <a href='/food' class='text-terracotta-600 hover:text-terracotta-700 underline'>See our complete food guide →</a>" },
+  { q: "Can I do a day trip from Xi'an?", a: "Yes. The best day trips are: Mount Huashan (30 min by high-speed train, the most dramatic hike in China), Han Yangling Mausoleum (40 min by metro, a quieter alternative to the Terracotta Warriors), Famen Temple (2 hours west, houses a Buddha finger relic), and Hukou Waterfall (4 hours, the Yellow River's most spectacular section). <a href='/day-trips' class='text-terracotta-600 hover:text-terracotta-700 underline'>See all 6 day trip options →</a>" },
+  { q: "What should I buy as souvenirs in Xi'an?", a: "Top 3 must-buys: (1) Terracotta Warrior replica from the official museum shop ($15-$45 certified), (2) Calligraphy set from Shuyuanmen Street ($12-$22), (3) Muslim Quarter snacks — persimmon cakes, spice mixes, dried fruits ($1.5-$7). Avoid 'jade' jewelry at tourist stalls (mostly fake) and street vendor 'antiques' (all reproductions). <a href='/shopping' class='text-terracotta-600 hover:text-terracotta-700 underline'>Full shopping guide with bargaining tips →</a>" },
+  { q: "What's the nightlife like in Xi'an?", a: "The highlight is cycling the City Wall at night ($8 entry + $7 bike rental) — red lanterns illuminate the 14km loop. The Song of Everlasting Sorrow show at Huaqing Pool (Apr-Oct, $40-$130) is China's best outdoor stage show. For drinks, Defu Alley has 30+ bars, and the Sofitel's rooftop offers the best sunset cocktails. The Muslim Quarter transforms into a night food paradise after 7 PM. <a href='/nightlife' class='text-terracotta-600 hover:text-terracotta-700 underline'>Full nightlife guide →</a>" },
+  { q: "Do I need a Chinese phone number / SIM card?", a: "Yes, you need a Chinese phone number to register for WeChat Pay, Alipay, and many other services. Buy a SIM card at the airport arrivals hall or any China Mobile/Unicom store in the city. Bring your passport. eSIMs are also available from providers like Airalo and Holafly for data-only plans. <a href='/china-sim-card-tourist' class='text-terracotta-600 hover:text-terracotta-700 underline'>Complete SIM card guide →</a>" },
+];
+
+const pageTitle = "Xi'an Travel FAQ — 14 Questions Answered (2026)";
+const pageDesc = "Find answers to top questions about visiting Xi'an: ticket prices, best time to go, transport, visas, WeChat Pay, food tips, and safety advice.";
+
+const schema = {"@context":"https://schema.org","@graph":[
+  {"@type":"FAQPage","mainEntity":faqs.map(f => ({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a.replace(/<[^>]*>/g, "")}}))},
+  {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"FAQ","item":"https://xi-an-china.com/faq"}]}
+]};
+---
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">14 Questions Answered</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Xi'an Travel FAQ</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Every question we get asked about visiting Xi'an, answered honestly. All prices and information verified in 2026. Can't find your answer? <a href="/contact" class="text-terracotta-600 hover:text-terracotta-700 underline">Get in touch</a>.</p>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-10">
+      <FaqAccordion items={faqs} />
+    </div>
+
+    <!-- Related pages -->
+    <div class="mt-12 pt-8 border-t border-stone-200">
+      <h2 class="text-xl font-semibold text-stone-900 mb-4">Want More Detail?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {[
+          { href: "/weather", title: "Weather Guide", desc: "Month-by-month temperatures, rainfall, and what to pack." },
+          { href: "/payment-guide", title: "Payment Guide", desc: "WeChat Pay & Alipay setup with international cards." },
+          { href: "/china-sim-card-tourist", title: "SIM Card Guide", desc: "How to get connected: SIM, eSIM, and registration." },
+          { href: "/phrasebook", title: "Chinese Phrasebook", desc: "40+ essential phrases for taxis, food, and shopping." },
+          { href: "/day-trips", title: "Day Trips", desc: "6 day trips from Xi'an with transport details." },
+          { href: "/shopping", title: "Shopping Guide", desc: "What to buy, where, and how to bargain." },
+        ].map(p => (
+          <a href={p.href} class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+            <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">{p.title}</p>
+            <p class="text-xs text-stone-500 mt-0.5">{p.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

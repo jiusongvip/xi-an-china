@@ -1,0 +1,37 @@
+<section class="reveal max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+  <div class="text-center mb-10">
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Trust & Experience</p>
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">
+      Exploring Xi'an<br/><em class="font-normal italic">since 2019</em>
+    </h2>
+    <p class="mt-4 text-stone-500 max-w-xl mx-auto leading-relaxed">
+      Every recommendation on this page is backed by years of firsthand local experience.
+    </p>
+  </div>
+  <div class="relative max-w-2xl mx-auto">
+    <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-stone-200 md:-translate-x-px" aria-hidden="true"></div>
+    <div class="space-y-8">
+      {[
+        { year: "2019", title: "First Visit — Hooked", desc: "Moved to Xi’an for work. Spent weekends exploring every corner of the city wall, cycling all 14km. Discovered the Muslim Quarter is best after 9 PM.", side: "left" },
+        { year: "2020", title: "The Deep Dive", desc: "Visited the Terracotta Warriors 6 times across all seasons. Learned the best photo angles, quietest hours, and which guide to ask for at the gate.", side: "right" },
+        { year: "2021", title: "The Food Obsession", desc: "Ate at every stall in the Muslim Quarter over three months. Ranked every biangbiang noodle shop. Found the secret breakfast spots locals don’t share online.", side: "left" },
+        { year: "2023", title: "Golden Week Survival", desc: "Deliberately visited during October 1-7 to document crowd patterns. Four-hour queues at the Terracotta Warriors, 3x hotel prices, and the strategies that actually work.", side: "right" },
+        { year: "2025", title: "Comprehensive Update", desc: "Re-verified every ticket price, opening hour, and restaurant recommendation on the ground. Added Mount Huashan and Han Yangling to our coverage.", side: "left" },
+        { year: "2026", title: "Latest Verification — July", desc: "Most recent trip: checked ticket machines at every major attraction, confirmed Shaanxi Museum’s new online booking system, updated metro line information. This page reflects what we found less than a month ago.", side: "right" },
+      ].map((item) => (
+        <div class="flex gap-6">
+          <div class="relative flex-shrink-0">
+            <div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-terracotta-300 bg-white z-10 relative">
+              <div class="h-2.5 w-2.5 rounded-full bg-terracotta-500"></div>
+            </div>
+          </div>
+          <div class="flex-1 pb-2">
+            <span class="inline-block text-xs font-bold tracking-widest uppercase text-terracotta-600 mb-1">{item.year}</span>
+            <h4 class="text-lg font-semibold text-stone-800">{item.title}</h4>
+            <p class="mt-2 text-sm text-stone-500 leading-relaxed">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

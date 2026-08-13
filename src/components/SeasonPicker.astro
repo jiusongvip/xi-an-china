@@ -1,0 +1,56 @@
+---
+const seasons = [
+  { id: "spring", label: "Spring", months: "Mar–May", temp: "12–24°C", rain: "6–8 days/mo", crowd: 3, img: "/images/spring-city-wall.webp", imgSet: "/images/responsive/spring-city-wall-480.webp 480w, /images/responsive/spring-city-wall-768.webp 768w, /images/spring-city-wall.webp 1440w", imgSize: "(min-width:1024px) 320px, (min-width:640px) 50vw, 100vw", alt: "Xi'an City Wall in spring with cherry blossoms", highlight: "Cherry blossoms at Qinglong Temple, cycling the city wall, mild weather for outdoor exploration." },
+  { id: "summer", label: "Summer", months: "Jun–Aug", temp: "25–35°C", rain: "10–12 days/mo", crowd: 4, img: "/images/summer-muslim-quarter.webp", imgSet: "/images/responsive/summer-muslim-quarter-480.webp 480w, /images/responsive/summer-muslim-quarter-768.webp 768w, /images/summer-muslim-quarter.webp 1440w", imgSize: "(min-width:1024px) 320px, (min-width:640px) 50vw, 100vw", alt: "Muslim Quarter street food stalls in summer", highlight: "Escape the heat at Mount Huashan, night markets in the Muslim Quarter, evening light shows at Big Wild Goose Pagoda." },
+  { id: "autumn", label: "Autumn", months: "Sep–Nov", temp: "10–22°C", rain: "6–8 days/mo", crowd: 3, img: "/images/autumn-terracotta.webp", imgSet: "/images/responsive/autumn-terracotta-480.webp 480w, /images/responsive/autumn-terracotta-768.webp 768w, /images/responsive/autumn-terracotta-1024.webp 1024w, /images/autumn-terracotta.webp 1440w", imgSize: "(min-width:1024px) 320px, (min-width:640px) 50vw, 100vw", alt: "Terracotta warriors in autumn light", highlight: "Golden light at the Terracotta Warriors, Mid-Autumn mooncakes, crisp cycling weather on the city wall. Best season overall." },
+  { id: "winter", label: "Winter", months: "Dec–Feb", temp: "-3–7°C", rain: "2–3 days/mo", crowd: 2, img: "/images/winter-huaqing.webp", imgSet: "/images/responsive/winter-huaqing-480.webp 480w, /images/responsive/winter-huaqing-768.webp 768w, /images/winter-huaqing.webp 1440w", imgSize: "(min-width:1024px) 320px, (min-width:640px) 50vw, 100vw", alt: "Huaqing Hot Springs in winter snow", highlight: "Hot springs at Huaqing Pool, Chinese New Year lanterns on the city wall, half-price attraction tickets, zero queues." },
+];
+---
+
+<section id="when-to-go" class="reveal max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28">
+  <div class="text-center mb-12">
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">When to Go</p>
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">
+      Xi'an in<br/><em class="font-normal italic">every season</em>
+    </h2>
+    <p class="mt-4 text-stone-500 max-w-xl mx-auto leading-relaxed">Every season has its charm. Match your travel style to the right time.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+    {seasons.map((s) => (
+      <article class="group overflow-hidden rounded-2xl border border-stone-200 bg-white transition-colors hover:border-champagne-300">
+        <div class="relative overflow-hidden bg-stone-100">
+          <img
+            class="h-44 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            src={s.img}
+            srcset={s.imgSet}
+            sizes={s.imgSize}
+            width="1440"
+            height="810"
+            alt={s.alt}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="p-6">
+          <div class="flex items-baseline justify-between gap-2 mb-4">
+            <p class="text-lg font-bold text-stone-900">{s.label}</p>
+            <p class="text-sm text-stone-400">{s.months}</p>
+          </div>
+          <div class="space-y-2 text-sm mb-4">
+            <div class="flex justify-between"><span class="text-stone-400">Temperature</span><span class="font-medium text-stone-700">{s.temp}</span></div>
+            <div class="flex justify-between"><span class="text-stone-400">Rain</span><span class="font-medium text-stone-700">{s.rain}</span></div>
+            <div class="flex justify-between items-center">
+              <span class="text-stone-400">Crowds</span>
+              <span class="flex items-center gap-1">
+                {Array.from({length: 5}, (_,i) => (
+                  <span class={`w-2 h-2 rounded-full ${i < s.crowd ? 'bg-champagne-400' : 'bg-stone-200'}`}></span>
+                ))}
+              </span>
+            </div>
+          </div>
+          <p class="text-xs text-stone-500 leading-relaxed border-t border-stone-100 pt-4">{s.highlight}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

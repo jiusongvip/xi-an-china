@@ -1,0 +1,123 @@
+<div id="trip-planner" class="rounded-3xl border border-terracotta-200 bg-gradient-to-br from-terracotta-50 to-white p-6 md:p-10">
+  <div class="text-center mb-8">
+    <h3 class="text-2xl md:text-3xl font-semibold text-stone-900">Plan Your Xi'an Trip in 30 Seconds</h3>
+    <p class="mt-2 text-stone-500">Answer three quick questions and we will recommend the perfect itinerary.</p>
+  </div>
+
+  <div class="max-w-2xl mx-auto space-y-6">
+    <div>
+      <p class="text-sm font-semibold text-stone-700 mb-3">How many days do you have?</p>
+      <div class="grid grid-cols-4 gap-2" id="q-days">
+        <button data-value="1" class="planner-btn rounded-xl border-2 px-4 py-3 text-sm font-medium transition-all unselected">1 Day</button>
+        <button data-value="2" class="planner-btn rounded-xl border-2 px-4 py-3 text-sm font-medium transition-all unselected">2 Days</button>
+        <button data-value="3" class="planner-btn rounded-xl border-2 px-4 py-3 text-sm font-medium transition-all selected" data-default>3 Days</button>
+        <button data-value="5" class="planner-btn rounded-xl border-2 px-4 py-3 text-sm font-medium transition-all unselected">5+ Days</button>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-stone-700 mb-3">When are you visiting?</p>
+      <div class="grid grid-cols-4 gap-2" id="q-season">
+        <button data-value="spring" class="planner-btn rounded-xl border-2 px-4 py-3 text-sm font-medium transition-all unselected">Spring</button>
+        <button data-value="summer" class="planner-btn rounded-xl border-2 px-4 py-3 text-sm font-medium transition-all unselected">Summer</button>
+        <button data-value="autumn" class="planner-btn rounded-xl border-2 px-4 py-3 text-sm font-medium transition-all selected" data-default>Autumn</button>
+        <button data-value="winter" class="planner-btn rounded-xl border-2 px-4 py-3 text-sm font-medium transition-all unselected">Winter</button>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-stone-700 mb-3">What interests you most?</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="q-interest">
+        <button data-value="history" class="planner-btn rounded-xl border-2 px-3 py-3 text-sm font-medium transition-all unselected">History</button>
+        <button data-value="food" class="planner-btn rounded-xl border-2 px-3 py-3 text-sm font-medium transition-all selected" data-default>Food</button>
+        <button data-value="photography" class="planner-btn rounded-xl border-2 px-3 py-3 text-sm font-medium transition-all unselected">Photography</button>
+        <button data-value="family" class="planner-btn rounded-xl border-2 px-3 py-3 text-sm font-medium transition-all unselected">Family</button>
+      </div>
+    </div>
+
+    <div id="planner-result" class="rounded-2xl border border-terracotta-200 bg-terracotta-50/50 p-6">
+      <p class="text-sm font-semibold text-terracotta-800 mb-3" id="planner-summary"></p>
+      <div id="planner-links" class="space-y-2"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .planner-btn.unselected { border-color: #e7e5e4; background: #fff; color: #78716c; }
+  .planner-btn.unselected:hover { border-color: #fed7aa; color: #b94509; }
+  .planner-btn.selected { border-color: #b94509; background: #fef7ee; color: #93370e; }
+  .planner-btn.selected:hover { border-color: #b94509; background: #fef7ee; color: #93370e; }
+</style>
+
+<script is:inline>
+(function() {
+  var selected = { days: '3', season: 'autumn', interest: 'food' };
+
+  var recs = {
+    history: { title: 'For History Buffs', pages: [
+      { href: '/attractions/terracotta-warriors', label: 'Terracotta Warriors &#8212; beat the crowds' },
+      { href: '/attractions/shaanxi-history-museum', label: 'Shaanxi History Museum &#8212; booking guide' },
+      { href: '/attractions/city-wall', label: 'City Wall &#8212; bike the 14km loop' },
+      { href: '/attractions/han-yangling', label: 'Han Yangling &#8212; the quieter mausoleum' }
+    ]},
+    food: { title: 'For Food Lovers', pages: [
+      { href: '/attractions/muslim-quarter', label: 'Muslim Quarter &#8212; street food paradise' },
+      { href: '/food', label: 'Xi’an Food Guide &#8212; 20 must-try dishes' },
+      { href: '/attractions/city-wall', label: 'City Wall &#8212; bike then eat in the old city' },
+      { href: '/itineraries', label: 'Itineraries &#8212; food-focused day plans' }
+    ]},
+    photography: { title: 'For Photographers', pages: [
+      { href: '/attractions/city-wall', label: 'City Wall at sunset &#8212; best golden hour spot' },
+      { href: '/attractions/terracotta-warriors', label: 'Terracotta Warriors &#8212; Pit 1 wide shots' },
+      { href: '/attractions/muslim-quarter', label: 'Muslim Quarter &#8212; night market neon' },
+      { href: '/attractions/big-wild-goose-pagoda', label: 'Big Wild Goose Pagoda &#8212; fountain light show' }
+    ]},
+    family: { title: 'For Families', pages: [
+      { href: '/attractions/city-wall', label: 'City Wall biking &#8212; fun for all ages' },
+      { href: '/attractions/terracotta-warriors', label: 'Terracotta Warriors &#8212; hire a kid-friendly guide' },
+      { href: '/attractions/big-wild-goose-pagoda', label: 'Big Wild Goose Pagoda &#8212; musical fountain' },
+      { href: '/itineraries', label: 'Family itineraries &#8212; relaxed pace plans' }
+    ]}
+  };
+
+  function selectBtn(groupId, value) {
+    var group = document.getElementById(groupId);
+    var btns = group.querySelectorAll('button');
+    for (var i = 0; i < btns.length; i++) {
+      if (btns[i].dataset.value === value) {
+        btns[i].classList.remove('unselected');
+        btns[i].classList.add('selected');
+      } else {
+        btns[i].classList.remove('selected');
+        btns[i].classList.add('unselected');
+      }
+    }
+  }
+
+  function showResult() {
+    var r = recs[selected.interest];
+    if (!r) return;
+    var dayLabel = selected.days === '1' ? '1 day' : selected.days === '2' ? '2 days' : selected.days === '5' ? '5+ days' : '3 days';
+    document.getElementById('planner-summary').textContent = r.title + ' — ' + dayLabel + ' in ' + selected.season + ':';
+    var html = '';
+    for (var i = 0; i < r.pages.length; i++) {
+      html += '<a href="' + r.pages[i].href + '" class="flex items-center gap-2 text-sm text-terracotta-600 hover:text-terracotta-700 transition-colors"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>' + r.pages[i].label + '</a>';
+    }
+    document.getElementById('planner-links').innerHTML = html;
+  }
+
+  ['q-days','q-season','q-interest'].forEach(function(gid) {
+    document.getElementById(gid).addEventListener('click', function(e) {
+      var btn = e.target.closest('button');
+      if (!btn) return;
+      var val = btn.dataset.value;
+      var key = gid === 'q-days' ? 'days' : gid === 'q-season' ? 'season' : 'interest';
+      selected[key] = val;
+      selectBtn(gid, val);
+      showResult();
+    });
+  });
+
+  showResult();
+})();
+</script>

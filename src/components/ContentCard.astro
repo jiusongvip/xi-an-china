@@ -1,0 +1,29 @@
+---
+export interface Props {
+  href: string;
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+const { href, title, description, icon } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group block p-6 rounded-xl border border-stone-200 bg-white hover:border-terracotta-200 hover:shadow-md transition-all duration-200 no-underline"
+>
+  {icon && (
+    <div class="w-10 h-10 rounded-lg bg-terracotta-50 flex items-center justify-center mb-4 group-hover:bg-terracotta-100 transition-colors">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-terracotta-600">
+        <path d={icon} />
+      </svg>
+    </div>
+  )}
+  <h3 class="font-semibold text-stone-900 group-hover:text-terracotta-700 transition-colors">{title}</h3>
+  <p class="mt-2 text-sm text-stone-600 leading-relaxed">{description}</p>
+  <span class="inline-flex items-center gap-1 mt-4 text-sm font-medium text-terracotta-600">
+    Learn more
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </span>
+</a>

@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Han Yangling — The Quieter Terracotta Army";
+const pageDesc = "Han Dynasty mausoleum with thousands of miniature terracotta figurines, glass-floored walkways, and almost no crowds. A hidden gem 40 minutes from Xi'an.";
+
+const faqs = [
+  { q: "Is Han Yangling worth visiting if I’ve seen the Terracotta Warriors?", a: "Absolutely. It is a completely different experience — miniature figurines instead of life-sized, glass-floored pits instead of open hangars, and peaceful solitude instead of crowds. Many visitors prefer the intimate atmosphere here." },
+  { q: "How do I get to Han Yangling?", a: "Taxi from downtown: 40 min, $12-$15. Metro Line 2 to Shitushuguan Station, then bus or taxi (10-15 min). It is less convenient than the Warriors but the solitude is the reward." },
+  { q: "How is it different from the Terracotta Warriors?", a: "Size: 60 cm figures vs. life-sized. Era: Han Dynasty (202 BC) vs. Qin (210 BC). Crowds: dozens per day vs. thousands. Experience: quiet and contemplative vs. bustling and spectacular. They complement rather than compete with each other." },
+  { q: "How does Han Yangling compare to the Terracotta Warriors?", a: "Terracotta Warriors: massive scale, life-size figures, huge crowds, busier experience. Han Yangling: intimate glass-floor walkways, smaller but more detailed figures, far fewer visitors, more atmospheric. If you love history and archaeology, see both — they complement each other perfectly. If you can only see one, the Warriors are more iconic, but Han Yangling may be the more memorable personal experience." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TouristAttraction", "name": "Han Yangling: The Quieter Emperor’s Tomb", "description": "A Han Dynasty mausoleum with thousands of miniature terracotta figurines, glass-floored museum walkways, and almost no crowds. A hidden gem 40 minutes from Xi’an.", "url": "https://xi-an-china.com/attractions/han-yangling/" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
+      { "@type": "ListItem", "position": 3, "name": "Han Yangling: The Quieter Emperor’s Tomb", "item": "https://xi-an-china.com/attractions/han-yangling/" }
+    ]},
+    { "@type": "FAQPage", "mainEntity": [{"@type":"Question","name":"Is Han Yangling worth visiting if I’ve seen the Terracotta Warriors?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. It is a completely different experience — miniature figurines instead of life-sized, glass-floored pits instead of open hangars, and peaceful solitude instead of crowds. Many visitors prefer the intimate atmosphere here."}},{"@type":"Question","name":"How do I get to Han Yangling?","acceptedAnswer":{"@type":"Answer","text":"Taxi from downtown: 40 min, $12-$15. Metro Line 2 to Shitushuguan Station, then bus or taxi (10-15 min). It is less convenient than the Warriors but the solitude is the reward."}},{"@type":"Question","name":"How is it different from the Terracotta Warriors?","acceptedAnswer":{"@type":"Answer","text":"Size: 60 cm figures vs. life-sized. Era: Han Dynasty (202 BC) vs. Qin (210 BC). Crowds: dozens per day vs. thousands. Experience: quiet and contemplative vs. bustling and spectacular. They complement rather than compete with each other."}},] }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+
+    <div class="inline-flex items-center rounded-full border border-terracotta-200 bg-terracotta-50 px-3 py-1 text-xs font-medium text-terracotta-700 mb-4">Hidden Gem</div>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Han Yangling: The Quieter Emperor’s Tomb</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">A Han Dynasty mausoleum with thousands of miniature terracotta figurines, glass-floored museum walkways, and almost no crowds. A hidden gem 40 minutes from Xi’an.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/han-yangling.webp" srcset="/images/responsive/han-yangling-768.webp 768w, /images/han-yangling.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="Excavated soldiers and pottery at the Han Yangling Mausoleum" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 shadow-sm">
+      <div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Opening Hours</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">8:30 AM – 6:30 PM</p><p class="text-xs text-stone-500 mt-1.5">Mar-Nov. 8:30-6:00 PM Dec-Feb</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Ticket Price</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">$10</p><p class="text-xs text-stone-500 mt-1.5">March-Nov. $8 Dec-Feb</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Time Needed</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">2–3 hours</p><p class="text-xs text-stone-500 mt-1.5">Museum + burial mound + gardens</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Best Time</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Weekday mornings</p><p class="text-xs text-stone-500 mt-1.5">Often completely empty</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Unique Feature</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Glass floors</p><p class="text-xs text-stone-500 mt-1.5">Walk above the burial pits</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Location</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Weiyang District</p><p class="text-xs text-stone-500 mt-1.5">40 min north of downtown</p></div>
+
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Why Han Yangling Is the Mausoleum Locals Prefer</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Han Yangling (汉阳陵) is the joint tomb of <strong class="text-stone-800">Emperor Jing of Han</strong> (188-141 BC) and his empress. Built around the same time as the Terracotta Warriors but belonging to a different dynasty, it is often called the <strong class="text-stone-800">"other terracotta army"</strong> — but with a fraction of the visitors.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">Unlike the Terracotta Warriors (life-sized soldiers), Han Yangling’s figures are <strong class="text-stone-800">miniature</strong> — about 60 cm tall. They were originally dressed in silk clothing with movable wooden arms. The clothing has long since decayed, leaving naked clay bodies in organized rows. There are also miniature animals, chariots, and everyday objects buried for the emperor’s afterlife.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">The museum is built <strong class="text-stone-800">directly over the excavation pits</strong> with glass floors, so you walk above the figurines and see them from directly overhead. The lighting is dim and atmospheric, creating a completely different experience from the bright hangar of the Terracotta Warriors.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">This site gets fewer visitors in a year than the Terracotta Warriors get in a single morning. On a weekday, you may be the only person in the museum. If you want a quiet, contemplative experience of ancient Chinese burial culture without jostling for viewing spots, this is it.</p>
+
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Why Han Yangling Is (Arguably) Better Than the Terracotta Warriors</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Han Yangling gets called "the quieter Terracotta Warriors," but that undersells it. For many visitors, it is the <strong class="text-stone-800">more atmospheric experience</strong>. While the Terracotta Warriors are awe-inspiring in scale, Han Yangling offers something the Warriors do not: intimacy.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">The museum is built directly over the excavation site with <strong class="text-stone-800">glass floors</strong>. You literally walk above the burial pits, looking down at thousands of miniature terracotta figurines — soldiers, servants, animals — exactly where they were placed 2,100 years ago. The figures are smaller (about 60 cm vs life-size) but more detailed — each face is individually sculpted. The burial pits also contain the tomb of Emperor Jing and Empress Wang, making this one of the few Han Dynasty imperial tombs open to the public.</p>
+    </section>
+
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Insider Tips</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span><p class="text-stone-600"><strong>Weekday mornings are empty.</strong> Han Yangling gets a tiny fraction of the Warriors’ crowds. On a Tuesday at 9 AM, expect to be one of only a handful of visitors.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span><p class="text-stone-600"><strong>Combine with downtown attractions.</strong> Visit in the morning (40 min from city center), then return for the City Wall or Muslim Quarter in the afternoon. It pairs well with a relaxed day.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">3</span><p class="text-stone-600"><strong>Don’t skip the exhibition hall.</strong> The glass-floored pits are the highlight, but the exhibition hall has fascinating displays about Han Dynasty daily life, including miniature granaries, livestock pens, and pottery kitchens.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span><p class="text-stone-600"><strong>The burial mound.</strong> Walk 10 minutes from the museum to the emperor’s actual burial mound — a large grassy hill. You cannot enter it (unexcavated), but standing on top gives a sense of the mausoleum’s scale.</p></div>
+</div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Nearby</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">40 min</span><div><strong class="font-medium text-stone-800">Terracotta Warriors</strong><p class="text-sm text-stone-500">The big one. 40 min east. Do Yangling for a quiet morning, Warriors another day.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">20 min</span><div><strong class="font-medium text-stone-800">Daming Palace</strong><p class="text-sm text-stone-500">Tang Dynasty palace ruins. Sprawling park with reconstructed gates.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">30 min</span><div><strong class="font-medium text-stone-800">City Wall North Gate</strong><p class="text-sm text-stone-500">A quieter gate entry point. Good for a partial wall walk.</p></div></div>
+</div>
+    </section>
+
+        <!-- Related attractions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="/attractions/terracotta-warriors" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Terracotta Warriors</p>
+          <p class="text-xs text-stone-500 mt-0.5">Compare two imperial armies, 3,000 years apart.</p>
+        </a>
+        <a href="/attractions/huaqing-pool" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Huaqing Hot Springs</p>
+          <p class="text-xs text-stone-500 mt-0.5">Both sit east of the city — plan them together.</p>
+        </a>
+        <a href="/day-trips" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Day Trips from Xi'an</p>
+          <p class="text-xs text-stone-500 mt-0.5">Where Han Yangling fits in your itinerary.</p>
+        </a>
+      </div>
+    </section>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/attractions/tang-paradise" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Next: Tang Paradise <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">The Glass Floor Experience: Walking Above History</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Han Yangling's signature feature is its <strong class="text-stone-800">glass-floored corridors</strong> suspended directly above the excavation pits. Unlike the Terracotta Warriors — where you view from elevated walkways 5-10 meters away — here you stand on transparent panels looking straight down at artifacts exactly where they were buried 2,100 years ago.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">Below your feet: rows of miniature terracotta soldiers (about 60 cm tall, compared to life-size at the Warriors), ceramic animals (pigs, dogs, sheep, goats — a full Han Dynasty farm), chariots, and storage jars. The figures are smaller but <strong class="text-stone-800">far more detailed</strong> than the Terracotta Warriors — you can see individual facial expressions, clothing folds, and even traces of the original paint. The museum also displays the tomb of Empress Wang, with jade burial suits and gold ornaments.</p>
+      <p class="mt-4 text-sm text-stone-500">Unlike the Warriors, photography is allowed throughout Han Yangling. The low light levels under the glass floor make for atmospheric, museum-quality shots. Bring a fast lens (f/2.8 or wider) if you want crisp photos.</p>
+    </section>
+
+  </div>
+</BaseLayout>

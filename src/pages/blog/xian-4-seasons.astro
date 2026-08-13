@@ -1,0 +1,222 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+
+const pageTitle = "Xi'an in 4 Seasons: What Each Season Feels Like (2026)";
+const pageDesc = "Xi'an across spring, summer, autumn, and winter: cherry blossoms, summer nights, golden autumn light, and snowy hot springs. Real local experiences.";
+const faqs = [
+  { q: "What is the single best month to visit Xi'an?", a: "October (after the 7th) or November. The air is crisp, the light is golden, crowds have vanished after Golden Week, and you can explore the City Wall and Terracotta Warriors in perfect 15-20°C weather. April and May are a close second for spring blooms." },
+  { q: "Is Xi'an worth visiting in winter?", a: "Absolutely, if you don't mind cold weather. December through February means near-empty attractions, cheap hotels, and atmospheric scenes like steam rising from Huaqing hot springs in sub-zero air. The Terracotta Warriors Pit 1 can feel almost private. Pack thermal layers." },
+  { q: "When should I absolutely avoid Xi'an?", a: "October 1-7 (Golden Week) and Chinese New Year week (late January/February). Hotels triple in price, trains sell out weeks ahead, and the Terracotta Warriors has 3-4 hour queues. If your dates are fixed around these periods, book everything 2-3 months in advance." },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08","author":{"@type":"Person","name":"Li Wei","jobTitle":"History & Culture Writer","url":"https://xi-an-china.com/about","description":"Xi'an-based historian and museum researcher since 2019. 200+ site visits across Shaanxi province.","sameAs":["https://xi-an-china.com/about"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://xi-an-china.com/blog"},{"@type":"ListItem","position":3,"name":"Xi'an 4 Seasons","item":"https://xi-an-china.com/blog/xian-4-seasons"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
+
+const seasons = [
+  {
+    name: "Spring",
+    months: "March – May",
+    temp: "8–26°C",
+    rain: "5–8 rainy days/month",
+    crowd: "3/5 (low except May 1–7)",
+    color: "emerald",
+    highlights: [
+      "Qinglong Temple cherry blossoms peak in late March — free, far less crowded than Japan",
+      "City Wall cycling in April is perfect: 16°C, light breeze, petals drifting over the battlements",
+      "The Shaanxi History Museum is empty on weekday mornings in March — you can see the gold artifacts in near solitude",
+      "May 1–7 is Labor Day holiday: avoid at all costs. Hotels triple, attractions sell out"
+    ],
+    packing: "Light jacket for mornings, sunscreen for afternoons. A scarf for dusty wind days (yes, Xi'an gets dust storms from the Gobi in early March)."
+  },
+  {
+    name: "Summer",
+    months: "June – August",
+    temp: "24–35°C",
+    rain: "8–12 rainy days/month",
+    crowd: "4/5 (peak July–August school holidays)",
+    color: "amber",
+    highlights: [
+      "The Muslim Quarter at 10 PM in July is electric: lamb smoke, cold suanmeitang, biangbiang noodles sweating with chili oil",
+      "Mount Huashan sunrise at 5 AM — start hiking at 2 AM from the North Peak to reach East Peak for dawn",
+      "The Big Wild Goose Pagoda musical fountain at 8:30 PM is free and spectacular on hot nights",
+      "Tang Paradise after dark: lantern-lit gardens, cool lake breeze, costume rentals glowing in gold light"
+    ],
+    packing: "Breathable fabrics, hat, sunscreen SPF 50+. Carry water everywhere. Afternoon indoor activities (museums) — outdoor sightseeing before 10 AM and after 5 PM."
+  },
+  {
+    name: "Autumn",
+    months: "September – November",
+    temp: "10–25°C",
+    rain: "5–8 rainy days/month",
+    crowd: "3/5 (low except Oct 1–7)",
+    color: "terracotta",
+    highlights: [
+      "October at the Terracotta Warriors: golden morning light through Pit 1, zero crowds at 8:30 AM opening",
+      "City Wall at sunset in November: the stones glow amber, the moat reflects the sky, cyclists thin out by 4 PM",
+      "Mid-Autumn Festival (September): mooncakes everywhere, families on the City Wall watching the full moon rise",
+      "October 1–7 is Golden Week: the single worst time to visit. Avoid like the Terracotta Warriors avoid flash photography"
+    ],
+    packing: "Layers. Mornings are crisp (10°C), afternoons warm (22°C). A light rain jacket for September. By November, bring a warm jacket for evenings."
+  },
+  {
+    name: "Winter",
+    months: "December – February",
+    temp: "-3–7°C",
+    rain: "2–3 rainy days/month",
+    crowd: "2/5 (lowest except Chinese New Year)",
+    color: "sky",
+    highlights: [
+      "Huaqing Pool hot springs in January: steam rising into the cold air, snow on the rooftops, zero tourists",
+      "Han Yangling Mausoleum on a weekday in December: you might be the only person in the glass-floored museum",
+      "Chinese New Year (late Jan/early Feb): the City Wall transforms into a massive lantern festival — spectacular but crowded",
+      "The Shaanxi History Museum in winter: empty halls, warm heating, and all the Tang Dynasty gold to yourself"
+    ],
+    packing: "Heavy coat, thermal layers, gloves. Xi'an winters are dry and cold but not brutal. Indoor heating is excellent (northern China has central heating). The cold is manageable if you dress in layers."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Local Experience</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Xi'an in Four Seasons</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">We've visited Xi'an in every season since 2019. Each visit reveals a different city. Here's what each season actually feels like — not the tourist brochure version, but the real experience on the ground.</p>
+
+    <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+      <img class="h-auto w-full" src="/images/autumn-terracotta.webp" width="1440" height="810" alt="Terracotta warriors in golden autumn light, Xi'an's best season" loading="lazy" decoding="async" />
+    </div>
+
+    <AuthorSignal authorId="li-wei" />
+
+    <p class="mt-8 text-base text-stone-600 leading-relaxed">The short version up front: <strong class="text-stone-800">spring and autumn are the sweet spots</strong>, summer is hot but alive at night, and winter is cold, cheap, and gloriously empty. Which one you pick depends entirely on what kind of traveler you are — so let's walk through each.</p>
+
+    <div class="mt-8 rounded-xl bg-stone-100 border border-stone-200 p-5">
+      <p class="text-sm text-stone-600 leading-relaxed"><strong class="text-stone-800">TL;DR:</strong> Spring (March–May) and autumn (September–November) are the best times to visit. Summer is hot and crowded. Winter is cold but magical — and nearly empty. Avoid May 1–7 and October 1–7 at all costs.</p>
+    </div>
+
+    <!-- Season cards -->
+    <div class="mt-12 space-y-12">
+      {seasons.map(s => (
+        <article>
+          <div class="flex items-center gap-3 mb-4">
+            <span class={`text-xs font-bold px-3 py-1 rounded-full ${
+              s.color === 'emerald' ? 'bg-emerald-100 text-emerald-700' :
+              s.color === 'amber' ? 'bg-amber-100 text-amber-700' :
+              s.color === 'terracotta' ? 'bg-terracotta-100 text-terracotta-700' :
+              'bg-sky-100 text-sky-700'
+            }`}>{s.months}</span>
+            <h2 class="text-2xl font-semibold text-stone-900">{s.name}</h2>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3 mb-4 text-center">
+            <div class="rounded-lg bg-stone-50 border border-stone-100 p-3">
+              <p class="text-xs text-stone-400 mb-1">Temperature</p>
+              <p class="text-sm font-semibold text-stone-700">{s.temp}</p>
+            </div>
+            <div class="rounded-lg bg-stone-50 border border-stone-100 p-3">
+              <p class="text-xs text-stone-400 mb-1">Rain</p>
+              <p class="text-sm font-semibold text-stone-700">{s.rain}</p>
+            </div>
+            <div class="rounded-lg bg-stone-50 border border-stone-100 p-3">
+              <p class="text-xs text-stone-400 mb-1">Crowds</p>
+              <p class="text-sm font-semibold text-stone-700">{s.crowd}</p>
+            </div>
+          </div>
+
+          <div class="space-y-2 mb-4">
+            {s.highlights.map(h => (
+              <p class="flex gap-2 text-sm text-stone-600 leading-relaxed">
+                <span class="shrink-0 text-terracotta-500 mt-0.5">→</span>
+                <span>{h}</span>
+              </p>
+            ))}
+          </div>
+
+          <div class="rounded-lg bg-stone-50 border border-stone-100 p-4">
+            <p class="text-xs font-semibold text-stone-500 uppercase mb-1">What to pack</p>
+            <p class="text-sm text-stone-600">{s.packing}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- First-hand seasonal notes -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-3">Notes From Four Seasons On the Ground</h2>
+      <p class="text-stone-600 leading-relaxed mb-6">The stats above only tell part of the story. After living through multiple cycles of each season in Xi'an, here are the things we notice every single time — the details that surprised us, and the ones we now plan around.</p>
+      <div class="space-y-4">
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <p class="font-semibold text-stone-800 mb-1">Spring: the dust is real, and so is the light</p>
+          <p class="text-sm text-stone-600 leading-relaxed">March can bring a day or two of yellow dust from the Gobi. It looks alarming in photos but passes quickly and makes the following days spectacularly clear. The bigger surprise is how early the light turns golden — by 6 AM in April, the City Wall is bathed in warm tones that vanish by 8. If you want the softest morning light on the wall, plan an early start, not a lazy one.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <p class="font-semibold text-stone-800 mb-1">Summer: the city moves at night</p>
+          <p class="text-sm text-stone-600 leading-relaxed">Xi'an's summer rhythm flips entirely. Between 11 AM and 4 PM, the sensible thing to do is exactly what locals do — find air conditioning. Museums are your friend here. Then, from 8 PM, the city wakes up: the Muslim Quarter steams, the fountain shows run, and the City Wall glows. We structure every summer day around an evening-heavy itinerary, and it changes the whole experience.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <p class="font-semibold text-stone-800 mb-1">Autumn: two different Octobers</p>
+          <p class="text-sm text-stone-600 leading-relaxed">October is genuinely two seasons in one. The first seven days are Golden Week — the single busiest week of the Chinese year, with queues you have to see to believe. From October 8, the crowds evaporate, the air turns crisp, and the light becomes the best of the entire year. If you can, split your visit so the 8th onward is your main sightseeing window.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <p class="font-semibold text-stone-800 mb-1">Winter: the half-price secret</p>
+          <p class="text-sm text-stone-600 leading-relaxed">December through February, most attractions drop to half price, and the Terracotta Warriors Pit 1 can feel almost private. The cold is dry and manageable — central heating is excellent across the city. The one real hardship is that the same pages you book in summer get updated hours; double-check closing times, which shrink by 30-60 minutes in winter.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Verdict -->
+    <section class="mt-12 rounded-2xl border border-terracotta-200 bg-terracotta-50 p-6">
+      <h2 class="text-xl font-semibold text-stone-900 mb-3">Our Verdict</h2>
+      <p class="text-sm text-stone-600 leading-relaxed mb-2"><strong class="text-stone-800">Best overall:</strong> Mid-April to mid-May, or mid-September to mid-October. Perfect weather, manageable crowds, and the city is at its most photogenic.</p>
+      <p class="text-sm text-stone-600 leading-relaxed mb-2"><strong class="text-stone-800">Best value:</strong> December to February (excluding Chinese New Year). Hotels are 30–50% cheaper, attractions are empty, and the winter atmosphere at Huaqing Pool and Han Yangling is genuinely magical.</p>
+      <p class="text-sm text-stone-600 leading-relaxed"><strong class="text-stone-800">Worst times:</strong> May 1–7 (Labor Day) and October 1–7 (Golden Week). Domestic tourism peaks, prices triple, and popular attractions like the Terracotta Warriors hit capacity. Book 2+ months ahead if you must travel during these periods.</p>
+    </section>
+
+    <!-- Quick decision checklist -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Quick Decision Checklist by Season</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">Not sure which season fits you? Run through these four questions and the answer is usually clear:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {[
+          { q: "Do I hate crowds more than cold?", yes: "Winter is your season. Empty halls, half-price tickets, and near-private access to the Terracotta Warriors. Dress warmly and go." },
+          { q: "Am I here mainly for photography?", yes: "Autumn after October 8. Golden light, crisp air, and no haze. Spring is a close second for the blossoms." },
+          { q: "Is my budget the deciding factor?", yes: "November, January, or February. Hotels drop 30-50% and most attractions go half-price from December 1. Just avoid the Chinese New Year week itself." },
+          { q: "Do I want street food and night markets at their peak?", yes: "Late spring or early autumn — evenings are warm enough to wander, but summer crowds and heat haven't arrived yet." },
+        ].map(c => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <p class="font-semibold text-stone-800 mb-1">{c.q}</p>
+            <p class="text-sm text-stone-600 leading-relaxed"><strong class="text-terracotta-600">If yes:</strong> {c.yes}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <div class="space-y-0 divide-y divide-stone-100">
+        {faqs.map(f => (
+          <details class="group py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-stone-800 font-medium">
+              {f.q}
+              <svg class="h-5 w-5 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+            </summary>
+            <p class="mt-3 text-sm text-stone-600 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 text-center">
+      <a href="/best-time-to-visit" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Detailed Best Time to Visit Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

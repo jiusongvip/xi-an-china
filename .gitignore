@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.astro/
+*.log
+*.bak
+*.tmp
+.DS_Store
+.env
+.env.*
+
+# legacy pre-Astro build scripts & audit artifacts
+_home.py
+_layout.py
+_pages.py
+_support.py
+_write.py
+xianchina.com-audit/

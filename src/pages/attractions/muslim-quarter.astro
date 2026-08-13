@@ -1,0 +1,178 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Xi'an Muslim Quarter — Food & Street Guide";
+const pageDesc = "Xi'an's Muslim Quarter: best streets (Huimin Jie, Sajinqiao), 10 must-try dishes, and 1,300 years of Hui Muslim culture worth exploring today.";
+
+const faqs = [
+  { q: "What is the Muslim Quarter?", a: "The Muslim Quarter (Huimin Jie) is a network of narrow stone streets just behind the Drum Tower in Xi’an’s old city. It has been the home of Xi’an’s Hui Muslim community for over 1,300 years, dating back to Silk Road traders who settled here during the Tang Dynasty. Today it is the most famous street food district in Northwest China." },
+  { q: "What food should I try in the Muslim Quarter?", a: "Start with yangrou paomo (lamb soup with hand-torn bread, the signature dish), biangbiang noodles (thick hand-pulled noodles wider than your thumb), lamb skewers (cumin-dusted, grilled over charcoal), roujiamo (Chinese hamburger with shredded pork or beef), liangpi (cold skin noodles), and persimmon cakes for dessert." },
+  { q: "When should I visit the Muslim Quarter?", a: "Go after 7:00 PM when the streets fill with locals and the lanterns turn on. It is busy but that is the point — the energy is part of the experience. Daytime is quieter but many of the best stalls do not open until late afternoon. Avoid the main street (Beiyuanmen) before 5 PM — it feels touristy. Instead, explore the side alleys." },
+  { q: "Is the food in the Muslim Quarter halal?", a: "Yes. The Hui community is Muslim, and all food served in the Muslim Quarter is halal. No pork is served anywhere in the area. Look for the halal certification signs outside restaurants if you want confirmation." },
+  { q: "How do I get to the Muslim Quarter?", a: "Take Metro Line 2 to Zhonglou (Bell Tower) Station. Exit and walk west — the Drum Tower is visible immediately. The Muslim Quarter entrance is just behind the Drum Tower. From the Bell Tower, it is a 3-minute walk. The area is inside the city wall, so it pairs perfectly with a City Wall visit (South Gate is a 12-minute walk south)." },
+  { q: "What should I budget for a meal in the Muslim Quarter?", a: "Street food is very affordable. Lamb skewers: $0.4-$0.5 per stick. A bowl of biangbiang noodles: $2-$2.5. Roujiamo: $1-$2. A full feast for one person (3-4 different dishes): $6-$9. Restaurant meals on Beiyuanmen are $12-$22 per person. Bring cash — some smaller stalls do not accept WeChat Pay from foreign accounts." },
+  { q: "Is the Muslim Quarter safe at night?", a: "Yes. The area is crowded until midnight and has a visible police presence. Pickpocketing is the main risk in shoulder-to-shoulder crowds — keep your phone and wallet in front pockets. Solo female travelers report feeling safe. The streets are well-lit and there are always people around." },
+];
+
+const schema = {
+  "@context": "https://schema.org", "@graph": [
+    { "@type": "TouristAttraction", "name": "Xi’an Muslim Quarter", "description": "A 1,300-year-old Muslim neighborhood in Xi’an’s old city, famous for its street food, night markets, and Hui Muslim culture. The best food street in Northwest China.", "url": "https://xi-an-china.com/attractions/muslim-quarter/" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
+      { "@type": "ListItem", "position": 3, "name": "Muslim Quarter", "item": "https://xi-an-china.com/attractions/muslim-quarter/" }
+    ]}
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="July 2026" hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+
+    <div class="inline-flex items-center rounded-full border border-terracotta-200 bg-terracotta-50 px-3 py-1 text-xs font-medium text-terracotta-700 mb-4">Must See</div>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Muslim Quarter: Xi’an’s Street Food Paradise</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">1,300 years of Hui Muslim culture packed into narrow stone alleys behind the Drum Tower. This is where Xi’an eats.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/muslim-quarter.webp" srcset="/images/responsive/muslim-quarter-768.webp 768w, /images/muslim-quarter.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="Beiyuanmen street in Xi'an's Muslim Quarter lined with food stalls" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200">
+      {[
+        { label: "Best Time", value: "7 PM – midnight", note: "Peak energy after dark" },
+        { label: "Entry Fee", value: "Free", note: "Open to all, 24/7" },
+        { label: "Time Needed", value: "2-3 hours", note: "To eat your way through" },
+        { label: "Main Street", value: "Beiyuanmen", note: "Behind the Drum Tower" },
+        { label: "Hidden Gem", value: "Sajinqiao", note: "Where locals actually eat" },
+        { label: "Location", value: "Old City", note: "Walk from Bell Tower" },
+      ].map((info) => (
+        <div class="bg-white p-5">
+          <p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">{info.label}</p>
+          <p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">{info.value}</p>
+          <p class="text-xs text-stone-500 mt-1.5">{info.note}</p>
+        </div>
+      ))}
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">10 Must-Try Dishes</h2>
+      <div class="mt-6 space-y-5">
+        {[
+          { name: "Yangrou Paomo (羊肉泡館)", en: "Lamb soup with torn bread", desc: "Xi’an’s signature dish. You tear a flatbread into tiny pieces by hand, then the chef drowns it in rich lamb broth with vermicelli and tender lamb. Warming, filling, and unlike anything else in China." },
+          { name: "Biangbiang Noodles", en: "Thick hand-pulled noodles", desc: "Noodles as wide as a belt, hand-pulled and slapped against the counter. Topped with chili, garlic, and hot oil. The character for biang is one of the most complex in Chinese, with 58 strokes." },
+          { name: "Lamb Skewers (羊肉串)", en: "Cumin-dusted charcoal skewers", desc: "Thin strips of lamb grilled over charcoal and dusted with cumin, chili, and salt. Sold by the stick ($0.4-$0.5 each). The best ones are from vendors who have been working the same corner for decades." },
+          { name: "Roujiamo (肉夹館)", en: "Chinese hamburger", desc: "Shredded braised meat stuffed into a crispy flatbread. The Muslim Quarter version uses beef instead of pork. The bread is baked in clay ovens right on the street." },
+          { name: "Liangpi (凉皮)", en: "Cold skin noodles", desc: "Chilled, slippery noodles in a tangy, spicy dressing with cucumber and bean sprouts. The perfect hot-weather dish. Refreshing and addictive." },
+          { name: "Persimmon Cakes (柿子饼)", en: "Sweet fried persimmon cakes", desc: "Made from locally grown Lintong persimmons, these sticky-sweet cakes are fried on griddles throughout the quarter. Best eaten hot, fresh off the griddle." },
+          { name: "Suanmeitang (酸梅汤)", en: "Sour plum drink", desc: "Xi’an’s unofficial beverage. A dark, sweet-sour drink made from smoked plums. Served ice-cold from large metal urns. The perfect palate cleanser between dishes." },
+        ].map((dish) => (
+          <div class="border-b border-stone-100 pb-4">
+            <p class="font-semibold text-stone-800">{dish.name}</p>
+            <p class="text-xs text-stone-400 mb-1">{dish.en}</p>
+            <p class="text-sm text-stone-600 leading-relaxed">{dish.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">The Great Mosque: A Hidden Masterpiece</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Tucked inside the Muslim Quarter is one of China's most remarkable religious sites: the <strong class="text-stone-800">Great Mosque of Xi'an</strong>, built in 742 AD during the Tang Dynasty. Unlike Middle Eastern mosques, it is built entirely in traditional Chinese architectural style — curved roofs, stone courtyards, pagoda-like minarets, and steles inscribed in both Arabic and Chinese. It is one of the oldest and largest mosques in China and is still actively used by Xi'an's Hui Muslim community.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">Entry costs $4 (not included in the free Muslim Quarter area). Non-Muslims can visit outside of prayer times. The main prayer hall is closed to visitors, but the courtyards, steles, and gardens are open. The mosque is a 5-minute walk from the Drum Tower, tucked away down Huajue Lane — look for the stone archway. <strong class="text-stone-800">Worth visiting even if you are not religious</strong> — the fusion of Chinese and Islamic architecture is unique in the world.</p>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">What to Buy: Souvenirs Worth Carrying Home</h2>
+      <div class="mt-4 space-y-3 text-sm">
+        <div class="rounded-xl border border-stone-200 p-3"><span class="font-semibold text-stone-800">Terracotta Warrior replicas</span><span class="text-stone-500"> — Small clay soldiers ($1.5-$4 each). Bargain hard. The ones at the museum gift shop are better quality but 3x the price.</span></div>
+        <div class="rounded-xl border border-stone-200 p-3"><span class="font-semibold text-stone-800">Shadow puppets</span><span class="text-stone-500"> — Hand-cut leather figures used in traditional Shaanxi puppet theater. $3-$12 depending on size and detail.</span></div>
+        <div class="rounded-xl border border-stone-200 p-3"><span class="font-semibold text-stone-800">Chinese paper cuts</span><span class="text-stone-500"> — Intricate red paper designs. Small ones $0.5-$1.5 large framed pieces $7-$15. Light and easy to pack.</span></div>
+        <div class="rounded-xl border border-stone-200 p-3"><span class="font-semibold text-stone-800">Dried persimmons and nuts</span><span class="text-stone-500"> — Local specialties from Shaanxi farms. Pre-packaged for travel. Try before you buy — quality varies significantly.</span></div>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">The Streets: Where to Go</h2>
+      <div class="mt-4 space-y-5">
+        {[
+          { name: "Beiyuanmen (北院门)", label: "Main street", desc: "The famous main artery behind the Drum Tower. Lined with shops and restaurants. Busy and touristy, but you have to walk it at least once. Best for first-time browsing and big-name restaurant meals rather than street food." },
+          { name: "Sajinqiao (洒金桥)", label: "Hidden gem", desc: "Where locals actually eat. Narrower, less polished, much better food. The best biangbiang noodles and lamb skewers are here, not on Beiyuanmen. Walk past the Drum Tower and keep going north." },
+          { name: "Dongxin Street (东新街)", label: "Night market", desc: "Less known to tourists. A mix of street food stalls and small restaurants. Great for late-night eating after 10 PM when the main quarter starts winding down." },
+          { name: "Dapiyuan (大皮院)", label: "Daytime spot", desc: "Quieter alley that is pleasant during the day. Good for a relaxed lunch. Several excellent family-run noodle shops here." },
+        ].map((street) => (
+          <div class="flex gap-4">
+            <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-700 text-xs font-bold">{street.label}</span>
+            <div><strong class="font-medium text-stone-800">{street.name}</strong><p class="text-sm text-stone-500 mt-0.5">{street.desc}</p></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">History & Culture</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The Muslim Quarter is not a tourist creation — it is a real, living neighborhood that has been the home of Xi'an's Hui Muslim community for <strong class="text-stone-800">over 1,300 years</strong>. Hui Muslims are descendants of Persian and Arab traders who arrived in Xi'an during the Tang Dynasty (618-907 AD) via the Silk Road. They married locally, adopted Chinese customs, but maintained their Islamic faith — creating a unique Chinese-Muslim culture found nowhere else.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">The neighborhood centers around the <strong class="text-stone-800">Great Mosque of Xi'an</strong> (built 742 AD), one of the oldest and largest mosques in China. Unlike Middle Eastern mosques, it is built in traditional Chinese architectural style — pagoda-style minarets, curved roofs, and stone steles inscribed in both Chinese and Arabic. Non-Muslims can visit outside of prayer times ($4 entry).</p>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">How to Eat Your Way Through (Strategy Guide)</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The Muslim Quarter can be overwhelming — hundreds of stalls, narrow alleys, constant noise and smoke. Here is a strategy to maximize your experience without burning out:</p>
+      <div class="mt-4 space-y-3">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Phase 1: Start on Sajinqiao (7:00-7:30 PM)</p>
+          <p class="text-sm text-stone-600">Begin where locals eat. Walk Sajinqiao Street from north to south. Stop at the first 2-3 stalls that have a line — that is your quality signal. Get one lamb skewer, one small roujiamo. Do not fill up. You are just warming up.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Phase 2: Beiyuanmen Main Drag (7:30-8:30 PM)</p>
+          <p class="text-sm text-stone-600">Walk the famous main street for the atmosphere — the red lanterns, the crowds, the smoke rising from hundreds of grills. It is touristy, yes, but it is worth seeing. Pick up persimmon cakes and suanmeitang (sour plum drink) here.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Phase 3: Serious Eating on Dapiyuan (8:30-9:30 PM)</p>
+          <p class="text-sm text-stone-600">Now you are ready for the main event. Dapiyuan Alley is quieter with the best sit-down noodle shops. Order biangbiang noodles and yangrou paomo at a family-run shop. This is where the quality is highest.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Phase 4: Late-Night Dongxin Street (after 10 PM)</p>
+          <p class="text-sm text-stone-600">If you still have room, head to Dongxin Street Night Market. Late-night skewers, beer, and the most local atmosphere. This is where restaurant workers eat after their shifts.</p>
+        </div>
+      </div>
+    </section>
+
+        <!-- Related attractions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="/attractions/city-wall" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Ancient City Wall</p>
+          <p class="text-xs text-stone-500 mt-0.5">Cycle the 14km loop, then eat — the Quarter is inside the wall.</p>
+        </a>
+        <a href="/attractions/bell-drum-tower" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Bell & Drum Towers</p>
+          <p class="text-xs text-stone-500 mt-0.5">Towers sit at the Quarter's southern edge.</p>
+        </a>
+        <a href="/food" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Xi'an Food Guide</p>
+          <p class="text-xs text-stone-500 mt-0.5">20+ dishes and the best food streets, mapped.</p>
+        </a>
+      </div>
+    </section>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/food" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Full Xi’an Food Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

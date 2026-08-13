@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ComparisonTool from "../components/ComparisonTool";
+import AuthorSignal from "../components/AuthorSignal.astro";
+const pageTitle = "Xi'an Attraction Comparison — Side-by-Side Tool";
+const pageDesc = "Compare Xi'an attractions side by side: see prices, crowd levels, best times, and photo scores. Plan your trip with our easy comparison tool.";
+
+const faqs = [
+  { q: "How do I use the comparison tool?", a: "Select any two or more attractions from the list. The tool displays their ticket prices, time needed, crowd levels, best visiting times, and photo scores side by side. Use it to decide which attractions fit your schedule and budget." },
+  { q: "Which attractions should I compare first?", a: "Start with the Terracotta Warriors vs. City Wall — these are the two most popular attractions and the hardest to choose between on a tight schedule. Then compare Mount Huashan vs. Han Yangling for a full-day vs. half-day decision." },
+  { q: "Are the prices up to date?", a: "Yes, all prices are verified at attraction gates in 2026. Student and senior discounts are noted where applicable. Prices may change during peak season (March-November) vs. off-peak (December-February)." },
+  { q: "What is the best use of this comparison tool?", a: "Use it to narrow down your itinerary when you have limited time. Start by comparing your top 3-4 attractions. The tool shows you which ones fit your schedule (time needed), your budget (ticket prices), and your interests (crowd level, photo score). After comparing, you should have a clear top 2-3 for each day of your trip." },
+  { q: "Can I compare attractions by season?", a: "Yes. Use the Season mode in the tool to see how each attraction changes by season. The Terracotta Warriors are mostly indoor and consistent year-round. The City Wall is best in spring and autumn. Mount Huashan is dangerous in winter ice. Use season data to decide which month to visit." },
+  { q: "How accurate are the crowd level scores?", a: "Crowd scores (1-5) are based on our team's multiple visits across different months. They reflect average conditions — your experience on a random Tuesday in November will be very different from Golden Week. Use the crowd scores as relative comparisons between attractions, not absolute predictions." },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Xi'an Attraction Comparison Tool","url":"https://xi-an-china.com/comparison","description":pageDesc,"applicationCategory":"TravelApplication","datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Compare","item":"https://xi-an-china.com/comparison"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <div class="mx-auto max-w-5xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <!-- Quick comparison guide -->
+    <section class="max-w-2xl mx-auto mb-10">
+      <div class="rounded-2xl bg-stone-50 border border-stone-200 p-6">
+        <h2 class="text-lg font-semibold text-stone-900 mb-3">Common Comparisons</h2>
+        <p class="text-sm text-stone-600 mb-4">These are the comparisons our readers make most often. Click a pair to see them side by side in the tool below.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+          <div class="rounded-lg bg-white border border-stone-200 p-3">
+            <p class="font-semibold text-stone-800">Terracotta Warriors vs City Wall</p>
+            <p class="text-xs text-stone-500">History vs scenery. Both essential, but which fits your schedule?</p>
+          </div>
+          <div class="rounded-lg bg-white border border-stone-200 p-3">
+            <p class="font-semibold text-stone-800">Mount Huashan vs Han Yangling</p>
+            <p class="text-xs text-stone-500">Adventure vs archaeology. Full day vs half day.</p>
+          </div>
+          <div class="rounded-lg bg-white border border-stone-200 p-3">
+            <p class="font-semibold text-stone-800">Shaanxi Museum vs Big Wild Goose Pagoda</p>
+            <p class="text-xs text-stone-500">Indoor vs outdoor. Both in Yanta District, walkable.</p>
+          </div>
+          <div class="rounded-lg bg-white border border-stone-200 p-3">
+            <p class="font-semibold text-stone-800">Tang Paradise vs Daming Palace</p>
+            <p class="text-xs text-stone-500">Theme park vs ruins. Night experience vs day exploration.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<div class="text-center mb-8">
+      <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-4">Interactive Tool</p>
+      <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900">Compare Xi'an Attractions & Seasons</h1>
+      <p class="mt-4 text-lg text-stone-500 max-w-xl mx-auto">
+        Terracotta Warriors or City Wall? Spring or autumn? Compare any two attractions or all four seasons side by side.
+      </p>
+    </div>
+
+    <ComparisonTool client:visible />
+
+    <section class="mt-16 max-w-3xl mx-auto">
+      <h2 class="text-2xl font-semibold text-stone-900">How to Choose Your Attractions</h2>
+      <p class="mt-3 text-stone-600 leading-relaxed">Xi'an has 12+ major attractions, and most visitors have 2-4 days. Here is a quick framework to prioritize:</p>
+      <div class="mt-6 space-y-4">
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span><p class="text-stone-600"><strong>Must-see first.</strong> The <a href="/attractions/terracotta-warriors" class="text-terracotta-600 underline">Terracotta Warriors</a> and <a href="/attractions/city-wall" class="text-terracotta-600 underline">City Wall</a> are non-negotiable. Every itinerary includes them.</p></div>
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span><p class="text-stone-600"><strong>History vs. nature.</strong> If you prefer history, prioritize <a href="/attractions/shaanxi-history-museum" class="text-terracotta-600 underline">Shaanxi Museum</a> + <a href="/attractions/han-yangling" class="text-terracotta-600 underline">Han Yangling</a>. If you prefer nature, add <a href="/attractions/mount-huashan" class="text-terracotta-600 underline">Mount Huashan</a>.</p></div>
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">3</span><p class="text-stone-600"><strong>Time budget.</strong> Full-day attractions: Mount Huashan, Terracotta Warriors + Huaqing. Half-day: City Wall, Muslim Quarter, Big Wild Goose Pagoda. Quick stops: Bell & Drum Towers (1-2 hours).</p></div>
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span><p class="text-stone-600"><strong>Budget check.</strong> All 12 attractions cost ~$100-$120 total. With student discounts: ~$50-$60. See our <a href="/tickets" class="text-terracotta-600 underline">complete ticket price guide</a>.</p></div>
+      </div>
+    </section>
+
+    <section class="mt-12 max-w-3xl mx-auto">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <div class="space-y-0 divide-y divide-stone-100">
+        {faqs.map(f => (
+          <details class="group py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-stone-800 font-medium">
+              {f.q}
+              <svg class="h-5 w-5 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+            </summary>
+            <p class="mt-3 text-sm text-stone-600 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="/attractions" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        View All Attractions <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+      <a href="/itineraries" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">
+        See Itineraries
+      </a>
+    </div>
+  </div>
+</BaseLayout>

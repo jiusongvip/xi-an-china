@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Big Wild Goose Pagoda — Tickets & Light Show";
+const pageDesc = "This 64-meter Tang Dynasty pagoda houses Buddhist scriptures from India. Climb for city views and catch the nightly musical fountain show nearby.";
+
+const faqs = [
+  { q: "How much does it cost?", a: "$6 for the temple grounds. An additional $4 to climb the pagoda (7 floors, narrow stairs, no elevator). Students and seniors get 50% off. The musical fountain show in North Square is free." },
+  { q: "Is it worth climbing?", a: "Yes, if you are reasonably fit. The stairs are steep but the view from the top is one of the best in Xi’an — you can see the city wall, Bell Tower, and on clear days the Qinling Mountains to the south." },
+  { q: "When is the fountain show?", a: "Daily at 12:00 noon and 8:00 PM (9:00 PM Jun-Aug). Each show runs about 20 minutes. Best viewing: elevated platform on the north side. Arrive 20 min early." },
+  { q: "What is inside the pagoda on each floor?", a: "The 7 floors each have a theme. Floor 1: Xuanzang's journey map. Floor 2: Buddhist relics. Floor 3: Tang Dynasty coins and artifacts. Floors 4-5: smaller exhibits. Floor 6: bell you can ring. Floor 7: viewing platform with 360-degree city views. Windows on each floor face all four directions." },
+  { q: "How difficult is the climb?", a: "The stairs are narrow wooden steps, about 60 cm wide. No elevator. The climb takes 5-10 minutes for someone reasonably fit. There are rest platforms between floors. Not recommended for those with mobility issues, claustrophobia, or small children. The temple grounds alone are worth visiting even if you skip the climb." },
+  { q: "Is the Great Tang All Day Mall worth visiting?", a: "Yes, especially at night. The pedestrian street south of the pagoda is lined with Tang Dynasty-style buildings, red lanterns, and street performers in period costume. Free to walk. Very popular with Chinese tourists and great for photography. The best time is 8-10 PM when the lights are on." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TouristAttraction", "name": "Big Wild Goose Pagoda: Xi’an’s 1,300-Year-Old Icon", "description": "A 64-meter Tang Dynasty pagoda built to house Buddhist scriptures from India. Climb to the top for city views and stay for the nightly musical fountain show.", "url": "https://xi-an-china.com/attractions/big-wild-goose-pagoda/" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
+      { "@type": "ListItem", "position": 3, "name": "Big Wild Goose Pagoda: Xi’an’s 1,300-Year-Old Icon", "item": "https://xi-an-china.com/attractions/big-wild-goose-pagoda/" }
+    ]},
+    { "@type": "FAQPage", "mainEntity": [{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"$6 for the temple grounds. An additional $4 to climb the pagoda (7 floors, narrow stairs, no elevator). Students and seniors get 50% off. The musical fountain show in North Square is free."}},
+{"@type":"Question","name":"Is it worth climbing?","acceptedAnswer":{"@type":"Answer","text":"Yes, if you are reasonably fit. The stairs are steep but the view from the top is one of the best in Xi’an — you can see the city wall, Bell Tower, and on clear days the Qinling Mountains to the south."}},
+{"@type":"Question","name":"When is the fountain show?","acceptedAnswer":{"@type":"Answer","text":"Daily at 12:00 noon and 8:00 PM (9:00 PM Jun-Aug). Each show runs about 20 minutes. Best viewing: elevated platform on the north side. Arrive 20 min early."}},
+] }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+
+    <div class="inline-flex items-center rounded-full border border-terracotta-200 bg-terracotta-50 px-3 py-1 text-xs font-medium text-terracotta-700 mb-4">Worth It</div>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Big Wild Goose Pagoda: Xi’an’s 1,300-Year-Old Icon</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">A 64-meter Tang Dynasty pagoda built to house Buddhist scriptures from India. Climb to the top for city views and stay for the nightly musical fountain show.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/big-wild-goose-pagoda.webp" srcset="/images/responsive/big-wild-goose-pagoda-768.webp 768w, /images/big-wild-goose-pagoda.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="Big Wild Goose Pagoda standing beside Da Ci'en Temple in Xi'an" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 shadow-sm">
+      <div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Opening Hours</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">8:00 AM – 6:00 PM</p><p class="text-xs text-stone-500 mt-1.5">Pagoda. Square open until 10 PM</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Ticket Price</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">$6</p><p class="text-xs text-stone-500 mt-1.5">Students $3. Climb pagoda: +$4</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Fountain Show</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Free</p><p class="text-xs text-stone-500 mt-1.5">Daily at 12:00, 20:00 (summer 21:00)</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Time Needed</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">1–2 hours</p><p class="text-xs text-stone-500 mt-1.5">Add 30 min for evening show</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Best Time</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Sunset</p><p class="text-xs text-stone-500 mt-1.5">Climb for golden hour city views</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Location</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Yanta District</p><p class="text-xs text-stone-500 mt-1.5">Metro Line 3/4, Dayanta Station</p></div>
+
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Architecture: 7 Stories of Buddhist Symbolism</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The pagoda is a <strong class="text-stone-800">square brick structure</strong> in the typical Tang Dynasty style — simple, symmetrical, and massive. Each of the 7 floors tapers slightly inward, giving the pagoda its characteristic pyramid-like silhouette. The walls are 2-5 meters thick at the base, tapering to 1 meter at the top.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">The number 7 is significant in Buddhism — it represents the 7 steps the Buddha took at birth, each one producing a lotus flower. Each floor has arched doorways facing the four cardinal directions, allowing light to pass through the entire structure. On each floor, carved stone panels depict Buddhist scenes and Tang Dynasty life.</p>
+    </section>
+
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Why the Big Wild Goose Pagoda Matters</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Built in <strong class="text-stone-800">652 AD</strong> during the Tang Dynasty, the Big Wild Goose Pagoda housed Buddhist scriptures brought from India by the monk Xuanzang — the real-life inspiration for the Monkey King’s master in <em>Journey to the West</em>. At 64 meters, it was one of the tallest structures in Tang-era China.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">The pagoda has survived <strong class="text-stone-800">1,300 years</strong> of earthquakes and wars. It leans slightly west — about 1 meter off-center from centuries of ground settling. Climb the 7-floor internal staircase for panoramic views of modern Xi’an with the old city wall in the distance.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">The pagoda sits in the <strong class="text-stone-800">Da Ci’en Temple</strong> complex, a working Buddhist temple. South of the pagoda is the <strong class="text-stone-800">North Square</strong>, home to Asia’s largest musical fountain — a nightly water-and-light show set to classical Chinese music. It is free and draws huge local crowds.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">At night, the area transforms into <strong class="text-stone-800">Great Tang All Day Mall</strong> (大唐不夜城), a pedestrian street of Tang-style buildings lit with red lanterns, street performers in period costume, and open-air food stalls. One of the most photogenic spots in Xi’an after dark.</p>
+
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Insider Tips</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span><p class="text-stone-600"><strong>Climb at sunset.</strong> The top floor faces west. Go up 30 minutes before sunset for golden light on the city and watch the fountain lights turn on below.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span><p class="text-stone-600"><strong>Fountain show timing.</strong> Daily at noon and 8 PM (9 PM Jun-Aug). Arrive 20 min early for a front spot on the north elevated platform.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">3</span><p class="text-stone-600"><strong>Skip the daytime crowds.</strong> Pagoda busiest 10 AM–2 PM. Come at 4 PM: climb the pagoda, explore the temple, then stay for the fountain show. One trip, two experiences.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span><p class="text-stone-600"><strong>Walk south after the show.</strong> The Great Tang All Day Mall pedestrian street stretches south from the pagoda. Street food, costume rentals for photos, live music. Lively until midnight in summer.</p></div>
+</div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Nearby</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">5 min</span><div><strong class="font-medium text-stone-800">Shaanxi History Museum</strong><p class="text-sm text-stone-500">China’s best provincial museum. Free with advance booking. Tang Dynasty gold and jade.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">15 min</span><div><strong class="font-medium text-stone-800">Tang Paradise</strong><p class="text-sm text-stone-500">Tang Dynasty theme park with night performances. $18. Best after dark.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">10 min</span><div><strong class="font-medium text-stone-800">Xiaozhai Shopping Area</strong><p class="text-sm text-stone-500">Xi’an’s busiest commercial district. Good for a break.</p></div></div>
+</div>
+    </section>
+
+        <!-- Related attractions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="/attractions/shaanxi-history-museum" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Shaanxi History Museum</p>
+          <p class="text-xs text-stone-500 mt-0.5">Walk the Silk Road collections a few stops away.</p>
+        </a>
+        <a href="/attractions/tang-paradise" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Tang Paradise</p>
+          <p class="text-xs text-stone-500 mt-0.5">Tang Dynasty theme park, best after dark.</p>
+        </a>
+        <a href="/attractions/city-wall" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Ancient City Wall</p>
+          <p class="text-xs text-stone-500 mt-0.5">Sunset on the wall, then the fountain show.</p>
+        </a>
+      </div>
+    </section>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/attractions/shaanxi-history-museum" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Next: Shaanxi History Museum <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Xuanzang: The Monk Behind the Pagoda</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The pagoda was built to honor <strong class="text-stone-800">Xuanzang</strong> (602-664 AD), one of the most important figures in Buddhist history. In 629 AD, defying an imperial travel ban, he set out alone from Chang'an (Xi'an) on a 17-year, 25,000-kilometer journey to India to collect original Buddhist scriptures. He crossed the Gobi Desert, the Tian Shan mountains, and survived bandit attacks, snowstorms, and near-starvation.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">When he returned in 645 AD, he brought back 657 Sanskrit texts, 150 relics, and 7 statues. Emperor Taizong built the Big Wild Goose Pagoda to house the scriptures and a translation academy where Xuanzang spent the rest of his life translating 74 texts into Chinese. His journey became the inspiration for the classic novel <em>Journey to the West</em> — the Monkey King story that every Chinese person knows. A statue of Xuanzang stands in the square south of the pagoda.</p>
+    </section>
+
+  </div>
+</BaseLayout>

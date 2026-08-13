@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "12 Hidden Gems in Xi'an That Tourists Miss (2026)";
+const pageDesc = "Beyond the Terracotta Warriors: explore glass-floored Han tombs, secret noodle alleys, forgotten Tang pagodas, and the best sunset spots in Xi'an.";
+const faqs = [
+  { q: "Are these hidden gems suitable for first-time visitors?", a: "Most of them. Sajinqiao, Dapiyuan, and the South Gate sunset are perfect additions to any first trip. More remote spots like Guanshan Pastureland and Banpo Museum work better if you have 4+ days. All are safe and accessible by public transport or taxi." },
+  { q: "Do I need a guide for the Forest of Stone Steles?", a: "Strongly recommended. Without explanation, the steles are historically opaque. A live guide ($15-$22) or audio guide transforms the experience from confusing to extraordinary. The museum covers 2,000 years of Chinese calligraphy and history." },
+  { q: "When is the best time to visit Qinglong Temple for cherry blossoms?", a: "Peak bloom is usually March 25 to April 5. The temple is free and open during daytime hours. Weekday mornings have the fewest crowds. The blossoms last about 10 days depending on wind and rain." },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08","author":{"@type":"Person","name":"Li Wei","jobTitle":"History & Culture Writer","url":"https://xi-an-china.com/about","description":"Xi'an-based historian and museum researcher since 2019. 200+ site visits across Shaanxi province.","sameAs":["https://xi-an-china.com/about"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://xi-an-china.com/blog"},{"@type":"ListItem","position":3,"name":"Hidden Gems","item":"https://xi-an-china.com/blog/xian-hidden-gems"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
+
+const gems = [
+  { name: "Han Yangling Museum", chinese: "汉阳陵博物馆", desc: "Thousands of miniature terracotta figurines from the Han Dynasty — and you walk over them on glass floors. Weekday mornings, you might be the only visitor. Far fewer crowds than the Terracotta Warriors, and arguably more atmospheric.", tip: "Take Metro Line 14 to the airport direction, get off at Han Yangling station. The museum is a 10-minute walk." },
+  { name: "Sajinqiao Street", chinese: "洒金桥", desc: "Where Xi'an locals actually eat. Two blocks north of the touristy Muslim Quarter, the souvenir shops vanish and the real food begins. Biangbiang noodles for $2 roujiamo for $1 and lamb soup that has been simmering since dawn.", tip: "Go before 10 AM for breakfast. The best stalls sell out by noon." },
+  { name: "Xingqing Palace Park", chinese: "兴庆宫公园", desc: "Built on the ruins of the Tang Dynasty's secondary palace. Locals practice tai chi at dawn, children play by the lake, and the ancient foundations are visible beneath modern pathways. Free entry, zero tourists.", tip: "Visit at 7 AM to see the tai chi practitioners. It's like stepping into a time machine." },
+  { name: "The Forest of Stone Steles Museum", chinese: "碑林博物馆", desc: "11,000 stone tablets carved with 2,000 years of Chinese calligraphy. If you love typography, this is sacred ground. The steles include the earliest versions of characters still used today.", tip: "Hire a guide ($15) — without explanation, the steles are just old rocks. With context, they're extraordinary." },
+  { name: "Dapiyuan Alley", chinese: "大皮院", desc: "A quiet lane parallel to the Muslim Quarter chaos. Family-run noodle shops, old men drinking tea, cats sleeping in doorways. The food is better and cheaper than the main quarter, and nobody is shoving a selfie stick in your face.", tip: "Try the hand-pulled noodles at any shop with a line of locals out the door." },
+  { name: "South Gate Sunset", chinese: "南门日落", desc: "The southwest corner of the City Wall at sunset. Not the main South Gate entrance — the quieter southwest angle tower. The Bell Tower glows in the distance, the moat turns gold, and the lanterns begin to flicker on.", tip: "Arrive 30 minutes before sunset. The light changes fast. Bring a camera with a good zoom for the Bell Tower." },
+  { name: "Qinglong Temple", chinese: "青龙寺", desc: "The temple where Japanese Buddhist monks studied in the Tang Dynasty. In late March, the cherry blossoms here rival anything in Japan — and it's completely free, with a fraction of the crowds.", tip: "Peak bloom is usually March 25–April 5. Weekday mornings are emptiest." },
+  { name: "The Old Xi'an Railway Station Area", chinese: "老火车站区域", desc: "The neighborhood around the old train station has gritty character: street food stalls, budget hotels, and the kind of authentic local energy that guidebooks don't cover. Not pretty, but real.", tip: "Walk east from the station along Jiefang Road for unexpected food discoveries." },
+  { name: "Tang Dynasty City Wall Ruins Park", chinese: "唐城墙遗址公园", desc: "A linear park built along the remaining foundations of the Tang Dynasty's outer city wall. Joggers, dog walkers, and ancient earthworks side by side. Most tourists have no idea it exists.", tip: "The section near Yanning Gate is the most atmospheric, especially in autumn." },
+  { name: "Banpo Museum", chinese: "半坡博物馆", desc: "A 6,000-year-old Neolithic village excavated in situ. You walk on raised platforms above actual ancient dwellings. The painted pottery and burial sites are haunting. Far from the tourist trail.", tip: "Combine with a visit to the Qujiang area for a full day of museums and parks." },
+  { name: "Guanshan Pastureland", chinese: "关山牧场", desc: "Rolling green hills 3 hours from Xi'an that look more like Mongolia than China. Horseback riding, yurts, and starry nights. Almost no foreign tourists.", tip: "Best in June–September. Bring warm clothes — nights are cold even in summer at this altitude." },
+  { name: "The Underground Book Market", chinese: "地下书市", desc: "Near the Small Wild Goose Pagoda, a warren of underground stalls selling second-hand books, vintage maps, calligraphy supplies, and old postcards. A collector's paradise.", tip: "Go on weekends when all the stalls are open. Bargaining is expected." },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Off the Beaten Path</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">12 Hidden Gems in Xi'an</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Every guide tells you about the Terracotta Warriors and the City Wall. Good — they're incredible. But Xi'an has layers most visitors never see. These are the places we keep coming back to — the spots that make us fall deeper in love with this city.</p>
+
+    <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+      <img class="h-auto w-full" src="/images/han-yangling.webp" width="1440" height="810" alt="Excavated miniature figurines at the Han Yangling Mausoleum, one of Xi'an's hidden gems" loading="lazy" decoding="async" />
+    </div>
+
+    <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-8 rounded-xl bg-amber-50 border border-amber-200 p-5">
+      <p class="text-sm text-amber-700 leading-relaxed"><strong>Why trust this list?</strong> We've lived in and explored Xi'an since 2019. Every place on this list has been visited multiple times. No affiliate links, no paid placements — just genuine local favorites.</p>
+    </div>
+
+    <!-- How we picked these -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-3">How We Picked These 12</h2>
+      <p class="text-stone-600 leading-relaxed mb-3">We applied three filters. First, a place had to be genuinely worth the detour — not just obscure for its own sake. Second, it had to be reachable by public transport or a short taxi ride, because nothing kills a hidden gem faster than two hours of confusing transfers. Third, we had to have been there ourselves at least twice, in different seasons, because some of these spots only make sense at a specific time of day or year.</p>
+      <p class="text-stone-600 leading-relaxed mb-3">That last filter removed more places than it kept. The famous "secret" tea houses and "locals-only" restaurants that show up in other lists turned out to be tourist traps with a thin layer of authenticity painted on. The spots below survived — every single one is a place we would take a visiting friend without hesitation.</p>
+      <p class="text-stone-600 leading-relaxed">We also deliberately mixed types: museums, parks, food streets, sunset viewpoints, and two places you need a full day to reach. If you only have a few hours, start with Sajinqiao, the South Gate sunset, and Qinglong Temple. They cost nothing, take minimal planning, and give you the real Xi'an immediately.</p>
+    </section>
+
+
+    <!-- Gem cards -->
+    <div class="mt-12 space-y-6">
+      {gems.map((g, i) => (
+        <article class="rounded-2xl border border-stone-200 bg-white p-6">
+          <div class="flex items-start gap-4">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-sm font-bold mt-1">{i + 1}</span>
+            <div class="flex-1">
+              <div class="flex items-baseline justify-between gap-2 mb-1">
+                <h2 class="text-lg font-semibold text-stone-900">{g.name}</h2>
+                <span class="text-sm text-stone-400 shrink-0">{g.chinese}</span>
+              </div>
+              <p class="text-sm text-stone-600 leading-relaxed mb-3">{g.desc}</p>
+              <div class="flex gap-2 items-start">
+                <span class="shrink-0 text-xs font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full mt-0.5">Tip</span>
+                <p class="text-sm text-stone-500">{g.tip}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Practical reality -->
+    <section class="mt-12 rounded-2xl border border-stone-200 bg-stone-50 p-6">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-3">The Honest Practicalities of Going Off-Google</h2>
+      <p class="text-sm text-stone-600 leading-relaxed mb-4">We want you to love these places, so let's be honest about what "hidden" actually means in practice:</p>
+      <div class="space-y-3 text-sm text-stone-600">
+        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">English signage disappears fast.</strong> Han Yangling, Banpo, and the Tang Dynasty City Wall Ruins Park have minimal English signage. Download an offline translator and screenshot this page before you go — you will not have a signal inside several of these places.</span></p>
+        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Some require a Chinese phone number.</strong> The Underground Book Market vendors and several Sajinqiao stalls only accept WeChat Pay or Alipay. Set up mobile payments before you leave the hotel — see our <a href="/payment-guide" class="text-terracotta-600 hover:text-terracotta-700 underline">payment guide</a>.</span></p>
+        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Weekday timing is the secret weapon.</strong> We visited every gem on a weekday at least once. The difference is extreme — Han Yangling on a Tuesday morning vs a Saturday is night and day.</span></p>
+        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Bring cash for small purchases.</strong> Even where cards work, a ¥10 bill or two makes the roujiamo stalls and book vendors happier, and it's faster.</span></p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <div class="space-y-0 divide-y divide-stone-100">
+        {faqs.map(f => (
+          <details class="group py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-stone-800 font-medium">
+              {f.q}
+              <svg class="h-5 w-5 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+            </summary>
+            <p class="mt-3 text-sm text-stone-600 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="mt-12 rounded-2xl border border-terracotta-200 bg-terracotta-50 p-6 text-center">
+      <h2 class="text-xl font-semibold text-stone-900 mb-2">Want the full Xi'an experience?</h2>
+      <p class="text-sm text-stone-600 mb-4">Our attraction guide covers the must-sees. This list covers the rest.</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/attractions" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-terracotta-600">
+          Top Attractions
+        </a>
+        <a href="/food" class="inline-flex items-center gap-2 rounded-xl border border-terracotta-300 bg-white px-5 py-2.5 text-sm font-semibold text-terracotta-700 transition-all hover:bg-terracotta-50">
+          Food Guide
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

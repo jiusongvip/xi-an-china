@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+const pageTitle = "China 240-Hour Transit Visa — Xi'an Entry Guide";
+const pageDesc = "China's 240-hour visa-free transit in Xi'an: eligible countries, required documents, Shaanxi travel area, and step-by-step airport arrival process.";
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Chen Yu","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"240-Hour Transit Visa","item":"https://xi-an-china.com/china-240-hour-transit-visa"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which countries are eligible for the 240-hour transit visa?","acceptedAnswer":{"@type":"Answer","text":"54 countries including the US, UK, Canada, Australia, New Zealand, Japan, South Korea, all EU Schengen states, Brazil, Argentina, Mexico, Chile, Peru, South Africa, and more."}},{"@type":"Question","name":"Can I travel outside Xi'an with the 240-hour transit visa?","acceptedAnswer":{"@type":"Answer","text":"Yes. The permitted travel area covers all of Shaanxi province. You can visit Mount Huashan, Hukou Waterfall, Famen Temple, and other sites within Shaanxi. You cannot travel to other provinces."}},{"@type":"Question","name":"Do I need to apply for the 240-hour transit visa in advance?","acceptedAnswer":{"@type":"Answer","text":"No. You apply on arrival at Xi'an Xianyang International Airport. Present your passport, onward ticket to a third country/region, and visa for that country (if required). The process takes about 30 minutes at the immigration counter."}}]}]};
+
+const eligibleCountries = [
+  "Austria", "Belgium", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Norway", "Poland", "Portugal", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland",
+  "Ireland", "United Kingdom", "Cyprus", "Bulgaria", "Romania", "Croatia",
+  "Russia", "Ukraine", "Serbia", "Bosnia and Herzegovina", "Montenegro", "North Macedonia", "Albania", "Monaco", "Belarus",
+  "United States", "Canada", "Brazil", "Argentina", "Chile", "Peru", "Mexico", "Colombia", "Ecuador",
+  "Australia", "New Zealand",
+  "Japan", "South Korea", "Singapore", "Brunei", "Qatar", "United Arab Emirates"
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Chen Yu" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Visa Guide</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">China's 240-Hour Transit Visa via Xi'an</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Citizens of <strong class="text-stone-700">54 countries</strong> can enter China through Xi'an visa-free for up to <strong class="text-stone-700">240 hours (10 days)</strong> — no Chinese embassy visit required. You just need an onward ticket to a third country or region. Here's everything you need to know.</p>
+
+  <AuthorSignal authorId="chen-yu" />
+
+    <!-- Quick answer -->
+    <div class="mt-8 rounded-xl bg-emerald-50 border border-emerald-200 p-5">
+      <p class="text-sm font-semibold text-emerald-800 mb-2">The short answer</p>
+      <p class="text-sm text-emerald-700 leading-relaxed">If you're flying from Country A → Xi'an → Country B (where B ≠ A), and you hold a passport from one of 54 eligible countries, you can stay in Shaanxi province for up to 240 hours without a Chinese visa. The permitted travel area covers <strong>all of Shaanxi</strong>, including Xi'an, Mount Huashan, Hukou Waterfall, and Famen Temple.</p>
+    </div>
+
+    <!-- How it works -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">How It Works</h2>
+      <div class="space-y-4">
+        {[
+          { step: "1", title: "Book a transit flight through Xi'an", detail: "Your route must be: Country A → Xi'an (XIY) → Country B, where Country B is different from Country A. Example: Tokyo → Xi'an → Seoul. Or: London → Xi'an → Hong Kong." },
+          { step: "2", title: "Arrive at Xi'an Xianyang Airport", detail: "Proceed to the 240-hour transit visa counter at immigration (follow signs for 'transit visa' or '临时入境许可'). Do NOT go to the regular immigration lane." },
+          { step: "3", title: "Submit your documents", detail: "Present: (1) valid passport (6+ months validity), (2) confirmed onward ticket to a third country/region within 240 hours, (3) visa for the onward country if required, (4) arrival card." },
+          { step: "4", title: "Receive your transit permit", detail: "The officer will stamp your passport with a temporary entry permit. You can then collect your luggage and enter China. The permit is valid for the full Shaanxi province." },
+        ].map(s => (
+          <div class="flex gap-4">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold">{s.step}</span>
+            <div>
+              <p class="font-semibold text-stone-800">{s.title}</p>
+              <p class="text-sm text-stone-500">{s.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Key rules -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Key Rules</h2>
+      <div class="space-y-3">
+        {[
+          { title: "240 hours = 10 days", text: "The clock starts at 00:00 on the day after you enter. If you arrive on August 1, your 240 hours start at 00:00 on August 2 and end at 00:00 on August 12." },
+          { title: "Permitted area: all of Shaanxi", text: "Unlike some cities where transit visa holders are restricted to the city, Xi'an's 240-hour permit covers all of Shaanxi province. You can visit Mount Huashan, Hukou Waterfall, Famen Temple, and any other site within the province." },
+          { title: "Third country/region required", text: "Your onward destination must be a different country or region from where you came. Hong Kong, Macau, and Taiwan count as separate regions. You cannot use this to return to your origin country." },
+          { title: "No extensions", text: "You must leave China within 240 hours. Overstaying results in fines ($75/day, max $1480) and possible entry bans." },
+          { title: "One-time use", text: "You cannot use the 240-hour transit visa multiple times in quick succession. Immigration may question you if you attempt to use it repeatedly." },
+        ].map(t => (
+          <div class="flex gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-emerald-100 text-emerald-700 text-[10px] font-bold mt-0.5">→</span>
+            <div><strong class="text-sm text-stone-700">{t.title}:</strong> <span class="text-sm text-stone-500">{t.text}</span></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Eligible countries -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Eligible Countries (54)</h2>
+      <p class="text-sm text-stone-500 mb-4">If you hold a passport from any of these countries, you are eligible:</p>
+      <div class="flex flex-wrap gap-2">
+        {eligibleCountries.map(c => (
+          <span class="text-xs bg-stone-100 text-stone-600 px-2.5 py-1 rounded-full">{c}</span>
+        ))}
+      </div>
+    </section>
+
+    <!-- Example itineraries -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Example Transit Itineraries</h2>
+      <div class="space-y-3">
+        {[
+          { route: "Tokyo → Xi'an (3 days) → Seoul", desc: "Classic East Asia route. See the Terracotta Warriors, cycle the City Wall, eat in the Muslim Quarter." },
+          { route: "London → Xi'an (5 days) → Bangkok", desc: "Add Mount Huashan and Famen Temple. Five days gives you a full experience of Xi'an and surrounding Shaanxi." },
+          { route: "Seoul → Xi'an (2 days) → Singapore", desc: "Quick stopover. Focus on Terracotta Warriors + City Wall + Muslim Quarter. Tight but doable." },
+          { route: "Sydney → Xi'an (7 days) → Hong Kong", desc: "Extended stay. Visit Terracotta Warriors, Huashan, Hukou Waterfall, Famen Temple, and Qianling Mausoleum." },
+        ].map(r => (
+          <div class="rounded-xl border border-stone-200 bg-white p-4">
+            <p class="font-semibold text-stone-800 text-sm">{r.route}</p>
+            <p class="text-sm text-stone-500 mt-1">{r.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">FAQ</h2>
+      <div class="space-y-4">
+        {[
+          { q: "Do I need to apply in advance?", a: "No. You apply on arrival at Xi'an Xianyang International Airport. The process takes about 30 minutes at the immigration counter. No online application or embassy visit is needed." },
+          { q: "Can I travel to Beijing on the 240-hour transit visa?", a: "No. The 240-hour transit visa via Xi'an only permits travel within Shaanxi province. If you want to visit Beijing, you would need a separate Chinese visa or use the transit visa through a Beijing entry point." },
+          { q: "What if my flight is delayed and I overstay?", a: "Contact the local Exit-Entry Administration Bureau immediately. If the delay is due to the airline (weather, mechanical), they will typically extend your permit at no cost. Keep documentation of the delay." },
+          { q: "Can I work or study on the transit visa?", a: "No. The 240-hour transit visa is strictly for tourism and transit. Working or enrolling in courses is not permitted." },
+        ].map(f => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <p class="font-semibold text-stone-800 mb-2">{f.q}</p>
+            <p class="text-sm text-stone-500 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Verify before you go -->
+    <section class="mt-10 rounded-xl border border-stone-200 bg-white p-5">
+      <h2 class="text-lg font-semibold text-stone-900 mb-3">Verify Before You Go</h2>
+      <p class="text-sm text-stone-600 leading-relaxed mb-3">Immigration policy changes frequently. Before booking, confirm the current rules with official sources — especially the list of eligible countries and the exact permitted duration, which can be adjusted without notice:</p>
+      <ul class="space-y-2 text-sm text-stone-600">
+        <li class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong>China National Immigration Administration</strong> — official policy and eligible-country notices: <a href="https://www.nia.gov.cn/en/" target="_blank" rel="noopener" class="text-terracotta-600 hover:text-terracotta-700 underline">nia.gov.cn/en</a></span></li>
+        <li class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong>Your nearest Chinese embassy or consulate</strong> — the authoritative source for your nationality: find yours via the <a href="https://www.mfa.gov.cn/eng/" target="_blank" rel="noopener" class="text-terracotta-600 hover:text-terracotta-700 underline">Chinese Ministry of Foreign Affairs</a></span></li>
+        <li class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong>Xi'an Xianyang International Airport</strong> — transit desk hours and on-arrival process: <a href="https://www.xxia.com/EN/" target="_blank" rel="noopener" class="text-terracotta-600 hover:text-terracotta-700 underline">xxia.com</a></span></li>
+      </ul>
+      <p class="text-xs text-stone-400 mt-3">This guide reflects our verified information as of August 2026. We update it as soon as we confirm changes.</p>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/itineraries" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Plan Your Xi'an Itinerary <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+      <a href="/day-trips" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+        Day Trips in Shaanxi
+      </a>
+    </div>
+  </div>
+</BaseLayout>

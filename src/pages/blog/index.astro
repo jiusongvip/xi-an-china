@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import { blogItemListSchema } from "../../utils/schema";
+import SectionHeader from "../../components/SectionHeader.astro";
+
+const pageTitle = "Xi'an Travel Blog — Local Guides & Tips";
+const pageDesc = "In-depth Xi'an travel guides: seasonal tips, hidden gems locals love, photography advice for the Terracotta Warriors, and practical travel information.";
+
+const posts = [
+  { href: "/blog/terracotta-warriors-photography", title: "How to Photograph the Terracotta Warriors", desc: "Best camera settings, shooting positions in each pit, timing tips, and gear recommendations for crowd-free shots.", tag: "Photography", date: "August 2026" },
+  { href: "/blog/xian-hidden-gems", title: "12 Hidden Gems in Xi'an That Tourists Miss", desc: "Glass-floored tombs, secret noodle alleys, forgotten temples, and the best sunset spot nobody knows about.", tag: "Off the Beaten Path", date: "August 2026" },
+  { href: "/blog/xian-4-seasons", title: "Xi'an in Four Seasons: What Each Season Feels Like", desc: "Cherry blossoms on the City Wall, scorching Muslim Quarter nights, golden autumn light, and silent snow at Huaqing Pool.", tag: "Local Experience", date: "August 2026" },
+];
+---
+<BaseLayout title={pageTitle} description={pageDesc} hasOwnBreadcrumb>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(blogItemListSchema())}></script>
+  </slot>
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 mb-4">Xi'an Travel Blog</h1>
+    <p class="text-stone-600 mb-6">Deep dives into Xi'an's culture, hidden corners, and practical travel questions. Written by our team of locals — Li Wei (history), Wang Fang (food), and Chen Yu (photography) — based on years of firsthand experience in the city. No AI. No generic advice. Just honest, useful guides from people who actually live here.</p>
+
+    <div class="rounded-xl bg-stone-50 border border-stone-200 p-5 mb-10">
+      <p class="text-sm font-semibold text-stone-800 mb-2">What We Write About</p>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="bg-white border border-stone-200 rounded-full px-3 py-1 text-stone-600">Photography Tips</span>
+        <span class="bg-white border border-stone-200 rounded-full px-3 py-1 text-stone-600">Seasonal Guides</span>
+        <span class="bg-white border border-stone-200 rounded-full px-3 py-1 text-stone-600">Hidden Gems</span>
+        <span class="bg-white border border-stone-200 rounded-full px-3 py-1 text-stone-600">Local Experiences</span>
+        <span class="bg-white border border-stone-200 rounded-full px-3 py-1 text-stone-600">History Deep Dives</span>
+        <span class="bg-white border border-stone-200 rounded-full px-3 py-1 text-stone-600">Food Stories</span>
+        <span class="bg-white border border-stone-200 rounded-full px-3 py-1 text-stone-600">Practical How-To</span>
+      </div>
+    </div>
+
+    <!-- Why read our blog -->
+    <section class="mb-10 rounded-xl bg-stone-50 border border-stone-200 p-5">
+      <h2 class="text-lg font-semibold text-stone-900 mb-3">Why Our Blog Is Different</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+        <div class="flex gap-2"><Icon name="lucide:check" class="h-3.5 w-3.5 shrink-0 text-emerald-600" stroke-width="1.5" /><span class="text-stone-600">Written by Xi'an locals with years of firsthand experience — not remote freelancers</span></div>
+        <div class="flex gap-2"><Icon name="lucide:check" class="h-3.5 w-3.5 shrink-0 text-emerald-600" stroke-width="1.5" /><span class="text-stone-600">No AI-generated content. Every article is human-written and fact-checked</span></div>
+        <div class="flex gap-2"><Icon name="lucide:check" class="h-3.5 w-3.5 shrink-0 text-emerald-600" stroke-width="1.5" /><span class="text-stone-600">Based on real visits, real photos, real meals paid for with our own money</span></div>
+      </div>
+    </section>
+
+    <!-- Featured articles -->
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold text-stone-900 mb-4">Featured Articles</h2>
+<div class="space-y-4">
+      {posts.map(p => (
+        <a href={p.href} class="group block rounded-2xl border border-stone-200 bg-white p-6 no-underline hover:border-terracotta-200 hover:shadow-md transition-all">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-bold bg-terracotta-50 text-terracotta-700 px-2 py-0.5 rounded-full">{p.tag}</span>
+            <span class="text-xs text-stone-400">{p.date}</span>
+          </div>
+          <h2 class="text-lg font-semibold text-stone-900 group-hover:text-terracotta-700 transition-colors mb-1">{p.title}</h2>
+          <p class="text-sm text-stone-500 leading-relaxed">{p.desc}</p>
+        </a>
+      ))}
+    <!-- Coming next -->
+    <section class="mt-10 rounded-xl bg-amber-50 border border-amber-200 p-5">
+      <h2 class="text-lg font-semibold text-amber-900 mb-2">Coming Soon</h2>
+      <p class="text-sm text-amber-700">We are working on new articles, including: How to spend 24 hours inside the City Wall, The best rooftop bars in Xi'an (tested, ranked), A complete guide to Xi'an's tea houses, and How to take the overnight train from Beijing. <a href="/contact" class="text-amber-800 hover:text-amber-900 underline">Tell us what you would like to read</a>.</p>
+    </section>
+
+  </div>
+</BaseLayout>

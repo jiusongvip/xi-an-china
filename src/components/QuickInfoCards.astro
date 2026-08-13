@@ -1,0 +1,33 @@
+---
+interface InfoItem {
+  label: string;
+  value: string;
+  note?: string;
+  alert?: boolean;
+}
+
+const infos: InfoItem[] = [
+  { label: "Chinese Name", value: "西安 (Xi’ān)", note: "“Western Peace”" },
+  { label: "Location", value: "Shaanxi, China", note: "Northwest China" },
+  { label: "History", value: "3,100+ years", note: "13 dynasties’ capital" },
+  { label: "Population", value: "13 million", note: "Largest in NW China" },
+  { label: "Silk Road", value: "Starting Point", note: "Since 2nd century BC" },
+  { label: "Nearest Airport", value: "XIY", note: "40 min to city center" },
+  { label: "Best Season", value: "Mar–May, Sep–Nov", note: "Mild, low rain" },
+  { label: "Recommended", value: "3–5 days", note: "For full experience" },
+];
+---
+
+<section class="bg-stone-900 text-white">
+  <div class="mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16">
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
+      {infos.map(({ label, value, note }) => (
+        <div class="text-center">
+          <p class="text-xs font-medium text-stone-400 uppercase tracking-wider mb-1">{label}</p>
+          <p class="text-xl md:text-2xl font-semibold text-white">{value}</p>
+          <p class="text-xs text-stone-500 mt-0.5">{note}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

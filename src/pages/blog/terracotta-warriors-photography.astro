@@ -1,0 +1,207 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Photographing the Terracotta Warriors — Complete Guide";
+const pageDesc = "Camera settings, shooting positions, and timing for Terracotta Warriors photography. Pit 1 tips, crowd avoidance strategies, and gear recommendations.";
+const faqs = [
+  { q: "Can I take photos inside the Terracotta Warriors museum?", a: "Yes, photography is allowed in all pits without flash. Tripods are not permitted inside the museum buildings. The best natural light in Pit 1 comes from the east windows between 8:30-10:30 AM, creating dramatic side-lighting on the warriors' faces." },
+  { q: "What lens is best for photographing the warriors?", a: "A 24-70mm zoom covers most situations. Wide angle (24-35mm) for the Pit 1 panorama, mid-range (50-70mm) for individual warrior details. A fast prime (35mm f/1.8) helps in the dimmer Pit 2 and 3 where lighting is limited." },
+  { q: "How do I avoid crowds in my photos?", a: "Arrive at 8:30 AM opening time. Pit 1 is nearly empty before 9:30 AM. Shoot from the far end looking back toward the entrance — fewer tourists in that frame. Afternoon after 3 PM is also quieter when tour groups have left." },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08","author":{"@type":"Person","name":"Chen Yu","jobTitle":"Photography & Practical Guides Writer","url":"https://xi-an-china.com/about","description":"Xi'an-based travel photographer. Has shot the Terracotta Warriors in every season since 2021.","sameAs":["https://xi-an-china.com/about"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://xi-an-china.com/blog"},{"@type":"ListItem","position":3,"name":"Terracotta Warriors Photography","item":"https://xi-an-china.com/blog/terracotta-warriors-photography"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Chen Yu" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Photography</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Photographing the Terracotta Warriors</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">The Terracotta Warriors are a photographer's dream — and a logistical nightmare. 8,000 soldiers in a cavernous pit, thousands of tourists, and strict rules about flash and tripods.</p>
+
+    <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+      <img class="h-auto w-full" src="/images/terracotta-warriors.webp" width="1440" height="810" alt="Rows of terracotta warriors in Pit 1, the subject of this photography guide" loading="lazy" decoding="async" />
+    </div>
+
+    <AuthorSignal authorId="chen-yu" />
+
+    <p class="mt-8 text-base text-stone-600 leading-relaxed">Here's how to get the shots after years of shooting there — the exact positions, settings, and timing that separate keepers from snapshots.</p>
+
+    <!-- The golden rule -->
+    <div class="mt-8 rounded-xl bg-terracotta-50 border border-terracotta-200 p-5">
+      <p class="text-sm font-semibold text-terracotta-800 mb-2">The #1 rule</p>
+      <p class="text-sm text-terracotta-700 leading-relaxed">Arrive at 8:30 AM when the museum opens. Be the first person into Pit 1. The morning light streaming through the roof windows creates golden beams across the warriors' faces. By 10 AM, the pit is packed shoulder-to-shoulder and the light is flat. This single decision determines whether you get National Geographic shots or tourist snapshots.</p>
+    </div>
+
+    <!-- Pit by pit -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Pit-by-Pit Shooting Guide</h2>
+
+      <div class="space-y-6">
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <h3 class="font-semibold text-stone-800 mb-2">Pit 1 — The Army (best shots)</h3>
+          <p class="text-sm text-stone-600 leading-relaxed mb-3">The largest pit with 2,000+ warriors in formation. This is the iconic shot. The key is <strong class="text-stone-800">position</strong>.</p>
+          <div class="space-y-2 text-sm text-stone-500">
+            <p class="flex gap-2"><span class="text-terracotta-500 shrink-0">→</span><span><strong class="text-stone-700">Best position:</strong> Center of the viewing platform, leaning over the railing. Shoot downward at a 30° angle to capture the depth of the formation.</span></p>
+            <p class="flex gap-2"><span class="text-terracotta-500 shrink-0">→</span><span><strong class="text-stone-700">Best lens:</strong> Wide-angle (16–35mm) for the full formation. Telephoto (70–200mm) for individual warrior details.</span></p>
+            <p class="flex gap-2"><span class="text-terracotta-500 shrink-0">→</span><span><strong class="text-stone-700">Settings:</strong> ISO 800–1600 (it's dim inside), f/5.6–f/8 for sharpness across the formation, 1/60s minimum shutter speed.</span></p>
+            <p class="flex gap-2"><span class="text-terracotta-500 shrink-0">→</span><span><strong class="text-stone-700">Pro tip:</strong> The restored warriors at the far end of the pit are the most photogenic — intact faces, original paint traces. Zoom in on them.</span></p>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <h3 class="font-semibold text-stone-800 mb-2">Pit 2 — The Details</h3>
+          <p class="text-sm text-stone-600 leading-relaxed mb-3">Smaller but more varied — kneeling archers, cavalry horses, and generals with distinct facial features. This is where you get the <strong class="text-stone-800">character shots</strong>.</p>
+          <div class="space-y-2 text-sm text-stone-500">
+            <p class="flex gap-2"><span class="text-terracotta-500 shrink-0">→</span><span><strong class="text-stone-700">Best position:</strong> Right side of the viewing area, where the kneeling archers are displayed. They face outward — you can get near-eye-level shots.</span></p>
+            <p class="flex gap-2"><span class="text-terracotta-500 shrink-0">→</span><span><strong class="text-stone-700">Best lens:</strong> Telephoto (100–400mm). Each warrior has unique facial features — the detail is extraordinary.</span></p>
+            <p class="flex gap-2"><span class="text-terracotta-500 shrink-0">→</span><span><strong class="text-stone-700">Pro tip:</strong> Look for warriors with traces of original paint — pink faces, red armor. They're scattered throughout the pit.</span></p>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <h3 class="font-semibold text-stone-800 mb-2">Pit 3 — The Command Post</h3>
+          <p class="text-sm text-stone-600 leading-relaxed mb-3">The smallest pit, but the most atmospheric. High-ranking officers in a war room setting. The lighting here is the <strong class="text-stone-800">most dramatic</strong>.</p>
+          <div class="space-y-2 text-sm text-stone-500">
+            <p class="flex gap-2"><span class="text-terracotta-500 shrink-0">→</span><span><strong class="text-stone-700">Best position:</strong> The corner closest to the entrance. The overhead light creates shadows that make the officers look imposing.</span></p>
+            <p class="flex gap-2"><span class="text-terracotta-500 shrink-0">→</span><span><strong class="text-stone-700">Pro tip:</strong> This pit is often the least crowded. Take your time here.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rules -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Photography Rules</h2>
+      <div class="space-y-3">
+        {[
+          { rule: "No flash", detail: "Flash photography is strictly prohibited. The light can damage the remaining pigments on the warriors. This is enforced — guards will stop you." },
+          { rule: "No tripods", detail: "Tripods and monopods are not allowed inside the pits. Use a fast lens and high ISO instead." },
+          { rule: "No drones", detail: "The museum is a no-drone zone. Security will confiscate any drone attempted." },
+          { rule: "Phones are fine", detail: "Smartphone photography is allowed. Modern phones (iPhone 14+, Pixel 8+) take excellent photos in the museum's lighting conditions." },
+        ].map(r => (
+          <div class="flex gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-rose-100 text-rose-700 mt-0.5"><Icon name="lucide:x" class="h-3 w-3" stroke-width="1.5" /></span>
+            <div><strong class="text-sm text-stone-700">{r.rule}:</strong> <span class="text-sm text-stone-500">{r.detail}</span></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Avoiding crowds -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">How to Avoid Crowds in Photos</h2>
+      <div class="space-y-3">
+        {[
+          { title: "Timing is everything", text: "8:30–9:30 AM has the fewest people. After 11 AM, tour groups flood in. If you can only visit in the afternoon, stay until 4 PM when groups leave for dinner." },
+          { title: "Shoot from the edges", text: "The center of the viewing platform is packed. Move to the far left or right edges — you'll have more space and better angles." },
+          { title: "Use telephoto compression", text: "A 200mm+ lens compresses the formation, making warriors appear denser and hiding individual tourists in the crowd." },
+          { title: "Shoot upward", text: "Angle your camera up toward the warriors and the roof structure. You capture the scale without including the crowd below." },
+          { title: "Visit on weekdays", text: "Tuesday through Thursday are the least crowded. Weekends and Chinese holidays are packed. Check the museum's official WeChat for real-time crowd levels." },
+        ].map(t => (
+          <div class="flex gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-terracotta-100 text-terracotta-700 text-[10px] font-bold mt-0.5">→</span>
+            <div><strong class="text-sm text-stone-700">{t.title}:</strong> <span class="text-sm text-stone-500">{t.text}</span></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- First-person workflow -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">My 90-Minute Shoot, From the Gate to the Edit</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">I've photographed the warriors in every season since 2021, and I've settled on a routine that consistently produces my best shots. Here's exactly how it goes, so you can copy it:</p>
+      <div class="space-y-3">
+        {[
+          { time: "8:25 AM", text: "I'm at the entrance before opening, bag ready, lens on, white balance pre-set to daylight. The ticket scan is my starting gun — I walk (do not run) straight to Pit 1. Running is unnecessary and the guards will slow you anyway; a brisk walk puts you in the top ten." },
+          { time: "8:30–9:00 AM", text: "Pit 1, first wave. I shoot the wide formation shots first — this is the only window where you can frame the full army without a single tourist in it. Center platform, leaning over, 30° downward angle. Then I move to the far end for the restored warriors with intact faces and paint traces." },
+          { time: "9:00–9:30 AM", text: "Pit 2 for character portraits. The kneeling archers face outward, and with a 135mm lens I can isolate faces while the background falls away. I'm looking for paint traces — pink cheeks, red armor — which catch the light beautifully." },
+          { time: "9:30–9:50 AM", text: "Pit 3, the command post. The dramatic overhead lighting makes the officers look imposing. This pit is the least crowded, so I slow down here and compose carefully." },
+          { time: "9:50–10:00 AM", text: "A final pass through Pit 1's exterior courtyard for context shots — the modern building versus the ancient site, useful for storytelling sequences." },
+        ].map(s => (
+          <div class="flex gap-4 rounded-xl border border-stone-200 bg-white p-4">
+            <span class="shrink-0 text-xs font-bold bg-terracotta-100 text-terracotta-700 px-2 py-1 rounded-full h-fit mt-0.5">{s.time}</span>
+            <p class="text-sm text-stone-600 leading-relaxed">{s.text}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-4 text-sm text-stone-500">The key insight after five years: <strong class="text-stone-700">the first hour is 90% of the value</strong>. Everything after 9:30 AM is diminishing returns. If you arrive at 10 AM like most tour groups, you will fight crowds for every single frame.</p>
+    </section>
+
+    <!-- Seasonal light -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Seasonal Light, Season by Season</h2>
+      <div class="space-y-3">
+        {[
+          { season: "Spring & Autumn (best)", text: "Low golden sun angles through the roof windows create shafts of light across the warriors. October, in particular, produces warm, honey-toned light that needs almost no post-processing." },
+          { season: "Summer", text: "Brighter but harsher. High sun = more flat lighting. Shoot earlier (8:30 AM) and protect against heat haze over the viewing platforms. Morning is the only reliably good window." },
+          { season: "Winter", text: "Soft, diffuse light — less dramatic but very even. The interior stays dim, so push ISO to 1600-3200 and rely on the warriors' natural warmth rather than sunlight. Fewer tourists mean more time to compose." },
+          { season: "Rainy days", text: "Unexpectedly good. Overcast light is soft and flattering on the terracotta tones. The museum roofs keep you dry between pits. Bring a sleeve for your camera between buildings." },
+        ].map(s => (
+          <div class="flex gap-3">
+            <span class="shrink-0 text-xs font-bold bg-stone-100 text-stone-700 px-2 py-0.5 rounded-full mt-0.5 h-fit">{s.season}</span>
+            <p class="text-sm text-stone-600 leading-relaxed">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Phone tips -->
+    <section class="mt-10 rounded-2xl border border-stone-200 bg-stone-50 p-6">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-3">Smartphone Photographers: Don't Skip This</h2>
+      <p class="text-sm text-stone-600 leading-relaxed mb-4">You do not need a full camera setup. I've seen outstanding phone shots from the warriors — here's what works:</p>
+      <div class="space-y-2 text-sm text-stone-600">
+        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Use the 2x or 3x telephoto.</strong> The main wide lens captures too much crowd. The telephoto isolates warriors and compresses the formation.</span></p>
+        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Tap to lock focus and pull exposure down slightly.</strong> The bright roof windows will overexpose the warriors if you let the phone meter on the sky. Drag the exposure slider down a third to half a stop.</span></p>
+        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Shoot in bursts.</strong> Tourists move constantly. A 2-second burst guarantees at least one frame without someone's elbow in it.</span></p>
+        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Clean your lens.</strong> The pits are dusty — a lens cloth is the single most important accessory, for phones and cameras alike.</span></p>
+        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Charge before you arrive.</strong> You will shoot far more than you expect. A power bank saves the second half of your visit.</span></p>
+      </div>
+    </section>
+
+    <!-- Gear -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Recommended Gear</h2>
+      <div class="rounded-xl border border-stone-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-stone-50 border-b border-stone-200">
+            <tr><th class="text-left px-4 py-2.5 font-medium text-stone-700">Item</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">Why</th></tr>
+          </thead>
+          <tbody class="divide-y divide-stone-100">
+            <tr><td class="px-4 py-2.5 text-stone-700 font-medium">Wide-angle lens (16–35mm)</td><td class="px-4 py-2.5 text-stone-500">Capture the full scale of Pit 1</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-700 font-medium">Telephoto lens (70–200mm)</td><td class="px-4 py-2.5 text-stone-500">Individual warrior details and face shots</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-700 font-medium">Fast prime (35mm f/1.4–f/2)</td><td class="px-4 py-2.5 text-stone-500">Low-light performance for the dim interior</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-700 font-medium">Lens cloth</td><td class="px-4 py-2.5 text-stone-500">Dust is common — clean your lens frequently</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-700 font-medium">Extra batteries</td><td class="px-4 py-2.5 text-stone-500">You'll shoot more than expected — the pits are addictive</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <div class="space-y-0 divide-y divide-stone-100">
+        {faqs.map(f => (
+          <details class="group py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-stone-800 font-medium">
+              {f.q}
+              <svg class="h-5 w-5 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+            </summary>
+            <p class="mt-3 text-sm text-stone-600 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 text-center">
+      <a href="/attractions/terracotta-warriors" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Full Terracotta Warriors Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+export interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<button
+  class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-stone-100 hover:bg-terracotta-100 hover:text-terracotta-600 transition-colors text-sm"
+  data-speak={text}
+  onclick="var sp=window.speechSynthesis;if(sp.speaking)sp.cancel();var u=new SpeechSynthesisUtterance(this.dataset.speak);u.lang=&#39;zh-CN&#39;;u.rate=0.85;var v=sp.getVoices().find(function(x){return x.lang===&#39;zh-CN&#39;})||sp.getVoices().find(function(x){return x.lang.indexOf(&#39;zh&#39;)===0});if(v)u.voice=v;this.classList.add(&#39;speaking&#39;);u.onend=u.onerror=function(){this.classList.remove(&#39;speaking&#39;)}.bind(this);sp.speak(u)"
+  title="Listen to pronunciation"
+>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+  </svg>
+</button>
+
+<style is:inline>
+  .speaking {
+    background-color: #fef2f2 !important;
+    color: #dc2626 !important;
+    animation: spk-anim 0.5s infinite;
+  }
+  @@keyframes spk-anim {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+</style>

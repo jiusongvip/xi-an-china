@@ -1,0 +1,150 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+const pageTitle = "Xi'an Food Guide 2026 — 20 Must-Try Dishes & Best Streets";
+const pageDesc = "Our Xi'an food guide covers 20 must-try dishes, the best food streets including Muslim Quarter and Sajinqiao, budget tips, and local eating advice.";
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Wang Fang","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Food Guide","item":"https://xi-an-china.com/food"}]}]};
+
+const dishes = [
+  { name: "Yangrou Paomo (羊肉泡馁)", en: "Lamb soup with torn bread", price: "$4-$7", where: "Muslim Quarter, Tongshengxiang", desc: "Xi'an's signature dish. You tear a flatbread into tiny pieces by hand (the smaller the better), then the chef drowns it in rich lamb broth with vermicelli and tender lamb. Warming, filling, and unlike anything else in China. Each bowl takes 20 minutes to prepare properly.", highlight: true },
+  { name: "Biangbiang Noodles", en: "Thick belt-wide hand-pulled noodles", price: "$2-$4", where: "Sajinqiao Street, local noodle shops", desc: "Noodles as wide as a belt, hand-pulled and slapped against the counter with a loud 'biang' sound. Topped with chili flakes, minced garlic, and sizzling hot oil poured over at the table. The character 'biang' is one of the most complex in Chinese with 58 strokes.", highlight: true },
+  { name: "Roujiamo (肉夹馁)", en: "Chinese hamburger", price: "$1.5-$3", where: "Everywhere, Muslim Quarter stalls", desc: "Braised and shredded beef (or pork outside the Muslim Quarter) stuffed into a crispy baked flatbread. The bread is baked in clay ovens right on the street. Xi'an's version uses beef in the Muslim Quarter, making it halal. The perfect street snack at any time of day.", highlight: false },
+  { name: "Lamb Skewers (羊肉串)", en: "Cumin-dusted charcoal-grilled skewers", price: "$0.4-$0.5/stick", where: "Muslim Quarter, Dongxin Street Night Market", desc: "Thin strips of lamb threaded on metal skewers, grilled over charcoal, and dusted with cumin, chili flakes, and salt. Sold by the stick. The best vendors have been working the same street corner for decades. Eat them hot, standing up, with a cold suanmeitang.", highlight: true },
+  { name: "Liangpi (凉皮)", en: "Cold skin noodles", price: "$1-$2", where: "Street stalls throughout the city", desc: "Chilled, slippery wheat or rice noodles in a tangy, spicy dressing with shredded cucumber, bean sprouts, and gluten cubes. Refreshing and addictive. The perfect hot-weather lunch. Summer-only in many shops.", highlight: false },
+  { name: "Persimmon Cakes (柿子饼)", en: "Sweet fried persimmon cakes", price: "$0.4-$0.5 each", where: "Muslim Quarter", desc: "Made from locally grown Lintong persimmons, mashed and mixed with glutinous rice flour, filled with sweet bean or date paste, and fried on large griddles until golden. Sticky, sweet, and best eaten hot. A Muslim Quarter specialty.", highlight: false },
+  { name: "Suanmeitang (酸梅汤)", en: "Sour plum drink", price: "$0.5-$1.5", where: "Everywhere", desc: "Xi'an's unofficial beverage. A dark, sweet-sour drink made from smoked plums, hawthorn, and rock sugar. Served ice-cold from large metal urns. The perfect palate cleanser between spicy dishes.", highlight: false },
+  { name: "Hulu Tou (葫芦头)", en: "Fried dough ball soup", price: "$2-$4", where: "Local neighborhood restaurants", desc: "A Xi'an specialty: a large fried dough ball (the 'gourd head') served in a rich pork bone broth with wood ear mushrooms, tofu, and vegetables. Surprisingly light despite the name. A breakfast staple among locals.", highlight: false },
+  { name: "Casserole Noodles (砂锅面)", en: "Clay pot noodles", price: "$3-$5", where: "Local restaurants citywide", desc: "Noodles cooked and served in an individual clay pot, bubbling hot with vegetables, meat, and a rich broth. The clay pot keeps it hot for the entire meal. Popular in winter.", highlight: false },
+  { name: "Qishan Noodles (岐山哨子面)", en: "Hot and sour noodles from Qishan", price: "$2-$4", where: "Shaanxi restaurants", desc: "From the nearby town of Qishan, these thin noodles come in a hot-and-sour broth with diced pork, wood ear mushrooms, egg, and tofu. The defining flavors are vinegar and chili. Five flavors in every spoonful.", highlight: false },
+  { name: "Jinggao (甄糕)", en: "Steamed glutinous rice cake", price: "$0.5-$1.5", where: "Muslim Quarter street carts", desc: "Layers of glutinous rice and red bean paste steamed together, then sliced and served with a drizzle of osmanthus honey. A traditional Muslim Quarter sweet, sold from mobile carts in the morning.", highlight: false },
+  { name: "Guantang Baozi (灌汤包子)", en: "Soup-filled steamed buns", price: "$2-$4/dozen", where: "Muslim Quarter, Jia Brothers", desc: "Steamed buns filled with seasoned lamb and piping hot soup broth inside. Bite carefully — the soup will spray. Dip in black vinegar with shredded ginger. The Jia Brothers restaurant in the Muslim Quarter is the most famous.", highlight: false },
+];
+
+const streets = [
+  { name: "Beiyuanmen (北院门)", label: "Main Street", desc: "The famous cobblestone artery behind the Drum Tower. Lined with souvenir shops, big-name restaurants, and street food stalls. Busy and touristy, but you have to walk it at least once. Best for: first-time browsing, photo ops, and big restaurant meals. Go after 7 PM.", foods: "Yangrou paomo, persimmon cakes, lamb skewers" },
+  { name: "Sajinqiao (洒金桥)", label: "Local Favorite", desc: "Where Xi'an locals actually eat. Narrower, less polished, significantly better food. Fewer tourists, more character. Walk past the Drum Tower and keep going north — when the souvenir shops disappear, you've arrived. Best for: serious food exploration.", foods: "Biangbiang noodles, roujiamo, liangpi" },
+  { name: "Dongxin Street (东新街)", label: "Night Market", desc: "Less known to tourists. A mix of street food stalls and small restaurants that stays lively until 2 AM. Best for: late-night eating after 10 PM when the main quarter winds down.", foods: "Lamb skewers, hot pot, barbecue" },
+  { name: "Dapiyuan (大皮院)", label: "Daytime Spot", desc: "A quieter alley running parallel to Beiyuanmen. Pleasant during the day with excellent family-run noodle shops and tea houses. Best for: relaxed lunch away from the crowds.", foods: "Hand-pulled noodles, dumplings, tea" },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Wang Fang" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Food Guide</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">What to Eat in Xi'an</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Xi'an's food scene is one of the best in China — shaped by 1,300 years of Hui Muslim influence, Silk Road trade, and the city's position as the ancient capital. Here is everything worth eating and exactly where to find it.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/food.webp" srcset="/images/responsive/food-768.webp 768w, /images/food.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="Roujiamo vendor preparing Xi'an's iconic braised pork sandwich" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="wang-fang" />
+
+    <!-- Budget card -->
+    <div class="mt-8 rounded-2xl border border-stone-200 bg-stone-50 p-5">
+      <div class="grid grid-cols-3 gap-4 text-center">
+        <div>
+          <p class="text-xs font-semibold text-emerald-600 uppercase mb-1">Street Food</p>
+          <p class="text-2xl font-bold text-emerald-700">$0.5-$4</p>
+          <p class="text-xs text-stone-500">Per dish</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-amber-600 uppercase mb-1">Mid-Range</p>
+          <p class="text-2xl font-bold text-amber-700">$6-$15</p>
+          <p class="text-xs text-stone-500">Per person</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-rose-600 uppercase mb-1">Fine Dining</p>
+          <p class="text-2xl font-bold text-rose-700">$22 +</p>
+          <p class="text-xs text-stone-500">Per person</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dishes -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">12 Must-Try Dishes</h2>
+      <p class="text-sm text-stone-400 mb-6">Ordered from iconic to adventurous.</p>
+      <div class="space-y-0 divide-y divide-stone-100">
+        {dishes.map(d => (
+          <div class={"py-5 " + (d.highlight ? "" : "")}>
+            <div class="flex items-start gap-3">
+              {d.highlight && <span class="shrink-0 mt-0.5 w-1.5 h-1.5 rounded-full bg-terracotta-500"></span>}
+              <div class="flex-1">
+                <div class="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 class="font-semibold text-stone-800">{d.name}</h3>
+                  <span class="text-xs font-medium text-stone-500">{d.price}</span>
+                </div>
+                <p class="text-xs text-stone-400 mb-1">{d.en}</p>
+                <p class="text-sm text-stone-600 leading-relaxed">{d.desc}</p>
+                <p class="text-xs text-terracotta-600 mt-2"><strong>Where:</strong> {d.where}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Streets -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">The Food Streets: Where to Go</h2>
+      <div class="space-y-4">
+        {streets.map(s => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs font-bold bg-terracotta-100 text-terracotta-700 px-2 py-0.5 rounded-full">{s.label}</span>
+              <h3 class="font-semibold text-stone-800">{s.name}</h3>
+            </div>
+            <p class="text-sm text-stone-600 leading-relaxed">{s.desc}</p>
+            <p class="text-xs text-stone-400 mt-2"><strong class="text-stone-500">Try:</strong> {s.foods}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Practical -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Practical Tips</h2>
+      <div class="space-y-3">
+        {[
+          { title: "Halal food", text: "All food in the Muslim Quarter is halal. No pork is served anywhere in the area. The Hui Muslim community has maintained this tradition for 1,300 years. Look for halal certification signs on restaurants outside the quarter." },
+          { title: "Vegetarian options", text: "Xi'an is meat-heavy, but you can find vegetarian dishes. Li Liangpi (cold noodles), steamed buns, persimmon cakes, and many noodle dishes can be made without meat. Say 'wo chi su' (我吃素) to indicate you are vegetarian. Buddhist temple restaurants near the Big Wild Goose Pagoda serve excellent vegetarian meals." },
+          { title: "Water safety", text: "Do not drink tap water. Bottled water is cheap and available everywhere ($0.3-$0.4). Street food is generally safe — look for stalls with long queues, which indicates both quality and high turnover." },
+          { title: "Payment", text: "Most street vendors and small restaurants in Xi'an only accept WeChat Pay or Alipay. Cash is accepted but becoming rare. Set up WeChat Pay before your trip if possible. Larger restaurants accept international credit cards." },
+        ].map(t => (
+          <div class="flex gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-terracotta-100 text-terracotta-700 text-[10px] font-bold mt-0.5">→</span>
+            <div><strong class="text-sm text-stone-700">{t.title}:</strong> <span class="text-sm text-stone-500">{t.text}</span></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">How Much to Budget for Food</h2>
+      <div class="rounded-xl border border-stone-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-stone-50 border-b"><tr><th class="text-left px-4 py-2.5 font-medium">Meal Type</th><th class="text-left px-4 py-2.5 font-medium">Budget</th><th class="text-left px-4 py-2.5 font-medium">Mid-Range</th><th class="text-left px-4 py-2.5 font-medium">Splurge</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="px-4 py-2.5">Breakfast</td><td class="px-4 py-2.5">$0.5-$2</td><td class="px-4 py-2.5">$3-$6</td><td class="px-4 py-2.5">$7-$12</td></tr>
+            <tr><td class="px-4 py-2.5">Lunch</td><td class="px-4 py-2.5">$2-$4</td><td class="px-4 py-2.5">$6-$12</td><td class="px-4 py-2.5">$15-$30</td></tr>
+            <tr><td class="px-4 py-2.5">Dinner</td><td class="px-4 py-2.5">$3-$6</td><td class="px-4 py-2.5">$9-$18</td><td class="px-4 py-2.5">$22-$60</td></tr>
+            <tr><td class="px-4 py-2.5">Street snacks</td><td class="px-4 py-2.5">$0.5-$2</td><td class="px-4 py-2.5">$3-$6</td><td class="px-4 py-2.5">--</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-sm text-stone-500"><strong class="text-stone-700">Realistic daily food budget:</strong> $9-$15 (budget, street food heavy), $22-$37 (mid-range), $45-$75 (restaurant every meal).</p>
+    </section>
+
+<div class="mt-12 pt-8 border-t border-stone-200 text-center">
+      <a href="/attractions/muslim-quarter" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Muslim Quarter Street-by-Street Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

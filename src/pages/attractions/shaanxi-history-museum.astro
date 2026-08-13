@@ -1,0 +1,135 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Shaanxi History Museum — Free Entry Guide";
+const pageDesc = "Explore 1.7 million artifacts spanning 1.1 million years of Chinese history at Xi'an's world-class museum. Free entry — book online in advance.";
+
+const faqs = [
+  { q: "Is the museum really free?", a: "Yes, main exhibition halls are free. But you must book online via WeChat mini-program. Special exhibitions cost $4-$45. Bring your passport to collect your ticket." },
+  { q: "How far in advance should I book?", a: "3-7 days ahead. During peak season (Chinese New Year, Golden Week, summer), tickets sell out within minutes of midnight release. Check the WeChat mini-program at 12:00 AM and 6:00 PM when new batches drop." },
+  { q: "How long does a visit take?", a: "3-4 hours for all three halls. Add 1 hour for the Tang Dynasty Treasures Hall (paid). If short on time, focus on Hall 3 — the Tang Dynasty collection is the most impressive." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TouristAttraction", "name": "Shaanxi History Museum: China’s Best Provincial Museum", "description": "A world-class collection of 1.7 million artifacts spanning 1.1 million years of Chinese history. Free entry but book online in advance.", "url": "https://xi-an-china.com/attractions/shaanxi-history-museum/" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
+      { "@type": "ListItem", "position": 3, "name": "Shaanxi History Museum: China’s Best Provincial Museum", "item": "https://xi-an-china.com/attractions/shaanxi-history-museum/" }
+    ]},
+    { "@type": "FAQPage", "mainEntity": [{"@type":"Question","name":"Is the museum really free?","acceptedAnswer":{"@type":"Answer","text":"Yes, main exhibition halls are free. But you must book online via WeChat mini-program. Special exhibitions cost $4-$45. Bring your passport to collect your ticket."}},
+{"@type":"Question","name":"How far in advance should I book?","acceptedAnswer":{"@type":"Answer","text":"3-7 days ahead. During peak season (Chinese New Year, Golden Week, summer), tickets sell out within minutes of midnight release. Check the WeChat mini-program at 12:00 AM and 6:00 PM when new batches drop."}},
+{"@type":"Question","name":"How long does a visit take?","acceptedAnswer":{"@type":"Answer","text":"3-4 hours for all three halls. Add 1 hour for the Tang Dynasty Treasures Hall (paid). If short on time, focus on Hall 3 — the Tang Dynasty collection is the most impressive."}},
+] }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+
+    <div class="inline-flex items-center rounded-full border border-terracotta-200 bg-terracotta-50 px-3 py-1 text-xs font-medium text-terracotta-700 mb-4">Worth It</div>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Shaanxi History Museum: China’s Best Provincial Museum</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">A world-class collection of 1.7 million artifacts spanning 1.1 million years of Chinese history. Free entry but book online in advance.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/shaanxi-history-museum.webp" srcset="/images/responsive/shaanxi-history-museum-768.webp 768w, /images/shaanxi-history-museum.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="Tang-style architecture of the Shaanxi History Museum in Xi'an" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 shadow-sm">
+      <div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Opening Hours</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">8:30 AM – 6:00 PM</p><p class="text-xs text-stone-500 mt-1.5">Closed Mondays (except holidays)</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Ticket Price</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Free</p><p class="text-xs text-stone-500 mt-1.5">Book online 3-7 days in advance</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Time Needed</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">3–4 hours</p><p class="text-xs text-stone-500 mt-1.5">Three main exhibition halls</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Best Time</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">8:30 AM sharp</p><p class="text-xs text-stone-500 mt-1.5">Quietest before 10 AM</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Must See</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Tang Dynasty Hall</p><p class="text-xs text-stone-500 mt-1.5">Gold, jade, and tri-color pottery</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Location</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Yanta District</p><p class="text-xs text-stone-500 mt-1.5">Metro Line 2/3, Xiaozhai Station</p></div>
+
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Why the Shaanxi History Museum Is Unmissable</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The Shaanxi History Museum (陕西历史博物馆) is widely considered China’s best provincial museum, with <strong class="text-stone-800">1.7 million artifacts</strong> covering a continuous span from prehistoric times through the Qing Dynasty.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">The three main halls are organized chronologically. Hall 1 covers prehistoric through Zhou. Hall 2 covers Qin and Han — terracotta figures and Han Dynasty jade burial suits. <strong class="text-stone-800">Hall 3</strong> is the crown jewel: Tang Dynasty gold, silver, tri-color pottery, and Silk Road artifacts. As the eastern terminus of the ancient trade routes, Xi'an is central to the <a href="https://whc.unesco.org/en/list/1442/" target="_blank" rel="noopener" class="text-terracotta-600 hover:text-terracotta-700 underline">Silk Roads UNESCO World Heritage corridor</a> (inscribed 2014).</p>
+<p class="mt-4 text-stone-600 leading-relaxed">Entry is <strong class="text-stone-800">free</strong> but tickets must be booked online via the official WeChat mini-program. They sell out within minutes during peak season. Book <strong class="text-stone-800">3-7 days ahead</strong>. Bring your passport — you need it to collect your ticket.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">If free tickets are gone, a paid special exhibition ($4-$45) also grants access to the main halls. The <strong class="text-stone-800">Tang Dynasty Treasures Hall</strong> ($4) is excellent and usually has last-minute availability.</p>
+
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">The Collection: 370,000 Artifacts Across 1.15 Million Years</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The Shaanxi History Museum holds <strong class="text-stone-800">370,000 artifacts</strong> spanning from 1.15 million years ago (Lantian Man fossils) through 1840 AD. Only about 3,000 are on display at any time — the rest rotate through temporary exhibitions or are in storage. The collection is so vast because Shaanxi province was the heartland of 13 Chinese dynasties, including the Zhou, Qin, Han, and Tang.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">The museum building itself is designed in Tang Dynasty architectural style — grand halls with sweeping tile roofs arranged around a central courtyard. It opened in 1991 and was designed by Zhang Jinqiu, a student of the architect who designed the UN headquarters. The layout guides you chronologically through Chinese history, making it an ideal first stop in Xi'an to understand the historical context of everything else you will see.</p>
+    </section>
+
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Insider Tips</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span><p class="text-stone-600"><strong>Book 3-7 days ahead.</strong> Free tickets are extremely limited. Download WeChat, search for ‘Shaanxi History Museum’, and book as soon as your dates are confirmed. Passport required at the gate.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span><p class="text-stone-600"><strong>Start in Hall 3.</strong> Most visitors start in Hall 1 and the crowds follow. Walk directly to Hall 3 (Tang Dynasty) and work backwards. You will have the best exhibits to yourself.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">3</span><p class="text-stone-600"><strong>Rent an audio guide ($4).</strong> Most labels are Chinese-only. Without the audio guide, you miss the stories. A live English-speaking guide costs $30-$45.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span><p class="text-stone-600"><strong>Combine with Big Wild Goose Pagoda.</strong> Museum and pagoda are 10 min apart. Museum morning, lunch, pagoda afternoon, fountain show at night. A perfect day.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">5</span><p class="text-stone-600"><strong>Tang Dynasty Treasures Hall.</strong> If the free ticket is sold out, buy the $4 special exhibition ticket. It gives access to the main halls too, plus an excellent Tang Dynasty collection.</p></div>
+</div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Nearby</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">5 min</span><div><strong class="font-medium text-stone-800">Big Wild Goose Pagoda</strong><p class="text-sm text-stone-500">Ten-minute walk. Climb for city views, stay for the fountain show.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">15 min</span><div><strong class="font-medium text-stone-800">Tang Paradise</strong><p class="text-sm text-stone-500">Tang Dynasty theme park. Night show is the highlight. $18.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">10 min</span><div><strong class="font-medium text-stone-800">Xiaozhai Shopping</strong><p class="text-sm text-stone-500">Xi’an’s busiest shopping district. Good for lunch between attractions.</p></div></div>
+</div>
+    </section>
+
+        <!-- Related attractions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="/attractions/big-wild-goose-pagoda" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Big Wild Goose Pagoda</p>
+          <p class="text-xs text-stone-500 mt-0.5">Combine two Tang icons in one morning.</p>
+        </a>
+        <a href="/attractions/city-wall" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Ancient City Wall</p>
+          <p class="text-xs text-stone-500 mt-0.5">Museum by day, wall at sunset.</p>
+        </a>
+        <a href="/attractions/terracotta-warriors" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Terracotta Warriors</p>
+          <p class="text-xs text-stone-500 mt-0.5">From provincial to imperial — the full arc.</p>
+        </a>
+      </div>
+    </section>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/attractions/huaqing-pool" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Next: Huaqing Hot Springs <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Best Time to Visit & Avoid Crowds</h2>
+      <div class="space-y-3 text-sm text-stone-600">
+        <p><strong class="text-stone-800">Best months:</strong> November through March (low season, easier to get tickets).</p>
+        <p><strong class="text-stone-800">Worst months:</strong> July-August (summer holidays, domestic tourist peak) and Golden Week (Oct 1-7).</p>
+        <p><strong class="text-stone-800">Best days:</strong> Tuesday through Thursday. Weekends are significantly busier.</p>
+        <p><strong class="text-stone-800">Best time of day:</strong> 8:30 AM opening time or 2:00 PM (morning tour groups leave by noon). Halls are quietest in the first and last hour of the day.</p>
+        <p><strong class="text-stone-800">Ticket strategy:</strong> Free tickets are released in batches on the WeChat mini-program at 6 PM Beijing time, 3, 5, and 7 days before your visit. Have your passport number ready and be logged in before 6 PM — slots vanish within 1-2 minutes in peak season.</p>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

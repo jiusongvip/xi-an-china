@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Xi'an Bell & Drum Towers — City Views Guide";
+const pageDesc = "Climb Xi'an's Ming Dynasty Bell and Drum Towers at the city center for panoramic views and traditional drum performances. Starting point for Muslim Quarter.";
+
+const faqs = [
+  { q: "Should I visit both towers or just one?", a: "The combo ticket ($7) is good value. The Bell Tower has better views, the Drum Tower has the performance. If time is tight, choose the Bell Tower — the view of four avenues radiating outward is iconic Xi’an." },
+  { q: "When are the drum performances?", a: "Daily at 9:30 AM, 10:15 AM, 11:00 AM, 2:30 PM, 3:30 PM, and 4:30 PM. Each is about 10 minutes. Afternoon shows are less crowded." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TouristAttraction", "name": "Bell Tower & Drum Tower: The Heart of Old Xi’an", "description": "Two Ming Dynasty towers at the absolute center of Xi’an. Climb up for city views, catch the drum performance, and use them as your starting point to the Muslim Quarter.", "url": "https://xi-an-china.com/attractions/bell-drum-tower/" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
+      { "@type": "ListItem", "position": 3, "name": "Bell Tower & Drum Tower: The Heart of Old Xi’an", "item": "https://xi-an-china.com/attractions/bell-drum-tower/" }
+    ]},
+    { "@type": "FAQPage", "mainEntity": [{"@type":"Question","name":"Should I visit both towers or just one?","acceptedAnswer":{"@type":"Answer","text":"The combo ticket ($7) is good value. The Bell Tower has better views, the Drum Tower has the performance. If time is tight, choose the Bell Tower — the view of four avenues radiating outward is iconic Xi’an."}},
+{"@type":"Question","name":"When are the drum performances?","acceptedAnswer":{"@type":"Answer","text":"Daily at 9:30 AM, 10:15 AM, 11:00 AM, 2:30 PM, 3:30 PM, and 4:30 PM. Each is about 10 minutes. Afternoon shows are less crowded."}},
+] }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+
+    <div class="inline-flex items-center rounded-full border border-terracotta-200 bg-terracotta-50 px-3 py-1 text-xs font-medium text-terracotta-700 mb-4">Quick Stop</div>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Bell Tower & Drum Tower: The Heart of Old Xi’an</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Two Ming Dynasty towers at the absolute center of Xi’an. Climb up for city views, catch the drum performance, and use them as your starting point to the Muslim Quarter.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/bell-drum-tower.webp" srcset="/images/responsive/bell-drum-tower-768.webp 768w, /images/bell-drum-tower.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="Xi'an Bell Tower at the center of the old city" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 shadow-sm">
+      <div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Opening Hours</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">8:30 AM – 9:30 PM</p><p class="text-xs text-stone-500 mt-1.5">Apr-Oct. 8:30–6:00 PM Nov-Mar</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Ticket Price</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">$7 (combo)</p><p class="text-xs text-stone-500 mt-1.5">$4 per tower individually</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Drum Show</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Daily</p><p class="text-xs text-stone-500 mt-1.5">9:30, 10:15, 11:00 AM + afternoon</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Time Needed</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">1–1.5 hours</p><p class="text-xs text-stone-500 mt-1.5">Both towers + square</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Best Time</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Dusk</p><p class="text-xs text-stone-500 mt-1.5">When the red lanterns turn on</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Location</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">City Center</p><p class="text-xs text-stone-500 mt-1.5">Metro Line 2, Zhonglou Station</p></div>
+
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Why the Bell & Drum Towers Matter</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The Bell Tower (钟楼) and Drum Tower (鼓楼) mark the <strong class="text-stone-800">absolute center</strong> of Xi’an’s old city. Built during the Ming Dynasty in <strong class="text-stone-800">1384</strong>, all roads inside the city wall radiate from this point. For 600 years, the bell was rung at dawn and the drums at dusk to mark time for the city.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">The <strong class="text-stone-800">Bell Tower</strong> is the larger structure — a three-story wooden tower with green-glazed tile roofs and intricate dougong brackets. Climb to the top for a <strong class="text-stone-800">360-degree view</strong> of the four main streets radiating outward in perfect symmetry.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">The <strong class="text-stone-800">Drum Tower</strong> sits just northwest, at the entrance to the Muslim Quarter. Inside is a collection of ancient drums and <strong class="text-stone-800">live drum performances</strong> several times daily. The southern facade makes for the best photos.</p>
+
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">History: Xi'an's Ancient Timekeepers</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">For over 500 years, the Bell and Drum Towers were Xi'an's public timekeeping system. The <strong class="text-stone-800">great iron bell</strong> in the Bell Tower was struck at dawn to mark the start of the day — its sound reportedly carried for 5 kilometers across the city. The <strong class="text-stone-800">24 drums</strong> in the Drum Tower (one for each period of the traditional Chinese day) were beaten at dusk to signal nightfall. This bell-at-dawn, drum-at-dusk system was how an entire city knew the time before clocks.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">The Bell Tower sits at the <strong class="text-stone-800">exact geographic center of Xi'an's old city</strong>, where the four main avenues (North, South, East, West Streets) converge. It was moved here from its original location near the Drum Tower in 1582 — an extraordinary engineering feat for the Ming Dynasty, involving the disassembly and reconstruction of the entire 6,500-ton structure. The tower stands 36 meters tall on a brick platform, with three layers of green-glazed tile roofs.</p>
+    </section>
+
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Insider Tips</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span><p class="text-stone-600"><strong>Buy the combo ticket ($7).</strong> Saves $1.5 vs. buying separately. About 30 min at each tower plus time on the square between them.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span><p class="text-stone-600"><strong>Drum Tower first, Bell Tower second.</strong> Exit the Bell Tower perfectly positioned to walk north into the Muslim Quarter for dinner. Most efficient route.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">3</span><p class="text-stone-600"><strong>Dusk is golden hour.</strong> Visit around 5:30 PM. Climb the Bell Tower to watch day turn to night. When red lanterns turn on around 7 PM, the view is magical.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span><p class="text-stone-600"><strong>Use the underground passage.</strong> You cannot cross at street level near the Bell Tower. Follow signs for 钟楼 (Zhonglou) in the underground pedestrian tunnel.</p></div>
+</div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Nearby</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">1 min</span><div><strong class="font-medium text-stone-800">Muslim Quarter</strong><p class="text-sm text-stone-500">Directly behind the Drum Tower. Go after the drum show for dinner.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">5 min</span><div><strong class="font-medium text-stone-800">City Wall South Gate</strong><p class="text-sm text-stone-500">Best gate to enter for cycling. Walk south along the main avenue.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">15 min</span><div><strong class="font-medium text-stone-800">Great Mosque</strong><p class="text-sm text-stone-500">Hidden in the Muslim Quarter. One of China’s oldest mosques.</p></div></div>
+</div>
+    </section>
+
+        <!-- Related attractions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="/attractions/city-wall" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Ancient City Wall</p>
+          <p class="text-xs text-stone-500 mt-0.5">The wall's South Gate is minutes away.</p>
+        </a>
+        <a href="/attractions/muslim-quarter" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Muslim Quarter</p>
+          <p class="text-xs text-stone-500 mt-0.5">The Quarter begins right behind the towers.</p>
+        </a>
+        <a href="/attractions/shaanxi-history-museum" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Shaanxi History Museum</p>
+          <p class="text-xs text-stone-500 mt-0.5">Deeper history a short metro ride away.</p>
+        </a>
+      </div>
+    </section>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/attractions/han-yangling" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Next: Han Yangling Mausoleum <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Best Photo Spots Around the Towers</h2>
+      <div class="space-y-3 text-sm">
+        <div class="rounded-xl border border-stone-200 p-3">
+          <p class="font-semibold text-stone-800">Bell Tower in the Roundabout</p>
+          <p class="text-stone-500">The iconic shot. From the pedestrian underpass on the east side of the Bell Tower roundabout, you get the tower framed against modern skyscrapers. Best at blue hour (30 min after sunset).</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-3">
+          <p class="font-semibold text-stone-800">Drum Tower from Beiyuanmen</p>
+          <p class="text-stone-500">Stand on Beiyuanmen Street looking south. The Drum Tower fills the frame with the Muslim Quarter lanterns on either side. Best at night when the red lanterns are lit.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-3">
+          <p class="font-semibold text-stone-800">Panorama from the Bell Tower Balcony</p>
+          <p class="text-stone-500">The upper balcony of the Bell Tower gives you 360-degree views of the four main streets radiating outward. Use a wide-angle lens (16-24mm). Best 1 hour before sunset for golden light on the Drum Tower to the west.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

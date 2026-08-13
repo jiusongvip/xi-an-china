@@ -1,0 +1,205 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Terracotta Warriors 2026 — Tickets & Visitor Tips";
+const pageDesc = "Terracotta Warriors in Xi'an: 2026 tickets ($18), transport, best time, Pit 1-3 guide, and tips to beat the crowds at this UNESCO World Heritage Site.";
+
+const faqs = [
+  { q: "How much do Terracotta Warriors tickets cost?", a: "$18 in peak season (March-November) and $15 in off-peak (December-February). Students and seniors aged 60-64 get 50% off. Children under 1.2m and seniors 65+ enter free. Tickets can be purchased at the gate or via the official WeChat mini-program. Book at least 1 day ahead during peak season." },
+  { q: "How do I get to the Terracotta Warriors from Xi’an?", a: "Take Metro Line 9 to Huaqing Pool Station, then bus 306 ($115 min) or taxi ($3) to the museum. Alternatively, tour bus Line 5 from Xi’an Railway Station ($160 min). A taxi from downtown costs $18-$22 and takes 40-50 minutes." },
+  { q: "What time should I arrive at the Terracotta Warriors?", a: "Arrive by 8:30 AM (opening time). Gates open at 8:30 AM. Pit 1 is nearly empty before 9:30 AM. Tour groups arrive around 10:00-10:30 AM. If you cannot make the morning, arrive after 3:00 PM when most groups have left." },
+  { q: "Which pits should I visit and in what order?", a: "Visit in this order: Pit 2 (chariots and cavalry), then Pit 3 (command center, small but fascinating), and finish with Pit 1 (the massive main hall with 2,000+ soldiers). This order builds anticipation and saves the best for last. The Exhibition Hall with the bronze chariots is between Pit 1 and Pit 2." },
+  { q: "Can I take photos inside?", a: "Yes, photography is allowed in all pits without flash. Tripods are not permitted inside the museum buildings. The lighting in Pit 1 is natural from the hangar windows, so morning light (8:30-10:30 AM) is best for photos." },
+  { q: "Do I need a guide for the Terracotta Warriors?", a: "An audio guide ($4) is good for independent travelers. A live English-speaking guide costs $22-$45 and adds enormous value — they explain details you will miss on your own, like the individual facial features, the original paint colors, and the excavation process." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TouristAttraction",
+      "name": "Terracotta Warriors",
+      "description": "8,000 life-sized clay soldiers buried with China’s first emperor, Qin Shi Huang, in 210-209 BC. One of the greatest archaeological discoveries of the 20th century and a UNESCO World Heritage Site.",
+      "url": "https://xi-an-china.com/attractions/terracotta-warriors/",
+      "geo": { "@type": "GeoCoordinates", "latitude": 34.385, "longitude": 109.275 },
+      "address": { "@type": "PostalAddress", "addressLocality": "Lintong", "addressRegion": "Shaanxi", "addressCountry": "CN" },
+      "publicAccess": true,
+      "openingHours": "Mo-Su 08:30-18:30",
+      "touristType": ["History Buffs", "Photographers", "Families"]
+    },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
+      { "@type": "ListItem", "position": 3, "name": "Terracotta Warriors", "item": "https://xi-an-china.com/attractions/terracotta-warriors/" }
+    ]},
+    { "@type": "FAQPage", "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a.replace(/<[^>]*>/g, "") } }))}
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="July 2026" hasOwnBreadcrumb>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+
+    <div class="inline-flex items-center rounded-full border border-terracotta-200 bg-terracotta-50 px-3 py-1 text-xs font-medium text-terracotta-700 mb-4">Must See</div>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Terracotta Warriors: The Complete Guide</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Everything you need to know before visiting the 8th Wonder of the World — tickets, timing, transport, and how to have the best experience.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/terracotta-warriors.webp" srcset="/images/responsive/terracotta-warriors-768.webp 768w, /images/terracotta-warriors.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="Rows of thousands of terracotta warriors in Pit 1 at the Terracotta Army Museum" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <!-- Quick Info Box -->
+    <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 shadow-sm">
+      {[
+        { label: "Opening Hours", value: "8:30 AM – 6:30 PM", note: "Mar 16 – Nov 15 (peak)" },
+        { label: "Off-Peak Hours", value: "8:30 AM – 6:00 PM", note: "Nov 16 – Mar 15" },
+        { label: "Ticket Price", value: "$18", note: "Students $4 seniors $4" },
+        { label: "Visit Duration", value: "3-4 hours", note: "All three pits + exhibition hall" },
+        { label: "Best Time", value: "8:30 AM sharp", note: "Empty halls before 10 AM" },
+        { label: "Location", value: "Lintong District", note: "40 min east of downtown" },
+      ].map((info) => (
+        <div class="bg-white p-5">
+          <p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">{info.label}</p>
+          <p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">{info.value}</p>
+          <p class="text-xs text-stone-500 mt-1.5 leading-snug">{info.note}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Overview -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">What Are the Terracotta Warriors?</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The Terracotta Warriors are a collection of more than <strong class="text-stone-800">8,000 life-sized clay soldiers</strong>, horses, and chariots buried with Qin Shi Huang, China’s first emperor, around 210-209 BC. They were discovered in <strong class="text-stone-800">1974 by local farmers</strong> digging a well, and the site is now a <a href="https://whc.unesco.org/en/list/441/" target="_blank" rel="noopener" class="text-terracotta-600 hover:text-terracotta-700 underline">UNESCO World Heritage Site</a> and one of the most significant archaeological finds of the 20th century.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">Each soldier has <strong class="text-stone-800">unique facial features</strong> — no two faces are identical. They were originally painted in bright colors (red, green, purple, blue) that faded within minutes of exposure to air after excavation. The site covers approximately <strong class="text-stone-800">20,000 square meters</strong> across three main pits, and only about 2,000 warriors have been fully excavated so far. An estimated 6,000 more remain underground.</p>
+      <p class="mt-4 text-stone-500 leading-relaxed">The warriors are part of a much larger necropolis complex that includes the emperor’s actual tomb (still unopened), located 1.5 km away under a 76-meter hill. Ancient texts describe the tomb as containing rivers of mercury and a map of the heavens on the ceiling. Soil tests have confirmed elevated mercury levels, suggesting the texts may be accurate.</p>
+    </section>
+
+    <!-- The Discovery Story -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">The Discovery: How a Farmer Changed History</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">In March 1974, a local farmer named <strong class="text-stone-800">Yang Zhifa</strong> was digging a well in Lintong County when his shovel struck something hard. It was the head of a terracotta warrior. He reported the find to local authorities. Within months, archaeologists had uncovered the largest pottery army ever discovered — 8,000 life-sized soldiers, each with a unique face, buried to guard China's first emperor, Qin Shi Huang, in the afterlife.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">Yang Zhifa, the farmer, is still alive. On some days, he sits in the museum gift shop signing books. The main tomb of Emperor Qin — a hill about 1.5 km from the museum — has never been excavated. Ancient texts describe it as containing rivers of mercury, a map of the empire on the ceiling, and automatic crossbows to kill intruders. Soil tests have confirmed extremely high mercury levels, suggesting the legends may be true.</p>
+    </section>
+
+<!-- Pits -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">The Three Pits: What to See</h2>
+
+      <h3 class="mt-6 text-xl font-semibold text-stone-800">Pit 1 — The Main Event</h3>
+      <p class="mt-2 text-stone-600">The largest pit: 230 meters long, 62 meters wide. Contains approximately 2,000 warriors on display in battle formation — infantry in the front, chariots and officers in the middle, and archers at the rear. This is the iconic view you have seen in every photo. Walk the full perimeter for different angles. The best photos are from the viewing platform at the far end, looking back toward the entrance.</p>
+
+      <h3 class="mt-6 text-xl font-semibold text-stone-800">Pit 2 — Cavalry & Chariots</h3>
+      <p class="mt-2 text-stone-600">Smaller and more complex than Pit 1. Contains cavalry units, war chariots, and kneeling archers. The lighting here is dimmer and more atmospheric. Several warriors are displayed in glass cases up close, so you can examine individual facial features and armor details from inches away.</p>
+
+      <h3 class="mt-6 text-xl font-semibold text-stone-800">Pit 3 — The Command Center</h3>
+      <p class="mt-2 text-stone-600">The smallest pit (520 sqm), believed to be the command headquarters. Contains 68 figures including high-ranking officers. Most warriors here face each other rather than outward, suggesting a strategy room rather than a battle formation. Worth 15 minutes.</p>
+    </section>
+
+    <!-- Insider Tips -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Insider Tips</h2>
+      <div class="mt-4 space-y-4">
+        <div class="flex gap-3">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span>
+          <p class="text-stone-600"><strong class="text-stone-800">Arrive at 8:30 AM.</strong> The museum opens at 8:30. Pit 1 is nearly empty until 9:30. By 10:30, tour groups fill every viewing spot.</p>
+        </div>
+        <div class="flex gap-3">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span>
+          <p class="text-stone-600"><strong class="text-stone-800">Reverse the order.</strong> Most visitors go Pit 1 → 2 → 3. Go Pit 2 → 3 → 1 instead. You will build anticipation and finish with the masterpiece.</p>
+        </div>
+        <div class="flex gap-3">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">3</span>
+          <p class="text-stone-600"><strong class="text-stone-800">Morning light is best.</strong> Pit 1 faces east. The morning sun streams through the hangar windows, creating dramatic light on the warriors’ faces until about 11 AM.</p>
+        </div>
+        <div class="flex gap-3">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span>
+          <p class="text-stone-600"><strong class="text-stone-800">Combine with Huaqing Pool.</strong> Huaqing Hot Springs is 10 minutes away by taxi. Do the Warriors in the morning and Huaqing in the afternoon for an efficient day trip from downtown.</p>
+        </div>
+        <div class="flex gap-3">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">5</span>
+          <p class="text-stone-600"><strong class="text-stone-800">The farmer who discovered them.</strong> One of the three farmers who discovered the site in 1974 still signs books at the museum gift shop. He is usually there in the mornings.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nearby -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Nearby Attractions</h2>
+      <div class="mt-4 space-y-4">
+        {[
+          { name: "Huaqing Hot Springs", dist: "10 min taxi", desc: "Tang Dynasty imperial baths. Winter hot springs are magical." },
+          { name: "Mount Li", dist: "15 min taxi", desc: "The mountain behind Huaqing. Cable car to the summit for views." },
+          { name: "Qin Shi Huang’s Mausoleum", dist: "1.5 km", desc: "The emperor’s actual tomb, still unopened. Eerie hill with a story." },
+        ].map((n) => (
+          <div class="flex gap-3">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">{n.dist}</span>
+            <div><strong class="font-medium text-stone-800">{n.name}</strong><p class="text-sm text-stone-500">{n.desc}</p></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How to Get There -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">How to Get There: Step by Step</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The Terracotta Warriors are in Lintong District, about 40 km east of downtown Xi'an. Here are the three most reliable routes.</p>
+      <div class="mt-4 space-y-3">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Metro + Bus ($280 min) — Best Value</p>
+          <p class="text-sm text-stone-600 mt-1">Take Metro Line 9 to <strong>Huaqingchi Station</strong> (40 min from city center). Exit and walk to the bus stop. Take bus 306 or 307 (labeled "Terracotta Warriors" in English) for 15 minutes. Last bus back is around 6 PM — plan accordingly.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Taxi/Didi ($18-$22 50 min) — Most Convenient</p>
+          <p class="text-sm text-stone-600 mt-1">Take a taxi or Didi directly from downtown. Fixed price from most hotels is $18-$22 one-way. Show the driver: 秦始皇兵马俑博物馆. Ask them to wait ($7/hour) for the return trip, or take the metro back.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Tour Bus ($4-$7 60-90 min) — Budget Option</p>
+          <p class="text-sm text-stone-600 mt-1">Tourist bus routes depart from Xi'an Railway Station Square and the East Square of the Big Wild Goose Pagoda. Look for buses clearly marked for the Terracotta Warriors. They depart when full (every 20-30 minutes).</p>
+        </div>
+      </div>
+      <div class="mt-4 rounded-xl bg-blue-50 border border-blue-200 p-4 text-sm text-blue-700">
+        <strong>Important:</strong> There are fake "Terracotta Warriors" attractions on the road from the highway exit to the real museum. Ignore any sign that is not at the official museum complex. The real museum has a massive parking lot and a huge bronze statue of Qin Shi Huang at the entrance.
+      </div>
+    </section>
+
+<!-- FAQ -->
+        <!-- Related attractions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="/attractions/huaqing-pool" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Huaqing Hot Springs</p>
+          <p class="text-xs text-stone-500 mt-0.5">Imperial Tang baths, 10 minutes away — pair them on one trip.</p>
+        </a>
+        <a href="/attractions/han-yangling" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Han Yangling Mausoleum</p>
+          <p class="text-xs text-stone-500 mt-0.5">A quieter, glass-floored tomb with miniature figurines.</p>
+        </a>
+        <a href="/attractions/big-wild-goose-pagoda" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Big Wild Goose Pagoda</p>
+          <p class="text-xs text-stone-500 mt-0.5">Tang Dynasty Buddhism and the free fountain show.</p>
+        </a>
+      </div>
+    </section>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/itineraries" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        See how this fits into an itinerary <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

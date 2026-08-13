@@ -1,0 +1,641 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import TripPlanner from "../components/TripPlanner.astro";
+import QuickInfoCards from "../components/QuickInfoCards.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import AttractionCard from "../components/AttractionCard.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import SeasonPicker from "../components/SeasonPicker.astro";
+import DaydreamStories from "../components/DaydreamStories.astro";
+import TrustTimeline from "../components/TrustTimeline.astro";
+import CrowdCalendar from "../components/CrowdCalendar.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+import NewsletterSignup from "../components/NewsletterSignup.astro";
+import AttractionMap from "../components/AttractionMap.tsx";
+import CostChart from "../components/CostChart.tsx";
+
+const pageDescription =
+  "Plan your Xi’an trip with our 2026 guide: Terracotta Warriors, City Wall cycling, Muslim Quarter food, Mount Huashan hiking. Practical advice from locals.";
+
+const faqs = [
+  { q: "How much do tickets cost for the Terracotta Warriors?", a: "$18 (peak season Mar-Nov) or $15 (off-peak Dec-Feb). Students and seniors 60+ get 50% off. Tickets can be purchased at the gate or via the official WeChat mini-program. <a href='/tickets' class='text-terracotta-600 hover:text-terracotta-700 underline'>See our full ticket guide</a>." },
+  { q: "When is the best time to visit Xi’an?", a: "April, May, September, and October are ideal. Spring offers cherry blossoms and mild temperatures (12-24°C). Autumn brings golden light and crisp air (10-22°C). Avoid Chinese New Year (late Jan/Feb) and Golden Week (Oct 1-7) when attractions sell out and hotels triple in price. See our <a href='#when-to-go' class='text-terracotta-600 hover:text-terracotta-700 underline'>season-by-season guide</a>." },
+  { q: "How do I get to Xi’an?", a: "Fly into Xi’an Xianyang International Airport (XIY) — direct flights from Beijing, Shanghai, Guangzhou, Seoul, and Bangkok. High-speed train from Beijing (4.5h, $75), Shanghai (6h, $100), or Chengdu (3.5h, $39). From the airport, Metro Line 14 connects to the city center in 40 minutes ($1). See our <a href='/transportation' class='text-terracotta-600 hover:text-terracotta-700 underline'>transportation guide</a>." },
+  { q: "How many days do I need in Xi’an?", a: "3 full days is the sweet spot: Day 1 Terracotta Warriors + Huaqing Pool, Day 2 City Wall + Muslim Quarter + Bell Tower, Day 3 Shaanxi Museum + Big Wild Goose Pagoda + Tang Paradise. 5 days adds Mount Huashan and Han Yangling. 1 day works for a whistle-stop — hit the Terracotta Warriors in the morning and the City Wall at sunset. See our <a href='/itineraries' class='text-terracotta-600 hover:text-terracotta-700 underline'>itinerary plans</a>." },
+  { q: "Can I see the Terracotta Warriors in a day trip from Beijing?", a: "Yes, but it is a long day. The high-speed train from Beijing to Xi’an takes 4.5 hours. Leave Beijing at 6:30 AM, arrive at Xi’an North Station by 11 AM, then take a taxi to the Terracotta Warriors (40 min, $18). You will have 3-4 hours at the site before catching the last train back around 6 PM. It is rushed but doable. For a better experience, stay at least one night." },
+  { q: "Is Xi’an safe for solo travelers?", a: "Yes. Xi’an is very safe. Violent crime is extremely rare. The main practical risks are pickpocketing in crowded areas (especially the Muslim Quarter at night) and taxi drivers overcharging at the airport. Use the metro or ride-hailing apps (Didi) instead. Solo female travelers report feeling safe walking in the city center even after dark." },
+  { q: "Where should I stay in Xi’an?", a: "Inside the City Wall (Beilin District) is best for first-timers — walk to the Bell Tower, Muslim Quarter, and South Gate. Hotels from $22-$120/night. Yanta District near the Big Wild Goose Pagoda is quieter with newer hotels. Lintong District (near the Terracotta Warriors) is convenient if that is your main focus but far from everything else. See our <a href='/hotels' class='text-terracotta-600 hover:text-terracotta-700 underline'>accommodation guide</a>." },
+  { q: "Do I need a visa for China?", a: "Most foreign visitors need a Chinese tourist visa (L visa) before arrival. Apply at your nearest Chinese embassy or visa center. Processing takes 4-7 business days. The 240-hour (10-day) transit visa is available through Xi’an for citizens of 54 countries including the US, UK, EU, and Australia. Your passport must be valid for at least 6 months beyond your planned departure." },
+  { q: "Is English widely spoken in Xi’an?", a: "Limited. Major hotels and the Terracotta Warriors museum have some English signage and audio guides. The metro has English announcements. In restaurants, the Muslim Quarter, and on buses, English is rare. Download Google Translate’s offline Chinese pack and save key phrases. Pointing at menu photos works well." },
+  { q: "What food should I try in Xi’an?", a: "Biangbiang noodles (thick, hand-pulled noodles), yangrou paomo (lamb soup with torn bread), roujiamo (Chinese hamburger), lamb skewers from the Muslim Quarter, liangpi (cold skin noodles), and persimmon cakes. The Muslim Quarter is the epicenter of Xi’an street food — go after 7 PM when it really comes alive. See our <a href='/food' class='text-terracotta-600 hover:text-terracotta-700 underline'>complete food guide</a>." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Xi’an China Travel Guide 2026 — Attractions, Food & Tips",
+      "description": "Plan your Xi’an trip with our complete travel guide. Explore the Terracotta Warriors, cycle the ancient city wall, eat your way through the Muslim Quarter, and hike Mount Huashan. Updated for 2026.",
+      "author": { "@type": "Person", "name": "Li Wei", "jobTitle": "History & Culture Writer", "url": "https://xi-an-china.com/about" },
+      "publisher": { "@type": "Organization", "name": "Xi'an Guide", "url": "https://xi-an-china.com" },
+      "datePublished": "2026-07-01",
+      "dateModified": "2026-08-08",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://xi-an-china.com/images/hero-city-wall.webp",
+        "width": 1920,
+        "height": 1280,
+        "caption": "Xi'an City Wall at sunset with the Bell Tower in the distance"
+      }
+    },
+    {
+      "@type": "TouristDestination",
+      "name": "Xi’an",
+      "description": "Xi’an is one of China’s oldest cities, the capital of 13 dynasties, and the starting point of the Silk Road. Home to the world-famous Terracotta Warriors, China’s best-preserved ancient city wall, and an incredible street food scene in the Muslim Quarter.",
+      "touristType": ["History Buffs", "Food Lovers", "Photographers", "Family Travelers", "Solo Travelers"],
+      "geo": { "@type": "GeoCoordinates", "latitude": 34.27, "longitude": 108.94 },
+      "address": { "@type": "PostalAddress", "addressLocality": "Xi’an", "addressRegion": "Shaanxi", "addressCountry": "CN" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a.replace(/<[^>]*>/g, "") },
+      })),
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Xi'an China Travel Guide 2026 — Attractions, Food & Tips"
+  description={pageDescription}
+  author="Li Wei"
+  datePublished="July 2026" hasOwnArticle hasOwnBreadcrumb
+>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <!-- ===== Loader — brand type-on → empty box grows → three images cross-develop ===== -->
+  <div id="xl-loader" class="fixed inset-0 z-[2000] flex items-center justify-center bg-paper" aria-hidden="true" style="visibility: hidden;">
+    <div class="w-full max-w-3xl px-6 md:px-10">
+      <p id="xl-loader-word" class="font-display text-4xl md:text-6xl tracking-tight text-ink">XI'AN GUIDE</p>
+      <div class="mt-8 overflow-hidden">
+        <div id="xl-loader-box" class="relative h-44 md:h-60 border border-champagne-500" style="transform: scale(0, 0);">
+          <img class="xl-loader-img absolute inset-0 h-full w-full object-cover opacity-0" src="/images/hero-city-wall.webp" width="1440" height="810" alt="" decoding="async" />
+          <img class="xl-loader-img absolute inset-0 h-full w-full object-cover opacity-0" src="/images/spring-city-wall.webp" width="1440" height="810" alt="" decoding="async" />
+          <img class="xl-loader-img absolute inset-0 h-full w-full object-cover opacity-0" src="/images/summer-muslim-quarter.webp" width="1440" height="810" alt="" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Hero — 6-frame crossfade carousel + word-by-word reveal + star ===== -->
+  <section class="relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center min-h-[calc(100dvh-4rem)] py-16 lg:py-24">
+        <div class="lg:col-span-5">
+          <p class="label text-champagne-600 mb-7">Independent guide · Updated August 2026</p>
+          <h1 class="text-5xl md:text-6xl lg:text-[4.5rem] text-ink">
+            <span class="hw-wrap"><span class="hw inline-block">Xi'an,</span></span><br />
+            <span class="hw-wrap"><span class="hw inline-block">China's</span></span> <span class="hw-wrap"><span class="hw inline-block">Ancient</span></span><br />
+            <span class="hw-wrap"><span class="hw inline-block">Capital</span></span>
+          </h1>
+          <p class="mt-8 text-lg text-stone-600 leading-relaxed max-w-md">
+            Home of the Terracotta Warriors, China's best-preserved ancient city wall, the starting point of the Silk Road, and one of the world's greatest street food cities.
+          </p>
+          <p class="mt-4 text-sm text-stone-500 max-w-md">
+            Honest, practical advice from locals. Every price verified in person — most recently July 2026.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-6 sm:items-center">
+            <a href="#trip-planner" class="link-arrow link-arrow--ink">Plan your trip <span class="link-arrow-ic" aria-hidden="true">→</span></a>
+            <a href="/attractions" class="link-arrow">Explore attractions <span class="link-arrow-ic" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 relative">
+          <div id="hero-stage" class="relative aspect-[16/10] overflow-hidden bg-stone-200">
+            <img class="hero-slide absolute inset-0 h-full w-full object-cover" src="/images/hero-city-wall.webp" srcset="/images/responsive/hero-city-wall-480.webp 480w, /images/responsive/hero-city-wall-768.webp 768w, /images/responsive/hero-city-wall-1024.webp 1024w" sizes="(min-width:1024px) 54vw, 100vw" alt="Xi'an City Wall at sunset with the Bell Tower in the distance, ancient capital of China" fetchpriority="high" width="1440" height="810" loading="eager" decoding="async" />
+            <img class="hero-slide absolute inset-0 h-full w-full object-cover opacity-0" src="/images/spring-city-wall.webp" alt="Xi'an City Wall in spring with cherry blossoms" width="1440" height="810" loading="lazy" decoding="async" />
+            <img class="hero-slide absolute inset-0 h-full w-full object-cover opacity-0" src="/images/summer-muslim-quarter.webp" alt="Muslim Quarter street food stalls in summer" width="1440" height="810" loading="lazy" decoding="async" />
+            <img class="hero-slide absolute inset-0 h-full w-full object-cover opacity-0" src="/images/autumn-terracotta.webp" alt="Terracotta warriors in autumn light" width="1440" height="810" loading="lazy" decoding="async" />
+            <img class="hero-slide absolute inset-0 h-full w-full object-cover opacity-0" src="/images/winter-huaqing.webp" alt="Huaqing Hot Springs in winter" width="1440" height="810" loading="lazy" decoding="async" />
+            <img class="hero-slide absolute inset-0 h-full w-full object-cover opacity-0" src="/images/terracotta-detail.webp" alt="Close-up detail of a terracotta warrior" width="1440" height="810" loading="lazy" decoding="async" />
+            <div class="absolute inset-0 border border-champagne-500/40 pointer-events-none" aria-hidden="true"></div>
+            <div id="hero-ticks" class="absolute bottom-4 left-4 flex items-center gap-1.5" aria-hidden="true">
+              <span class="hero-tick block h-px w-7 bg-champagne-500"></span>
+              <span class="hero-tick block h-px w-3 bg-stone-500/60"></span>
+              <span class="hero-tick block h-px w-3 bg-stone-500/60"></span>
+              <span class="hero-tick block h-px w-3 bg-stone-500/60"></span>
+              <span class="hero-tick block h-px w-3 bg-stone-500/60"></span>
+              <span class="hero-tick block h-px w-3 bg-stone-500/60"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== One Day in Xi'an — sticky-features: clip-path tear + scrub rail ===== -->
+  <section id="day" class="relative border-t border-stone-200">
+    <div class="relative z-10 mx-auto max-w-7xl px-4 md:px-6 pt-16 md:pt-20 pb-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <p class="label text-champagne-600 mb-5">One day in xi'an</p>
+          <h2 class="text-4xl md:text-5xl text-ink">Morning, afternoon, evening.</h2>
+        </div>
+        <p class="text-sm text-stone-500 max-w-xs md:text-right">Keep scrolling — three frames of a day in the old capital.</p>
+      </div>
+    </div>
+
+    <div id="day-wrap" class="relative h-[300vh]">
+      <div id="day-pin" class="sticky top-0 h-screen overflow-hidden">
+        <div class="absolute inset-0">
+          <img class="day-img absolute inset-0 h-full w-full object-cover" src="/images/spring-city-wall.webp" alt="Morning — Xi'an City Wall in spring light" width="1440" height="810" loading="lazy" decoding="async" data-stage="0" />
+          <img class="day-img absolute inset-0 h-full w-full object-cover" src="/images/summer-muslim-quarter.webp" alt="Afternoon — Muslim Quarter street food" width="1440" height="810" loading="lazy" decoding="async" data-stage="1" />
+          <img class="day-img absolute inset-0 h-full w-full object-cover" src="/images/hero-city-wall.webp" alt="Evening — City Wall and Bell Tower at dusk" width="1440" height="810" loading="lazy" decoding="async" data-stage="2" />
+          <div class="absolute inset-0 bg-gradient-to-r from-paper/95 via-paper/40 to-transparent" aria-hidden="true"></div>
+        </div>
+
+        <div class="absolute inset-y-0 left-0 flex items-center justify-start px-4 md:px-6 lg:px-8 pointer-events-none">
+          <div class="w-full max-w-md bg-paper/90 backdrop-blur-sm p-7 md:p-10">
+            <div id="day-copy-0" class="day-copy">
+              <p class="label text-champagne-600 mb-4">Morning · 07:00</p>
+              <h3 class="text-3xl md:text-4xl text-ink">Cycle the City Wall</h3>
+              <p class="mt-4 text-stone-600 leading-relaxed">Sunrise over the 14 km Ming fortification. Rent a bike at the South Gate and watch the old city wake below you.</p>
+            </div>
+            <div id="day-copy-1" class="day-copy">
+              <p class="label text-champagne-600 mb-4">Afternoon · 14:00</p>
+              <h3 class="text-3xl md:text-4xl text-ink">Eat through the Muslim Quarter</h3>
+              <p class="mt-4 text-stone-600 leading-relaxed">Biangbiang noodles, cumin-dusted lamb skewers, persimmon cakes. A 1,300-year-old Hui food street, loud and glorious.</p>
+            </div>
+            <div id="day-copy-2" class="day-copy">
+              <p class="label text-champagne-600 mb-4">Evening · 20:00</p>
+              <h3 class="text-3xl md:text-4xl text-ink">Bell Tower, lit up</h3>
+              <p class="mt-4 text-stone-600 leading-relaxed">The old city glows amber as drumbeats roll across the square. End the day where it all began.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute right-5 md:right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-4" aria-hidden="true">
+          <span class="label text-champagne-600 [writing-mode:vertical-lr]">Morning → Evening</span>
+          <div class="h-36 w-px bg-stone-300 overflow-hidden">
+            <div id="day-rail-fill" class="h-full w-full bg-champagne-500" style="transform: scale3d(1, 0, 1); transform-origin: top;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Quick Facts ===== -->
+  <QuickInfoCards />
+
+  <!-- ===== What Is Xi’an ===== -->
+  <section class="mx-auto max-w-7xl px-4 md:px-6 pt-8 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">
+        What Is Xi’an?
+      </h2>
+      <p class="mt-2 text-lg text-stone-400">
+        西安 · Xī’ān · “Western Peace”
+      </p>
+      <p class="mt-6 text-lg text-stone-600 leading-relaxed">
+        Xi’an is one of the <strong class="text-stone-800">oldest cities in China</strong> and one of the <strong class="text-stone-800"><a href="https://en.wikipedia.org/wiki/Historical_capitals_of_China" target="_blank" rel="noopener" class="text-terracotta-600 hover:text-terracotta-700 underline">Four Great Ancient Capitals</a></strong>, alongside Rome, Athens, and Cairo. With more than 3,100 years of history, it served as the capital of 13 Chinese dynasties including the Zhou, Qin, Han, and Tang — China’s golden ages. It is the eastern terminus of the Silk Road, the birthplace of Chinese civilization as we know it, and home to the <strong class="text-stone-800"><a href="https://whc.unesco.org/en/list/441" target="_blank" rel="noopener" class="text-stone-800 hover:text-terracotta-700">Terracotta Warriors</a></strong>, a <a href="https://whc.unesco.org/en/list/441" target="_blank" rel="noopener" class="text-terracotta-600 hover:text-terracotta-700 underline">UNESCO World Heritage site</a> and one of the greatest archaeological discoveries of the 20th century.
+      </p>
+      <p class="mt-4 text-stone-500 leading-relaxed">
+        The city sits in the <strong class="text-stone-700">Guanzhong Plain</strong> in Shaanxi province, surrounded by the Qinling Mountains to the south and the Wei River to the north. This strategic location made it the natural capital for empires that ruled China for over a millennium. Today, Xi’an is a modern city of <strong class="text-stone-700">13 million people</strong>, the largest in Northwest China, and a key hub in the Belt and Road Initiative.
+      </p>
+      <p class="mt-4 text-stone-500 leading-relaxed">
+        Xi’an’s <strong class="text-stone-700">ancient city wall</strong> is the most complete city wall in China — a 14-kilometer rectangular fortification that you can walk or cycle on top of. Inside the wall lies the old city, a grid of streets unchanged since the Ming Dynasty, anchored by the Bell Tower and Drum Tower. Just south of the wall, the Big Wild Goose Pagoda has stood for 1,300 years, built to house Buddhist scriptures brought from India.
+      </p>
+      <p class="mt-4 text-stone-500 leading-relaxed">
+        Then there is the food. Xi’an’s <strong class="text-stone-700">Muslim Quarter</strong> is one of the most famous street food districts in Asia — narrow stone alleys lined with vendors selling hand-pulled biangbiang noodles, cumin-dusted lamb skewers, persimmon cakes, and yangrou paomo (lamb soup with torn bread). The Hui Muslim community has lived here for over 1,300 years, and their cuisine is unlike anything else in China.
+      </p>
+      <p class="mt-6 text-sm text-stone-400 border-l-2 border-terracotta-300 pl-4">
+        <span class="font-semibold text-stone-500">We have lived in and explored Xi’an since 2019.</span> Every ticket price, metro route, and restaurant recommendation on this page is based on firsthand local experience — most recently verified in July 2026. No AI-generated content. No unverified claims.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== At a Glance ===== -->
+  <section id="at-a-glance" class="mx-auto max-w-7xl px-4 md:px-6 pb-20 md:pb-28 reveal">
+    <div class="text-center mb-12">
+      <SectionHeader eyebrow="At a Glance" title="Everything You Need to Know" subtitle="The essentials in one place. If you only read one section, make it this one." center />
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="rounded-2xl border border-stone-200 bg-white p-6">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M17.657 16.657L13.414 12.414a2 2 0 00-2.828 0L6.343 16.657a8 8 0 1111.314 0zM15 11a2 2 0 100-4 2 2 0 000 4z"/></svg>
+          </div>
+          <h3 class="font-semibold text-stone-800">Getting There</h3>
+        </div>
+        <ul class="space-y-3 text-sm text-stone-600">
+          <li class="flex gap-2"><Icon name="lucide:plane" class="text-champagne-500 shrink-0 mt-0.5" aria-hidden="true" /> Fly into <strong class="text-stone-700">Xi’an Xianyang (XIY)</strong> — direct flights from Beijing, Shanghai, Seoul, Bangkok</li>
+          <li class="flex gap-2"><span class="text-blue-500 shrink-0 mt-0.5"></span> High-speed train to <strong class="text-stone-700">Xi’an North</strong> from Beijing (4.5h), Shanghai (6h), Chengdu (3.5h)</li>
+          <li class="flex gap-2"><span class="text-blue-500 shrink-0 mt-0.5"></span> Metro Line 14 from airport to city center <strong class="text-stone-700">(40 min, $1)</strong></li>
+          <li class="flex gap-2"><span class="text-blue-500 shrink-0 mt-0.5"></span> <span class="text-stone-400">Flying into Chengdu and taking the train saves $75–$120 on flights.</span></li>
+        </ul>
+        <a href="/transportation" class="inline-flex items-center gap-1 mt-4 text-xs font-medium text-blue-600 hover:text-blue-700">
+          Full transportation guide →
+        </a>
+      </div>
+
+      <div class="rounded-2xl border border-stone-200 bg-white p-6">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-50">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-amber-600"><path d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+          <h3 class="font-semibold text-stone-800">Tickets &amp; Costs</h3>
+        </div>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between py-1.5 border-b border-stone-100">
+            <span class="text-stone-600">Terracotta Warriors</span>
+            <span class="font-semibold text-stone-800">$18</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-stone-100">
+            <span class="text-stone-600">City Wall</span>
+            <span class="font-semibold text-stone-800">$8</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-stone-100">
+            <span class="text-stone-600">Huaqing Pool</span>
+            <span class="font-semibold text-stone-800">$18</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-stone-100">
+            <span class="text-stone-600">Mount Huashan</span>
+            <span class="font-semibold text-stone-800">$24</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-stone-100">
+            <span class="text-stone-600">Big Wild Goose Pagoda</span>
+            <span class="font-semibold text-stone-800">$6</span>
+          </div>
+          <div class="flex justify-between py-1.5">
+            <span class="text-stone-500 text-xs">Per person, daily budget estimate</span>
+            <span class="font-semibold text-terracotta-700">$60–$90</span>
+          </div>
+        </div>
+        <p class="text-xs text-stone-400 mt-3">Prices verified at gates, July 2026. Student/senior discounts available.</p>
+        <a href="/tickets" class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-amber-600 hover:text-amber-700">
+          Full ticket breakdown →
+        </a>
+      </div>
+
+      <div class="rounded-2xl border border-stone-200 bg-white p-6">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-terracotta-50">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-terracotta-600"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          </div>
+          <h3 class="font-semibold text-stone-800">Top Districts</h3>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div>
+            <span class="inline-block rounded-full bg-terracotta-50 px-2 py-0.5 text-xs font-medium text-terracotta-700 mb-1">Best base</span>
+            <p class="text-stone-600"><strong class="text-stone-700">Beilin District</strong> — Inside the city wall. Walk to the Bell Tower, Muslim Quarter, and South Gate.</p>
+          </div>
+          <div>
+            <span class="inline-block rounded-full bg-terracotta-50 px-2 py-0.5 text-xs font-medium text-terracotta-700 mb-1">Culture hub</span>
+            <p class="text-stone-600"><strong class="text-stone-700">Yanta District</strong> — Big Wild Goose Pagoda, Shaanxi Museum, Tang Paradise.</p>
+          </div>
+          <div>
+            <span class="inline-block rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700 mb-1">Day trip</span>
+            <p class="text-stone-600"><strong class="text-stone-700">Lintong District</strong> — Terracotta Warriors + Huaqing Pool. 40 min east of downtown.</p>
+          </div>
+        </div>
+        <a href="/attractions" class="inline-flex items-center gap-1 mt-4 text-xs font-medium text-terracotta-600 hover:text-terracotta-700">
+          Full district guide →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TripPlanner ===== -->
+  <section class="mx-auto max-w-7xl px-4 md:px-6 pb-20 md:pb-28">
+    <TripPlanner />
+  </section>
+
+  <!-- ===== Season Picker ===== -->
+  <SeasonPicker />
+
+  <!-- ===== Attraction Map ===== -->
+  <section class="mx-auto max-w-7xl px-4 md:px-6 pb-20 md:pb-28">
+    <AttractionMap client:visible />
+  </section>
+
+  <!-- ===== How Much Does Xi'an Cost? ===== -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 pb-20 md:pb-28 reveal">
+    <div class="text-center mb-12">
+      <SectionHeader eyebrow="Travel Budget" title="How Much Does Xi'an Cost?" subtitle="Real numbers from our 2026 visits. All prices in US dollars (¥6.75 ≈ $1, Aug 2026)." center />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="rounded-2xl border border-stone-200 bg-white p-6">
+        <p class="text-xs font-bold text-emerald-600 tracking-widest uppercase mb-3">Budget Traveler</p>
+        <p class="text-3xl font-bold text-stone-900 mb-2">$37-$60<span class="text-sm font-normal text-stone-400">/day</span></p>
+        <ul class="text-sm text-stone-500 space-y-1.5">
+          <li>Hostel dorm: $9-$15</li>
+          <li>Street food meals: $6-$9</li>
+          <li>Metro + bus: $1.5-$3</li>
+          <li>1 attraction/day: $7-$18</li>
+        </ul>
+        <p class="text-xs text-stone-400 mt-3">Stay in hostels, eat street food, use public transit.</p>
+      </div>
+      <div class="rounded-2xl border-2 border-terracotta-200 bg-terracotta-50/30 p-6">
+        <p class="text-xs font-bold text-terracotta-600 tracking-widest uppercase mb-3">Mid-Range (Recommended)</p>
+        <p class="text-3xl font-bold text-stone-900 mb-2">$75-$120<span class="text-sm font-normal text-stone-400">/day</span></p>
+        <ul class="text-sm text-stone-500 space-y-1.5">
+          <li>3-star hotel: $30-$60</li>
+          <li>Restaurant meals: $12-$22</li>
+          <li>Didi + metro: $4-$7</li>
+          <li>2 attractions/day: $15-$36</li>
+        </ul>
+        <p class="text-xs text-stone-400 mt-3">Most visitors fall here. Comfortable, good food, all major sites.</p>
+      </div>
+      <div class="rounded-2xl border border-stone-200 bg-white p-6">
+        <p class="text-xs font-bold text-amber-600 tracking-widest uppercase mb-3">Luxury</p>
+        <p class="text-3xl font-bold text-stone-900 mb-2">$180 +<span class="text-sm font-normal text-stone-400">/day</span></p>
+        <ul class="text-sm text-stone-500 space-y-1.5">
+          <li>5-star hotel: $120-$220</li>
+          <li>Fine dining: $45-$75</li>
+          <li>Private driver: $60-$90</li>
+          <li>All attractions + guide: $45-$75</li>
+        </ul>
+        <p class="text-xs text-stone-400 mt-3">Private guides, luxury hotels, no compromises.</p>
+      </div>
+    </div>
+    <p class="text-center text-sm text-stone-400 mt-6">All prices verified July 2026. See our <a href="/tickets" class="text-terracotta-600 hover:text-terracotta-700 underline">ticket guide</a> and <a href="/hotels" class="text-terracotta-600 hover:text-terracotta-700 underline">hotel guide</a> for detailed breakdowns.</p>
+  </section>
+
+<!-- ===== Cost Chart ===== -->
+  <section class="mx-auto max-w-7xl px-4 md:px-6 pb-20 md:pb-28">
+    <CostChart client:visible />
+  </section>
+
+  <!-- ===== Top Attractions ===== -->
+  <section id="attractions" class="reveal max-w-7xl mx-auto px-4 md:px-6 pb-20 md:pb-28">
+    <div class="text-center mb-12">
+      <SectionHeader eyebrow="Must-See Spots" title="Top Attractions in Xi’an" subtitle="From the world-famous Terracotta Warriors to hidden local gems, these are the places that make Xi’an unforgettable." center />
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <AttractionCard href="/attractions/terracotta-warriors" title="Terracotta Warriors" subtitle="The 8th Wonder of the World" icon="lucide:swords" badge="Must See" color="terracotta" highlights={["8,000 life-sized soldiers in Pit 1", "Book online 7 days ahead", "Arrive at 8:30 AM for empty halls"]} />
+      <AttractionCard href="/attractions/city-wall" title="Ancient City Wall" subtitle="China's best-preserved fortification" icon="lucide:bike" badge="Must See" color="terracotta" highlights={["Cycle the 14km loop (2-3 hours)", "Best at sunset — golden light", "South Gate has the best views"]} />
+      <AttractionCard href="/attractions/muslim-quarter" title="Muslim Quarter" subtitle="Xi'an's street food paradise" icon="lucide:utensils" badge="Must See" color="amber" highlights={["Go after 7 PM when it comes alive", "Biangbiang noodles + lamb skewers", "1,300 years of Hui Muslim culture"]} />
+      <AttractionCard href="/attractions/big-wild-goose-pagoda" title="Big Wild Goose Pagoda" subtitle="1,300-year-old Buddhist landmark" icon="lucide:landmark" badge="Worth It" color="amber" highlights={["Musical fountain at night (free)", "Climb for city skyline views", "Built in 652 AD, Tang Dynasty"]} />
+      <AttractionCard href="/attractions/shaanxi-history-museum" title="Shaanxi History Museum" subtitle="China's best provincial museum" icon="lucide:archive" badge="Worth It" color="terracotta" highlights={["Free entry (must book online)", "Tang Dynasty gold and jade", "Visited by 3+ million annually"]} />
+      <AttractionCard href="/attractions/mount-huashan" title="Mount Huashan" subtitle="China’s most dramatic hike" icon="lucide:mountain" badge="Adventure" color="rose" highlights={["30 min by high-speed train", "Plank walk: not for faint-hearted", "Cable car option for non-hikers"]} />
+      <AttractionCard href="/attractions/huaqing-pool" title="Huaqing Hot Springs" subtitle="Tang Dynasty imperial baths" icon="lucide:flame" badge="Worth It" color="rose" highlights={["40 min from Terracotta Warriors", "Winter hot springs are magical", "Tang Dynasty love story site"]} />
+      <AttractionCard href="/attractions/bell-drum-tower" title="Bell &amp; Drum Towers" subtitle="The heart of the old city" icon="lucide:bell" badge="Quick Stop" color="amber" highlights={["Climb for city views ($7)", "Drum performances at set times", "Perfect starting point for exploring"]} />
+      <AttractionCard href="/attractions/han-yangling" title="Han Yangling Mausoleum" subtitle="The quieter mausoleum" icon="lucide:globe" badge="Hidden Gem" color="emerald" highlights={["Fewer crowds than Terracotta Warriors", "Glass-floored museum walkways", "Han Dynasty (202 BC–8 AD)"]} />
+    </div>
+  </section>
+
+  <!-- ===== Quick Itinerary Snapshots ===== -->
+  <section class="reveal max-w-7xl mx-auto px-4 md:px-6 pb-20 md:pb-28">
+    <div class="text-center mb-12">
+      <SectionHeader eyebrow="Itineraries at a Glance" title="Not Sure Where to Start?" subtitle="Three proven itineraries. Click through for hour-by-hour details." center />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <a href="/itineraries" class="group rounded-2xl border border-stone-200 bg-white p-6 hover:border-terracotta-200 hover:shadow-md transition-all no-underline">
+        <Icon name="lucide:zap" class="h-9 w-9 text-champagne-500 mb-3" stroke-width="1.5" aria-hidden="true" />
+        <p class="text-lg font-semibold text-stone-900 group-hover:text-terracotta-700 transition-colors">1-Day Express</p>
+        <p class="text-sm text-stone-500 mt-2">Morning: Terracotta Warriors. Afternoon: City Wall cycling at sunset. Evening: Muslim Quarter food crawl. The essential Xi'an in 12 hours.</p>
+        <p class="text-xs text-terracotta-600 mt-3 font-medium">See full itinerary →</p>
+      </a>
+      <a href="/itineraries" class="group rounded-2xl border-2 border-terracotta-200 bg-terracotta-50/30 p-6 hover:border-terracotta-300 hover:shadow-md transition-all no-underline">
+        <Icon name="lucide:calendar-days" class="h-9 w-9 text-champagne-500 mb-3" stroke-width="1.5" aria-hidden="true" />
+        <p class="text-lg font-semibold text-stone-900 group-hover:text-terracotta-700 transition-colors">3-Day Classic</p>
+        <p class="text-sm text-stone-500 mt-2">Day 1: Warriors + Huaqing Pool. Day 2: City Wall + Muslim Quarter + Bell Tower. Day 3: Shaanxi Museum + Big Wild Goose Pagoda. The sweet spot.</p>
+        <p class="text-xs text-terracotta-600 mt-3 font-medium">See full itinerary →</p>
+      </a>
+      <a href="/itineraries" class="group rounded-2xl border border-stone-200 bg-white p-6 hover:border-terracotta-200 hover:shadow-md transition-all no-underline">
+        <Icon name="lucide:mountain-snow" class="h-9 w-9 text-champagne-500 mb-3" stroke-width="1.5" aria-hidden="true" />
+        <p class="text-lg font-semibold text-stone-900 group-hover:text-terracotta-700 transition-colors">5-Day Explorer</p>
+        <p class="text-sm text-stone-500 mt-2">Add Mount Huashan day hike, Han Yangling glass-floor tombs, Tang Paradise night show, and a day trip beyond the city.</p>
+        <p class="text-xs text-terracotta-600 mt-3 font-medium">See full itinerary →</p>
+      </a>
+    </div>
+  </section>
+
+<!-- ===== Daydream Stories ===== -->
+  <DaydreamStories />
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="bg-stone-100 border-y border-stone-200 reveal">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 py-20 md:py-28">
+      <div class="text-center mb-12">
+        <SectionHeader eyebrow="FAQ" title="Questions Every Visitor Asks" subtitle="Straight answers from locals who live here." center />
+      </div>
+      <div class="mx-auto max-w-2xl">
+        <FaqAccordion items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Crowd Calendar ===== -->
+  <CrowdCalendar />
+
+  <!-- ===== Newsletter ===== -->
+  <NewsletterSignup />
+
+  <!-- ===== Trust Timeline ===== -->
+  <TrustTimeline />
+
+  <!-- ===== Author Signal ===== -->
+  <AuthorSignal authorId="li-wei" />
+
+  <!-- ===== Learn More Hub ===== -->
+  <section class="reveal max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28">
+    <div class="text-center mb-12">
+      <SectionHeader eyebrow="Keep Planning" title="Want to learn more?" subtitle="Dive deeper into every aspect of planning your Xi’an trip." center />
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {[
+        { href: "/itineraries", title: "Itinerary Plans", desc: "1-day, 3-day, and 5-day schedules with budgets." },
+        { href: "/food", title: "Food Guide", desc: "20 must-try dishes and where to find them." },
+        { href: "/weather", title: "Weather Guide", desc: "Month-by-month weather, what to pack, when to go." },
+        { href: "/day-trips", title: "Day Trips", desc: "Mount Huashan, Han Yangling, and beyond." },
+        { href: "/nightlife", title: "Nightlife", desc: "Bars, night markets, and evening shows." },
+        { href: "/shopping", title: "Shopping", desc: "What to buy, where, and how to bargain." },
+        { href: "/payment-guide", title: "Payment Guide", desc: "WeChat Pay & Alipay setup for foreigners." },
+        { href: "/phrasebook", title: "Phrasebook", desc: "40+ essential Chinese phrases, tap to copy." },
+        { href: "/china-sim-card-tourist", title: "SIM Card Guide", desc: "Get connected: SIM, eSIM, and registration." },
+        { href: "/china-240-hour-transit-visa", title: "Transit Visa", desc: "240-hour visa-free transit explained." },
+        { href: "/transportation", title: "Transportation", desc: "How to get to Xi'an and get around." },
+        { href: "/blog", title: "Blog", desc: "Deep dives, hidden gems, and local stories." },
+      ].map((item) => (
+        <a href={item.href} class="group bg-white border border-stone-200 rounded-xl p-6 hover:border-terracotta-200 transition-colors no-underline hover:shadow-md">
+          <p class="text-sm font-bold text-stone-900 mb-1 group-hover:text-terracotta-700 transition-colors">{item.title}</p>
+          <p class="text-sm text-stone-500 leading-relaxed">{item.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="reveal max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28 text-center">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-900">
+      Ready to plan your Xi’an trip?
+    </h2>
+    <p class="mt-4 text-stone-500 max-w-md mx-auto">
+      Start with our itinerary planner, or jump straight to what you need.
+    </p>
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
+      <a href="#trip-planner" class="link-arrow link-arrow--ink">Plan your trip <span class="link-arrow-ic" aria-hidden="true">→</span></a>
+      <a href="/attractions" class="link-arrow">Explore attractions <span class="link-arrow-ic" aria-hidden="true">→</span></a>
+    </div>
+    <div class="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+      <span class="text-stone-400">Popular:</span>
+      <a href="/attractions/terracotta-warriors" class="text-terracotta-600 hover:text-terracotta-700 underline">Terracotta Warriors</a>
+      <span class="text-stone-300">·</span>
+      <a href="#when-to-go" class="text-terracotta-600 hover:text-terracotta-700 underline">Best Time</a>
+      <span class="text-stone-300">·</span>
+      <a href="/food" class="text-terracotta-600 hover:text-terracotta-700 underline">Food Guide</a>
+      <span class="text-stone-300">·</span>
+      <a href="/attractions/mount-huashan" class="text-terracotta-600 hover:text-terracotta-700 underline">Mount Huashan</a>
+    </div>
+  </section>
+
+  <style>
+    .hw-wrap {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: top;
+      padding-block: 0.08em;
+      margin-block: -0.08em;
+    }
+    .hw {
+      transform: translateY(0);
+      will-change: transform;
+    }
+    .day-img {
+      clip-path: inset(0 0 0 0);
+    }
+    .day-copy {
+      opacity: 0;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .day-img {
+        clip-path: inset(0 0 0 0);
+      }
+      .day-copy {
+        opacity: 1;
+      }
+      .hw {
+        transform: none;
+      }
+    }
+  </style>
+
+  <script>
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const loader = document.getElementById("xl-loader")!;
+    const brand = "XI'AN GUIDE";
+    const typeProxy = { val: 0 };
+
+    const heroWords = Array.from(document.querySelectorAll<HTMLElement>(".hw"));
+    const heroSlides = Array.from(document.querySelectorAll<HTMLElement>(".hero-slide"));
+    const heroTicks = Array.from(document.querySelectorAll<HTMLElement>(".hero-tick"));
+    const box = document.getElementById("xl-loader-box")!;
+    const boxImgs = Array.from(document.querySelectorAll<HTMLElement>(".xl-loader-img"));
+
+    const HOLD = 3.2;
+    const FADE = 1.4;
+    const STEP = HOLD + FADE;
+
+    function heroIn() {
+      // word-by-word headline reveal
+      gsap.set(heroWords, { yPercent: 125 });
+      gsap.to(heroWords, { yPercent: 0, duration: 0.9, ease: "power3.out", stagger: 0.08 });
+      // 6-frame carousel: 1400ms crossfade, hold, loop
+      const carousel = gsap.timeline({ repeat: -1, delay: 0.35 });
+      for (let i = 1; i < heroSlides.length; i++) {
+        const at = (i - 1) * STEP;
+        carousel.to(heroSlides[i], { opacity: 1, duration: FADE, ease: "power1.inOut" }, at);
+        carousel.set(heroSlides.slice(0, i), { opacity: 0 }, at + FADE);
+        carousel.call(() => setTick(i), undefined, at);
+      }
+      // restore frame 0 at loop end so the wrap is seamless
+      const total = (heroSlides.length - 1) * STEP;
+      carousel.set(heroSlides.slice(1), { opacity: 0 }, total);
+      carousel.set(heroSlides[0], { opacity: 1 }, total);
+      carousel.call(() => setTick(0), undefined, total);
+    }
+
+    function setTick(i: number) {
+      heroTicks.forEach((t, k) => {
+        t.className = k === i ? "hero-tick block h-px w-7 bg-champagne-500" : "hero-tick block h-px w-3 bg-stone-500/60";
+      });
+    }
+
+    function runLoader() {
+      loader.style.visibility = "visible";
+      gsap.set(box, { scaleX: 0, scaleY: 0, transformOrigin: "center center" });
+
+      const tl = gsap.timeline();
+      // type-on the two-word brand
+      tl.to(typeProxy, {
+        val: brand.length,
+        duration: 0.7,
+        ease: "none",
+        onUpdate: () => { (document.getElementById("xl-loader-word")!).textContent = brand.slice(0, Math.round(typeProxy.val)); },
+      });
+      // empty box grows
+      tl.to(box, { scaleX: 1, scaleY: 1, duration: 0.55, ease: "power3.inOut" }, 0.45);
+      // three images cross-develop inside the box
+      boxImgs.forEach((im, i) => {
+        tl.to(im, { opacity: 1, duration: 0.35, ease: "power1.out" }, 0.95 + i * 0.13);
+      });
+      // loader slides away, revealing the hero (first frame already decoded)
+      tl.to(loader, { yPercent: -100, duration: 0.7, ease: "power3.inOut", onComplete: () => loader.remove() }, 1.55);
+      tl.add(heroIn, 1.5);
+      try { sessionStorage.setItem("xl-loader", "1"); } catch (_) {}
+    }
+
+    function initDay() {
+      // sticky-features scrub — vertical clip-path tear + scale3d rail
+      gsap.set(Array.from(document.querySelectorAll<HTMLElement>(".day-img")), { clipPath: "inset(50% 0% 50% 0%)" });
+      gsap.set(Array.from(document.querySelectorAll<HTMLElement>(".day-copy")), { opacity: 0 });
+      gsap.set("#day-rail-fill", { transform: "scale3d(1,0,1)" });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#day-wrap",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.6,
+        },
+      });
+      const stage = [
+        { img: 0, copy: 0 },
+        { img: 1, copy: 1 },
+        { img: 2, copy: 2 },
+      ];
+      stage.forEach((s, i) => {
+        const at = i / 3;
+        tl.to(`[data-stage="${s.img}"]`, { clipPath: "inset(0% 0% 0% 0%)", duration: 1 / 3, ease: "power1.inOut" }, at);
+        tl.to(`#day-copy-${s.copy}`, { opacity: 1, duration: 0.35, ease: "power1.out" }, at + 0.08);
+      });
+      tl.to("#day-rail-fill", { transform: "scale3d(1,1,1)", duration: 1, ease: "none" }, 0);
+      ScrollTrigger.refresh();
+    }
+
+    if (!reduced) {
+      const seen = (() => { try { return sessionStorage.getItem("xl-loader") === "1"; } catch (_) { return false; } })();
+      if (seen) { heroIn(); } else { runLoader(); }
+      initDay();
+    }
+  </script>
+</BaseLayout>

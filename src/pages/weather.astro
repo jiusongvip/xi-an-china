@@ -1,0 +1,356 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+import { Icon } from "astro-icon/components";
+const pageTitle = "Xi'an Weather Guide — Best Time to Visit";
+const pageDesc = "Xi'an month-by-month weather: temperatures, rainfall, crowd levels, and what to wear. Best months to visit, based on 10+ years of local data.";
+const faqs = [
+  { q: "What is the best month to visit Xi'an?", a: "April, May, September, and October (after Oct 8) are the best months. April and September offer perfect temperatures (12-26°C), clear skies, and manageable crowds. Avoid Golden Week (Oct 1-7) and Chinese New Year." },
+  { q: "How hot does Xi'an get in summer?", a: "July and August are the hottest months, with temperatures reaching 35°C+ and high humidity. If visiting in summer, plan outdoor activities for early morning or evening. Stay hydrated and carry an umbrella." },
+  { q: "Does it snow in Xi'an?", a: "Occasionally. December through February temperatures range from -5 to 7°C. Snow is infrequent but possible. Winter is dry with only 2-3 rainy days per month. It's the cheapest time to visit with half-price tickets." },
+  { q: "What should I pack for Xi'an?", a: "Spring: light layers and a jacket. Summer: breathable clothing, hat, sunscreen, umbrella. Autumn: light layers and a jacket for evenings. Winter: heavy coat, thermal layers, warm boots. See the detailed packing list above for each season." },
+  { q: "When is the cheapest time to visit Xi'an?", a: "January and December are the cheapest months. Hotels drop 30-50%, attractions offer half-price tickets (Dec-Feb), and there are zero queues. The weather is cold (-5 to 5°C) but the experience is authentic and atmospheric." },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[
+  {"@type":"Article","publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08","author":{"@type":"Person","name":"Xi'an Guide Team"}},
+  {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Weather","item":"https://xi-an-china.com/weather"}]},
+  {"@type":"FAQPage","mainEntity":faqs.map(f => ({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}
+]};
+
+const months = [
+  { name: "January", short: "Jan", tempHigh: 5, tempLow: -5, rain: 3, crowd: 2, season: "winter", color: "blue",
+    summary: "Cold and dry. Fewest tourists of the year. Half-price tickets at most attractions.",
+    wear: "Heavy coat, thermal layers, gloves, hat. Indoor heating is good.",
+    highlights: ["Half-price tickets (Dec-Feb)", "Hot springs are magical in the cold", "Zero queues at Terracotta Warriors"],
+    pros: ["Cheapest time to visit", "No crowds anywhere", "Atmospheric winter scenery"],
+    cons: ["Very cold (-5 to 5°C)", "Bare trees, grey skies", "Some outdoor areas less enjoyable"]
+  },
+  { name: "February", short: "Feb", tempHigh: 8, tempLow: -3, rain: 4, crowd: 3, season: "winter", color: "blue",
+    summary: "Still cold but warming slightly. Chinese New Year can bring a crowd spike (late Jan/early Feb).",
+    wear: "Heavy coat, scarf, warm shoes. Layers for Chinese New Year festivities.",
+    highlights: ["Chinese New Year decorations and festivities", "Lantern festivals around the city", "Still off-peak prices"],
+    pros: ["Festival atmosphere if timed right", "Still relatively quiet", "Early plum blossoms late month"],
+    cons: ["Chinese New Year = crowded + expensive for 1 week", "Still very cold", "Some restaurants close for holiday"]
+  },
+  { name: "March", short: "Mar", tempHigh: 14, tempLow: 3, rain: 5, crowd: 3, season: "spring", color: "emerald",
+    summary: "Spring begins. Trees bud, temperatures become comfortable. Great value shoulder season.",
+    wear: "Light jacket, layers. Mornings and evenings still chilly.",
+    highlights: ["Cherry blossoms start blooming", "Comfortable walking weather returns", "Qingming Festival (early April) preparations"],
+    pros: ["Pleasant temperatures returning", "Low crowds, low prices", "Beautiful spring flowers"],
+    cons: ["Weather can be unpredictable", "Still cool at night", "Occasional sandstorms from the north"]
+  },
+  { name: "April", short: "Apr", tempHigh: 21, tempLow: 9, rain: 6, crowd: 4, season: "spring", color: "emerald",
+    summary: "One of the best months. Warm, sunny, cherry blossoms in full bloom. Book ahead for Qingming holiday.",
+    wear: "Light layers, comfortable walking shoes. Sunscreen for sunny days.",
+    highlights: ["Cherry blossoms at peak", "Perfect hiking weather for Mount Huashan", "Qingming Festival (April 4-6)"],
+    pros: ["Ideal temperature range", "City in full bloom", "Great for all outdoor activities"],
+    cons: ["Qingming holiday = 3 days of crowds", "Hotels start filling up", "UV index rising"]
+  },
+  { name: "May", short: "May", tempHigh: 26, tempLow: 14, rain: 6, crowd: 4, season: "spring", color: "emerald",
+    summary: "Warm and pleasant. Labor Day holiday (May 1-5) is extremely crowded. Otherwise excellent.",
+    wear: "T-shirts and light pants. Bring a light rain jacket.",
+    highlights: ["Labor Day holiday events", "Warm enough for evening walks on the City Wall", "Pre-summer greenery"],
+    pros: ["Beautiful weather", "Long daylight hours", "All attractions fully operational"],
+    cons: ["Labor Day week is packed", "Getting hot by late May", "Hotel prices rising"]
+  },
+  { name: "June", short: "Jun", tempHigh: 32, tempLow: 19, rain: 8, crowd: 3, season: "summer", color: "rose",
+    summary: "Summer heat begins. Before school holidays, June is actually a good window if you handle heat well.",
+    wear: "Light, breathable clothing. Hat, sunscreen, water bottle essential.",
+    highlights: ["Summer solstice events", "Less crowded before school holidays", "Longest days for sightseeing"],
+    pros: ["Before peak summer crowds", "Warm evenings are pleasant", "Fruit season — fresh cherries, melons"],
+    cons: ["Increasingly hot (32°C+)", "Humidity rising", "Afternoon outdoor activities uncomfortable"]
+  },
+  { name: "July", short: "Jul", tempHigh: 35, tempLow: 22, rain: 12, crowd: 5, season: "summer", color: "rose",
+    summary: "Peak summer. Hot, humid, and crowded with domestic tourists. Visit early morning or evening.",
+    wear: "Lightest clothing possible. Umbrella for rain + sun. Hydrate constantly.",
+    highlights: ["Summer vacation energy", "Night markets at their liveliest", "Water shows at Tang Paradise"],
+    pros: ["Vibrant atmosphere", "Everything open late", "School holiday energy"],
+    cons: ["Very hot (35°C+)", "Most crowded month", "Thunderstorms common"]
+  },
+  { name: "August", short: "Aug", tempHigh: 33, tempLow: 21, rain: 10, crowd: 5, season: "summer", color: "rose",
+    summary: "Still hot but crowds thin slightly after mid-August as families prepare for school. Rainy season tail end.",
+    wear: "Same as July. Light layers, rain gear, sun protection.",
+    highlights: ["Tanabata Festival (Aug 10) romantic atmosphere", "Crowds easing after Aug 15", "Late summer fruit"],
+    pros: ["Crowds decreasing late month", "Still warm enough for all activities", "Good hotel deals late August"],
+    cons: ["Still very hot early month", "Rainy", "Humidity"]
+  },
+  { name: "September", short: "Sep", tempHigh: 26, tempLow: 16, rain: 8, crowd: 3, season: "autumn", color: "amber",
+    summary: "Autumn arrives. The heat breaks, skies clear. Arguably the best month alongside October (sans Golden Week).",
+    wear: "Light layers. Comfortable for walking all day.",
+    highlights: ["Mid-Autumn Festival (mooncakes, lanterns)", "Perfect weather returns", "Golden light for photography"],
+    pros: ["Ideal temperatures", "Clear skies", "Beautiful autumn light"],
+    cons: ["Mid-Autumn Festival = 3-day crowd spike", "Rainy season tail end early month", "Popular hotels book fast"]
+  },
+  { name: "October", short: "Oct", tempHigh: 20, tempLow: 10, rain: 7, crowd: 5, season: "autumn", color: "amber",
+    summary: "Golden Week (Oct 1-7) is the worst crowd period of the year. After Oct 8, it transforms into a perfect autumn paradise.",
+    wear: "Layers. Jacket for evenings. Comfortable walking shoes.",
+    highlights: ["Post-Golden Week = perfect weather + lower crowds", "Autumn foliage on Mount Huashan", "Comfortable cycling on the City Wall"],
+    pros: ["Best weather of the year (after Oct 8)", "Stunning autumn colors", "Crisp, clear air"],
+    cons: ["Golden Week (Oct 1-7) is a nightmare", "Book everything weeks ahead for Oct", "Prices peak"]
+  },
+  { name: "November", short: "Nov", tempHigh: 12, tempLow: 2, rain: 4, crowd: 2, season: "autumn", color: "amber",
+    summary: "Cool and quiet. One of the best value months — autumn colors linger, crowds vanish, prices drop.",
+    wear: "Warm jacket, layers. Gloves for late November.",
+    highlights: ["Ginkgo trees turn golden yellow", "Hot soup noodles are perfect", "Half-price season begins Dec 1"],
+    pros: ["Excellent value", "Beautiful autumn scenery", "Very few crowds"],
+    cons: ["Getting cold", "Shorter daylight hours", "Some outdoor areas closing for winter"]
+  },
+  { name: "December", short: "Dec", tempHigh: 5, tempLow: -4, rain: 2, crowd: 2, season: "winter", color: "blue",
+    summary: "Winter sets in. Cold, dry, and very quiet. Half-price tickets from December 1. Great for budget travelers.",
+    wear: "Heavy winter coat, thermal underwear, warm boots. Indoor heating is excellent.",
+    highlights: ["Half-price tickets at all attractions", "Hot springs in the cold", "Christmas decorations at international hotels"],
+    pros: ["Cheapest time alongside January", "No queues", "Atmospheric cold weather"],
+    cons: ["Very cold", "Grey skies", "Some attractions have reduced hours"]
+  },
+];
+
+const seasonColors: Record<string, string> = {
+  spring: "bg-emerald-50 border-emerald-200 text-emerald-800",
+  summer: "bg-rose-50 border-rose-200 text-rose-800",
+  autumn: "bg-amber-50 border-amber-200 text-amber-800",
+  winter: "bg-blue-50 border-blue-200 text-blue-800",
+};
+
+const seasonLabels: Record<string, string> = {
+  spring: "Spring", summer: "Summer", autumn: "Autumn", winter: "Winter",
+};
+
+const seasonIcons: Record<string, string> = {
+  spring: "lucide:flower", summer: "lucide:sun", autumn: "lucide:leaf", winter: "lucide:snowflake",
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-4xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Month-by-Month Guide</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Xi'an Weather: When to Go</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Xi'an has four distinct seasons. <strong class="text-stone-700">April-May and September-October (avoid Golden Week)</strong> are the best windows. Summer is brutally hot, winter is cold but cheap and crowd-free. Here's everything you need to know, month by month.</p>
+
+    <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+      <img class="h-auto w-full" src="/images/autumn-terracotta.webp" width="1440" height="810" alt="Terracotta warriors in golden autumn light — Xi'an's best season" loading="lazy" decoding="async" />
+    </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <!-- Quick answer -->
+    <div class="mt-8 rounded-xl bg-terracotta-50 border border-terracotta-200 p-5">
+      <p class="text-sm font-semibold text-terracotta-800 mb-2">The short answer</p>
+      <p class="text-sm text-terracotta-700 leading-relaxed">Best months: <strong>April, May, September, and October (after the 7th)</strong>. Worst time: Golden Week (Oct 1-7) and Chinese New Year week. Cheapest: January, February, November, December. Hottest: July-August (35°C+). Coldest: January (-5 to 5°C).</p>
+    </div>
+
+    <!-- Temperature chart (pure CSS) -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Temperature Overview</h2>
+      <div class="rounded-xl border border-stone-200 bg-white p-5 overflow-x-auto">
+        <div class="min-w-[600px]">
+          <!-- Header -->
+          <div class="flex items-center gap-1 mb-3">
+            <span class="w-12 text-xs text-stone-400 shrink-0"></span>
+            {months.map(m => (
+              <span class="flex-1 text-center text-[10px] font-medium text-stone-400">{m.short}</span>
+            ))}
+          </div>
+          <!-- High temp bars -->
+          <div class="flex items-center gap-1 mb-1">
+            <span class="w-12 text-[10px] text-rose-500 shrink-0 text-right pr-1">High</span>
+            {months.map(m => {
+              const pct = Math.max(0, ((m.tempHigh + 5) / 40) * 100);
+              return (
+                <div class="flex-1 flex justify-center">
+                  <div class="w-full max-w-[28px] rounded-sm bg-rose-200" style={`height: ${Math.max(4, pct * 0.4)}px`}>
+                    <span class="text-[9px] text-rose-600 font-semibold block text-center">{m.tempHigh}°</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <!-- Low temp bars -->
+          <div class="flex items-center gap-1 mb-3">
+            <span class="w-12 text-[10px] text-blue-500 shrink-0 text-right pr-1">Low</span>
+            {months.map(m => {
+              const pct = Math.max(0, ((m.tempLow + 5) / 40) * 100);
+              return (
+                <div class="flex-1 flex justify-center">
+                  <div class="w-full max-w-[28px] rounded-sm bg-blue-200" style={`height: ${Math.max(4, pct * 0.4)}px`}>
+                    <span class="text-[9px] text-blue-600 font-semibold block text-center">{m.tempLow}°</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <!-- Crowd level -->
+          <div class="flex items-center gap-1">
+            <span class="w-12 text-[10px] text-stone-400 shrink-0 text-right pr-1">Crowds</span>
+            {months.map(m => (
+              <div class="flex-1 flex justify-center">
+                <div class={`w-5 h-5 rounded-full ${m.crowd <= 2 ? 'bg-green-200' : m.crowd <= 3 ? 'bg-amber-200' : m.crowd <= 4 ? 'bg-orange-200' : 'bg-red-300'} flex items-center justify-center`}>
+                  <span class="text-[9px] font-bold text-stone-600">{m.crowd}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-4 mt-2 text-[10px] text-stone-400">
+        <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-green-200"></span> Quiet (1-2)</span>
+        <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-200"></span> Moderate (3)</span>
+        <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-orange-200"></span> Busy (4)</span>
+        <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-red-300"></span> Packed (5)</span>
+      </div>
+    </section>
+
+    <!-- Month by month cards -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">Month-by-Month Breakdown</h2>
+      <div class="space-y-4">
+        {months.map(m => (
+          <div class={`rounded-2xl border p-5 md:p-6 ${seasonColors[m.season]}`}>
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-xl font-bold text-stone-900">{m.name}</h3>
+                  <span class={`text-xs font-medium px-2 py-0.5 rounded-full border ${seasonColors[m.season]} flex items-center gap-1`}><Icon name={seasonIcons[m.season]} class="h-3 w-3" stroke-width="1.5" />{seasonLabels[m.season]}</span>
+                </div>
+                <p class="text-sm text-stone-600 mt-1 leading-relaxed">{m.summary}</p>
+              </div>
+              <div class="shrink-0 text-right">
+                <p class="text-lg font-bold text-stone-800">{m.tempHigh}° / {m.tempLow}°</p>
+                <p class="text-[10px] text-stone-400">High / Low</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+              <div class="rounded-xl bg-white/60 border border-white/80 p-3">
+                <p class="text-[10px] font-semibold text-stone-400 uppercase mb-1.5">What to Wear</p>
+                <p class="text-xs text-stone-600 leading-relaxed">{m.wear}</p>
+              </div>
+              <div class="rounded-xl bg-white/60 border border-white/80 p-3">
+                <p class="text-[10px] font-semibold text-green-600 uppercase mb-1.5">Pros</p>
+                <ul class="space-y-0.5">
+                  {m.pros.map(p => <li class="text-xs text-stone-600 flex gap-1"><Icon name="lucide:check" class="h-3.5 w-3.5 shrink-0 text-green-600" stroke-width="1.5" />{p}</li>)}
+                </ul>
+              </div>
+              <div class="rounded-xl bg-white/60 border border-white/80 p-3">
+                <p class="text-[10px] font-semibold text-rose-600 uppercase mb-1.5">Cons</p>
+                <ul class="space-y-0.5">
+                  {m.cons.map(c => <li class="text-xs text-stone-600 flex gap-1"><Icon name="lucide:x" class="h-3.5 w-3.5 shrink-0 text-rose-600" stroke-width="1.5" />{c}</li>)}
+                </ul>
+              </div>
+            </div>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {m.highlights.map(h => (
+                <span class="inline-flex items-center gap-1 rounded-full bg-white/70 border border-white/80 px-2.5 py-0.5 text-[11px] text-stone-600">
+                  <Icon name="lucide:star" class="h-3 w-3 text-champagne-600" stroke-width="1.5" /> {h}
+                </span>
+              ))}
+            </div>
+            <div class="mt-3 flex items-center gap-4 text-xs text-stone-500">
+              <span class="flex items-center gap-1"><Icon name="lucide:cloud-rain" class="h-3.5 w-3.5" stroke-width="1.5" />{m.rain} rainy days</span>
+              <span class="flex items-center gap-1"><Icon name="lucide:users" class="h-3.5 w-3.5" stroke-width="1.5" />Crowd level: {m.crowd}/5</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Packing essentials -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Packing Essentials by Season</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { season: "Spring (Mar-May)", items: ["Light jacket for evenings", "Comfortable walking shoes", "Sunscreen (SPF 50+)", "Light rain jacket", "Sunglasses", "Layers for temperature swings"] },
+          { season: "Summer (Jun-Aug)", items: ["Breathable, light clothing", "Wide-brim hat", "Umbrella (rain + sun)", "Reusable water bottle", "Portable fan", "Indoor backup plans for hot afternoons"] },
+          { season: "Autumn (Sep-Nov)", items: ["Light layers", "Comfortable walking shoes", "Light jacket for evenings", "Camera (golden light!)", "Sunscreen", "Rain jacket early September"] },
+          { season: "Winter (Dec-Feb)", items: ["Heavy down jacket", "Thermal underwear", "Warm boots with grip", "Gloves, scarf, hat", "Lip balm (very dry)", "Hand warmers (buy locally)"] },
+        ].map(s => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <h3 class="font-semibold text-stone-800 mb-3">{s.season}</h3>
+            <ul class="space-y-1.5">
+              {s.items.map(item => (
+                <li class="flex gap-2 text-sm text-stone-600">
+                  <span class="text-terracotta-400 shrink-0 mt-0.5">→</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Danger dates -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Dates to Avoid</h2>
+      <div class="space-y-3">
+        {[
+          { name: "Chinese New Year", dates: "Late January or early February (varies yearly)", impact: "3x hotel prices, packed attractions, many restaurants closed for 1-2 weeks", severity: "high" },
+          { name: "Labor Day Holiday", dates: "May 1-5", impact: "Domestic tourism surge. 2-3x normal crowds at major attractions.", severity: "medium" },
+          { name: "Golden Week", dates: "October 1-7", impact: "The worst week to visit. 5-10x normal crowds. Hotels triple in price. Trains sell out weeks ahead.", severity: "high" },
+          { name: "Mid-Autumn Festival", dates: "September or October (1 day)", impact: "3-day weekend. Moderate crowd increase. Beautiful lantern displays.", severity: "low" },
+          { name: "Dragon Boat Festival", dates: "June (1 day)", impact: "3-day weekend. Slight crowd increase. Zongzi (sticky rice dumplings) everywhere.", severity: "low" },
+        ].map(d => (
+          <div class={`rounded-xl border p-4 ${d.severity === 'high' ? 'border-rose-200 bg-rose-50' : d.severity === 'medium' ? 'border-amber-200 bg-amber-50' : 'border-stone-200 bg-white'}`}>
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <p class={`font-semibold ${d.severity === 'high' ? 'text-rose-800' : d.severity === 'medium' ? 'text-amber-800' : 'text-stone-800'}`}>{d.name}</p>
+                <p class="text-xs text-stone-500 mt-0.5">{d.dates}</p>
+                <p class="text-sm text-stone-600 mt-1">{d.impact}</p>
+              </div>
+              <span class={`shrink-0 text-xs font-bold px-2 py-0.5 rounded-full ${d.severity === 'high' ? 'bg-rose-200 text-rose-800' : d.severity === 'medium' ? 'bg-amber-200 text-amber-800' : 'bg-stone-200 text-stone-600'}`}>
+                {d.severity === 'high' ? 'AVOID' : d.severity === 'medium' ? 'CAUTION' : 'OK'}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Verdict -->
+    <section class="mt-12 rounded-2xl bg-stone-900 text-white p-6 md:p-8">
+      <h2 class="text-2xl font-semibold mb-4">Our Verdict</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="rounded-xl bg-white/10 border border-white/10 p-4">
+          <p class="text-xs font-semibold text-amber-400 uppercase mb-1">Best Overall</p>
+          <p class="text-lg font-bold">April & September</p>
+          <p class="text-sm text-white/70 mt-1">Perfect weather, manageable crowds, beautiful scenery.</p>
+        </div>
+        <div class="rounded-xl bg-white/10 border border-white/10 p-4">
+          <p class="text-xs font-semibold text-green-400 uppercase mb-1">Best Budget</p>
+          <p class="text-lg font-bold">November & January</p>
+          <p class="text-sm text-white/70 mt-1">Half-price tickets, empty attractions, authentic experience.</p>
+        </div>
+        <div class="rounded-xl bg-white/10 border border-white/10 p-4">
+          <p class="text-xs font-semibold text-rose-400 uppercase mb-1">Worst Time</p>
+          <p class="text-lg font-bold">Oct 1-7 & CNY week</p>
+          <p class="text-sm text-white/70 mt-1">Extreme crowds, tripled prices, booked-out transport.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Weather FAQ</h2>
+      <div class="space-y-4">
+        {faqs.map(f => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <p class="font-semibold text-stone-800 mb-2">{f.q}</p>
+            <p class="text-sm text-stone-500 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/best-time-to-visit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Detailed Best Time Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+      <a href="/itineraries" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+        Trip Itineraries
+      </a>
+    </div>
+  </div>
+</BaseLayout>

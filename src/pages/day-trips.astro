@@ -1,0 +1,262 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import SectionHeader from "../components/SectionHeader.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+const pageTitle = "Xi'an Day Trips — Huashan, Luoyang & Beyond";
+const pageDesc = "Best day trips from Xi'an: Mount Huashan, Luoyang, Hukou Waterfall, Famen Temple, and Foping pandas. Travel times, costs, and tips for each route.";
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Li Wei","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Day Trips","item":"https://xi-an-china.com/day-trips"}]}]};
+
+const trips = [
+  {
+    name: "Mount Huashan",
+    chinese: "华山",
+    time: "Full day (8–10 hours)",
+    travel: "30 min high-speed train + cable car",
+    cost: "$24 (entry) + $12–$21 (cable car)",
+    difficulty: "Strenuous",
+    icon: "lucide:mountain",
+    badge: "Must Do",
+    badgeColor: "terracotta",
+    desc: "One of China's Five Great Sacred Mountains. Dramatic granite peaks, the infamous Plank Walk bolted to a vertical cliff at 2,000m, and sunrise views that rank among China's best. Take the first train from Xi'an North at 7:00 AM — you'll be on the summit by 9:30 AM.",
+    tips: [
+      "Take the West Peak cable car up ($21) and North Peak cable car down ($12) to save energy",
+      "The Plank Walk costs $4 extra and requires signing a waiver — not for those with vertigo",
+      "Bring water and snacks — prices on the mountain are 3–5× city prices",
+      "Best in spring or autumn; summer is dangerously hot on exposed sections"
+    ],
+    href: "/attractions/mount-huashan"
+  },
+  {
+    name: "Luoyang & Longmen Grottoes",
+    chinese: "洛阳 · 龙门石窟",
+    time: "1–2 days",
+    travel: "1.5 hours by high-speed train",
+    cost: "$26 (train) + $13 (grottoes entry)",
+    difficulty: "Easy",
+    icon: "lucide:swords",
+    badge: "Worth It",
+    badgeColor: "amber",
+    desc: "100,000+ Buddhist statues carved into limestone cliffs over 1,500 years. The largest Buddha is 17 meters tall. Combine with White Horse Temple (China's first Buddhist temple) and Luoyang Museum. The high-speed train makes this an easy day trip or overnight.",
+    tips: [
+      "Longmen Grottoes are best visited in the morning when light hits the west cliff face",
+      "The night illumination of the grottoes (April–October) is spectacular and less crowded",
+      "Luoyang water banquet (洛阳水席) is the local specialty — try it for lunch",
+      "Can be combined with Shaolin Temple (1 hour by bus from Luoyang)"
+    ],
+    href: null
+  },
+  {
+    name: "Famen Temple",
+    chinese: "法门寺",
+    time: "Half day to full day",
+    travel: "2 hours by bus or private car",
+    cost: "$15 (entry)",
+    difficulty: "Easy",
+    icon: "lucide:landmark",
+    badge: "Hidden Gem",
+    badgeColor: "emerald",
+    desc: "Houses a finger bone relic of the Buddha, one of the most sacred objects in Chinese Buddhism. The Tang Dynasty underground palace where the relic was hidden for 1,000 years is now a museum. The modern temple complex is vast and impressive.",
+    tips: [
+      "The underground palace museum is the highlight — do not skip it",
+      "Combine with Qianling Mausoleum (Tang Dynasty imperial tomb) for a full day",
+      "Bus from Xi'an Fenghao Bus Station takes about 2 hours",
+      "A private car ($60–$75 round trip) is more comfortable for combining multiple sites"
+    ],
+    href: null
+  },
+  {
+    name: "Hukou Waterfall",
+    chinese: "壶口瀑布",
+    time: "1–2 days",
+    travel: "4 hours by car or bus from Xi'an",
+    cost: "$15 (entry)",
+    difficulty: "Moderate",
+    icon: "lucide:waves",
+    badge: "Adventure",
+    badgeColor: "rose",
+    desc: "The Yellow River's most dramatic point — a 30-meter waterfall where the river narrows from 300 meters to 50 meters. The roar can be heard from kilometers away. Best visited in July–October when water volume is highest, or in January–February for the stunning ice formations.",
+    tips: [
+      "July–September has the most powerful water flow after summer rains",
+      "January–February ice waterfall formations are otherworldly and far less crowded",
+      "Wear clothes you don't mind getting wet — the spray reaches 30+ meters",
+      "Best combined with Yucha Grand Canyon (1 day) for a northern Shaanxi route"
+    ],
+    href: null
+  },
+  {
+    name: "Foping Panda Valley",
+    chinese: "佛坪熊猫谷",
+    time: "1–2 days",
+    travel: "2 hours by high-speed train + bus",
+    cost: "$12 (entry)",
+    difficulty: "Easy",
+    icon: "lucide:paw-print",
+    badge: "Family",
+    badgeColor: "sky",
+    desc: "A natural giant panda habitat in the Qinling Mountains, less crowded than Chengdu's panda base. The pandas here are wilder and more active. You may also spot golden monkeys, takin, and crested ibis — all endangered species unique to this region.",
+    tips: [
+      "Visit early morning (8–10 AM) when pandas are most active and feeding",
+      "The Qinling pandas have distinct brown-and-white coloring, different from Sichuan pandas",
+      "Combine with a visit to the Qinling Mountains for hiking and wildlife",
+      "Take the Xi'an to Hanzhong high-speed train, then transfer locally"
+    ],
+    href: null
+  },
+  {
+    name: "Qianling Mausoleum",
+    chinese: "乾陵",
+    time: "Half day",
+    travel: "1.5 hours by bus or car",
+    cost: "$15 (entry)",
+    difficulty: "Easy",
+    icon: "lucide:crown",
+    badge: "History",
+    badgeColor: "terracotta",
+    desc: "The joint tomb of Emperor Gaozong and Empress Wu Zetian — China's only female emperor. The Spirit Way lined with stone statues is one of the best-preserved in China. The tomb has never been opened — archaeologists believe it contains priceless Tang Dynasty treasures.",
+    tips: [
+      "The headless stone statues and foreign ambassadors along the Spirit Way are fascinating",
+      "Combine with Famen Temple for a full day trip west of Xi'an",
+      "The tomb mound is set into a natural mountain — the scale is impressive",
+      "Far fewer tourists than the Terracotta Warriors — a peaceful alternative"
+    ],
+    href: null
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Beyond Xi'an</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Day Trips from Xi'an</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Xi'an is the perfect base for exploring central and western China. High-speed trains and highways make mountains, ancient temples, waterfalls, and even pandas accessible in a day or two.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/mount-huashan.webp" width="1440" height="810" alt="The Chess Pavilion on Mount Huashan — the most dramatic day trip from Xi'an" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <!-- Quick comparison table -->
+    <div class="mt-8 rounded-xl border border-stone-200 overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-stone-50 border-b border-stone-200">
+          <tr>
+            <th class="text-left px-4 py-2.5 font-medium text-stone-700">Destination</th>
+            <th class="text-left px-4 py-2.5 font-medium text-stone-700">Travel Time</th>
+            <th class="text-left px-4 py-2.5 font-medium text-stone-700">Cost</th>
+            <th class="text-left px-4 py-2.5 font-medium text-stone-700">Best For</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-stone-100">
+          <tr><td class="px-4 py-2.5 text-stone-700 font-medium"> Mount Huashan</td><td class="px-4 py-2.5 text-stone-500">30 min train</td><td class="px-4 py-2.5 text-stone-500">$36–$45</td><td class="px-4 py-2.5 text-stone-500">Adventure</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-700 font-medium"> Longmen Grottoes</td><td class="px-4 py-2.5 text-stone-500">1.5 hr train</td><td class="px-4 py-2.5 text-stone-500">$39</td><td class="px-4 py-2.5 text-stone-500">History</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-700 font-medium"> Famen Temple</td><td class="px-4 py-2.5 text-stone-500">2 hr bus/car</td><td class="px-4 py-2.5 text-stone-500">$15</td><td class="px-4 py-2.5 text-stone-500">Buddhism</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-700 font-medium"> Hukou Waterfall</td><td class="px-4 py-2.5 text-stone-500">4 hr car</td><td class="px-4 py-2.5 text-stone-500">$15</td><td class="px-4 py-2.5 text-stone-500">Nature</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-700 font-medium"> Foping Pandas</td><td class="px-4 py-2.5 text-stone-500">2 hr train</td><td class="px-4 py-2.5 text-stone-500">$12</td><td class="px-4 py-2.5 text-stone-500">Family</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-700 font-medium"> Qianling Mausoleum</td><td class="px-4 py-2.5 text-stone-500">1.5 hr car</td><td class="px-4 py-2.5 text-stone-500">$15</td><td class="px-4 py-2.5 text-stone-500">Tang Dynasty</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Trip cards -->
+    <div class="mt-12 space-y-8">
+      {trips.map(t => (
+        <article class="rounded-2xl border border-stone-200 bg-white overflow-hidden">
+          <div class="p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <Icon name={t.icon} class="h-7 w-7 text-champagne-600" stroke-width="1.5" aria-hidden="true" />
+                  <h2 class="text-xl font-semibold text-stone-900">{t.name}</h2>
+                </div>
+                <p class="text-sm text-stone-400">{t.chinese}</p>
+              </div>
+              <span class={`shrink-0 text-xs font-bold px-2.5 py-1 rounded-full ${
+                t.badgeColor === 'terracotta' ? 'bg-terracotta-50 text-terracotta-700' :
+                t.badgeColor === 'amber' ? 'bg-amber-50 text-amber-700' :
+                t.badgeColor === 'emerald' ? 'bg-emerald-50 text-emerald-700' :
+                t.badgeColor === 'rose' ? 'bg-rose-50 text-rose-700' :
+                t.badgeColor === 'sky' ? 'bg-sky-50 text-sky-700' :
+                'bg-stone-100 text-stone-600'
+              }`}>{t.badge}</span>
+            </div>
+
+            <div class="flex flex-wrap gap-3 mb-4 text-xs">
+              <span class="bg-stone-100 text-stone-600 px-2.5 py-1 rounded-full"><Icon name="lucide:clock" class="inline h-3.5 w-3.5 mr-1 -mt-0.5" stroke-width="1.5" />{t.time}</span>
+              <span class="bg-stone-100 text-stone-600 px-2.5 py-1 rounded-full"><Icon name="lucide:train-front" class="inline h-3.5 w-3.5 mr-1 -mt-0.5" stroke-width="1.5" />{t.travel}</span>
+              <span class="bg-stone-100 text-stone-600 px-2.5 py-1 rounded-full"><Icon name="lucide:wallet" class="inline h-3.5 w-3.5 mr-1 -mt-0.5" stroke-width="1.5" />{t.cost}</span>
+            </div>
+
+            <p class="text-sm text-stone-600 leading-relaxed mb-4">{t.desc}</p>
+
+            <div class="space-y-2">
+              <p class="text-xs font-semibold text-stone-500 uppercase tracking-wide">Insider Tips</p>
+              {t.tips.map(tip => (
+                <p class="flex gap-2 text-sm text-stone-500">
+                  <span class="shrink-0 text-terracotta-500 mt-0.5">→</span>
+                  <span>{tip}</span>
+                </p>
+              ))}
+            </div>
+
+            {t.href && (
+              <a href={t.href} class="inline-flex items-center gap-1 mt-4 text-sm font-medium text-terracotta-600 hover:text-terracotta-700">
+                Full guide →
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Practical tips -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Day Trip Planning Tips</h2>
+      <div class="space-y-3">
+        {[
+          { title: "Book trains in advance", text: "High-speed trains to Huashan and Luoyang sell out during holidays. Book on Trip.com or 12306.cn at least 3 days ahead. G-trains (G-series) are the fastest." },
+          { title: "Start early", text: "For day trips, leave Xi'an by 7–8 AM. Most attractions close by 5–6 PM. Starting early also means fewer crowds at popular sites." },
+          { title: "Bring your passport", text: "Train tickets in China are linked to your ID. Foreign travelers must carry the original passport used for booking — photocopies are not accepted." },
+          { title: "Combine nearby sites", text: "Famen Temple + Qianling Mausoleum = full day west. Longmen Grottoes + Shaolin Temple = 2 days in Luoyang. Plan by geography, not by popularity." },
+        ].map(t => (
+          <div class="flex gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-terracotta-100 text-terracotta-700 text-[10px] font-bold mt-0.5">→</span>
+            <div><strong class="text-sm text-stone-700">{t.title}:</strong> <span class="text-sm text-stone-500">{t.text}</span></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/attractions/mount-huashan" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Mount Huashan Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+      <a href="/itineraries" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+        See All Itineraries
+      </a>
+    </div>
+  </div>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Quick Comparison: Which Day Trip Is Right for You?</h2>
+      <div class="rounded-xl border border-stone-200 overflow-hidden text-xs">
+        <table class="w-full">
+          <thead class="bg-stone-50 border-b"><tr><th class="text-left px-3 py-2 font-medium">Trip</th><th class="text-left px-3 py-2 font-medium">Time</th><th class="text-left px-3 py-2 font-medium">Cost</th><th class="text-left px-3 py-2 font-medium">Best For</th><th class="text-left px-3 py-2 font-medium">Difficulty</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="px-3 py-2">Mount Huashan</td><td class="px-3 py-2">Full day</td><td class="px-3 py-2">$60-$90</td><td class="px-3 py-2">Hikers, adventurers</td><td class="px-3 py-2">Hard</td></tr>
+            <tr><td class="px-3 py-2">Terracotta Warriors</td><td class="px-3 py-2">Half day</td><td class="px-3 py-2">$22-$30</td><td class="px-3 py-2">History lovers, first-timers</td><td class="px-3 py-2">Easy</td></tr>
+            <tr><td class="px-3 py-2">Han Yangling</td><td class="px-3 py-2">Half day</td><td class="px-3 py-2">$15-$22</td><td class="px-3 py-2">Archaeology buffs, quiet seekers</td><td class="px-3 py-2">Easy</td></tr>
+            <tr><td class="px-3 py-2">Huaqing Pool</td><td class="px-3 py-2">Half day</td><td class="px-3 py-2">$22-$30</td><td class="px-3 py-2">Romance, history, hot springs</td><td class="px-3 py-2">Easy</td></tr>
+            <tr><td class="px-3 py-2">Famen Temple</td><td class="px-3 py-2">Full day</td><td class="px-3 py-2">$30-$45</td><td class="px-3 py-2">Buddhist pilgrims, culture</td><td class="px-3 py-2">Easy</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-stone-400">Costs include round-trip transport + entry tickets + basic food. Excludes guide fees and optional add-ons (cable cars, performances).</p>
+    </section>
+
+  </div>
+</BaseLayout>

@@ -1,0 +1,42 @@
+---
+const periods = [
+  { period: "Chinese New Year", date: "Late Jan – Early Feb", level: 5, note: "Largest human migration. Train tickets sell out. Book 3+ months ahead.", color: "bg-red-500" },
+  { period: "Qing Ming Festival", date: "Early April", level: 3, note: "Long weekend. Popular sites get busy but manageable.", color: "bg-amber-400" },
+  { period: "Labor Day", date: "May 1–5", level: 4, note: "Domestic travel peak. Hotels 2-3x normal price.", color: "bg-red-400" },
+  { period: "Dragon Boat Festival", date: "Late May / June", level: 3, note: "Hot but fewer crowds than Labor Day.", color: "bg-amber-400" },
+  { period: "Summer Holidays", date: "Jul – Aug", level: 4, note: "Students on break. Terracotta Warriors at capacity.", color: "bg-red-400" },
+  { period: "Mid-Autumn Festival", date: "September", level: 3, note: "Mooncakes everywhere. Manageable crowds, great weather.", color: "bg-amber-400" },
+  { period: "Golden Week", date: "Oct 1–7", level: 5, note: "AVOID. Every site, train, and hotel is maxed out.", color: "bg-red-500" },
+  { period: "Early November", date: "Nov 1–15", level: 1, note: "The sweet spot. No holidays, perfect weather, zero queues.", color: "bg-emerald-500" },
+];
+---
+
+<section class="reveal bg-stone-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28">
+    <div class="md:flex md:items-start md:justify-between gap-8 mb-12">
+      <div class="max-w-xl">
+        <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Crowd Intelligence</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white leading-tight">
+          Dodge<br/><em class="font-normal italic">the crowds</em>
+        </h2>
+        <p class="mt-4 text-stone-400 leading-relaxed">Know exactly when Xi'an is packed and when you can have it almost to yourself.</p>
+      </div>
+    </div>
+    <div class="space-y-3">
+      {periods.map((item) => (
+        <div class="flex items-center gap-4 bg-stone-800 rounded-xl p-4">
+          <div class={`w-3 h-3 rounded-full flex-shrink-0 ${item.color}`}></div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-stone-100">{item.period} <span class="text-stone-400 font-normal ml-1">{item.date}</span></p>
+            <p class="text-xs text-stone-500 mt-0.5">{item.note}</p>
+          </div>
+          <div class="flex items-center gap-1">
+            {Array.from({length: 5}, (_,i) => (
+              <span class={`w-2 h-2 rounded-full ${i < item.level ? item.color : 'bg-stone-600'}`}></span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

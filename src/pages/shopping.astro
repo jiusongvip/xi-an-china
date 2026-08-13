@@ -1,0 +1,201 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+import { Icon } from "astro-icon/components";
+const pageTitle = "Xi'an Shopping — What to Buy & Where";
+const pageDesc = "What to buy in Xi'an: terracotta replicas, calligraphy brushes, jade, tea, and Muslim Quarter snacks. Where to shop, bargaining tips, and tourist traps.";
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Wang Fang","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Shopping","item":"https://xi-an-china.com/shopping"}]}]};
+
+const mustBuy = [
+  { item: "Terracotta Warrior Replica", price: "$4-$75", where: "Terracotta Warriors gift shop, Muslim Quarter", quality: "Museum shop = authentic, certified. Street vendors = factory-made. A good replica costs $15-$45.", tip: "The official museum shop sells numbered, certified replicas. These make the best souvenirs. Street versions are $3-$7 but feel cheap." },
+  { item: "Calligraphy Set (文房四宝)", price: "$7-$120", where: "Shuyuanmen Calligraphy Street (书院门)", quality: "Shuyuanmen is THE street for calligraphy supplies. Brushes from $1.5 (student) to $75 + (master).", tip: "Buy a set of 4 brushes (small, medium, large, extra-large) for $12-$22. The shop owners will demonstrate — watch before buying." },
+  { item: "Xi'an Fan (折扇)", price: "$3-$45", where: "Muslim Quarter, Shuyuanmen, Bell Tower area shops", quality: "Hand-painted fans with landscapes or calligraphy. $3-$7 for machine-printed, $15 + for hand-painted.", tip: "Ask to see the difference between printed and hand-painted. Once you see them side by side, the difference is obvious." },
+  { item: "Chinese Tea", price: "$7-$75/tin", where: "Tea markets near Bell Tower, specialty shops", quality: "Shaanxi is famous for Ziyang green tea. Also find good Pu'er, Longjing, and Tieguanyin from other provinces.", tip: "Never buy tea from the first shop. Tea shops will invite you to sit and taste — this is normal. Taste 3-4 shops before deciding." },
+  { item: "Jade Jewelry", price: "$7-$300 +", where: "Muslim Quarter, department stores", quality: "Most 'jade' in tourist areas is glass or low-grade stone. Real jade (和田玉) is cold to touch and has natural imperfections.", tip: "Only buy jade if you know what you're doing. For most tourists, skip it. If you must buy, go to a reputable department store with a return policy." },
+  { item: "Muslim Quarter Snacks", price: "$1.5-$7", where: "Muslim Quarter (回民街)", quality: "Persimmon cakes, walnut crackers, dried fruits, spice mixes, and lamb jerky. All make great take-home gifts.", tip: "Buy persimmon cakes from the stalls making them fresh (you can watch). They're $0.5 each and incredibly moreish." },
+  { item: "Paper Cuttings (剪纸)", price: "$1.5-$15", where: "Muslim Quarter, Shuyuanmen", quality: "Traditional Chinese paper cut art. Red paper in intricate designs — zodiac animals, flowers, characters.", tip: "Watch the artist cut them by hand — some are incredibly skilled. Hand-cut pieces ($4-$15) are worth much more than machine-cut ($0.5-$1.5)." },
+  { item: "Shadow Puppetry Set", price: "$4-$30", where: "Shaanxi History Museum gift shop, specialty stores", quality: "Colorful leather puppets used in traditional Shaanxi shadow plays. A unique and lightweight souvenir.", tip: "The museum gift shop has the best quality. These make excellent gifts — lightweight, unbreakable, and uniquely Shaanxi." },
+];
+
+const shoppingAreas = [
+  { name: "Muslim Quarter (回民街)", type: "Tourist food & souvenirs", vibe: "Bustling, chaotic, fun. The main drag (Beiyuanmen) is touristy; dive deeper into Sajinqiao and Dapiyuan for authentic experiences.", bestFor: "Snacks, paper cuttings, small souvenirs, atmosphere", avoid: "Overpriced 'jade' and generic tourist trinkets on the main street" },
+  { name: "Shuyuanmen Calligraphy Street (书院门)", type: "Cultural supplies", vibe: "Scholarly, quiet, authentic. Lined with calligraphy shops, ink stone dealers, and scroll painters. A cultural experience in itself.", bestFor: "Calligraphy sets, ink stones, scrolls, seals, art supplies", avoid: "Nothing — prices here are fair and quality is high" },
+  { name: "SAGA (小寨) Shopping District", type: "Modern mall shopping", vibe: "Xi'an's version of a modern shopping district. Malls, international brands, restaurants. Young locals hang out here.", bestFor: "International brands, electronics, modern fashion", avoid: "Nothing unique to Xi'an — same brands as any Chinese city" },
+  { name: "SKP Xi'an", type: "Luxury mall", vibe: "High-end department store near South Gate. Louis Vuitton, Gucci, etc. Also has a great supermarket for imported goods.", bestFor: "Luxury goods, imported food, high-end tea gifts", avoid: "Tourist traps outside the mall selling 'branded' goods" },
+  { name: "Yongxing Fang (永兴坊)", type: "Regional food market", vibe: "Less touristy food market showcasing Shaanxi regional specialties. Each stall represents a different Shaanxi city.", bestFor: "Regional snacks you can't find elsewhere, packaged gifts", avoid: "Going on weekends — it gets very crowded" },
+  { name: "Huimin Road Antique Market", type: "Antiques & collectibles", vibe: "Early morning market (6-9 AM) for antiques, old coins, vintage items. Most 'antiques' are reproductions, but it's fun to browse.", bestFor: "Vintage items, old coins, reproduction antiques", avoid: "Buying anything expensive as genuine — almost everything is a reproduction" },
+];
+
+const bargainingTips = [
+  { rule: "Where bargaining works", detail: "Muslim Quarter street vendors, antique markets, independent souvenir shops, taxi drivers (rarely). NOT in malls, supermarkets, or restaurants." },
+  { rule: "Starting offer", detail: "Start at 40-50% of the asking price. The vendor will counter at 70-80%. Meet at 60% is a fair deal. If they agree to your first offer immediately, you offered too much." },
+  { rule: "The walk-away", detail: "The most powerful bargaining tool. If the price isn't right, slowly walk away. 70% of the time, they'll call you back with a better price." },
+  { rule: "Bulk discount", detail: "Buying 3+ of the same item? Ask for a bulk price. 'I buy three, how much?' (我买三个，多少钱？) often gets 15-20% off." },
+  { rule: "Cash advantage", detail: "Some vendors prefer cash (no mobile payment fee). Offering to pay cash can get you 5-10% off. Say: 'Cash, cheaper?' (现金，便宜？)" },
+  { rule: "Know when to stop", detail: "If the difference is less than $1.5 just pay it. Your time is worth more. Bargaining should be fun, not stressful." },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Wang Fang" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">What to Bring Home</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Xi'an Shopping Guide</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Xi'an is a shopper's paradise — if you know what to buy and where. From authentic terracotta replicas to calligraphy sets, the city offers unique souvenirs you can't find anywhere else. Here's how to shop smart and avoid tourist traps.</p>
+
+  <AuthorSignal authorId="wang-fang" />
+
+    <!-- Quick answer -->
+    <div class="mt-8 rounded-xl bg-terracotta-50 border border-terracotta-200 p-5">
+      <p class="text-sm font-semibold text-terracotta-800 mb-2">Top 3 must-buy souvenirs</p>
+      <ol class="text-sm text-terracotta-700 leading-relaxed space-y-1">
+        <li><strong>1. Terracotta Warrior replica</strong> from the official museum shop ($15-$45 certified)</li>
+        <li><strong>2. Calligraphy set</strong> from Shuyuanmen Street ($12-$22 for a 4-brush set)</li>
+        <li><strong>3. Muslim Quarter snacks</strong> — persimmon cakes, spice mixes, dried fruits ($1.5-$7)</li>
+      </ol>
+    </div>
+
+    <!-- Must-buy items -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">What to Buy in Xi'an</h2>
+      <div class="space-y-4">
+        {mustBuy.map(item => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <h3 class="font-semibold text-stone-800">{item.item}</h3>
+              <span class="shrink-0 text-xs font-medium text-terracotta-700 bg-terracotta-50 rounded-full px-2.5 py-0.5">{item.price}</span>
+            </div>
+            <p class="text-xs text-stone-400 mb-2 flex items-center gap-1"><Icon name="lucide:map-pin" class="h-3 w-3" stroke-width="1.5" />{item.where}</p>
+            <p class="text-sm text-stone-500 leading-relaxed mb-2">{item.quality}</p>
+            <p class="text-xs text-emerald-700 bg-emerald-50 rounded-lg px-3 py-1.5 border border-emerald-100"><strong>Insider tip:</strong> {item.tip}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Shopping areas -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Where to Shop</h2>
+      <div class="space-y-4">
+        {shoppingAreas.map(a => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <div class="flex items-start justify-between gap-3 mb-1">
+              <h3 class="font-semibold text-stone-800">{a.name}</h3>
+              <span class="shrink-0 text-[10px] font-medium text-stone-500 bg-stone-100 rounded-full px-2 py-0.5">{a.type}</span>
+            </div>
+            <p class="text-sm text-stone-500 leading-relaxed mb-2">{a.vibe}</p>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="rounded-lg bg-emerald-50 border border-emerald-100 p-2">
+                <p class="font-semibold text-emerald-700 mb-0.5">Best for</p>
+                <p class="text-emerald-600">{a.bestFor}</p>
+              </div>
+              <div class="rounded-lg bg-rose-50 border border-rose-100 p-2">
+                <p class="font-semibold text-rose-700 mb-0.5">Avoid</p>
+                <p class="text-rose-600">{a.avoid}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Bargaining guide -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Bargaining Guide</h2>
+      <div class="rounded-xl bg-amber-50 border border-amber-200 p-5 mb-4">
+        <p class="text-sm text-amber-800 leading-relaxed"><strong>When to bargain:</strong> Street vendors, antique markets, independent souvenir shops. <strong>When NOT to:</strong> Malls, supermarkets, restaurants, museums, and anywhere with a printed price tag.</p>
+      </div>
+      <div class="space-y-3">
+        {bargainingTips.map(t => (
+          <div class="flex gap-3">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">→</span>
+            <div>
+              <p class="font-semibold text-sm text-stone-800">{t.rule}</p>
+              <p class="text-sm text-stone-500 leading-relaxed">{t.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Useful phrases for shopping -->
+    <section class="mt-12 rounded-xl bg-stone-100 border border-stone-200 p-5">
+      <h2 class="text-lg font-semibold text-stone-900 mb-3">Useful Shopping Phrases</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+        {[
+          { zh: "多少钱？", en: "How much?", py: "Duōshao qián?" },
+          { zh: "太贵了", en: "Too expensive", py: "Tài guì le" },
+          { zh: "便宜一点", en: "A little cheaper", py: "Piányi yìdiǎn" },
+          { zh: "可以刷卡吗？", en: "Can I pay by card?", py: "Kěyǐ shuākǎ ma?" },
+          { zh: "我买三个，便宜？", en: "I'll take 3, discount?", py: "Wǒ mǎi sān gè, piányi?" },
+          { zh: "现金，便宜？", en: "Cash, cheaper?", py: "Xiànjīn, piányi?" },
+        ].map(p => (
+          <div class="rounded-lg bg-white border border-stone-200 p-2.5">
+            <p class="font-semibold text-stone-800">{p.zh}</p>
+            <p class="text-xs text-stone-400">{p.py}</p>
+            <p class="text-xs text-stone-500">{p.en}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-3 text-xs text-stone-400">More phrases available in our <a href="/phrasebook" class="text-terracotta-600 hover:text-terracotta-700 underline">complete phrasebook →</a></p>
+    </section>
+
+    <!-- Tourist traps -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Tourist Traps to Avoid</h2>
+      <div class="space-y-3">
+        {[
+          { trap: "'Antique' terracotta warriors from street vendors", reality: "99% are factory-made reproductions. They may be marketed as 'ancient' or 'hand-dug'. Nothing sold on the street is genuinely antique — selling real antiques without a license is illegal." },
+          { trap: "'Jade' jewelry at Muslim Quarter", reality: "Most is glass, plastic, or low-grade stone dyed to look like jade. Real jade (和田玉) costs thousands. Unless you're an expert, skip it." },
+          { trap: "Tea ceremony scams", reality: "Friendly strangers invite you to a 'traditional tea ceremony' at a nearby shop. You end up pressured into buying $75 + tea. Politely decline and walk away." },
+          { trap: "Overpriced 'handmade' goods on Beiyuanmen", reality: "The main Muslim Quarter street charges premium prices for mass-produced items. Walk 200m deeper into the side alleys for the same items at 30-50% less." },
+        ].map(t => (
+          <div class="rounded-xl border border-rose-200 bg-rose-50 p-4">
+            <p class="font-semibold text-sm text-rose-800 mb-1 flex items-center gap-1"><Icon name="lucide:triangle-alert" class="h-3.5 w-3.5" stroke-width="1.5" />{t.trap}</p>
+            <p class="text-sm text-rose-700 leading-relaxed">{t.reality}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/food" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Food Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+      <a href="/phrasebook" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+        Shopping Phrases
+      </a>
+    </div>
+  </div>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Shopping by District: Where to Go for What</h2>
+      <div class="space-y-3 text-sm">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Muslim Quarter — Souvenirs & Snacks</p>
+          <p class="text-stone-500">Terracotta Warrior replicas, shadow puppets, dried fruit, nuts, Chinese paper cuts. Bargain everywhere. Start at 30-40% of asking price.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Shuyuanmen Street — Calligraphy & Art</p>
+          <p class="text-stone-500">Traditional brushes, ink stones, rice paper, scrolls. Near the South Gate. More authentic than the Muslim Quarter for art supplies. Fixed prices in most shops.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Xiaozhai Area — Modern Malls</p>
+          <p class="text-stone-500">For everyday shopping. Sai Ge Computer City for electronics. Xiaozhai International for fashion. Metro Line 2/3, Xiaozhai Station.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Bargaining Guide: How to Negotiate in Xi'an</h2>
+      <div class="space-y-2 text-sm text-stone-600">
+        <p><strong class="text-stone-800">Where to bargain:</strong> Muslim Quarter street stalls, souvenir markets, antique shops (most "antiques" are reproductions — pay accordingly).</p>
+        <p><strong class="text-stone-800">Where NOT to bargain:</strong> Department stores, supermarkets, pharmacies, official museum gift shops, restaurants.</p>
+        <p><strong class="text-stone-800">Strategy:</strong> Start at 30% of the asking price for souvenirs. Expect to settle at 40-60%. Walk away if you do not like the price — the vendor will often call you back with a better offer. Stay friendly and smile — aggressive bargaining is considered rude.</p>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

@@ -1,0 +1,123 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+const morningTimes = [
+  { time: "7:30 AM", act: "Enter Terracotta Warriors Museum. Pit 1 before the tour groups arrive." },
+  { time: "8:30 AM", act: "Walk Pit 1 from end to end. The lighting is best from the east windows in the morning." },
+  { time: "10:00 AM", act: "Pit 2 (cavalry) then Pit 3 (command center). The bronze chariots are in the exhibition hall between Pit 1 and 2." },
+  { time: "11:30 AM", act: "Taxi to Huaqing Hot Springs (10 min, $2). Explore the Tang Dynasty imperial baths." },
+  { time: "1:00 PM", act: "Lunch at a farmhouse restaurant near the Terracotta Warriors — hand-pulled biangbiang noodles." },
+  { time: "3:00 PM", act: "Return to downtown (Metro Line 9, 40 min). Walk to South Gate of the city wall." },
+  { time: "4:30 PM", act: "Rent a bike ($7) and cycle the wall. Golden hour hits the south side around 5:30." },
+  { time: "6:30 PM", act: "Walk to the Bell Tower and Drum Tower. Photos at dusk when the lights come on." },
+  { time: "7:30 PM", act: "Dinner in the Muslim Quarter. Start on Beiyuanmen, then explore Sajinqiao for the real local food." },
+];
+
+const pageTitle = "Xi’an Itinerary: 1, 3 & 5 Day Plans (2026)";
+const pageDesc = "Discover flexible Xi'an itineraries for 1, 3, or 5 days with field-tested timing, daily budgets, and tips for Mount Huashan and more attractions.";
+
+const faqs = [
+  { q: "How many days do I need in Xi'an?", a: "Three days is the sweet spot for most first-time visitors. Day 1: Terracotta Warriors + Huaqing. Day 2: City Wall + Shaanxi Museum + Big Wild Goose Pagoda. Day 3: Han Yangling or Daming Palace + shopping. Add a 4th day for Mount Huashan. One day is possible but rushed — you will only see the Warriors and City Wall." },
+  { q: "Is the 1-day itinerary realistic?", a: "It is packed but doable if you start by 7:30 AM. You will see the Terracotta Warriors (3 hours), Huaqing Hot Springs (1.5 hours), City Wall at sunset (2 hours), and Muslim Quarter for dinner. Budget $60-$75 per person. You will miss the museums, pagoda, and other attractions — come back for more if possible." },
+  { q: "Should I add Mount Huashan?", a: "If you have 4+ days and reasonable fitness, absolutely. It is one of China's Five Great Mountains and the most dramatic hike available as a day trip from Xi'an. The Plank Walk is unforgettable. If you only have 2-3 days, skip it and focus on the city's historical attractions." },
+  { q: "What is the total budget for a 3-day trip?", a: "$180-$220 per person including: all attraction tickets ($60), meals ($45-$60), 2 nights mid-range accommodation ($60-$90), and local transport ($15-$30). Flights/trains to Xi'an are not included. See our tickets page for a full price breakdown." },
+];
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Li Wei","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-07-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Itineraries","item":"https://xi-an-china.com/itineraries"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="July 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">1, 3 &amp; 5 Day Xi’an Itineraries</h1>
+    <p class="mt-6 text-lg text-stone-500 leading-relaxed">Choose your pace. These are the exact schedules we follow when showing friends around. Timing assumes an 8 AM start and moderate fitness.</p>
+
+    <section class="mt-12">
+      <div class="flex items-center gap-3 mb-2"><span class="text-xs font-semibold text-terracotta-600 uppercase tracking-wide bg-terracotta-50 rounded-full px-3 py-1">1 Day</span><span class="text-xs text-stone-400">Best for stopovers</span></div>
+      <h2 class="text-2xl font-semibold text-stone-900">Express: The Greatest Hits</h2>
+      <p class="mt-2 text-stone-500">A packed but doable day. Terracotta Warriors in the morning, City Wall at sunset, Muslim Quarter for dinner.</p>
+      <div class="mt-6 rounded-xl border border-stone-200 overflow-hidden"><table class="w-full text-sm"><thead class="bg-stone-50 border-b border-stone-200"><tr><th class="text-left px-5 py-3 font-medium text-stone-700 w-28">Time</th><th class="text-left px-5 py-3 font-medium text-stone-700">Activity</th></tr></thead><tbody class="divide-y divide-stone-100">
+        {morningTimes.map(item => (<tr class="hover:bg-stone-50"><td class="px-5 py-3 text-stone-500 font-medium whitespace-nowrap">{item.time}</td><td class="px-5 py-3 text-stone-600">{item.act}</td></tr>))}
+      </tbody></table></div>
+      <p class="mt-4 text-sm text-stone-400">Budget: $60-$75 per person (<a <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+      <p class="mt-4 text-sm text-stone-400">Budget: $60-$75 per person (<a   <img class="h-auto w-full" src="/images/hero-city-wall.webp" width="1440" height="810" alt="Xi'an City Wall at sunset with the Bell Tower in the distance — the backbone of any Xi'an itinerary" loading="lazy" decoding="async" />
+      <p class="mt-4 text-sm text-stone-400">Budget: $60-$75 per person (<a </div>
+
+      <p class="mt-4 text-sm text-stone-400">Budget: $60-$75 per person (<a href="/tickets" class="text-terracotta-600 underline">Terracotta Warriors $18</a> + Huaqing $18 + <a href="/attractions/city-wall" class="text-terracotta-600 underline">City Wall $8</a> + bike $7 + meals $12-$18)</p>
+    </section>
+
+    <section class="mt-12">
+      <div class="flex items-center gap-3 mb-2"><span class="text-xs font-semibold text-terracotta-600 uppercase tracking-wide bg-terracotta-50 rounded-full px-3 py-1">3 Days</span><span class="text-xs text-stone-400">Most popular</span></div>
+      <h2 class="text-2xl font-semibold text-stone-900">The Classic: Complete Coverage</h2>
+      <p class="mt-2 text-stone-500">This is the itinerary we recommend to friends visiting for the first time.</p>
+      <div class="mt-6 space-y-4">
+        {[
+          { title: "Day 1: Terracotta Warriors + Huaqing", lines: [{ label: "Morning", text: "Terracotta Warriors (arrive 8:30 AM). Pit 2 -> Pit 3 -> Pit 1 -> Exhibition Hall. Budget 3 hours." }, { label: "Afternoon", text: "Huaqing Hot Springs (10 min taxi). Explore the imperial baths. Optional: hike up Mount Li for the烽火台 viewpoint." }, { label: "Evening", text: "Return to downtown. Dinner in the Muslim Quarter. Walk through Beiyuanmen, eat on Sajinqiao." }] },
+          { title: "Day 2: City Wall + Old City", lines: [{ label: "Morning", text: "South Gate. Walk or cycle the City Wall (full 14km loop or half). Visit the Bell Tower and Drum Tower." }, { label: "Afternoon", text: "Shaanxi History Museum (free, book online in advance). Allow 3 hours for the exhibitions." }, { label: "Evening", text: "Big Wild Goose Pagoda musical fountain show (free, starts at 8 PM in summer). Walk around Tang Paradise if energy allows." }] },
+          { title: "Day 3: Deeper Xi’an", lines: [{ label: "Morning", text: "Han Yangling Mausoleum (the quieter mausoleum, glass-floored museum). 40 min from downtown." }, { label: "Afternoon", text: "Daming Palace ruins or Great Mosque (hidden in the Muslim Quarter). Last-minute souvenir shopping." }, { label: "Evening", text: "Hot pot dinner in the old city. Depart from Xi’an North Station or XIY airport." }] }
+        ].map(day => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <h3 class="font-semibold text-stone-800 text-lg mb-3">{day.title}</h3>
+            <div class="space-y-2 text-sm">
+              {day.lines.map(line => (<p class="text-stone-500"><strong class="text-stone-700">{line.label}:</strong> {line.text}</p>))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="mt-4 text-sm text-stone-400">Budget: $180-$220 per person (all attractions + meals + <a href="/hotels" class="text-terracotta-600 underline">2 nights accommodation</a>)</p>
+    </section>
+
+    <section class="mt-12">
+      <div class="flex items-center gap-3 mb-2"><span class="text-xs font-semibold text-terracotta-600 uppercase tracking-wide bg-terracotta-50 rounded-full px-3 py-1">5 Days</span><span class="text-xs text-stone-400">Best for explorers</span></div>
+      <h2 class="text-2xl font-semibold text-stone-900">Deep Explorer: Xi’an + Mount Huashan</h2>
+      <p class="mt-2 text-stone-500">The full Xi’an experience including the most dramatic hike in China.</p>
+      <div class="mt-6 space-y-4">
+        {[
+          { title: "Day 1-2: Xi’an Core", text: "Same as the 3-day itinerary above. Terracotta Warriors, City Wall, Muslim Quarter, Shaanxi Museum, Big Wild Goose Pagoda." },
+          { title: "Day 3: Han Yangling + Daming Palace", text: "Morning: Han Yangling Mausoleum (fewer crowds than the Terracotta Warriors). Afternoon: Daming Palace ruins, the largest palace complex ever built. Evening: Tang Paradise night show." },
+          { title: "Day 4: Mount Huashan", text: "High-speed train from Xi’an North to Huashan North (30 min, $8). Cable car up the West Peak. Hike to the South Peak (highest) and the famous Plank Walk ($4 extra). Descend via the North Peak cable car. Return train to Xi’an by 7 PM." },
+          { title: "Day 5: Relax + Depart", text: "Morning: Great Mosque (hidden in the Muslim Quarter). Last bowl of yangrou paomo. Souvenir shopping. Afternoon: train or flight out." }
+        ].map(day => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <h3 class="font-semibold text-stone-800 text-lg mb-2">{day.title}</h3>
+            <p class="text-sm text-stone-500">{day.text}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-4 text-sm text-stone-400">Budget: $300-$370 per person (all attractions + <a href="/attractions/mount-huashan" class="text-terracotta-600 underline">Mount Huashan</a> + <a href="/hotels" class="text-terracotta-600 underline">4 nights accommodation</a>)</p>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <div class="space-y-0 divide-y divide-stone-100">
+        {faqs.map(f => (
+          <details class="group py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-stone-800 font-medium">
+              {f.q}
+              <svg class="h-5 w-5 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+            </summary>
+            <p class="mt-3 text-sm text-stone-600 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Estimated Costs Per Itinerary</h2>
+      <p class="text-sm text-stone-500 mb-4">Per person, mid-range travel style (3-star hotel, mix of street food and restaurants, public transit).</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="rounded-xl border border-stone-200 p-4"><p class="font-semibold text-stone-800">1-Day Express</p><p class="text-2xl font-bold text-terracotta-600 mt-1">$50-$75</p><p class="text-xs text-stone-400 mt-1">Tickets + food + transport + misc</p></div>
+        <div class="rounded-xl border border-stone-200 p-4"><p class="font-semibold text-stone-800">3-Day Classic</p><p class="text-2xl font-bold text-terracotta-600 mt-1">$220-$330</p><p class="text-xs text-stone-400 mt-1">Hotel 3 nights + all tickets + food</p></div>
+        <div class="rounded-xl border border-stone-200 p-4"><p class="font-semibold text-stone-800">5-Day Explorer</p><p class="text-2xl font-bold text-terracotta-600 mt-1">$370-$560</p><p class="text-xs text-stone-400 mt-1">Hotel 5 nights + all incl Huashan</p></div>
+      </div>
+      <p class="mt-3 text-xs text-stone-400">Excludes flights/trains. See <a href="/tickets" class="text-terracotta-600 hover:text-terracotta-700 underline">ticket guide</a> for per-attraction costs.</p>
+    </section>
+
+<div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="/comparison" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">Compare Attractions <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+      <a href="/hotels" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">Where to Stay</a>
+      <a href="/best-time-to-visit" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">Best Time to Go</a>
+    </div>
+  </div>
+</BaseLayout>

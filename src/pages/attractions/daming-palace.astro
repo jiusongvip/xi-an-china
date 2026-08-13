@@ -1,0 +1,174 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Daming Palace — Tang Dynasty Palace Ruins";
+const pageDesc = "Once the world's largest palace complex, 4.5× the Forbidden City. Explore Tang Dynasty ruins, reconstructed gates, and the archaeological park.";
+
+const faqs = [
+  { q: "Is Daming Palace worth visiting?", a: "For history enthusiasts: absolutely. For first-timers with limited time: lower priority than the Warriors, City Wall, and Muslim Quarter. It is a ruins park that rewards imagination and interest in Tang history. If that describes you, it is one of Xi’an’s most underrated sites." },
+  { q: "How is it different from the Forbidden City?", a: "The Forbidden City is a fully preserved palace complex with intact buildings. Daming Palace is an archaeological site of foundations and a few reconstructions — more like the Roman Forum. It is also 4.5 times larger. The appeal is in the scale and the history, not the architecture." },
+  { q: "How do I get there?", a: "Metro Line 4 to Daming Palace Station or Daming Palace West Station. The park has multiple entrances. Start at the south entrance (Danfeng Gate) for the best first impression." },
+  { q: "Is Daming Palace worth visiting if I have already seen the Forbidden City?", a: "Yes, for different reasons. The Forbidden City is about intact architecture — rooms, halls, and furniture you can walk through. Daming Palace is about scale and imagination — standing in a 3.2 square km park and picturing what was once the world's largest palace. The IMAX film and museum exhibits help bring it to life. It is less crowded and more contemplative than the Forbidden City. Best in spring or autumn when the park is green." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TouristAttraction", "name": "Daming Palace: The Largest Palace Ever Built", "description": "The ruins of the Tang Dynasty’s imperial palace — 4.5 times the size of the Forbidden City. A vast archaeological park with reconstructed gates, a museum, and open grasslands where emperors once ruled.", "url": "https://xi-an-china.com/attractions/daming-palace/" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
+      { "@type": "ListItem", "position": 3, "name": "Daming Palace: The Largest Palace Ever Built", "item": "https://xi-an-china.com/attractions/daming-palace/" }
+    ]},
+    { "@type": "FAQPage", "mainEntity": [{"@type":"Question","name":"Is Daming Palace worth visiting?","acceptedAnswer":{"@type":"Answer","text":"For history enthusiasts: absolutely. For first-timers with limited time: lower priority than the Warriors, City Wall, and Muslim Quarter. It is a ruins park that rewards imagination and interest in Tang history. If that describes you, it is one of Xi’an’s most underrated sites."}},{"@type":"Question","name":"How is it different from the Forbidden City?","acceptedAnswer":{"@type":"Answer","text":"The Forbidden City is a fully preserved palace complex with intact buildings. Daming Palace is an archaeological site of foundations and a few reconstructions — more like the Roman Forum. It is also 4.5 times larger. The appeal is in the scale and the history, not the architecture."}},{"@type":"Question","name":"How do I get there?","acceptedAnswer":{"@type":"Answer","text":"Metro Line 4 to Daming Palace Station or Daming Palace West Station. The park has multiple entrances. Start at the south entrance (Danfeng Gate) for the best first impression."}},] }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+
+    <div class="inline-flex items-center rounded-full border border-terracotta-200 bg-terracotta-50 px-3 py-1 text-xs font-medium text-terracotta-700 mb-4">Hidden Gem</div>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Daming Palace: The Largest Palace Ever Built</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">The ruins of the Tang Dynasty’s imperial palace — 4.5 times the size of the Forbidden City. A vast archaeological park with reconstructed gates, a museum, and open grasslands where emperors once ruled.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/daming-palace.webp" srcset="/images/responsive/daming-palace-768.webp 768w, /images/daming-palace.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="Hanyuan Hall reconstruction in Daming Palace Heritage Park" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 shadow-sm">
+      <div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Opening Hours</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">8:30 AM – 6:00 PM</p><p class="text-xs text-stone-500 mt-1.5">Park open until 9:30 PM</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Ticket Price</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">$9 (core area)</p><p class="text-xs text-stone-500 mt-1.5">Park grounds: free</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Time Needed</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">2–3 hours</p><p class="text-xs text-stone-500 mt-1.5">It is huge — rent a bike</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Best Time</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Late afternoon</p><p class="text-xs text-stone-500 mt-1.5">Golden light on the ruins</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Scale</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">4.5x Forbidden City</p><p class="text-xs text-stone-500 mt-1.5">Largest palace in world history</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Location</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">North of city wall</p><p class="text-xs text-stone-500 mt-1.5">Metro Line 4, Daming Palace Station</p></div>
+
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Why Daming Palace Deserves Your Time</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Daming Palace (大明宫) was the <strong class="text-stone-800">imperial palace of the Tang Dynasty</strong> for over 220 years. At its peak, it was the largest palace complex in the world — <strong class="text-stone-800">4.5 times the size of the Forbidden City</strong> in Beijing, covering 3.2 square kilometers. Seventeen Tang emperors lived and ruled from here.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">Today, it is a vast <strong class="text-stone-800">archaeological park</strong>. The wooden structures burned down centuries ago, leaving only the massive rammed-earth foundations. The main gate (Danfeng Gate) has been reconstructed in its original scale, towering five stories high. Walking through it gives a real sense of Tang Dynasty ambition.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">The site is so large that <strong class="text-stone-800">renting a bike</strong> (or taking the park tram) is almost necessary. The core area ($9) includes the reconstructed gate, the Hanyuan Hall foundations, and an excellent underground museum. The rest of the park is free and open to the public — locals fly kites and picnic on the same grounds where Tang emperors held court.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">This is not a “restored” palace like the Forbidden City. It is a <strong class="text-stone-800">ruins park</strong> — think Rome’s Forum rather than Versailles. The appeal is in the scale and the imagination: standing where the largest empire of the medieval world was governed.</p>
+
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">What Was Daming Palace? The World's Largest Imperial Complex</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Daming Palace was the <strong class="text-stone-800">largest palace complex in world history</strong> — 4.5 times the size of the Forbidden City and 3 times the size of Versailles. Built in 634 AD during the Tang Dynasty, it served as the imperial residence and seat of government for 17 Tang emperors over 240 years. At its peak, the complex covered 3.2 square kilometers and housed over 20,000 people — the Tang imperial family, concubines, eunuchs, guards, and the entire machinery of imperial governance.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">Today, only the foundations remain — a vast archaeological park where the original palace layout is marked by reconstructed platforms and informative signage. The northern section has been partially reconstructed, including the <strong class="text-stone-800">Hanyuan Hall</strong> (the main audience hall) and the <strong class="text-stone-800">Danfeng Gate</strong> (the main entrance). A museum on site displays artifacts excavated from the palace grounds. An IMAX theater shows a dramatic film about Tang Dynasty life.</p>
+    </section>
+
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Insider Tips</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span><p class="text-stone-600"><strong>Rent a bike inside the park.</strong> The park is enormous (3.2 sq km). Bikes are available at the south entrance ($3-$4/hour). You can cover the highlights in 2 hours on wheels vs. 4 on foot.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span><p class="text-stone-600"><strong>Free vs. paid areas.</strong> Most of the park is free to enter. The $9 ticket covers the Danfeng Gate Museum, the underground site museum, and the Hanyuan Hall foundation viewing platform. Worth it for the underground museum.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">3</span><p class="text-stone-600"><strong>Go in late afternoon.</strong> The golden hour light on the rammed-earth foundations and reconstructed gate is beautiful. The park stays open until 9:30 PM, so you can watch the sunset and stay for the evening lights.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span><p class="text-stone-600"><strong>The underground museum is the highlight.</strong> It is built directly over the excavated foundations of Hanyuan Hall, with glass floors and walkways. You stand above the actual Tang Dynasty foundations and see artifacts in situ.</p></div>
+</div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Nearby</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">10 min</span><div><strong class="font-medium text-stone-800">Xi’an Railway Station</strong><p class="text-sm text-stone-500">The old station north of the city wall. Good for onward travel.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">15 min</span><div><strong class="font-medium text-stone-800">City Wall North Gate</strong><p class="text-sm text-stone-500">Quieter gate. Good for a partial wall walk after the palace.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">30 min</span><div><strong class="font-medium text-stone-800">Han Yangling</strong><p class="text-sm text-stone-500">Han Dynasty mausoleum. Combine for a ‘quiet history’ day.</p></div></div>
+</div>
+    </section>
+
+        <!-- Related attractions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="/attractions/big-wild-goose-pagoda" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Big Wild Goose Pagoda</p>
+          <p class="text-xs text-stone-500 mt-0.5">Two great Tang sites, north and south of the old city.</p>
+        </a>
+        <a href="/attractions/shaanxi-history-museum" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Shaanxi History Museum</p>
+          <p class="text-xs text-stone-500 mt-0.5">See Tang artifacts first, then the palace ruins.</p>
+        </a>
+        <a href="/attractions/city-wall" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Ancient City Wall</p>
+          <p class="text-xs text-stone-500 mt-0.5">From Ming wall to Tang palace in one day.</p>
+        </a>
+      </div>
+    </section>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/attractions" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Next: Back to All Attractions <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">How to Visit: What to See and What to Skip</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Daming Palace is vast — 3.2 square kilometers. You cannot see everything in one visit. Here is what to prioritize, in order.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Must-See Column -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"><Icon name="lucide:star" class="h-3.5 w-3.5" stroke-width="1.5" /></span>
+            <p class="text-xs font-semibold tracking-[0.15em] uppercase text-emerald-700">Must-See</p>
+          </div>
+          <div class="rounded-xl border-2 border-emerald-200 bg-emerald-50/30 p-4">
+            <p class="text-xs font-semibold text-emerald-600 mb-1">Start Here</p>
+            <p class="font-semibold text-stone-800">IMAX Theater</p>
+            <p class="text-sm text-stone-500 mt-1">A 20-minute film dramatizing Tang Dynasty court life with English subtitles. <strong class="text-stone-700">Watch this first</strong> — it provides the context that makes the ruins meaningful.</p>
+          </div>
+          <div class="rounded-xl border border-stone-200 bg-white p-4">
+            <p class="text-xs font-semibold text-amber-600 mb-1">2nd Stop</p>
+            <p class="font-semibold text-stone-800">Hanyuan Hall Reconstruction</p>
+            <p class="text-sm text-stone-500 mt-1">The partially reconstructed main audience hall conveys the original scale. The 1:15 scale model inside shows the entire palace complex at its peak — 4.5x the Forbidden City.</p>
+          </div>
+          <div class="rounded-xl border border-stone-200 bg-white p-4">
+            <p class="text-xs font-semibold text-amber-600 mb-1">3rd Stop</p>
+            <p class="font-semibold text-stone-800">Danfeng Gate</p>
+            <p class="text-sm text-stone-500 mt-1">Five doorways — the central one reserved exclusively for the emperor. Original Tang Dynasty foundations visible at ground level beneath the reconstruction.</p>
+          </div>
+        </div>
+
+        <!-- Skip + Tips Column -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-stone-100 text-stone-400"><Icon name="lucide:x" class="h-3.5 w-3.5" stroke-width="1.5" /></span>
+            <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400">Skip If Short on Time</p>
+          </div>
+          <div class="rounded-xl border border-stone-200 bg-stone-50 p-4">
+            <p class="font-semibold text-stone-800">The Outer Park</p>
+            <p class="text-sm text-stone-500 mt-1">Beautiful for a walk, but mostly open green space with minimal ruins. Not worth prioritizing on a tight schedule. Focus on the central core.</p>
+          </div>
+
+          <div class="rounded-xl border border-amber-200 bg-amber-50 p-4 mt-3">
+            <p class="text-sm font-semibold text-amber-800 mb-2">Timing & Practical Tips</p>
+            <ul class="text-sm text-amber-700 space-y-1.5">
+              <li>Best in <strong>spring or autumn</strong> when grounds are green</li>
+              <li>Summer is hot with limited shade — bring water and a hat</li>
+              <li>Rent a bike at the entrance — <strong>$4/hour</strong></li>
+              <li>Distances between sites are significant — walking will exhaust you</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

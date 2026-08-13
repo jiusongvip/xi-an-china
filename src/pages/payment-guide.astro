@@ -1,0 +1,192 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+const pageTitle = "How to Pay in Xi'an — WeChat Pay & Alipay Guide";
+const pageDesc = "Set up WeChat Pay and Alipay in Xi'an with foreign cards easily. Step-by-step registration guide, cash backup tips, and where cards still work.";
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Chen Yu","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Payment Guide","item":"https://xi-an-china.com/payment-guide"}]}]};
+
+const steps = [
+  { step: "1", title: "Get a Chinese phone number", detail: "Buy a SIM card at the airport or in the city. You need a local number to register for WeChat Pay or Alipay. See our SIM card guide.", link: "/china-sim-card-tourist", linkText: "SIM Card Guide →" },
+  { step: "2", title: "Download WeChat or Alipay", detail: "Both are available on iOS and Android. WeChat (微信) is the all-in-one app — messaging, payments, mini-programs. Alipay (支付宝) is focused on payments and services." },
+  { step: "3", title: "Register with your phone number", detail: "Open the app, enter your Chinese phone number, verify with the SMS code. Create a password." },
+  { step: "4", title: "Add your international card", detail: "Both apps now accept Visa, Mastercard, JCB, and Diners Club. Go to Wallet → Add Bank Card → enter your card details. A small verification charge (refunded) may apply." },
+  { step: "5", title: "Complete identity verification", detail: "Upload a photo of your passport. Some features require a video selfie. Verification takes 1–24 hours." },
+  { step: "6", title: "Start paying", detail: "Show the QR code to the vendor, or scan theirs. Works everywhere — from luxury hotels to street food stalls. You'll receive a notification for every transaction." },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Chen Yu" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Essential Guide</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">How to Pay in Xi'an</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">China runs on mobile payments. In Xi'an, <strong class="text-stone-700">80%+ of transactions</strong> — from metro tickets to street food — happen through WeChat Pay or Alipay. Cash is accepted but increasingly rare. Credit cards work only at hotels and large restaurants. Here's how to set everything up.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/hero-city-wall.webp" width="1440" height="810" alt="Xi'an at dusk — street food stalls and payment stalls in the Muslim Quarter" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="chen-yu" />
+
+    <!-- Quick answer -->
+    <div class="mt-8 rounded-xl bg-blue-50 border border-blue-200 p-5">
+      <p class="text-sm font-semibold text-blue-800 mb-2">The short answer</p>
+      <p class="text-sm text-blue-700 leading-relaxed">Get a Chinese SIM card → download WeChat → add your Visa/Mastercard → verify your identity → start paying. The whole process takes 30 minutes. Do it on your first day — you'll need it for everything.</p>
+    </div>
+
+    <!-- Step by step -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Step-by-Step Setup</h2>
+      <div class="space-y-5">
+        {steps.map(s => (
+          <div class="flex gap-4">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-sm font-bold">{s.step}</span>
+            <div>
+              <p class="font-semibold text-stone-800">{s.title}</p>
+              <p class="text-sm text-stone-500">{s.detail}</p>
+              {s.link && <a href={s.link} class="text-xs text-terracotta-600 hover:text-terracotta-700 mt-1 inline-block">{s.linkText}</a>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- WeChat vs Alipay -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">WeChat Pay vs Alipay: Which to Use?</h2>
+      <div class="rounded-xl border border-stone-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-stone-50 border-b border-stone-200">
+            <tr><th class="text-left px-4 py-2.5 font-medium text-stone-700">Feature</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">WeChat Pay</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">Alipay</th></tr>
+          </thead>
+          <tbody class="divide-y divide-stone-100">
+            <tr><td class="px-4 py-2.5 text-stone-600">International cards</td><td class="px-4 py-2.5 text-stone-500">Visa, MC, JCB</td><td class="px-4 py-2.5 text-stone-500">Visa, MC, JCB, Diners</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-600">Acceptance</td><td class="px-4 py-2.5 text-stone-500">Everywhere (99%)</td><td class="px-4 py-2.5 text-stone-500">Everywhere (98%)</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-600">Messaging</td><td class="px-4 py-2.5 text-emerald-600 font-medium">Yes (main app)</td><td class="px-4 py-2.5 text-stone-400">No</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-600">Mini-programs</td><td class="px-4 py-2.5 text-emerald-600 font-medium">Extensive</td><td class="px-4 py-2.5 text-emerald-600">Good</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-600">English interface</td><td class="px-4 py-2.5 text-emerald-600 font-medium">Yes</td><td class="px-4 py-2.5 text-emerald-600">Yes</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-600">Transaction fee</td><td class="px-4 py-2.5 text-stone-500">0% (under $30)</td><td class="px-4 py-2.5 text-stone-500">0% (under $30)</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-600">Daily limit</td><td class="px-4 py-2.5 text-stone-500">$150 (foreign card)</td><td class="px-4 py-2.5 text-stone-500">$220 (foreign card)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-sm text-stone-500"><strong class="text-stone-700">Our recommendation:</strong> Set up both. WeChat is essential for messaging and mini-programs. Alipay has slightly higher limits and better tourist features. Having both means you'll never be stuck.</p>
+    </section>
+
+    <!-- Cash & cards -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Cash & Credit Cards</h2>
+      <div class="space-y-4">
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <h3 class="font-semibold text-stone-800 mb-2">Cash (人民币 RMB)</h3>
+          <p class="text-sm text-stone-500 leading-relaxed mb-2">Cash is still accepted by law, but many small vendors don't keep change. If you pay cash, use exact amounts or small bills ($1.520, 50). Large bills ($15) may be refused by street vendors.</p>
+          <p class="text-sm text-stone-500"><strong class="text-stone-700">Where to withdraw:</strong> ATM at any bank (ICBC, Bank of China, China Construction Bank). Foreign cards work at major bank ATMs. Withdraw $75–$300 per transaction. Fee: $1.5–$3 per withdrawal.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <h3 class="font-semibold text-stone-800 mb-2">Credit Cards (Visa/Mastercard)</h3>
+          <p class="text-sm text-stone-500 leading-relaxed">Accepted at: international hotels (Hilton, Sofitel, etc.), large restaurants in tourist areas, and the airport. <strong class="text-stone-800">Not accepted at:</strong> street food stalls, small restaurants, metro stations, buses, or most shops. Always carry a mobile payment option as backup.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common problems -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">How to Actually Pay: QR Codes Explained</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">There are two ways to pay with QR codes in China, and they are confusing the first time. Here is exactly what happens at a street food stall or shop.</p>
+      <div class="space-y-3">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Method 1: You Scan Their Code (Most Common)</p>
+          <p class="text-sm text-stone-600 mt-1">The vendor shows you a QR code (on a printed card or their phone screen). You open WeChat/Alipay, tap "Scan," point your camera at their code. Enter the amount, confirm with your password or Face ID. You will hear a "ding" — the payment went through. <strong class="text-stone-700">This is how 90% of small purchases work</strong> — street food, taxis, small shops.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Method 2: They Scan Your Code (Shops & Hotels)</p>
+          <p class="text-sm text-stone-600 mt-1">The vendor has a barcode scanner. You open WeChat/Alipay, tap "Pay" or "Show QR Code." Your phone displays a dynamic QR code that changes every 60 seconds. They scan it with their device. The amount appears automatically — you do not need to enter it. <strong class="text-stone-700">This is used at supermarkets, hotel checkouts, and larger restaurants.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Using mobile payments for transport -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Paying for Transport</h2>
+      <div class="space-y-3">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Metro</p>
+          <p class="text-sm text-stone-600 mt-1">Buy single-journey tickets at station machines (cash accepted, $0.3-$1). For convenience, link your Alipay to the metro QR code: open Alipay, search "Xi'an Metro," activate the乘车码 (ride code). Scan at the gate. Same on exit. Fare is auto-deducted. WeChat has the same feature via mini-programs.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Bus</p>
+          <p class="text-sm text-stone-600 mt-1">Most buses accept WeChat/Alipay QR codes. Single ride: $0.3. Look for the QR scanner next to the driver. Alternatively, buy a physical Changantong stored-value card at any metro station — it works on both metro and buses.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Didi (Ride-Hailing)</p>
+          <p class="text-sm text-stone-600 mt-1">Didi charges the payment method linked in the app — your international card through Alipay works. No need to pay the driver directly. Fares are set in the app before the ride.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Troubleshooting deep dive -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Troubleshooting: What to Do When It Does Not Work</h2>
+      <div class="space-y-3">
+        <div class="rounded-xl bg-red-50 border border-red-200 p-4">
+          <p class="font-semibold text-red-800">Card Declined</p>
+          <p class="text-sm text-red-700 mt-1">(1) Check that your card is enabled for international/online transactions in your banking app. (2) Some US banks (Chase, Wells Fargo) flag first-time China transactions as fraud — call them or use the app to approve. (3) Try Alipay instead — it has a higher acceptance rate for foreign cards. (4) As a last resort, withdraw cash from a Bank of China ATM.</p>
+        </div>
+        <div class="rounded-xl bg-red-50 border border-red-200 p-4">
+          <p class="font-semibold text-red-800">Identity Verification Failed</p>
+          <p class="text-sm text-red-700 mt-1">(1) Make sure your passport photo is clear, well-lit, and shows all four corners. (2) The name on your account must EXACTLY match your passport — including middle names. (3) If you get stuck in a loop, uninstall and reinstall the app, or try the other app (WeChat vs Alipay). (4) Some users report Alipay verification is faster (under 1 hour vs 24 hours for WeChat).</p>
+        </div>
+        <div class="rounded-xl bg-red-50 border border-red-200 p-4">
+          <p class="font-semibold text-red-800">QR Code Expired or Not Scanning</p>
+          <p class="text-sm text-red-700 mt-1">(1) Your payment QR code refreshes every 60 seconds — if it expires, just go back and tap "Pay" again. (2) If the scanner cannot read your screen, increase brightness to maximum. (3) If the vendor's scanner is broken, switch to "You Scan Their Code" method — manually enter the amount and pay using their printed QR code.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Budget -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Daily Budget & Limits</h2>
+      <div class="rounded-xl border border-stone-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-stone-50 border-b"><tr><th class="text-left px-4 py-2.5 font-medium">Payment Method</th><th class="text-left px-4 py-2.5 font-medium">Daily Limit (Foreign)</th><th class="text-left px-4 py-2.5 font-medium">Fee</th><th class="text-left px-4 py-2.5 font-medium">Best For</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="px-4 py-2.5">WeChat Pay</td><td class="px-4 py-2.5">$150</td><td class="px-4 py-2.5">0% under $30</td><td class="px-4 py-2.5">Daily expenses, messaging</td></tr>
+            <tr><td class="px-4 py-2.5">Alipay</td><td class="px-4 py-2.5">$220</td><td class="px-4 py-2.5">0% under $30</td><td class="px-4 py-2.5">Larger purchases, transport</td></tr>
+            <tr><td class="px-4 py-2.5">ATM Withdrawal</td><td class="px-4 py-2.5">Varies by card</td><td class="px-4 py-2.5">$1.5-$3 + bank fee</td><td class="px-4 py-2.5">Emergency cash</td></tr>
+            <tr><td class="px-4 py-2.5">Credit Card</td><td class="px-4 py-2.5">Card limit</td><td class="px-4 py-2.5">2-3% FX fee typical</td><td class="px-4 py-2.5">Hotel deposits, flights</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-sm text-stone-500">A typical solo traveler in Xi'an spends $60-$90 per day including food, attractions, and transport. The $150-$220 daily mobile payment limit covers most travelers. For larger expenses (hotel, tour packages), use a credit card.</p>
+    </section>
+
+<section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Common Problems & Solutions</h2>
+      <div class="space-y-4">
+        {[
+          { q: "My card was declined", a: "Some international cards need to be enabled for overseas transactions first. Check with your bank. Also try Alipay — it has a higher acceptance rate for foreign cards than WeChat Pay." },
+          { q: "The vendor says their QR code isn't working", a: "This usually means their internet is down. Move to the next vendor. In the Muslim Quarter, there are always alternatives 10 meters away." },
+          { q: "I ran out of daily limit", a: "Foreign cards on WeChat Pay/Alipay have a $150–$220 daily limit. For large purchases (hotels, tours), use your credit card directly or withdraw cash from an ATM." },
+          { q: "Can I tip with mobile payment?", a: "Tipping is not customary in China. Restaurants, taxis, and hotels do not expect tips. If you want to tip a guide, a cash envelope or WeChat transfer works." },
+        ].map(f => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <p class="font-semibold text-stone-800 mb-2">{f.q}</p>
+            <p class="text-sm text-stone-500 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/china-sim-card-tourist" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        SIM Card Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+      <a href="/phrasebook" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+        Chinese Phrasebook
+      </a>
+    </div>
+  </div>
+</BaseLayout>

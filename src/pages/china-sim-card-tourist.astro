@@ -1,0 +1,150 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+const pageTitle = "China SIM Card for Tourists — Xi'an Guide";
+const pageDesc = "How to get a China SIM card in Xi'an: airport pickup, eSIM options, WeChat Pay and Alipay setup, data plans, and registration guide for 2026.";
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Chen Yu","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"China SIM Card","item":"https://xi-an-china.com/china-sim-card-tourist"}]}]};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Chen Yu" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Practical Guide</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">China SIM Card for Tourists</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Getting connected in China is essential — not just for calls, but for <strong class="text-stone-700">WeChat Pay and Alipay</strong>, which you'll use for everything from metro tickets to street food. Here's exactly how to do it in Xi'an.</p>
+
+  <AuthorSignal authorId="chen-yu" />
+
+    <!-- Quick answer -->
+    <div class="mt-8 rounded-xl bg-blue-50 border border-blue-200 p-5">
+      <p class="text-sm font-semibold text-blue-800 mb-2">The short answer</p>
+      <p class="text-sm text-blue-700 leading-relaxed">Buy a China Unicom or China Mobile SIM at Xi'an Xianyang Airport (Arrivals hall, 2F) or any store in the city. Bring your passport. Cost: $7–$30 for a tourist data plan. Setup takes 15 minutes. Alternatively, use an eSIM (Airalo, Holafly) if your phone supports it.</p>
+    </div>
+
+    <!-- Option 1: Airport -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Option 1: Buy at Xi'an Airport (Recommended)</h2>
+      <p class="text-stone-600 leading-relaxed mb-3">Xi'an Xianyang International Airport has telecom counters in the <strong class="text-stone-800">Arrivals Hall (2nd Floor)</strong> for both China Unicom (中国联通) and China Mobile (中国移动). This is the easiest option — staff speak some English, and you can have a working SIM in 15 minutes.</p>
+      <div class="rounded-xl border border-stone-200 overflow-hidden mt-4">
+        <table class="w-full text-sm">
+          <thead class="bg-stone-50 border-b border-stone-200">
+            <tr><th class="text-left px-4 py-2.5 font-medium text-stone-700">Plan</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">Data</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">Validity</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">Cost</th></tr>
+          </thead>
+          <tbody class="divide-y divide-stone-100">
+            <tr><td class="px-4 py-2.5 text-stone-600">China Unicom Tourist</td><td class="px-4 py-2.5 text-stone-500">20 GB</td><td class="px-4 py-2.5 text-stone-500">30 days</td><td class="px-4 py-2.5 text-stone-500 font-medium">$15</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-600">China Mobile Tourist</td><td class="px-4 py-2.5 text-stone-500">30 GB</td><td class="px-4 py-2.5 text-stone-500">30 days</td><td class="px-4 py-2.5 text-stone-500 font-medium">$22</td></tr>
+            <tr><td class="px-4 py-2.5 text-stone-600">China Unicom (basic)</td><td class="px-4 py-2.5 text-stone-500">5 GB</td><td class="px-4 py-2.5 text-stone-500">7 days</td><td class="px-4 py-2.5 text-stone-500 font-medium">$7</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-sm text-stone-500">Prices vary. China Unicom generally has better 4G/5G coverage in cities. China Mobile has broader rural coverage.</p>
+    </section>
+
+    <!-- Option 2: eSIM -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Option 2: eSIM (If Your Phone Supports It)</h2>
+      <p class="text-stone-600 leading-relaxed mb-3">If your phone supports eSIM (iPhone XS or later, most recent Samsung/Pixel), you can activate a data plan <strong class="text-stone-800">before you arrive</strong>. No physical SIM needed.</p>
+      <div class="space-y-3 mt-4">
+        {[
+          { name: "Airalo", plan: "8 GB / 30 days", cost: "USD 12–20", note: "Data only. No Chinese phone number (can't register for WeChat Pay)." },
+          { name: "Holafly", plan: "Unlimited / 5–30 days", cost: "USD 19–64", note: "Data only. Good for heavy data users." },
+          { name: "RedteaGO", plan: "10 GB / 30 days", cost: "USD 10–15", note: "Includes a Chinese phone number. Can register for WeChat/Alipay." },
+        ].map(s => (
+          <div class="rounded-xl border border-stone-200 bg-white p-4">
+            <div class="flex items-center justify-between mb-1">
+              <strong class="text-stone-800">{s.name}</strong>
+              <span class="text-sm font-medium text-terracotta-700">{s.cost}</span>
+            </div>
+            <p class="text-xs text-stone-400 mb-1">{s.plan}</p>
+            <p class="text-sm text-stone-500">{s.note}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-3 rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-700"><strong>Important:</strong> Most eSIMs are data-only — they don't give you a Chinese phone number. You need a local number to register for WeChat Pay or Alipay. If mobile payment is a priority, get a physical SIM.</p>
+    </section>
+
+    <!-- Registration steps -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Step-by-Step: Registering a SIM in China</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">By law, all SIM cards in China must be registered with a real name. As a foreigner, you need your passport. The process is straightforward:</p>
+      <div class="space-y-4">
+        {[
+          { step: "1", title: "Bring your passport", detail: "The original passport — not a photocopy or photo. The name must match exactly." },
+          { step: "2", title: "Choose a store", detail: "Airport counters, China Unicom/China Mobile retail stores, or authorized resellers. Avoid unlicensed vendors." },
+          { step: "3", title: "Fill in the registration form", detail: "Name, passport number, visa type, and a Chinese address (your hotel works). Staff will help." },
+          { step: "4", title: "Photo verification", detail: "The store will take your photo for the registration system. This is mandatory." },
+          { step: "5", title: "Activate and test", detail: "Insert the SIM, restart your phone, and test data. Make sure you can load a webpage before leaving the store." },
+        ].map(s => (
+          <div class="flex gap-4">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-sm font-bold">{s.step}</span>
+            <div>
+              <p class="font-semibold text-stone-800">{s.title}</p>
+              <p class="text-sm text-stone-500">{s.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Setting up payments -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Next: Set Up WeChat Pay & Alipay</h2>
+      <p class="text-stone-600 leading-relaxed mb-3">Once you have a Chinese phone number, you can register for <strong class="text-stone-800">WeChat Pay</strong> and <strong class="text-stone-800">Alipay</strong> — both now accept international credit cards (Visa, Mastercard). This is essential because many places in Xi'an, especially street food vendors and small shops, <strong class="text-stone-800">only accept mobile payment</strong>.</p>
+      <p class="text-stone-600 leading-relaxed">See our <a href="/payment-guide" class="text-terracotta-600 hover:text-terracotta-700 underline">complete payment guide</a> for step-by-step setup instructions.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">FAQ</h2>
+      <div class="space-y-4">
+        {[
+          { q: "Can I use my home SIM in China?", a: "You can enable international roaming, but it is extremely expensive ($4–$9 per MB). A local SIM or eSIM is 10–50× cheaper. Also, roaming does not give you a Chinese number for WeChat Pay." },
+          { q: "Do I need a SIM for hotel Wi-Fi?", a: "No. Hotels have Wi-Fi. But you will want mobile data for navigation (Baidu Maps/Apple Maps), translation, ride-hailing (Didi), and payments while exploring the city." },
+          { q: "Can I buy a SIM before arriving?", a: "Not a physical SIM. But you can order an eSIM (Airalo, Holafly) online and activate it on arrival. For a physical SIM, buy at the airport or in the city." },
+          { q: "What about Wi-Fi?", a: "Most cafes, restaurants, and hotels have free Wi-Fi. But you will need mobile data for maps, translation, and payments on the go. Public Wi-Fi in China is not widespread." },
+        ].map(f => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <p class="font-semibold text-stone-800 mb-2">{f.q}</p>
+            <p class="text-sm text-stone-500 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/payment-guide" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Payment Setup Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+      <a href="/transportation" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+        Transportation Guide
+      </a>
+    </div>
+  
+<section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Troubleshooting: Common SIM Card Problems</h2>
+      <div class="space-y-3">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">No data after activation</p>
+          <p class="text-sm text-stone-600 mt-1">(1) Check that mobile data is enabled in your phone settings. (2) Verify APN settings — your carrier should provide these. (3) Restart your phone. (4) If using an eSIM, make sure it is set as the primary data line. (5) Contact the carrier's English support — major Chinese carriers have English-speaking agents.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Can't make calls or send SMS</p>
+          <p class="text-sm text-stone-600 mt-1">Tourist SIM cards often come with data only — no voice or SMS. This is usually stated in the product description. If you need a local phone number (for food delivery apps, hotel bookings), buy a full-service SIM from a China Mobile/China Unicom store. You will need your passport.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">VPN not working on SIM data</p>
+          <p class="text-sm text-stone-600 mt-1">Install and test your VPN <strong>before</strong> arriving in China. Once you are on Chinese mobile data, downloading VPN apps may be blocked. We recommend having at least two VPN options installed — one will almost certainly work if the other does not.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Quick Recommendations</h2>
+      <div class="rounded-xl bg-blue-50 border border-blue-200 p-5">
+        <p class="text-sm text-blue-800"><strong>Our pick for most travelers:</strong> Buy a data-only tourist SIM at XIY airport upon arrival ($15-$30 for 7-15 days). Quick, reliable, and you have internet immediately. For longer stays (2+ weeks), get a full-service plan from a China Mobile store in the city. For tech-savvy travelers, eSIM is the most convenient option — activate before departure and you have data the moment you land.</p>
+      </div>
+    </section></div>
+</BaseLayout>

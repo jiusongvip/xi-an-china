@@ -1,0 +1,159 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+import { Icon } from "astro-icon/components";
+const pageTitle = "Xi'an Transportation — Airport & Train Guide";
+const pageDesc = "Complete guide to getting to Xi'an and around: XIY airport, high-speed trains from Beijing and Shanghai, metro system, taxis, and bike rental tips.";
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Chen Yu","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Transportation","item":"https://xi-an-china.com/transportation"}]}]};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Chen Yu" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Getting Around</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900">Getting to and Around Xi'an</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Every route on this page has been tested by our team. Prices, times, and transfer instructions are based on our most recent trips — <strong class="text-stone-700">July and August 2026</strong>. This guide covers how to reach Xi'an from major cities, how to navigate the metro, and how to get to every major attraction.</p>
+
+  <AuthorSignal authorId="chen-yu" />
+
+    <!-- Airport -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">By Air: Xi'an Xianyang Airport (XIY)</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">Xi'an Xianyang International Airport (XIY) is <strong class="text-stone-800">40 km northwest</strong> of the city center. It serves direct flights from Beijing, Shanghai, Guangzhou, Chengdu, Shenzhen, Seoul, Bangkok, Singapore, Tokyo, and Dubai.</p>
+      <div class="rounded-xl border border-stone-200 overflow-hidden mt-4">
+        <table class="w-full text-sm"><thead class="bg-stone-50 border-b border-stone-200"><tr><th class="text-left px-4 py-2.5 font-medium text-stone-700">Route</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">Duration</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">Approx. Cost</th></tr></thead><tbody class="divide-y divide-stone-100">
+          <tr><td class="px-4 py-2.5 text-stone-600">Beijing (PEK/PKX) to XIY</td><td class="px-4 py-2.5 text-stone-500">2 hours</td><td class="px-4 py-2.5 text-stone-500">$75-$180</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-600">Shanghai (PVG/SHA) to XIY</td><td class="px-4 py-2.5 text-stone-500">2.5 hours</td><td class="px-4 py-2.5 text-stone-500">$90-$220</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-600">Guangzhou to XIY</td><td class="px-4 py-2.5 text-stone-500">3 hours</td><td class="px-4 py-2.5 text-stone-500">$100-$270</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-600">Chengdu to XIY</td><td class="px-4 py-2.5 text-stone-500">1.5 hours</td><td class="px-4 py-2.5 text-stone-500">$60-$130</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-600">Seoul to XIY</td><td class="px-4 py-2.5 text-stone-500">3.5 hours</td><td class="px-4 py-2.5 text-stone-500">KRW 150,000-400,000</td></tr>
+        </tbody></table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-stone-800 mt-6 mb-3">Airport to City Center: 3 Options Compared</h3>
+      <div class="space-y-3">
+        <div class="flex gap-3 rounded-xl border border-stone-200 p-4">
+          <Icon name="lucide:train-front" class="h-6 w-6 shrink-0 text-champagne-600" stroke-width="1.5" />
+          <div>
+            <p class="font-semibold text-stone-800">Metro Line 14 — Best Value</p>
+            <p class="text-sm text-stone-600">40 minutes to city center. $1 one-way. Connects to Metro Line 2 and Line 4 at Xi'an North Station. Runs 6:00 AM to 11:00 PM. Clean, English signage, luggage-friendly. This is what our team uses.</p>
+          </div>
+        </div>
+        <div class="flex gap-3 rounded-xl border border-stone-200 p-4">
+          <Icon name="lucide:car-taxi-front" class="h-6 w-6 shrink-0 text-champagne-600" stroke-width="1.5" />
+          <div>
+            <p class="font-semibold text-stone-800">Taxi — Most Convenient</p>
+            <p class="text-sm text-stone-600">50-60 minutes. $18-$22 to Bell Tower area. Use the official taxi queue outside arrivals. Do not accept rides from touts inside the terminal — they charge 2-3x the meter rate. Have your destination written in Chinese.</p>
+          </div>
+        </div>
+        <div class="flex gap-3 rounded-xl border border-stone-200 p-4">
+          <Icon name="lucide:bus" class="h-6 w-6 shrink-0 text-champagne-600" stroke-width="1.5" />
+          <div>
+            <p class="font-semibold text-stone-800">Airport Shuttle Bus — Budget Option</p>
+            <p class="text-sm text-stone-600">60 minutes. $4. Multiple routes to different parts of the city. Route 1 goes to the Bell Tower. Buses run every 30-60 minutes depending on time of day. Less convenient with luggage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Train -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">By Train: High-Speed Rail</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">Xi'an has two main stations: <strong class="text-stone-800">Xi'an North Station</strong> (all high-speed trains) and <strong class="text-stone-800">Xi'an Station</strong> (conventional trains, some overnight). High-speed trains are fast, punctual, and comfortable — the preferred way to reach Xi'an from other Chinese cities.</p>
+      <div class="rounded-xl border border-stone-200 overflow-hidden mt-4">
+        <table class="w-full text-sm"><thead class="bg-stone-50 border-b border-stone-200"><tr><th class="text-left px-4 py-2.5 font-medium text-stone-700">Route</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">Duration</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">2nd Class</th><th class="text-left px-4 py-2.5 font-medium text-stone-700">1st Class</th></tr></thead><tbody class="divide-y divide-stone-100">
+          <tr><td class="px-4 py-2.5 text-stone-600">Beijing to Xi'an</td><td class="px-4 py-2.5 text-stone-500">4.5 hours</td><td class="px-4 py-2.5 text-stone-500 font-medium">$75</td><td class="px-4 py-2.5 text-stone-500">$120</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-600">Shanghai to Xi'an</td><td class="px-4 py-2.5 text-stone-500">6 hours</td><td class="px-4 py-2.5 text-stone-500 font-medium">$100</td><td class="px-4 py-2.5 text-stone-500">$160</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-600">Chengdu to Xi'an</td><td class="px-4 py-2.5 text-stone-500">3.5 hours</td><td class="px-4 py-2.5 text-stone-500 font-medium">$39</td><td class="px-4 py-2.5 text-stone-500">$60</td></tr>
+          <tr><td class="px-4 py-2.5 text-stone-600">Luoyang to Xi'an</td><td class="px-4 py-2.5 text-stone-500">1.5 hours</td><td class="px-4 py-2.5 text-stone-500 font-medium">$26</td><td class="px-4 py-2.5 text-stone-500">$40</td></tr>
+        </tbody></table>
+      </div>
+      <h3 class="text-lg font-semibold text-stone-800 mt-6 mb-3">How to Buy Train Tickets</h3>
+      <p class="text-stone-600 leading-relaxed mb-2">You have three main options for buying Chinese train tickets:</p>
+      <ol class="list-decimal pl-5 space-y-2 text-sm text-stone-600">
+        <li><strong class="text-stone-800">Trip.com (recommended for foreigners):</strong> English interface, accepts international credit cards. Service fee $3-$6 per ticket. Book up to 15 days in advance. You will receive a QR code — scan it at the station gate. No paper ticket needed.</li>
+        <li><strong class="text-stone-800">12306 app (Chinese only):</strong> The official railway app. Cheapest (no service fee) but requires a Chinese phone number and Chinese ID verification. Not practical for most foreign tourists.</li>
+        <li><strong class="text-stone-800">At the station:</strong> Ticket counters and machines at Xi'an North Station. Bring your passport. English-speaking staff are rare but the ticket machines have an English option. Expect queues during peak travel periods.</li>
+      </ol>
+      <p class="mt-4 rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-700"><strong>Money-saving tip:</strong> Flying into Chengdu and taking the high-speed train to Xi'an saves $75-$120 per person. Chengdu Shuangliu Airport has more international routes and lower fares than XIY. The 3.5-hour train ride passes through the Qinling Mountains and is scenic in its own right.</p>
+    </section>
+
+    <!-- Metro with attraction mapping -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Metro: Xi'an's Subway System</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">Xi'an's metro has <strong class="text-stone-800">10 lines</strong> covering almost every tourist destination. It is clean, safe, and has English signage and announcements on all lines. Fares are distance-based: $0.3 for the first 6 km, increasing by $0.1 per additional 4-6 km, capped at $1.</p>
+      
+      <h3 class="text-lg font-semibold text-stone-800 mt-6 mb-3">Key Metro Lines for Tourists</h3>
+      <div class="space-y-2 text-sm">
+        <p class="flex gap-2"><span class="text-xs font-bold bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded shrink-0 w-14 text-center">Line 1</span><span class="text-stone-500">East-West artery. Transfer to Line 2 at Beidajie for Bell Tower area.</span></p>
+        <p class="flex gap-2"><span class="text-xs font-bold bg-red-100 text-red-700 px-1.5 py-0.5 rounded shrink-0 w-14 text-center">Line 2</span><span class="text-stone-500">North-South spine through the city center. Stops: <strong>Zhonglou</strong> (Bell Tower/Drum Tower/Muslim Quarter, 5 min walk), <strong>Xiaozhai</strong> (Shaanxi History Museum, 10 min walk), <strong>Nanshaomen</strong> (South Gate of City Wall).</span></p>
+        <p class="flex gap-2"><span class="text-xs font-bold bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded shrink-0 w-14 text-center">Line 3</span><span class="text-stone-500">Connects Xiaozhai to <strong>Dayanta</strong> (Big Wild Goose Pagoda, 5 min walk) and <strong>Qinglongsi</strong> (Qinglong Temple).</span></p>
+        <p class="flex gap-2"><span class="text-xs font-bold bg-teal-100 text-teal-700 px-1.5 py-0.5 rounded shrink-0 w-14 text-center">Line 4</span><span class="text-stone-500">From Xi'an North Station to downtown. Stops: <strong>Daminggong</strong> (Daming Palace ruins).</span></p>
+        <p class="flex gap-2"><span class="text-xs font-bold bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded shrink-0 w-14 text-center">Line 9</span><span class="text-stone-500">East to Lintong District. <strong>Huaqingchi Station</strong>: connect to bus 306/307 for Terracotta Warriors (15 min) or walk to Huaqing Pool (5 min).</span></p>
+        <p class="flex gap-2"><span class="text-xs font-bold bg-sky-100 text-sky-700 px-1.5 py-0.5 rounded shrink-0 w-14 text-center">Line 14</span><span class="text-stone-500">Airport Express. XIY Airport to Xi'an North Station in 40 minutes ($1). Transfer to Line 2 or 4 for downtown.</span></p>
+      </div>
+
+      <h3 class="text-lg font-semibold text-stone-800 mt-6 mb-3">How to Reach Every Major Attraction by Metro</h3>
+      <div class="rounded-xl border border-stone-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-stone-50 border-b"><tr><th class="text-left px-4 py-2.5 font-medium">Attraction</th><th class="text-left px-4 py-2.5 font-medium">Nearest Metro</th><th class="text-left px-4 py-2.5 font-medium">Walk</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="px-4 py-2.5">Bell & Drum Towers</td><td class="px-4 py-2.5">Zhonglou (Line 2)</td><td class="px-4 py-2.5 text-stone-500">2 min</td></tr>
+            <tr><td class="px-4 py-2.5">Muslim Quarter</td><td class="px-4 py-2.5">Zhonglou (Line 2)</td><td class="px-4 py-2.5 text-stone-500">5 min</td></tr>
+            <tr><td class="px-4 py-2.5">City Wall (South Gate)</td><td class="px-4 py-2.5">Yongningmen (Line 2)</td><td class="px-4 py-2.5 text-stone-500">1 min</td></tr>
+            <tr><td class="px-4 py-2.5">Shaanxi History Museum</td><td class="px-4 py-2.5">Xiaozhai (Line 2/3)</td><td class="px-4 py-2.5 text-stone-500">10 min</td></tr>
+            <tr><td class="px-4 py-2.5">Big Wild Goose Pagoda</td><td class="px-4 py-2.5">Dayanta (Line 3/4)</td><td class="px-4 py-2.5 text-stone-500">5 min</td></tr>
+            <tr><td class="px-4 py-2.5">Tang Paradise</td><td class="px-4 py-2.5">Datangfurongyuan (Line 4)</td><td class="px-4 py-2.5 text-stone-500">5 min</td></tr>
+            <tr><td class="px-4 py-2.5">Daming Palace</td><td class="px-4 py-2.5">Daminggong (Line 4)</td><td class="px-4 py-2.5 text-stone-500">5 min</td></tr>
+            <tr><td class="px-4 py-2.5">Huaqing Pool</td><td class="px-4 py-2.5">Huaqingchi (Line 9)</td><td class="px-4 py-2.5 text-stone-500">5 min</td></tr>
+            <tr><td class="px-4 py-2.5">Terracotta Warriors</td><td class="px-4 py-2.5">Huaqingchi (Line 9) + Bus 306</td><td class="px-4 py-2.5 text-stone-500">15 min bus</td></tr>
+            <tr><td class="px-4 py-2.5">Han Yangling</td><td class="px-4 py-2.5">Han Yangling (Line 14)</td><td class="px-4 py-2.5 text-stone-500">10 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Taxi/Didi/Bikes -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Taxis, Didi & Bike Rentals</h2>
+      
+      <div class="space-y-3">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800 mb-1">Didi (Ride-Hailing) — Recommended</p>
+          <p class="text-sm text-stone-600">Didi is the Chinese equivalent of Uber. Download the app before arriving in China. It has an English interface. You set your destination in the app — no language barrier, no haggling, no risk of being overcharged. A typical 15-minute ride inside the city costs $2-$4. Payment is via the app (linked to international cards through Alipay).</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800 mb-1">Taxis — Use with Caution</p>
+          <p class="text-sm text-stone-600">Taxis are plentiful but drivers rarely speak English. Always have your destination written in Chinese characters. Most drivers use the meter, but airport taxi touts are a known problem — use the official taxi queue. A ride from Bell Tower area to the South Gate should cost $1.5-$2 on the meter.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800 mb-1">Shared Bikes — Best for City Wall Area</p>
+          <p class="text-sm text-stone-600">Meituan Bike and Hellobike are everywhere. Scan the QR code with Alipay or the bike app to unlock. $0.1.5 per 30 minutes. Ideal for exploring inside the city wall where attractions are close together. The City Wall itself has dedicated bike rentals on top of the wall ($7 for 3 hours) — a completely separate system from the street bikes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Walking distances -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Walking: Old City Walkability</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">Xi'an's old city (inside the City Wall) is <strong class="text-stone-800">one of the most walkable urban areas in China</strong>. The grid street layout from the Ming Dynasty remains intact, and most attractions inside the wall are within a 20-minute walk of each other.</p>
+      <div class="space-y-1 text-sm text-stone-600">
+        <p>Bell Tower to Drum Tower: <strong class="text-stone-700">1 min</strong></p>
+        <p>Drum Tower to Muslim Quarter entrance: <strong class="text-stone-700">2 min</strong></p>
+        <p>Bell Tower to South Gate (City Wall): <strong class="text-stone-700">12 min</strong></p>
+        <p>Bell Tower to Stele Forest Museum: <strong class="text-stone-700">18 min</strong></p>
+        <p>South Gate to Small Wild Goose Pagoda: <strong class="text-stone-700">20 min</strong></p>
+      </div>
+      <p class="mt-4 text-sm text-stone-500">A recommended walking route: Start at Bell Tower → Drum Tower → Muslim Quarter for lunch → walk south to South Gate → cycle the City Wall for sunset. Takes about half a day and covers four major attractions entirely on foot (plus bike).</p>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 text-center">
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/itineraries" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">See Itineraries <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+        <a href="/payment-guide" class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 active:scale-[0.98]">Payment Guide</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

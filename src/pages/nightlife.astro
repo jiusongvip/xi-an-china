@@ -1,0 +1,188 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+import { Icon } from "astro-icon/components";
+const pageTitle = "Xi'an Nightlife Guide 2026 - Bars, Night Markets & Shows";
+const pageDesc = "Where to go out at night in Xi'an: rooftop bars inside the City Wall, live music venues, night markets, Tang Dynasty shows, and the best late-night food spots.";
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Wang Fang","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Nightlife","item":"https://xi-an-china.com/nightlife"}]}]};
+
+const bars = [
+  { name: "The Lounge at Sofitel", area: "Inside City Wall (Beilin)", type: "Rooftop cocktail bar", price: "$12-$22/drink", vibe: "Upscale, panoramic city views from the 28th floor. Best sunset cocktails in Xi'an.", music: "Chill house, jazz", bestTime: "6-9 PM for sunset" },
+  { name: "Moonlight Bar", area: "South Gate area", type: "Craft cocktail bar", price: "$7-$13/drink", vibe: "Speakeasy-style hidden bar. Creative cocktails with Chinese ingredients (baijiu, Sichuan pepper).", music: "Jazz, blues", bestTime: "8 PM-midnight" },
+  { name: "No. 7 BrewPub", area: "Yanta District", type: "Craft beer pub", price: "$5-$9/beer", vibe: "Xi'an's best craft beer selection. 12 taps, rotating seasonal brews. Expats and locals mix here.", music: "Indie, rock", bestTime: "7-11 PM" },
+  { name: "Defu Alley Bar Street", area: "East of Bell Tower", type: "Bar street", price: "$4-$12/drink", vibe: "Xi'an's original bar street. 30+ bars in a narrow alley. Backpacker-friendly, lively, cheap.", music: "Pop, EDM", bestTime: "9 PM-2 AM" },
+  { name: "Big Wild Goose Pagoda area", area: "Yanta District", type: "Outdoor evening stroll", price: "Free", vibe: "The musical fountain show at 8 PM draws crowds. Great Tang All Day Mall lights up. Perfect for a relaxed evening.", music: "Street performers", bestTime: "7:30-10 PM" },
+];
+
+const nightMarkets = [
+  { name: "Muslim Quarter (回民街)", hours: "5 PM - midnight+", highlight: "The undisputed king of Xi'an night food. Sajinqiao and Dapiyuan streets come alive after 7 PM. Lamb skewers, biangbiang noodles, persimmon cakes, sour plum juice.", tip: "Go hungry. Don't eat at the first stall — walk 200m deeper for better prices and more authentic food." },
+  { name: "Yongxing Fang (永兴坊)", hours: "10 AM - 10 PM", highlight: "Less touristy alternative to Muslim Quarter. Focuses on Shaanxi regional specialties from different cities. Watch chefs make youmo, roujiamo, and liangpi from scratch.", tip: "Get a rechargeable card at the entrance — all vendors use it. Refund unused balance at exit." },
+  { name: "East New Street Night Market", hours: "7 PM - midnight", highlight: "Local favorite. Cheap street food, clothes, phone accessories. Less touristy, more authentic. Great for people-watching.", tip: "This is where real Xi'an residents eat. Prices are 30-50% cheaper than Muslim Quarter." },
+];
+
+const shows = [
+  { name: "The Song of Everlasting Sorrow (长恨歌)", venue: "Huaqing Hot Springs", time: "8:30 PM (Apr-Oct)", price: "$40-$130", desc: "China's most famous outdoor stage show. 700 performers, Mount Li as backdrop, fire and water effects. Tells the love story of Emperor Xuanzong and Yang Guifei. Book weeks ahead — it sells out.", duration: "70 min", rating: 5 },
+  { name: "Tang Dynasty Music & Dance Show", venue: "Tang Dynasty Music & Dance Hall", time: "8 PM (daily)", price: "$27-$55", desc: "Traditional Tang Dynasty court music and dance. Performers in authentic costumes. Includes a Tang-style banquet dinner option. Touristy but genuinely impressive.", duration: "90 min", rating: 4 },
+  { name: "City Wall Night Cycling", venue: "Ancient City Wall", time: "7 PM - 10 PM", price: "$8 entry + $7 bike rental", desc: "Cycling the City Wall at night is magical. Red lanterns illuminate the 14km loop. The old city glows inside, modern towers rise outside. The best evening activity in Xi'an.", duration: "1.5-2 hours", rating: 5 },
+];
+
+const lateNightFood = [
+  { name: "Lao Sun Jia (老孙家)", dish: "Yangrou Paomo", area: "East New Street", hours: "Open until 2 AM", desc: "The most famous paomo restaurant. Tear your bread into tiny pieces, then soak it in rich lamb broth. A Xi'an ritual." },
+  { name: "Jia San Guo Tang Bao (贾三灌汤包)", dish: "Soup Dumplings", area: "Muslim Quarter", hours: "Until midnight", desc: "Delicate soup dumplings filled with lamb and rich broth. Bite carefully — the soup inside is scalding hot." },
+  { name: "Wei Jia Liang Pi (魏家凉皮)", dish: "Liangpi", area: "Multiple locations", hours: "Until 1 AM", desc: "Cold skin noodles with chili oil and vinegar. The perfect late-night snack — light, spicy, refreshing." },
+  { name: "Street BBQ stalls", dish: "Lamb Skewers", area: "Muslim Quarter & East New Street", hours: "Until 2 AM", desc: "Cumin-dusted lamb skewers grilled over charcoal. $0.4-$0.5 each. Eat a dozen. They're that good." },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Wang Fang" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">After Dark</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Xi'an Nightlife Guide</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Xi'an at night is a different city. The City Wall glows with red lanterns, the Muslim Quarter fills with smoke from charcoal grills, and rooftop bars offer cocktails above the ancient skyline. Here's where to go after dark.</p>
+
+  <AuthorSignal authorId="wang-fang" />
+
+    <!-- Quick picks -->
+    <div class="mt-8 rounded-xl bg-stone-900 text-white p-5">
+      <p class="text-sm font-semibold text-amber-400 mb-3">If you only do one thing tonight:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+        <div class="rounded-lg bg-white/10 p-3">
+          <p class="font-bold text-white flex items-center gap-1.5"><Icon name="lucide:bike" class="h-4 w-4" stroke-width="1.5" />Cycle the City Wall</p>
+          <p class="text-white/70 text-xs mt-1">The #1 evening activity. Lantern-lit, magical.</p>
+        </div>
+        <div class="rounded-lg bg-white/10 p-3">
+          <p class="font-bold text-white flex items-center gap-1.5"><Icon name="lucide:utensils" class="h-4 w-4" stroke-width="1.5" />Eat at Muslim Quarter</p>
+          <p class="text-white/70 text-xs mt-1">After 7 PM, it transforms into food paradise.</p>
+        </div>
+        <div class="rounded-lg bg-white/10 p-3">
+          <p class="font-bold text-white flex items-center gap-1.5"><Icon name="lucide:drama" class="h-4 w-4" stroke-width="1.5" />Song of Everlasting Sorrow</p>
+          <p class="text-white/70 text-xs mt-1">China's best outdoor show (Apr-Oct only).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bars & Drinks -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Bars & Drinks</h2>
+      <div class="space-y-4">
+        {bars.map(b => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <h3 class="font-semibold text-stone-800">{b.name}</h3>
+              <span class="shrink-0 text-xs font-medium text-stone-500 bg-stone-100 rounded-full px-2 py-0.5">{b.price}</span>
+            </div>
+            <p class="text-sm text-stone-500 leading-relaxed mb-2">{b.vibe}</p>
+            <div class="flex flex-wrap gap-2 text-xs text-stone-400">
+              <span class="rounded-full bg-stone-50 border border-stone-100 px-2 py-0.5"<span class="rounded-full bg-stone-50 border border-stone-100 px-2 py-0.5 flex items-center gap-1"><Icon name="lucide:map-pin" class="h-3 w-3" stroke-width="1.5" />{b.area}</span>
+              <span class="rounded-full bg-stone-50 border border-stone-100 px-2 py-0.5"<span class="rounded-full bg-stone-50 border border-stone-100 px-2 py-0.5 flex items-center gap-1"><Icon name="lucide:music" class="h-3 w-3" stroke-width="1.5" />{b.music}</span>
+              <span class="rounded-full bg-stone-50 border border-stone-100 px-2 py-0.5"<span class="rounded-full bg-stone-50 border border-stone-100 px-2 py-0.5 flex items-center gap-1"><Icon name="lucide:clock" class="h-3 w-3" stroke-width="1.5" />Best: {b.bestTime}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Night Markets -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Night Markets</h2>
+      <div class="space-y-4">
+        {nightMarkets.map(m => (
+          <div class="rounded-xl border border-amber-200 bg-amber-50 p-5">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <h3 class="font-semibold text-stone-800">{m.name}</h3>
+              <span class="shrink-0 text-xs font-medium text-amber-700 bg-amber-100 rounded-full px-2 py-0.5">{m.hours}</span>
+            </div>
+            <p class="text-sm text-stone-600 leading-relaxed mb-2">{m.highlight}</p>
+            <p class="text-xs text-amber-700 bg-amber-100 rounded-lg px-3 py-1.5 inline-block"><strong>Tip:</strong> {m.tip}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Shows & Evening Entertainment -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Shows & Evening Entertainment</h2>
+      <div class="space-y-4">
+        {shows.map(s => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <div class="flex items-start justify-between gap-3 mb-1">
+              <h3 class="font-semibold text-stone-800">{s.name}</h3>
+              <span class="shrink-0 flex gap-0.5">{Array.from({ length: s.rating }).map(() => <Icon name="lucide:star" class="h-3.5 w-3.5 text-amber-500" stroke-width="1.5" />)}</span>
+            </div>
+            <p class="text-xs text-stone-400 mb-2">{s.venue} · {s.time}</p>
+            <p class="text-sm text-stone-500 leading-relaxed mb-3">{s.desc}</p>
+            <div class="flex gap-3 text-xs text-stone-500">
+              <span class="flex items-center gap-1"><Icon name="lucide:wallet" class="h-3.5 w-3.5" stroke-width="1.5" />{s.price}</span>
+              <span class="flex items-center gap-1"><Icon name="lucide:clock" class="h-3.5 w-3.5" stroke-width="1.5" />{s.duration}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Late Night Food -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Late-Night Food</h2>
+      <div class="space-y-4">
+        {lateNightFood.map(f => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5">
+            <div class="flex items-start justify-between gap-3 mb-1">
+              <h3 class="font-semibold text-stone-800">{f.name}</h3>
+              <span class="shrink-0 text-xs text-stone-500">{f.hours}</span>
+            </div>
+            <p class="text-xs text-terracotta-600 font-medium mb-1 flex items-center gap-1">{f.dish} <span class="opacity-40">·</span> <Icon name="lucide:map-pin" class="h-3 w-3" stroke-width="1.5" />{f.area}</p>
+            <p class="text-sm text-stone-500 leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Safety -->
+    <section class="mt-12 rounded-xl bg-blue-50 border border-blue-200 p-5">
+      <h2 class="text-lg font-semibold text-blue-800 mb-3">Night Safety Tips</h2>
+      <ul class="space-y-2 text-sm text-blue-700">
+        <li class="flex gap-2"><Icon name="lucide:check" class="h-4 w-4 shrink-0 text-blue-300" stroke-width="1.5" /> Xi'an is very safe at night. Violent crime is extremely rare.</li>
+        <li class="flex gap-2"><Icon name="lucide:check" class="h-4 w-4 shrink-0 text-blue-300" stroke-width="1.5" /> The metro runs until 11 PM (11:30 PM on Fridays/Saturdays). After that, use Didi (ride-hailing).</li>
+        <li class="flex gap-2"><Icon name="lucide:check" class="h-4 w-4 shrink-0 text-blue-300" stroke-width="1.5" /> Watch for pickpockets in the Muslim Quarter after dark — keep valuables in front pockets.</li>
+        <li class="flex gap-2"><Icon name="lucide:check" class="h-4 w-4 shrink-0 text-blue-300" stroke-width="1.5" /> Taxis from bars at 2 AM may overcharge. Use Didi for fixed prices.</li>
+        <li class="flex gap-2"><Icon name="lucide:check" class="h-4 w-4 shrink-0 text-blue-300" stroke-width="1.5" /> The City Wall closes at 10 PM (8 PM in winter). Plan your cycling accordingly.</li>
+      </ul>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Nightlife by Type: Choose Your Scene</h2>
+      <div class="space-y-3">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Rooftop Bars — Best for Couples & Groups</p>
+          <p class="text-sm text-stone-600 mt-1">Xi'an's rooftop bar scene has grown since 2022. The best are inside the City Wall near South Gate, with views of the lit-up wall and Bell Tower. Expect cocktails at $9-$13. Dress code is smart casual. Reservations recommended on weekends.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Live Music Venues — Best for Music Lovers</p>
+          <p class="text-sm text-stone-600 mt-1">Xi'an has a thriving indie music scene around the university district. Small venues host folk, rock, and traditional Chinese fusion. Cover charges $4-$12. Shows typically start at 9 PM.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Night Markets — Best for Solo Travelers & Budget</p>
+          <p class="text-sm text-stone-600 mt-1">The Muslim Quarter after 7 PM is the classic. Dongxin Street Night Market is where locals go after 10 PM — more skewers, less chaos. Walking through a night market at full energy is unforgettable.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Cultural Shows — Best for Families & First-Timers</p>
+          <p class="text-sm text-stone-600 mt-1">The Tang Dynasty Music and Dance Show recreates court entertainment from 1,300 years ago. Elaborate costumes, traditional instruments, graceful choreography. Tickets $30-$60. Book through trip.com or your hotel.</p>
+        </div>
+      </div>
+    </section>
+
+
+<div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/food" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Food Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+      <a href="/attractions/city-wall" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+        City Wall Guide
+      </a>
+    </div>
+  </div>
+</BaseLayout>

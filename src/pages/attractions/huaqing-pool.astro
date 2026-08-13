@@ -1,0 +1,135 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Huaqing Hot Springs — History & Visitor Guide";
+const pageDesc = "Tang Dynasty hot spring palace where emperors wintered. Explore imperial baths and the love story of Xuanzong and Yang Guifei. Combine with Terracotta Warriors.";
+
+const faqs = [
+  { q: "Is Huaqing Pool worth visiting?", a: "Yes, especially combined with the Terracotta Warriors (10 min away). On its own, it is a pleasant historical site but not a must-see. As part of a Warriors + Huaqing day trip, it is excellent." },
+  { q: "Can you bathe in the hot springs?", a: "Yes, but not in the historical pools (viewing only). A separate modern spa area lets you soak in the same natural hot spring water. Tickets $30-$60." },
+  { q: "Is the night show worth it?", a: "Yes, it is spectacular — a full-scale outdoor production with hundreds of performers and the mountain itself as a backdrop. Book weeks ahead for peak season." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TouristAttraction", "name": "Huaqing Hot Springs: Tang Dynasty Imperial Baths", "description": "The hot spring palace where Tang emperors wintered and the love story of Emperor Xuanzong and Yang Guifei unfolded. Combine with the Terracotta Warriors for a perfect day trip.", "url": "https://xi-an-china.com/attractions/huaqing-pool/" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
+      { "@type": "ListItem", "position": 3, "name": "Huaqing Hot Springs: Tang Dynasty Imperial Baths", "item": "https://xi-an-china.com/attractions/huaqing-pool/" }
+    ]},
+    { "@type": "FAQPage", "mainEntity": [{"@type":"Question","name":"Is Huaqing Pool worth visiting?","acceptedAnswer":{"@type":"Answer","text":"Yes, especially combined with the Terracotta Warriors (10 min away). On its own, it is a pleasant historical site but not a must-see. As part of a Warriors + Huaqing day trip, it is excellent."}},
+{"@type":"Question","name":"Can you bathe in the hot springs?","acceptedAnswer":{"@type":"Answer","text":"Yes, but not in the historical pools (viewing only). A separate modern spa area lets you soak in the same natural hot spring water. Tickets $30-$60."}},
+{"@type":"Question","name":"Is the night show worth it?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is spectacular — a full-scale outdoor production with hundreds of performers and the mountain itself as a backdrop. Book weeks ahead for peak season."}},
+] }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+
+    <div class="inline-flex items-center rounded-full border border-terracotta-200 bg-terracotta-50 px-3 py-1 text-xs font-medium text-terracotta-700 mb-4">Worth It</div>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Huaqing Hot Springs: Tang Dynasty Imperial Baths</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">The hot spring palace where Tang emperors wintered and the love story of Emperor Xuanzong and Yang Guifei unfolded. Combine with the Terracotta Warriors for a perfect day trip.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/huaqing-pool.webp" srcset="/images/responsive/huaqing-pool-768.webp 768w, /images/huaqing-pool.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="Huaqing Hot Springs palace pavilions below Mount Li" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 shadow-sm">
+      <div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Opening Hours</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">7:00 AM – 7:00 PM</p><p class="text-xs text-stone-500 mt-1.5">Mar-Nov. 7:30–6:00 PM Dec-Feb</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Ticket Price</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">$18</p><p class="text-xs text-stone-500 mt-1.5">Students/seniors 50% off</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Hot Spring Bath</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">$30-$60</p><p class="text-xs text-stone-500 mt-1.5">Separate ticket for spa pools</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Time Needed</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">2–3 hours</p><p class="text-xs text-stone-500 mt-1.5">Add 1 hour for hot spring bathing</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Best Time</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Winter mornings</p><p class="text-xs text-stone-500 mt-1.5">Steam rising in cold air</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Location</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Lintong District</p><p class="text-xs text-stone-500 mt-1.5">10 min taxi from Terracotta Warriors</p></div>
+
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Why Huaqing Pool Is Worth Your Time</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Huaqing Pool (华清池) has been a hot spring resort for <strong class="text-stone-800">3,000 years</strong>, but it is most famous as the winter palace of Tang Emperor Xuanzong and his concubine Yang Guifei — the most beautiful woman in Chinese history. Their tragic love story is one of China’s great romances, and the pool where Yang Guifei bathed is still here.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">The site includes <strong class="text-stone-800">nine imperial bathing pools</strong> fed by natural hot springs at a constant 43°C. The Star Pool was for the emperor, and the Lotus Pool for Yang Guifei — smaller, more intimate, shaped like a blooming flower.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">You can take a cable car ($5) or hike up <strong class="text-stone-800">Mount Li (Lishan)</strong> to the Beacon Tower for panoramic views. On clear days, you can see the Terracotta Warriors site from the summit.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">The <strong class="text-stone-800">Song of Everlasting Sorrow</strong> (长恨歌) is a spectacular outdoor evening show on the palace grounds, telling the emperor and Yang Guifei’s story. Widely considered one of the best live performances in China. Tickets $35-$150.</p>
+
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">The Love Story: Emperor Xuanzong & Yang Guifei</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Huaqing Pool is inseparable from China's most famous love story. <strong class="text-stone-800">Emperor Xuanzong</strong> ruled during the Tang Dynasty's golden age (712-756 AD). He fell deeply in love with <strong class="text-stone-800">Yang Guifei</strong>, a woman renowned for her beauty, and built the Huaqing Palace as their winter retreat. Their bathing pools — hers shaped like a crabapple flower, his like a lotus — are still visible today.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">The story ends tragically. When the An Lushan Rebellion threatened the empire in 755 AD, the emperor's own guards blamed Yang Guifei for distracting him from governance. They forced her execution. Xuanzong abdicated soon after. The love story has been retold in Chinese poetry, opera, and film for over 1,200 years. The evening <em>Song of Everlasting Sorrow</em> performance at Huaqing Pool tells exactly this story through music, dance, and water effects.</p>
+    </section>
+
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Insider Tips</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span><p class="text-stone-600"><strong>Combine with the Warriors.</strong> They are 10 min apart by taxi. Warriors at 8:30 AM (beat crowds), Huaqing in the afternoon. A perfect day trip.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span><p class="text-stone-600"><strong>Winter is best.</strong> Huaqing is most atmospheric in winter when steam rises from hot pools into freezing air. Summer visits are less impressive.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">3</span><p class="text-stone-600"><strong>Book the night show early.</strong> The Song of Everlasting Sorrow sells out weeks ahead during peak season. Cheapest seats ($35) are fine — the stage is huge with good visibility everywhere.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span><p class="text-stone-600"><strong>Soak in the hot springs.</strong> A separate modern spa area lets you bathe in the same mineral water. $30-$60. Bring a swimsuit or buy one there.</p></div>
+</div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Nearby</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">10 min</span><div><strong class="font-medium text-stone-800">Terracotta Warriors</strong><p class="text-sm text-stone-500">The main event. Do this first in the morning.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">15 min</span><div><strong class="font-medium text-stone-800">Mount Li</strong><p class="text-sm text-stone-500">Cable car to the summit for panoramic views.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">40 min</span><div><strong class="font-medium text-stone-800">Xi’an Downtown</strong><p class="text-sm text-stone-500">Return by Metro Line 9. Dinner in Muslim Quarter.</p></div></div>
+</div>
+    </section>
+
+        <!-- Related attractions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="/attractions/terracotta-warriors" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Terracotta Warriors</p>
+          <p class="text-xs text-stone-500 mt-0.5">The classic same-day pairing, 10 minutes apart.</p>
+        </a>
+        <a href="/attractions/mount-huashan" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Mount Huashan</p>
+          <p class="text-xs text-stone-500 mt-0.5">Hot springs after a hard mountain day.</p>
+        </a>
+        <a href="/attractions/han-yangling" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Han Yangling Mausoleum</p>
+          <p class="text-xs text-stone-500 mt-0.5">Another imperial tomb, far fewer crowds.</p>
+        </a>
+      </div>
+    </section>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/attractions/bell-drum-tower" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Next: Bell & Drum Towers <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">The Song of Everlasting Sorrow: Evening Performance Guide</h2>
+      <p class="text-stone-600 leading-relaxed">The evening show at Huaqing Pool is the main reason many visitors come. Performed on the actual imperial bathing pools with the mountain as a backdrop, it uses water screens, fire effects, hundreds of performers, and a full orchestra to tell the love story of Emperor Xuanzong and Yang Guifei.</p>
+      <div class="mt-4 space-y-2 text-sm">
+        <p><strong class="text-stone-800">Show times:</strong> Usually 8:00 PM and 9:30 PM (seasonal — check when booking).</p>
+        <p><strong class="text-stone-800">Duration:</strong> 70 minutes.</p>
+        <p><strong class="text-stone-800">Ticket price:</strong> $35-$85 depending on seat category. Book through trip.com or the official website.</p>
+        <p><strong class="text-stone-800">Best seats:</strong> Center section, rows 5-15. Too close and you will get wet from the water effects. Too far back and you lose the detail.</p>
+        <p><strong class="text-stone-800">Seasonal note:</strong> The show runs year-round. In winter, the hot spring steam rising against the cold air adds an atmospheric dimension that summer shows lack.</p>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

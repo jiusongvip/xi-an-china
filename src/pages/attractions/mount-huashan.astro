@@ -1,0 +1,149 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Mount Huashan — Hiking & Cable Car Guide";
+const pageDesc = "One of China’s Five Great Mountains with sheer granite cliffs, the heart-stopping Plank Walk, and some of Asia’s best hiking. A doable day trip from Xi’an.";
+
+const faqs = [
+  { q: "Can I do Huashan as a day trip?", a: "Yes. First train at 7:00 AM (30 min, $8). Cable car up by 8:30, hike 4-5 hrs, cable car down by 3:00 PM, back in Xi’an by 4:30 PM." },
+  { q: "How scary is the Plank Walk?", a: "Visually terrifying, physically safe. Full-body harness clipped to an overhead cable. Planks ~30 cm wide, 2,000m drop below. Genuinely challenging with a fear of heights. Many turn back — no shame." },
+  { q: "Which cable car should I take?", a: "West Peak ($21) is most scenic, gliding through a narrow valley. North Peak ($12) is shorter. Standard: West up, North down." },
+  { q: "Suitable for kids or elderly?", a: "Cable cars make peaks accessible, but hiking between peaks involves steep staircases with chains. Under 10 and anyone with mobility issues: stick to West Peak (flat area with great views). Plank Walk: minimum 1.5m height." },
+  { q: "Which cable car route is best?", a: "West Peak cable car is the most spectacular — a 20-minute ride over dramatic cliffs. It drops you near the summit, minimizing hiking. North Peak cable car is shorter and cheaper ($12 vs $18) but requires more hiking to reach the other peaks. For a day trip, take the West Peak car up and the North Peak car down — you will cover the highlights with moderate hiking." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TouristAttraction", "name": "Mount Huashan: China’s Most Dramatic Hike", "description": "One of China’s Five Great Mountains with sheer granite cliffs, the heart-stopping Plank Walk, and some of Asia’s best hiking. A doable day trip from Xi’an.", "url": "https://xi-an-china.com/attractions/mount-huashan/" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
+      { "@type": "ListItem", "position": 3, "name": "Mount Huashan: China’s Most Dramatic Hike", "item": "https://xi-an-china.com/attractions/mount-huashan/" }
+    ]},
+    { "@type": "FAQPage", "mainEntity": [{"@type":"Question","name":"Can I do Huashan as a day trip?","acceptedAnswer":{"@type":"Answer","text":"Yes. First train at 7:00 AM (30 min, $8). Cable car up by 8:30, hike 4-5 hrs, cable car down by 3:00 PM, back in Xi’an by 4:30 PM."}},
+{"@type":"Question","name":"How scary is the Plank Walk?","acceptedAnswer":{"@type":"Answer","text":"Visually terrifying, physically safe. Full-body harness clipped to an overhead cable. Planks ~30 cm wide, 2,000m drop below. Genuinely challenging with a fear of heights. Many turn back — no shame."}},
+{"@type":"Question","name":"Which cable car should I take?","acceptedAnswer":{"@type":"Answer","text":"West Peak ($21) is most scenic, gliding through a narrow valley. North Peak ($12) is shorter. Standard: West up, North down."}},
+{"@type":"Question","name":"Suitable for kids or elderly?","acceptedAnswer":{"@type":"Answer","text":"Cable cars make peaks accessible, but hiking between peaks involves steep staircases with chains. Under 10 and anyone with mobility issues: stick to West Peak (flat area with great views). Plank Walk: minimum 1.5m height."}},
+] }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+
+    <div class="inline-flex items-center rounded-full border border-terracotta-200 bg-terracotta-50 px-3 py-1 text-xs font-medium text-terracotta-700 mb-4">Adventure</div>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Mount Huashan: China’s Most Dramatic Hike</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">One of China’s Five Great Mountains with sheer granite cliffs, the heart-stopping Plank Walk, and some of Asia’s best hiking. A doable day trip from Xi’an.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/mount-huashan.webp" srcset="/images/responsive/mount-huashan-768.webp 768w, /images/mount-huashan.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="The Chess Pavilion perched on Mount Huashan's rocky summit" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 shadow-sm">
+      <div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Opening Hours</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">7:00 AM – 7:00 PM</p><p class="text-xs text-stone-500 mt-1.5">Cable cars close at 7 PM</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Ticket Price</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">$24</p><p class="text-xs text-stone-500 mt-1.5">Cable car: $12-$21 extra</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Plank Walk</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">$4</p><p class="text-xs text-stone-500 mt-1.5">Safety harness included. Queue 1-3 hrs</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Time Needed</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Full day</p><p class="text-xs text-stone-500 mt-1.5">4:30 AM start recommended</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Best Season</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">Apr-May, Sep-Oct</p><p class="text-xs text-stone-500 mt-1.5">Avoid rain/snow for Plank Walk</p></div>
+<div class="bg-white p-5"><p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">Getting There</p><p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">30 min train</p><p class="text-xs text-stone-500 mt-1.5">Xi’an N → Huashan N ($8)</p></div>
+
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Why Mount Huashan Is Worth the Effort</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Mount Huashan (华山) is one of China’s <strong class="text-stone-800">Five Great Mountains</strong> and the most spectacular. Five granite peaks rise almost vertically from the Guanzhong Plain, connected by narrow ridges and cliffside paths. A sacred Daoist mountain for centuries, temples and shrines cling to the rock faces at improbable angles.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">The famous <strong class="text-stone-800">Plank Walk</strong> (长空栈道) is a narrow wooden path bolted to a vertical cliff 2,000m above the ground. You wear a safety harness and shuffle along planks barely wider than your feet. Terrifying and unforgettable. The queue can be 1-3 hours in peak season.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">There are <strong class="text-stone-800">five peaks</strong>: South (highest, 2,154m), West (best sunset, cable car), East (sunrise viewing), North (lowest, traditional start), and Central. Most visitors take the West Peak cable car up, hike to South for the Plank Walk, then North cable car down.</p>
+<p class="mt-4 text-stone-600 leading-relaxed">Huashan is <strong class="text-stone-800">doable as a day trip</strong> from Xi’an. First high-speed train at 7 AM (30 min, $8). On the mountain by 8:30 AM, back in Xi’an by 7 PM. Overnight option: basic hotel on the East Peak for sunrise ($30-$60).</p>
+
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">The Five Peaks: Which to Climb and How</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Mount Huashan has <strong class="text-stone-800">five distinct peaks</strong>, each with its own character and difficulty level. Most visitors target 1-2 peaks in a day trip.</p>
+      <div class="mt-4 space-y-2 text-sm">
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold text-stone-800">North Peak (1,614m) — Easiest.</span><span class="text-stone-500"> Connected by cable car. The traditional starting point. Views of the surrounding cliffs. 1 hour from base.</span></div>
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold text-stone-800">West Peak (2,082m) — Most Dramatic.</span><span class="text-stone-500"> Known as Lotus Peak. The cable car ride here is spectacular — one of the steepest in the world. Best for sunrise views.</span></div>
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold text-stone-800">South Peak (2,154m) — Highest.</span><span class="text-stone-500"> The summit of Mount Huashan. Home to the famous Plank Walk — a narrow wooden path bolted to a vertical cliff face with a 700m drop. Not for the faint-hearted ($4 extra).</span></div>
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold text-stone-800">East Peak (2,096m) — Sunrise.</span><span class="text-stone-500"> The classic sunrise viewpoint. Many hikers stay overnight at the basic guesthouse here to catch dawn. Temperatures drop significantly at night even in summer.</span></div>
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold text-stone-800">Center Peak (2,037m) — Quietest.</span><span class="text-stone-500"> A small peak between East and South. Often skipped but peaceful. Good for photos without crowds.</span></div>
+      </div>
+    </section>
+
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Insider Tips</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span><p class="text-stone-600"><strong>Start before dawn.</strong> 7:00 AM train from Xi’an North. On the mountain by 8:30 AM. The West Peak cable car line gets long after 9 AM.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span><p class="text-stone-600"><strong>West up, North down.</strong> Standard route: West cable car ($21), hike to South Peak + Plank Walk, North cable car down ($12). Total hiking: 4-5 hours moderate pace.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">3</span><p class="text-stone-600"><strong>Skip the Plank Walk if it rains.</strong> It closes in rain or high wind. Check the forecast the night before. Huashan in rain is slippery with obscured views.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span><p class="text-stone-600"><strong>Pack light, bring cash.</strong> Small backpack with water, snacks, and a jacket. Vendors on the mountain are expensive ($3/bottle). Wear shoes with good grip.</p></div>
+<div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">5</span><p class="text-stone-600"><strong>Overnight for sunrise.</strong> Stay at the Dongfeng Hotel on East Peak ($30-$60/bed). Wake 5 AM, walk 10 min to the viewing platform. Sunrise over a sea of clouds is one of China’s best experiences.</p></div>
+</div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Nearby</h2>
+      <div class="mt-4 space-y-4"><div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">Nearby</span><div><strong class="font-medium text-stone-800">Huashan Hot Springs</strong><p class="text-sm text-stone-500">At the mountain base. Soak tired muscles post-hike. $15-$30.</p></div></div>
+<div class="flex gap-3"><span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-terracotta-100 text-xs font-bold text-terracotta-700">30 min</span><div><strong class="font-medium text-stone-800">Xi’an</strong><p class="text-sm text-stone-500">Train back to Xi’an North. Dinner in the Muslim Quarter.</p></div></div>
+</div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">The Plank Walk: What to Expect</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The Mount Huashan Plank Walk (长空栈道) is one of the world's most famous — and most terrifying — hiking experiences. Narrow wooden planks are bolted to a vertical cliff face at South Peak, 2,154 meters above sea level, with a 700-meter drop below. You wear a harness clipped to a steel cable and shuffle sideways along the planks. It costs $4 extra and takes about 45-60 minutes round trip.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed"><strong class="text-stone-800">Is it safe?</strong> Yes, statistically. There has not been a fatality on the Plank Walk in over a decade. The harness system is secure, and staff manage the flow of people. But it is genuinely frightening if you have a fear of heights. <strong class="text-stone-700">If you are claustrophobic, have balance issues, or get vertigo, skip it.</strong> There are beautiful viewpoints nearby that do not require walking on a cliff face.</p>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">What to Bring: Gear Checklist</h2>
+      <div class="grid grid-cols-2 gap-2 text-sm">
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold">Hiking shoes</span><p class="text-stone-500">Not sneakers. The stone steps are uneven and can be slippery. Ankle support helps.</p></div>
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold">Gloves</span><p class="text-stone-500">You will use chains and railings constantly. $0.5 gloves sold at the base.</p></div>
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold">Water (2L minimum)</span><p class="text-stone-500">Water on the mountain costs 3-5x normal prices. Bring enough for the full hike.</p></div>
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold">Headlamp</span><p class="text-stone-500">If hiking before dawn for sunrise. Phone flashlight drains battery fast.</p></div>
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold">Warm layer</span><p class="text-stone-500">Temperatures drop 10-15°C at the summit. Even in summer, bring a jacket.</p></div>
+        <div class="rounded-lg border border-stone-200 p-3"><span class="font-semibold">Cash</span><p class="text-stone-500">Plank walk, lockers, and some food stalls are cash-only. $30 backup.</p></div>
+      </div>
+    </section>
+
+    <!-- Related attractions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="/attractions/terracotta-warriors" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Terracotta Warriors</p>
+          <p class="text-xs text-stone-500 mt-0.5">The other essential — do both as day trips from Xi'an.</p>
+        </a>
+        <a href="/attractions/huaqing-pool" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Huaqing Hot Springs</p>
+          <p class="text-xs text-stone-500 mt-0.5">Recover tired legs in imperial hot springs.</p>
+        </a>
+        <a href="/day-trips" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">All Day Trips from Xi'an</p>
+          <p class="text-xs text-stone-500 mt-0.5">6 options ranked by distance and payoff.</p>
+        </a>
+      </div>
+    </section>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/attractions/tang-paradise" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Next: Tang Paradise <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

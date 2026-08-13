@@ -1,0 +1,149 @@
+---
+import SpeakButton from "../components/SpeakButton.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+import { Icon } from "astro-icon/components";
+const pageTitle = "Xi'an Chinese Phrasebook — Essential Tourist Phrases";
+const pageDesc = "Essential Chinese phrases for Xi'an travelers: attraction names for taxis, ordering food, bargaining, and emergencies. All copy-paste ready for use.";
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Wang Fang","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Phrasebook","item":"https://xi-an-china.com/phrasebook"}]}]};
+
+const categories = [
+  { name: "Attractions — Show to Taxi Drivers", icon: "lucide:map-pin", color: "terracotta",
+    phrases: [
+      { zh: "请带我去兵马俑", en: "Please take me to the Terracotta Warriors", pinyin: "Qǐng dài wǒ qù Bīngmǎyǒng" },
+      { zh: "请带我去城墙南门", en: "Please take me to the South Gate of the City Wall", pinyin: "Qǐng dài wǒ qù Chéngqiáng Nánmén" },
+      { zh: "请带我去回民街", en: "Please take me to the Muslim Quarter", pinyin: "Qǐng dài wǒ qù Huímín Jiē" },
+      { zh: "请带我去大雁塔", en: "Please take me to the Big Wild Goose Pagoda", pinyin: "Qǐng dài wǒ qù Dàyàn Tǎ" },
+      { zh: "请带我去陕西历史博物馆", en: "Please take me to Shaanxi History Museum", pinyin: "Qǐng dài wǒ qù Shǎnxī Lìshǐ Bówùguǎn" },
+      { zh: "请带我去华山", en: "Please take me to Mount Huashan", pinyin: "Qǐng dài wǒ qù Huáshān" },
+      { zh: "请带我去钟鼓楼", en: "Please take me to the Bell and Drum Towers", pinyin: "Qǐng dài wǒ qù Zhōng Gǔlóu" },
+      { zh: "请带我去西安北站", en: "Please take me to Xi'an North Station", pinyin: "Qǐng dài wǒ qù Xī'ān Běizhàn" },
+      { zh: "请带我去咸阳机场", en: "Please take me to Xianyang Airport", pinyin: "Qǐng dài wǒ qù Xiányáng Jīchǎng" },
+    ]
+  },
+  { name: "Ordering Food", icon: "lucide:utensils", color: "amber",
+    phrases: [
+      { zh: "我要一碗羊肉泡馍", en: "I'd like a bowl of lamb paomo", pinyin: "Wǒ yào yì wǎn yángròu paómó" },
+      { zh: "来一份biangbiang面", en: "One serving of biangbiang noodles", pinyin: "Lái yí fèn biangbiang miàn" },
+      { zh: "要两个肉夹馍", en: "Two roujiamo (Chinese hamburgers)", pinyin: "Yào liǎng gè ròujiāmó" },
+      { zh: "来十串羊肉串", en: "Ten lamb skewers please", pinyin: "Lái shí chuàn yángròu chuàn" },
+      { zh: "来一份凉皮", en: "One serving of liangpi (cold noodles)", pinyin: "Lái yí fèn liángpí" },
+      { zh: "来一杯酸梅汤", en: "One sour plum drink please", pinyin: "Lái yì bēi suānméitāng" },
+      { zh: "不要辣", en: "No spicy please", pinyin: "Bú yào là" },
+      { zh: "少放辣", en: "Less spicy please", pinyin: "Shǎo fàng là" },
+      { zh: "买单", en: "Check please / Bill please", pinyin: "Mǎidān" },
+      { zh: "好吃！", en: "Delicious!", pinyin: "Hǎo chī!" },
+    ]
+  },
+  { name: "Getting Around", icon: "lucide:train-front", color: "blue",
+    phrases: [
+      { zh: "地铁站在哪里？", en: "Where is the metro station?", pinyin: "Dìtiě zhàn zài nǎlǐ?" },
+      { zh: "到城墙多少钱？", en: "How much to the City Wall?", pinyin: "Dào chéngqiáng duōshao qián?" },
+      { zh: "请打表", en: "Please use the meter (taxi)", pinyin: "Qǐng dǎ biǎo" },
+      { zh: "我要去这个地方", en: "I want to go to this place (show map)", pinyin: "Wǒ yào qù zhège dìfāng" },
+      { zh: "在这里停", en: "Stop here", pinyin: "Zài zhèlǐ tíng" },
+      { zh: "还有多远？", en: "How much further?", pinyin: "Hái yǒu duō yuǎn?" },
+    ]
+  },
+  { name: "Shopping & Bargaining", icon: "lucide:shopping-bag", color: "emerald",
+    phrases: [
+      { zh: "多少钱？", en: "How much?", pinyin: "Duōshao qián?" },
+      { zh: "太贵了", en: "Too expensive", pinyin: "Tài guì le" },
+      { zh: "便宜一点", en: "A little cheaper", pinyin: "Piányi yìdiǎn" },
+      { zh: "可以刷卡吗？", en: "Can I pay by card?", pinyin: "Kěyǐ shuākǎ ma?" },
+      { zh: "可以扫码吗？", en: "Can I scan to pay? (WeChat/Alipay)", pinyin: "Kěyǐ sǎomǎ ma?" },
+      { zh: "我要这个", en: "I want this one", pinyin: "Wǒ yào zhège" },
+    ]
+  },
+  { name: "Essentials & Emergencies", icon: "lucide:triangle-alert", color: "rose",
+    phrases: [
+      { zh: "你好", en: "Hello", pinyin: "Nǐ hǎo" },
+      { zh: "谢谢", en: "Thank you", pinyin: "Xièxiè" },
+      { zh: "对不起", en: "Sorry / Excuse me", pinyin: "Duìbuqǐ" },
+      { zh: "我不会说中文", en: "I don't speak Chinese", pinyin: "Wǒ bú huì shuō Zhōngwén" },
+      { zh: "你会说英语吗？", en: "Do you speak English?", pinyin: "Nǐ huì shuō Yīngyǔ ma?" },
+      { zh: "请帮帮我", en: "Please help me", pinyin: "Qǐng bāngbang wǒ" },
+      { zh: "洗手间在哪里？", en: "Where is the bathroom?", pinyin: "Xǐshǒujiān zài nǎlǐ?" },
+      { zh: "我需要去医院", en: "I need to go to a hospital", pinyin: "Wǒ xūyào qù yīyuàn" },
+      { zh: "我的护照丢了", en: "I lost my passport", pinyin: "Wǒ de hùzhào diū le" },
+    ]
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Wang Fang" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Essential Tool</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Xi'an Chinese Phrasebook</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">English is limited in Xi'an. These phrases are your survival kit. <strong class="text-stone-700">Tap any phrase to copy</strong> — show it to the driver. Tap the speaker icon to hear pronunciation.</p>
+
+  <AuthorSignal authorId="wang-fang" />
+
+    <div class="mt-8 rounded-xl bg-blue-50 border border-blue-200 p-5">
+      <p class="text-sm font-semibold text-blue-800 mb-2">Pro tip</p>
+      <p class="text-sm text-blue-700 leading-relaxed">Save this page offline before your trip. If you don't hear audio, check device volume and browser sound permissions.</p>
+    </div>
+
+    <div class="mt-12 space-y-10">
+      {categories.map(cat => (
+        <section>
+          <div class="flex items-center gap-2 mb-4">
+            <Icon name={cat.icon} class="h-6 w-6 shrink-0 text-champagne-600" stroke-width="1.5" />
+            <h2 class="text-xl font-semibold text-stone-900">{cat.name}</h2>
+          </div>
+          <div class="space-y-2">
+            {cat.phrases.map(p => (
+              <div class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors cursor-pointer" onclick={`navigator.clipboard.writeText('${p.zh.replace(/'/g, "\'")}').then(function(){this.querySelector('.copy-hint').textContent='Copied!';setTimeout(function(){this.querySelector('.copy-hint').textContent='Tap to copy'},1500)}`}>
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                      <span class="text-lg font-semibold text-stone-800">{p.zh}</span>
+                      <SpeakButton text={p.zh} />
+                    </div>
+                    <p class="text-xs text-stone-400 mb-1">{p.pinyin}</p>
+                    <p class="text-sm text-stone-500">{p.en}</p>
+                  </div>
+                  <span class="copy-hint shrink-0 text-xs text-stone-300 group-hover:text-terracotta-500 transition-colors mt-1">Tap to copy</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <section class="mt-12 rounded-2xl border border-terracotta-200 bg-terracotta-50 p-6">
+      <h2 class="text-xl font-semibold text-stone-900 mb-4">Quick Numbers Reference</h2>
+      <div class="grid grid-cols-5 gap-3 text-center">
+        {[
+          { n: "1", zh: "一", p: "yī" }, { n: "2", zh: "二", p: "èr" }, { n: "3", zh: "三", p: "sān" }, { n: "4", zh: "四", p: "sì" }, { n: "5", zh: "五", p: "wǔ" },
+          { n: "6", zh: "六", p: "liù" }, { n: "7", zh: "七", p: "qī" }, { n: "8", zh: "八", p: "bā" }, { n: "9", zh: "九", p: "jiǔ" }, { n: "10", zh: "十", p: "shí" },
+        ].map(d => (
+          <div class="rounded-lg bg-white border border-terracotta-100 p-2">
+            <div class="flex items-center justify-center gap-1">
+              <div class="flex items-center justify-center gap-1"><p class="text-lg font-bold text-stone-800">{d.zh}</p><SpeakButton text={d.zh} /></div>
+            </div>
+            <p class="text-xs text-stone-400">{d.p}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">How to Use These Phrases</h2>
+      <div class="space-y-3 text-sm text-stone-600">
+        <p><strong class="text-stone-800">Pronunciation:</strong> Show the Chinese text — pointing is faster than speaking. Locals will read the characters.</p>
+        <p><strong class="text-stone-800">Tones:</strong> Context matters more than perfect tones. At a restaurant pointing at a menu, people will understand.</p>
+        <p><strong class="text-stone-800">The most useful phrase:</strong> Zhe ge (this one) + pointing works for most transactions.</p>
+      </div>
+    </section>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/food" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">Food Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+      <a href="/payment-guide" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">Payment Guide</a>
+    </div>
+  </div>
+</BaseLayout>

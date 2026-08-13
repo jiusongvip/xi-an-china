@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+@theme {
+  /* ————————————————————————————————————————————————
+     Bend Club Design DNA — xi-an-china
+     paper #F4F1EA · ink #101F1A · terracotta (only saturated point)
+     ———————————————————————————————————————————————— */
+
+  /* paper / ink neutral ramp (legacy `stone-*` resolves here site-wide) */
+  --color-stone-50: #f4f1ea;
+  --color-stone-100: #ece8de;
+  --color-stone-200: #ddd6c7;
+  --color-stone-300: #c3baa6;
+  --color-stone-400: #a39a85;
+  --color-stone-500: #7e7666;
+  --color-stone-600: #5e574b;
+  --color-stone-700: #443f36;
+  --color-stone-800: #2b2821;
+  --color-stone-900: #1a241f;
+  --color-stone-950: #101f1a;
+
+  /* champagne ramp — the single saturated point */
+  --color-champagne-50: #fbf6f4;
+  --color-champagne-100: #f7e9e3;
+  --color-champagne-200: #f0cfc2;
+  --color-champagne-300: #e7aa92;
+  --color-champagne-400: #de825e;
+  --color-champagne-500: #b85128;
+  --color-champagne-600: #9b4827;
+  --color-champagne-700: #7b3c24;
+  --color-champagne-800: #633421;
+  --color-champagne-900: #522d1e;
+  --color-champagne-950: #301b13;
+
+  /* legacy accent ramps re-pointed to champagne (uniform, one saturated hue) */
+  --color-terracotta-50: #fbf6f4;
+  --color-terracotta-100: #f7e9e3;
+  --color-terracotta-200: #f0cfc2;
+  --color-terracotta-300: #e7aa92;
+  --color-terracotta-400: #de825e;
+  --color-terracotta-500: #b85128;
+  --color-terracotta-600: #9b4827;
+  --color-terracotta-700: #7b3c24;
+  --color-terracotta-800: #633421;
+  --color-terracotta-900: #522d1e;
+  --color-terracotta-950: #301b13;
+
+  --color-amber-50: #fbf6f4;
+  --color-amber-100: #f7e9e3;
+  --color-amber-200: #f0cfc2;
+  --color-amber-300: #e7aa92;
+  --color-amber-400: #de825e;
+  --color-amber-500: #b85128;
+  --color-amber-600: #9b4827;
+  --color-amber-700: #7b3c24;
+  --color-amber-800: #633421;
+  --color-amber-900: #522d1e;
+  --color-amber-950: #301b13;
+
+  --color-blue-50: #fbf6f4;
+  --color-blue-100: #f7e9e3;
+  --color-blue-200: #f0cfc2;
+  --color-blue-300: #e7aa92;
+  --color-blue-400: #de825e;
+  --color-blue-500: #b85128;
+  --color-blue-600: #9b4827;
+  --color-blue-700: #7b3c24;
+  --color-blue-800: #633421;
+  --color-blue-900: #522d1e;
+  --color-blue-950: #301b13;
+
+  --color-emerald-50: #fbf6f4;
+  --color-emerald-100: #f7e9e3;
+  --color-emerald-200: #f0cfc2;
+  --color-emerald-300: #e7aa92;
+  --color-emerald-400: #de825e;
+  --color-emerald-500: #b85128;
+  --color-emerald-600: #9b4827;
+  --color-emerald-700: #7b3c24;
+  --color-emerald-800: #633421;
+  --color-emerald-900: #522d1e;
+  --color-emerald-950: #301b13;
+
+  --color-rose-50: #fbf6f4;
+  --color-rose-100: #f7e9e3;
+  --color-rose-200: #f0cfc2;
+  --color-rose-300: #e7aa92;
+  --color-rose-400: #de825e;
+  --color-rose-500: #b85128;
+  --color-rose-600: #9b4827;
+  --color-rose-700: #7b3c24;
+  --color-rose-800: #633421;
+  --color-rose-900: #522d1e;
+  --color-rose-950: #301b13;
+
+  /* semantic aliases */
+  --color-paper: #f4f1ea;
+  --color-paper-bright: #fbfaf5;
+  --color-ink: #101f1a;
+  --color-ink-soft: #2b2821;
+  --color-champagne: #b85128;
+  --color-champagne-bright: #f0cfc2;
+
+  /* `bg-white` cards read as bright paper on the ivory ground */
+  --color-white: #fbfaf5;
+
+  --color-stone-warm: #e9e5da;
+  --color-charcoal: #7e7666;
+  --color-pearl: #fbfaf5;
+
+  --font-sans: "Lexend Variable", "Lexend", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces Variable", "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-stone-50 text-stone-800 antialiased;
+    font-feature-settings: "ss01" on, "cv01" on;
+  }
+
+  /* Bend Club display typography — tight, editorial */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 0.96;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    @apply bg-champagne-200 text-champagne-950;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-champagne-600;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* uppercase tracked label — all labels & nav use this voice */
+  .label {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  /* zero-solid-button: "Label →" with arrow that walks right on hover */
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    font-family: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: var(--color-champagne-700);
+    transition: color 0.25s ease;
+  }
+  .link-arrow:hover {
+    color: var(--color-champagne-500);
+  }
+  .link-arrow .link-arrow-ic {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-arrow:hover .link-arrow-ic {
+    transform: translateX(6px);
+  }
+  .link-arrow--ink {
+    color: var(--color-ink);
+  }
+  .link-arrow--ink:hover {
+    color: var(--color-champagne-700);
+  }
+  .link-arrow--light {
+    color: var(--color-champagne-bright);
+  }
+  .link-arrow--light:hover {
+    color: #fff;
+  }
+
+  /* matte paper grain — the print-booklet metaphor */
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+  }
+
+  /* DNA default — neutralize legacy solid buttons site-wide into "Label →" text links */
+  a.bg-terracotta-500, a.bg-terracotta-600,
+  button.bg-terracotta-500, button.bg-terracotta-600 {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding-inline: 0 !important;
+    border: none !important;
+    color: var(--color-champagne-700) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+  a.bg-terracotta-500:hover, a.bg-terracotta-600:hover,
+  button.bg-terracotta-500:hover, button.bg-terracotta-600:hover {
+    color: var(--color-champagne-500) !important;
+  }
+  a.bg-terracotta-500 svg, a.bg-terracotta-600 svg,
+  button.bg-terracotta-500 svg, button.bg-terracotta-600 svg {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  a.bg-terracotta-500:hover svg, a.bg-terracotta-600:hover svg,
+  button.bg-terracotta-500:hover svg, button.bg-terracotta-600:hover svg {
+    transform: translateX(4px);
+  }
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Lenis smooth-scroll — official guidance */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

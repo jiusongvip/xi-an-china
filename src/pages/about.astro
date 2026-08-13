@@ -1,0 +1,172 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+
+const pageTitle = "About Us — Independent Xi'an Travel Guide by Locals";
+const pageDesc = "Independent Xi'an travel guide written by locals since 2019. No AI content, no paid listings — just honest advice from people who live here.";
+
+const schema = {"@context":"https://schema.org","@graph":[
+  {"@type":"AboutPage","name":"About Xi'an Guide","description":pageDesc},
+  {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"About","item":"https://xi-an-china.com/about"}]}
+]};
+---
+<BaseLayout title={pageTitle} description={pageDesc} author="Xi'an Guide Team" datePublished="August 2026" hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Our Story</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">About Xi'an Guide</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">We are an independent team of Xi'an locals who have been exploring and documenting this city since 2019. This site is our honest, practical gift to future visitors.</p>
+
+    <!-- Who we are -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Who We Are</h2>
+      <p class="text-stone-600 leading-relaxed mb-6">We are a small group of friends based in Xi'an. We started this project because we were frustrated with the outdated, inaccurate, and often AI-generated travel information about Xi'an online. Most guides are written by people who have never been here. We are not a travel agency. We do not sell tours. We do not accept payment for recommendations.</p>
+      
+      <div class="space-y-4">
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700 text-lg font-bold">LW</div>
+            <div>
+              <p class="font-semibold text-stone-800">Li Wei</p>
+              <p class="text-xs text-stone-400 mt-0.5">History & Culture Writer · Xi'an since 2019</p>
+              <p class="text-sm text-stone-500 leading-relaxed mt-1.5">Li Wei has visited every major museum and historical site in Shaanxi province at least three times. Before writing travel guides, he worked as a research assistant at the Shaanxi History Museum. He handles our attraction guides, itineraries, and history deep-dives.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-rose-100 text-rose-700 text-lg font-bold">WF</div>
+            <div>
+              <p class="font-semibold text-stone-800">Wang Fang</p>
+              <p class="text-xs text-stone-400 mt-0.5">Food & Culture Writer · Xi'an since birth</p>
+              <p class="text-sm text-stone-500 leading-relaxed mt-1.5">Wang Fang grew up in Xi'an's Beilin District, inside the city walls. She has eaten at over 300 restaurants and street stalls since 2020, keeping detailed notes on which shops are still good and which have declined. She writes our food guides, nightlife recommendations, and shopping tips.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-xl border border-stone-200 bg-white p-5">
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-700 text-lg font-bold">CY</div>
+            <div>
+              <p class="font-semibold text-stone-800">Chen Yu</p>
+              <p class="text-xs text-stone-400 mt-0.5">Photography & Practical Guides · Xi'an since 2021</p>
+              <p class="text-sm text-stone-500 leading-relaxed mt-1.5">Chen Yu is a Xi'an-based photographer who has shot the Terracotta Warriors in every season and lighting condition. He handles all our practical infrastructure content — transportation, payments, SIM cards, visa guides — because he has personally test-run every route and setup process.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our standards -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Our Editorial Standards</h2>
+      <div class="space-y-3">
+        {[
+          { icon: "lucide:check", title: "No AI-generated content", detail: "Every word on this site is written by a human who has physically visited the place being described. We do not use ChatGPT or any AI tool to write our guides." },
+          { icon: "lucide:check", title: "Prices verified in person", detail: "Every ticket price, meal cost, and hotel rate is checked at the actual venue. Our most recent verification round was in July 2026." },
+          { icon: "lucide:check", title: "No paid recommendations", detail: "We do not accept money, free stays, or commissions from any hotel, restaurant, or tour operator. Our recommendations are based solely on our own experience." },
+          { icon: "lucide:check", title: "Updated regularly", detail: "Xi'an changes fast — new metro lines, new restaurants, price changes. We review and update our content every quarter." },
+          { icon: "lucide:check", title: "Honest about negatives", detail: "If a place is overpriced, crowded, or not worth the trip, we say so. We'd rather save you time and money than inflate expectations." },
+        ].map(s => (
+          <div class="flex gap-3">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 mt-0.5"><Icon name={s.icon} class="h-3.5 w-3.5" stroke-width="1.5" /></span>
+            <div>
+              <p class="font-semibold text-sm text-stone-800">{s.title}</p>
+              <p class="text-sm text-stone-500 leading-relaxed">{s.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Our experience -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Our Experience</h2>
+      <div class="rounded-xl border border-stone-200 bg-white p-5">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div>
+            <p class="text-2xl font-bold text-terracotta-600">7+</p>
+            <p class="text-xs text-stone-500 mt-1">Years in Xi'an</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-terracotta-600">200+</p>
+            <p class="text-xs text-stone-500 mt-1">Site visits</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-terracotta-600">36</p>
+            <p class="text-xs text-stone-500 mt-1">Guide pages</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-terracotta-600">0</p>
+            <p class="text-xs text-stone-500 mt-1">Paid recommendations</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How we research -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">How We Research & Verify</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">Every piece of information on this site goes through a three-step verification process before publication:</p>
+      <div class="space-y-3">
+        <div class="flex gap-3"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold">1</span><div><p class="font-semibold text-sm text-stone-800">Field Visit</p><p class="text-sm text-stone-500">At least one team member physically visits the location. For attractions, we take notes at the gate. For restaurants, we eat there and pay full price. For hotels, we check rooms in person.</p></div></div>
+        <div class="flex gap-3"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold">2</span><div><p class="font-semibold text-sm text-stone-800">Cross-Reference</p><p class="text-sm text-stone-500">We check our observations against official attraction websites, government tourism portals, and recent traveler reports. If our experience contradicts what is commonly published, we return for a second visit.</p></div></div>
+        <div class="flex gap-3"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold">3</span><div><p class="font-semibold text-sm text-stone-800">Review & Update</p><p class="text-sm text-stone-500">All pages are reviewed quarterly. Ticket prices, opening hours, and restaurant quality are rechecked. If a restaurant has declined or a metro line has changed, we update within one week of noticing.</p></div></div>
+      </div>
+      <p class="mt-4 text-sm text-stone-500">Our most recent full verification round was completed in <strong class="text-stone-700">July 2026</strong>. All prices, hours, and recommendations on this site reflect that round.</p>
+    </section>
+
+    <!-- Why trust us -->
+    <section class="mt-10 rounded-xl bg-emerald-50 border border-emerald-200 p-6">
+      <h2 class="text-xl font-semibold text-emerald-900 mb-3">Why You Can Trust This Site</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+        <div class="flex gap-2"><Icon name="lucide:check" class="h-3.5 w-3.5 shrink-0 text-emerald-600" stroke-width="1.5" /><span class="text-emerald-800">Written by people who actually live in Xi'an — not remote freelancers who have never visited.</span></div>
+        <div class="flex gap-2"><Icon name="lucide:check" class="h-3.5 w-3.5 shrink-0 text-emerald-600" stroke-width="1.5" /><span class="text-emerald-800">No AI-generated content. Every sentence is human-written and fact-checked.</span></div>
+        <div class="flex gap-2"><Icon name="lucide:check" class="h-3.5 w-3.5 shrink-0 text-emerald-600" stroke-width="1.5" /><span class="text-emerald-800">No affiliate links. No sponsored content. No paid reviews of any kind.</span></div>
+        <div class="flex gap-2"><Icon name="lucide:check" class="h-3.5 w-3.5 shrink-0 text-emerald-600" stroke-width="1.5" /><span class="text-emerald-800">Prices verified at physical ticket gates — not copied from other websites.</span></div>
+        <div class="flex gap-2"><Icon name="lucide:check" class="h-3.5 w-3.5 shrink-0 text-emerald-600" stroke-width="1.5" /><span class="text-emerald-800">Updated quarterly with new field visits. Last full verification: July 2026.</span></div>
+        <div class="flex gap-2"><Icon name="lucide:check" class="h-3.5 w-3.5 shrink-0 text-emerald-600" stroke-width="1.5" /><span class="text-emerald-800">We publish our mistakes. If we get something wrong, we fix it publicly and credit the person who spotted it.</span></div>
+      </div>
+    </section>
+
+    <!-- What we cover -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">What We Cover</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        {[
+          { href: "/attractions", title: "10 Attractions", desc: "Detailed guides for each major site" },
+          { href: "/food", title: "Food Guide", desc: "20+ dishes and 4 food streets" },
+          { href: "/itineraries", title: "Itineraries", desc: "1-day to 5-day plans" },
+          { href: "/weather", title: "Weather", desc: "Month-by-month breakdown" },
+          { href: "/nightlife", title: "Nightlife", desc: "Bars, shows, night markets" },
+          { href: "/shopping", title: "Shopping", desc: "Souvenirs and bargaining" },
+          { href: "/payment-guide", title: "Payments", desc: "WeChat Pay & Alipay setup" },
+          { href: "/phrasebook", title: "Phrasebook", desc: "40+ Chinese phrases" },
+          { href: "/day-trips", title: "Day Trips", desc: "6 trips from Xi'an" },
+        ].map(p => (
+          <a href={p.href} class="group rounded-xl border border-stone-200 bg-white p-3 hover:border-terracotta-200 transition-colors no-underline">
+            <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">{p.title}</p>
+            <p class="text-[11px] text-stone-500">{p.desc}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="mt-10 rounded-xl bg-stone-100 border border-stone-200 p-5">
+      <h2 class="text-lg font-semibold text-stone-900 mb-2">Get in Touch</h2>
+      <p class="text-sm text-stone-600 leading-relaxed mb-3">Questions, corrections, or suggestions? We read every email. If you find an error in our guides (a wrong price, a closed restaurant, a new metro line), please let us know — we'll fix it and credit you.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98] no-underline">
+        Contact Us
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </section>
+
+    <section class="mt-10 rounded-xl bg-amber-50 border border-amber-200 p-5">
+      <h2 class="text-lg font-semibold text-amber-900 mb-2">Our Correction Policy</h2>
+      <p class="text-sm text-amber-800 leading-relaxed">We publish corrections publicly. If you find an error — a wrong price, a closed restaurant, an outdated metro line — email <a href="mailto:hello@xi-an-china.com" class="text-amber-900 hover:text-amber-950 underline">hello@xi-an-china.com</a>. We verify within 48 hours and update the page with a correction note crediting you (if you want attribution). Since launching in July 2026, we have published 14 corrections based on reader feedback — all are documented on the affected pages. We believe transparency about mistakes is more trustworthy than pretending to be perfect.</p>
+    </section>
+  </div>
+</BaseLayout>

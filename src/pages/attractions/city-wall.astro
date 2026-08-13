@@ -1,0 +1,194 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorSignal from "../../components/AuthorSignal.astro";
+
+const pageTitle = "Xi'an City Wall 2026 — Cycling & Sunset Guide";
+const pageDesc = "Complete guide to Xi’an City Wall: cycling the 14km loop ($7 bike rental), 2026 ticket prices ($8), best gates, sunset timing, and photography tips.";
+
+const faqs = [
+  { q: "How much does the City Wall cost?", a: "$8 for entry. Bike rental is $7 for 2 hours (single) or $13 for a tandem. Electric cart rides cost $12 for a full loop. Students and seniors get 50% off entry." },
+  { q: "How long does it take to cycle the wall?", a: "1.5-2 hours for the full 14 km loop at a relaxed pace. Add 30-60 minutes for photo stops. The wall is flat with only minor ramps at the gates. E-bikes are available at the South Gate for $15/$0.3 hours." },
+  { q: "Which gate should I enter?", a: "South Gate (Yongning Gate) is the most impressive entrance with the best views and bike rental facilities. It is also the most photogenic section of the wall. North Gate (Anyuan Gate) is quieter but has fewer rental options." },
+  { q: "What is the best time to cycle the wall?", a: "Late afternoon, starting around 4:00-4:30 PM. You will catch golden hour light on the south side around 5:30-6:00 PM and finish as the wall lights up at dusk. Summer: start after 5 PM to avoid the heat. Winter: go mid-afternoon for warmth." },
+  { q: "Can I walk the wall instead of cycling?", a: "You can walk any section. Walking the full 14 km loop takes 3-4 hours. Most visitors walk a 2-3 km section between two gates. A popular walking route is South Gate to West Gate (about 3 km), which passes the southwest corner tower (the best photo spot). There are benches along the wall for rest stops." },
+  { q: "Are there toilets and food on the wall?", a: "Yes, there are toilets at each of the four main gates and several points in between. Small snack kiosks sell water, ice cream, and basic snacks, but they are overpriced ($1.5-$2 for water). Bring your own water and snacks if you are cycling the full loop." },
+  { q: "Is the City Wall accessible at night?", a: "Yes, the wall is open until 10:00 PM (last entry at South Gate is 9:30 PM). The wall is beautifully lit with red lanterns after dark, and the views of the Bell Tower and city lights are spectacular. Night cycling is especially atmospheric in summer. Bring a light jacket — it gets breezy at 12 meters up." },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TouristAttraction", "name": "Xi’an City Wall", "description": "The best-preserved ancient city wall in China, built during the Ming Dynasty (1370-1378). A 14 km rectangular fortification that you can walk or cycle on top of.", "url": "https://xi-an-china.com/attractions/city-wall/", "geo": { "@type": "GeoCoordinates", "latitude": 34.26, "longitude": 108.95 }, "openingHours": "Mo-Su 08:00-22:00" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
+      { "@type": "ListItem", "position": 3, "name": "City Wall", "item": "https://xi-an-china.com/attractions/city-wall/" }
+    ]},
+    { "@type": "FAQPage", "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a.replace(/<[^>]*>/g, "") } }))}
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="July 2026" hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pb-20 md:pb-28">
+    
+
+    <div class="inline-flex items-center rounded-full border border-terracotta-200 bg-terracotta-50 px-3 py-1 text-xs font-medium text-terracotta-700 mb-4">Must See</div>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Xi’an City Wall: Cycling the 14km Loop</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">China’s most complete ancient city wall. 14 kilometers of cycling with panoramic views of the old city on one side and modern Xi’an on the other.</p>
+
+  <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+    <img class="h-auto w-full" src="/images/city-wall.webp" srcset="/images/responsive/city-wall-768.webp 768w, /images/city-wall.webp 1440w" sizes="(min-width: 768px) 768px, 100vw" width="1440" height="810" alt="Xi'an Ancient City Wall with the South Gate tower under a clear sky" loading="lazy" decoding="async" />
+  </div>
+
+  <AuthorSignal authorId="li-wei" />
+
+    <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200">
+      {[
+        { label: "Opening Hours", value: "8:00 AM – 10:00 PM", note: "South Gate last entry 9:30 PM" },
+        { label: "Ticket Price", value: "$8", note: "Students $4" },
+        { label: "Bike Rental", value: "$7/$0.3 hrs", note: "Single bike. Tandem $13" },
+        { label: "Full Loop", value: "14 km", note: "1.5-2 hrs cycling" },
+        { label: "Best Time", value: "4 PM – sunset", note: "Golden hour on south side" },
+        { label: "Location", value: "City center", note: "4 gates. South Gate is best" },
+      ].map((info) => (
+        <div class="bg-white p-5">
+          <p class="text-[11px] font-semibold tracking-[0.15em] text-stone-400 uppercase mb-2">{info.label}</p>
+          <p class="text-lg md:text-xl font-semibold leading-tight text-stone-900">{info.value}</p>
+          <p class="text-xs text-stone-500 mt-1.5">{info.note}</p>
+        </div>
+      ))}
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Why the City Wall Matters</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">Xi’an’s city wall is the <strong class="text-stone-800">most complete ancient city fortification in China</strong>. Built during the Ming Dynasty (1370-1378) on the foundations of the earlier Tang Dynasty wall, it stands 12 meters tall and 15-18 meters wide at the top — wide enough for a road. The wall forms a perfect rectangle with a perimeter of 13.74 kilometers, enclosing the old city center.</p>
+      <p class="mt-4 text-stone-600 leading-relaxed">Cycling the wall is one of the best things to do in Xi’an. From the top, you look down on the old city’s grey-tiled rooftops and narrow alleys on one side, and modern skyscrapers on the other. The contrast is striking. The wall is lit with red lanterns after dark, making evening rides atmospheric.</p>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">The Four Gates & What to See at Each</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The wall has four main gates, each originally a fortress with a barbican (瓮城), archery tower, and main gate tower. Today, 18 total gates allow access, but these four are the original Ming Dynasty entrances.</p>
+      <div class="mt-4 space-y-3 text-sm">
+        <div class="rounded-xl border border-stone-200 p-3">
+          <p class="font-semibold text-stone-800">South Gate (Yongning Men) — The Main Entrance</p>
+          <p class="text-stone-500">The most impressive gate complex. Has the full barbican + double gate system intact. Bike rental, electric carts, and visitor center are here. This is the gate you see in photos. Connected to Metro Line 2 (Yongningmen Station).</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-3">
+          <p class="font-semibold text-stone-800">East Gate (Changle Men) — The Quiet Route</p>
+          <p class="text-stone-500">Less crowded entry point. Good if you want to cycle a shorter section (East to South is about 3.5 km). Has bike rental but smaller than South Gate. Close to the Eight Immortals Temple.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-3">
+          <p class="font-semibold text-stone-800">North Gate (Anyuan Men) — Local Vibe</p>
+          <p class="text-stone-500">The least touristy main gate. Surrounded by residential neighborhoods. The section between North Gate and East Gate has the fewest tourists. Good for photographers who want empty wall shots.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-3">
+          <p class="font-semibold text-stone-800">West Gate (Anding Men) — History Buff Pick</p>
+          <p class="text-stone-500">The west gate complex preserves its original Ming Dynasty layout best. The barbican here is especially well-preserved. Quieter than the South Gate.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Cycling Routes & Photography Spots</h2>
+      <p class="mt-4 text-stone-600 leading-relaxed">The full loop is 14 km, but you do not have to do all of it. Here are three route options based on your time and energy.</p>
+      <div class="mt-4 space-y-3">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Full Loop (14 km, 1.5-2 hours)</p>
+          <p class="text-sm text-stone-600">Start at South Gate, go clockwise. The south and west sections have the best views. The north section is quieter. Stop at the southwest corner tower for photos. Finish just after sunset when the lanterns light up.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Half Loop: South + West (7 km, 45-60 minutes)</p>
+          <p class="text-sm text-stone-600">South Gate to West Gate, or continue to North Gate. Covers the most photogenic sections. Good if you are short on time or do not want to commit to the full loop. Start 1 hour before sunset for golden light.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Sunset Photo Walk (2-3 km, 30-40 minutes walking)</p>
+          <p class="text-sm text-stone-600">Enter at South Gate. Walk west to the southwest corner tower. This section has the best angle for sunset photos — the Bell Tower glows in the distance, the moat turns gold. Arrive 30 minutes before sunset. No bike needed.</p>
+        </div>
+      </div>
+    </section>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Photography Tips</h2>
+      <div class="mt-4 space-y-4">
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xs font-bold mt-0.5"></span><p class="text-stone-600 text-sm"><strong>Southwest corner tower at sunset.</strong> This is THE shot. The tower, the curve of the wall, and the Bell Tower in the distance. A 24-70mm zoom covers it. Arrive 30 minutes before sunset.</p></div>
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xs font-bold mt-0.5"></span><p class="text-stone-600 text-sm"><strong>South Gate from outside the wall.</strong> From the square south of the moat, you get a dramatic wide-angle shot of the gate complex with the wall stretching away on both sides. Best in early morning light.</p></div>
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xs font-bold mt-0.5"></span><p class="text-stone-600 text-sm"><strong>Lantern-lit wall at night.</strong> After dark, the red lanterns create long lines of light along the wall. Use a tripod if you have one (or brace against the parapet). ISO 800-1600, f/2.8 or wider.</p></div>
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xs font-bold mt-0.5"></span><p class="text-stone-600 text-sm"><strong>Cyclists in motion.</strong> Pan your camera with passing cyclists against the old rooftops. Shutter speed 1/30-1/60 for motion blur. Best on the south section in late afternoon.</p></div>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900">Insider Tips</h2>
+      <div class="mt-4 space-y-4">
+        {[
+          { n: "1", tip: "<strong>Start at the South Gate.</strong> It has the largest bike rental station, the most impressive architecture, and the best views. The photo of the wall with the city behind it that you see on postcards is taken here." },
+          { n: "2", tip: "<strong>Go clockwise.</strong> Most people cycle counter-clockwise. Going clockwise means fewer head-on encounters and better light on the south side in the afternoon." },
+          { n: "3", tip: "<strong>Sunset from the southwest corner.</strong> The southwest corner tower has the best angle for sunset photos. Time your ride to be there about 30 minutes before sunset." },
+          { n: "4", tip: "<strong>Bring water.</strong> There are vendors on the wall, but they are spread out and overpriced. Carry a bottle." },
+        ].map((t) => (
+          <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">{t.n}</span><p class="text-stone-600" set:html={t.tip}></p></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Accessibility & What to Bring</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800 mb-1">What to Bring</p>
+          <ul class="text-sm text-stone-500 space-y-1">
+            <li>Water bottle (kiosks overcharge)</li>
+            <li>Sunscreen (no shade on the wall)</li>
+            <li>Sunglasses and hat</li>
+            <li>Cash for bike deposit ($30)</li>
+            <li>Light jacket (breezy at 12m up)</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800 mb-1">Accessibility</p>
+          <ul class="text-sm text-stone-500 space-y-1">
+            <li>South Gate has an elevator to the top</li>
+            <li>Electric carts available ($12/loop)</li>
+            <li>Wall surface is flat, smooth brick</li>
+            <li>Ramps at all four main gates</li>
+            <li>Wheelchair-friendly with assistance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related attractions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a href="/attractions/bell-drum-tower" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Bell & Drum Towers</p>
+          <p class="text-xs text-stone-500 mt-0.5">The heart of the old city, a 5-minute walk from South Gate.</p>
+        </a>
+        <a href="/attractions/muslim-quarter" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Muslim Quarter</p>
+          <p class="text-xs text-stone-500 mt-0.5">Street food paradise just inside the wall.</p>
+        </a>
+        <a href="/attractions/shaanxi-history-museum" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+          <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Shaanxi History Museum</p>
+          <p class="text-xs text-stone-500 mt-0.5">China's best provincial museum, a short ride south.</p>
+        </a>
+      </div>
+    </section>
+<section class="mt-12">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-6">FAQ</h2>
+      <FaqAccordion items={faqs} />
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/attractions/muslim-quarter" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+        Next: Muslim Quarter Food Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

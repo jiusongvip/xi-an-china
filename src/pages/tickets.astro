@@ -1,0 +1,225 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthorSignal from "../components/AuthorSignal.astro";
+import { Icon } from "astro-icon/components";
+const pageTitle = "Xi'an Attraction Tickets — Prices & Booking";
+const pageDesc = "2026 Xi'an attraction tickets: Terracotta Warriors $18 City Wall $8 Huashan $24. Plus discounts, booking tips, and ways to save.";
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Chen Yu","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Tickets","item":"https://xi-an-china.com/tickets"}]}]};
+
+const tickets = [
+  { name: "Terracotta Warriors", price: "$18", offPeak: "$15 (Dec-Feb)", student: "$9", booking: "WeChat mini-program. Book 1-7 days ahead." },
+  { name: "Ancient City Wall", price: "$8", offPeak: "Same year-round", student: "$4", booking: "At the gate or online. Bike rental $7 extra." },
+  { name: "Huaqing Hot Springs", price: "$18", offPeak: "Same", student: "$9", booking: "At the gate or trip.com." },
+  { name: "Mount Huashan", price: "$24", offPeak: "$15 (Dec-Feb)", student: "$12", booking: "At the gate. Cable car separate ($12-$21)." },
+  { name: "Big Wild Goose Pagoda", price: "$6 + $4 climb", offPeak: "Same", student: "50% off", booking: "At the gate." },
+  { name: "Shaanxi History Museum", price: "Free", offPeak: "Free", student: "Free", booking: "WeChat mini-program. Book 3-7 days ahead. Sells out fast." },
+  { name: "Bell & Drum Towers", price: "$7 (combo)", offPeak: "Same", student: "$4", booking: "At the gate." },
+  { name: "Han Yangling", price: "$10", offPeak: "$8 (Dec-Feb)", student: "$5", booking: "At the gate." },
+  { name: "Tang Paradise", price: "$18", offPeak: "Same", student: "$9", booking: "At the gate or online." },
+  { name: "Daming Palace", price: "$9 (core)", offPeak: "Same", student: "$4", booking: "At the gate. Park grounds free." },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} author="Chen Yu" datePublished="August 2026" hasOwnArticle hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Practical Info</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900">Xi'an Attraction Tickets</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">All prices verified at attraction gates in <strong class="text-stone-700">August 2026</strong>. Students and seniors 60+ generally get 50% off with valid ID. This page covers every major attraction, how to book, when to book, what each ticket includes, and common money-saving strategies that most tourists miss.</p>
+
+  <AuthorSignal authorId="chen-yu" />
+
+    <!-- Quick reference table -->
+    <div class="mt-8 rounded-xl border border-stone-200 overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-stone-50 border-b border-stone-200">
+          <tr><th class="text-left px-4 py-3 font-medium text-stone-700">Attraction</th><th class="text-left px-4 py-3 font-medium text-stone-700">Peak</th><th class="text-left px-4 py-3 font-medium text-stone-700">Off-Peak</th><th class="text-left px-4 py-3 font-medium text-stone-700">Student</th><th class="text-left px-4 py-3 font-medium text-stone-700">How to Book</th></tr>
+        </thead>
+        <tbody class="divide-y divide-stone-100">
+          {tickets.map(t => (
+            <tr class="hover:bg-stone-50">
+              <td class="px-4 py-3 font-medium text-stone-700">{t.name}</td>
+              <td class="px-4 py-3 text-stone-600">{t.price}</td>
+              <td class="px-4 py-3 text-stone-500 text-xs">{t.offPeak}</td>
+              <td class="px-4 py-3 text-stone-500 text-xs">{t.student}</td>
+              <td class="px-4 py-3 text-stone-500 text-xs">{t.booking}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cost estimate box -->
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="rounded-xl bg-green-50 border border-green-200 p-4 text-sm text-green-800">
+        <p class="font-semibold mb-1">Total Cost Estimate</p>
+        <p>All 10 major attractions: ~$100-$120 (peak, adult). With student card: ~$50-$60. Minimum must-sees (Warriors + Wall + Pagoda): ~$32.</p>
+      </div>
+      <div class="rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-800">
+        <p class="font-semibold mb-1">Booking Urgency</p>
+        <p><strong>Book ahead:</strong> Shaanxi History Museum (3-7 days). <strong>Optional:</strong> Terracotta Warriors. <strong>Walk up OK:</strong> City Wall, Bell Tower, Pagoda, Huaqing, Tang Paradise, Han Yangling.</p>
+      </div>
+    </div>
+
+    <!-- In-depth: how to book each -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">How to Book: Online vs Gate</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">Most Xi'an attractions let you buy tickets at the gate, but online booking is increasingly common — and for the Shaanxi History Museum, it is <strong class="text-stone-800">mandatory</strong>. Here is the full breakdown by platform.</p>
+
+      <div class="space-y-3">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800 mb-1">WeChat Mini-Programs (Recommended)</p>
+          <p class="text-sm text-stone-600">Most attractions have official WeChat mini-programs. Search the attraction name in Chinese in WeChat. This is the cheapest option (no service fee) and is what locals use. You will need a Chinese phone number to register. If you do not have one, use trip.com instead.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800 mb-1">Trip.com (Foreigner-Friendly)</p>
+          <p class="text-sm text-stone-600">Trip.com accepts international credit cards and has English interfaces. They charge a small service fee ($1.5-$4 per ticket) but save you the hassle of WeChat registration. Available for Terracotta Warriors, City Wall, Huaqing Pool, and Mount Huashan.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800 mb-1">At the Gate (Cash or WeChat/Alipay)</p>
+          <p class="text-sm text-stone-600">Most attractions still have ticket counters. Bring cash as backup — not all counters accept foreign cards. Student IDs, passports (for age verification), and cash are the safest combination. During Golden Week (Oct 1-7) and Chinese New Year, do NOT rely on gate tickets — book online.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Discounts deep dive -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Student, Senior & Other Discounts</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">Chinese attractions offer some of the most generous discount policies in the world — if you have the right documents.</p>
+
+      <div class="space-y-3">
+        <div class="flex gap-3 rounded-xl border border-stone-200 p-4">
+          <Icon name="lucide:graduation-cap" class="h-7 w-7 shrink-0 text-champagne-600" stroke-width="1.5" />
+          <div>
+            <p class="font-semibold text-stone-800">Students: 50% Off Almost Everywhere</p>
+            <p class="text-sm text-stone-600">Bring a valid student ID with photo and expiration date. International student IDs (ISIC) are accepted at most attractions. The discount is applied at the ticket counter — show your ID when buying. Part-time and language school students: results vary, but it is worth trying.</p>
+          </div>
+        </div>
+        <div class="flex gap-3 rounded-xl border border-stone-200 p-4">
+          <Icon name="lucide:user-round" class="h-7 w-7 shrink-0 text-champagne-600" stroke-width="1.5" />
+          <div>
+            <p class="font-semibold text-stone-800">Seniors (60+): 50% Off or Free</p>
+            <p class="text-sm text-stone-600">Age 60-64: 50% off with passport as proof. Age 65+: often free (varies by attraction). Chinese nationals use their ID card; foreigners use a passport. Some attractions require you to be 65 (not 60) for free entry, so check each attraction's policy.</p>
+          </div>
+        </div>
+        <div class="flex gap-3 rounded-xl border border-stone-200 p-4">
+          <Icon name="lucide:baby" class="h-7 w-7 shrink-0 text-champagne-600" stroke-width="1.5" />
+          <div>
+            <p class="font-semibold text-stone-800">Children: Height-Based Discounts</p>
+            <p class="text-sm text-stone-600">Children under 1.2m (3 ft 11 in) tall are usually free. Between 1.2m and 1.4m: half price. Above 1.4m: adult price. Some attractions use age instead (under 6 free, 6-18 half price). Bring your child's passport for age verification.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seasonal price variations -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Peak vs Off-Peak Season Prices</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">Several major attractions have two-tier pricing. Off-peak runs <strong class="text-stone-800">December through February</strong>. Peak runs <strong class="text-stone-800">March through November</strong>. The savings are modest ($3-$9 per attraction) but add up if you are visiting multiple sites.</p>
+      <div class="rounded-xl border border-stone-200 overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-stone-50 border-b"><tr><th class="text-left px-4 py-2.5 font-medium">Attraction</th><th class="text-left px-4 py-2.5 font-medium">Peak (Mar-Nov)</th><th class="text-left px-4 py-2.5 font-medium">Off-Peak (Dec-Feb)</th><th class="text-left px-4 py-2.5 font-medium">Savings</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="px-4 py-2.5">Terracotta Warriors</td><td class="px-4 py-2.5">$18</td><td class="px-4 py-2.5">$15</td><td class="px-4 py-2.5 text-green-600">-$3</td></tr>
+            <tr><td class="px-4 py-2.5">Mount Huashan</td><td class="px-4 py-2.5">$24</td><td class="px-4 py-2.5">$15</td><td class="px-4 py-2.5 text-green-600">-$9</td></tr>
+            <tr><td class="px-4 py-2.5">Han Yangling</td><td class="px-4 py-2.5">$10</td><td class="px-4 py-2.5">$8</td><td class="px-4 py-2.5 text-green-600">-$2</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-sm text-stone-400">City Wall, Bell Tower, Huaqing Pool, Big Wild Goose Pagoda, Tang Paradise, and Daming Palace charge the same price year-round. Shaanxi History Museum is always free.</p>
+    </section>
+
+    <!-- What each ticket includes -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">What Each Ticket Includes (and Does Not)</h2>
+
+      <div class="space-y-3">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Terracotta Warriors ($18)</p>
+          <p class="text-sm text-stone-600">Includes: Pits 1, 2, 3, and the Bronze Chariots exhibition hall. <span class="text-stone-400">Does NOT include: audio guide ($6), live guide ($30-$45), shuttle bus from ticket office to museum entrance ($0.5).</span></p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">City Wall ($8)</p>
+          <p class="text-sm text-stone-600">Includes: Access to the entire 14km wall, all gates. <span class="text-stone-400">Does NOT include: bike rental ($7 single, $13 tandem for 3 hours), electric cart ($12 for one complete loop).</span></p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Mount Huashan ($24)</p>
+          <p class="text-sm text-stone-600">Includes: Park entry and hiking trails. <span class="text-stone-400">Does NOT include: cable car ($12 one-way, $21 round-trip via North Peak; $18/$30 via West Peak), shuttle bus from visitor center to cable car station ($6), plank walk experience ($4), insurance ($1.5).</span></p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Big Wild Goose Pagoda ($6 + $4)</p>
+          <p class="text-sm text-stone-600">Two separate tickets: $6 for the temple grounds (Da Ci'en Temple), $4 to climb the pagoda itself. The musical fountain show in the square outside is free. Most visitors buy both tickets.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Shaanxi History Museum (Free)</p>
+          <p class="text-sm text-stone-600">The main exhibition halls are free but require advance reservation. A paid special exhibition ($4-$7) is sometimes available and grants access without needing a separate free reservation — useful if free slots are sold out.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Bell & Drum Towers ($7 combo)</p>
+          <p class="text-sm text-stone-600">$4 for either tower alone, $7 for both. Drum performances happen at set times — check the schedule at the ticket office. The combo ticket is the better deal.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Combo tickets -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Combo Tickets & Bundles</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">Some attractions are geographically close and offer combo tickets. These save $1.5-$4 per person — not enormous, but convenient since you do not have to queue twice.</p>
+      <ul class="space-y-2 text-sm text-stone-600">
+        <li><span class="font-semibold text-stone-700">Terracotta Warriors + Huaqing Pool:</span> $33 (save $3). Available at either ticket office. Both in Lintong District, 10 minutes apart by taxi.</li>
+        <li><span class="font-semibold text-stone-700">Bell Tower + Drum Tower:</span> $7 (save $1.5). Available at either tower.</li>
+        <li><span class="font-semibold text-stone-700">City Wall + Stele Forest Museum:</span> $15 (save $2). South Gate ticket office. The Stele Forest is a 10-minute walk from the South Gate.</li>
+        <li><span class="font-semibold text-stone-700">Xi'an City Pass (trip.com):</span> Covers 3-5 attractions. Check trip.com for current bundles — they change seasonally.</li>
+      </ul>
+    </section>
+
+    <!-- Common mistakes -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Common Mistakes & How to Avoid Them</h2>
+      <div class="space-y-3">
+        <div class="rounded-xl bg-red-50 border border-red-200 p-4 text-sm text-red-800">
+          <p class="font-semibold mb-1">Mistake: Not booking Shaanxi History Museum in advance</p>
+          <p>This is the #1 ticket mistake in Xi'an. The museum is free but requires a reservation through the WeChat mini-program 3-7 days before your visit. Slots are released at specific times and sell out within minutes during peak season. Have your passport number ready. If you cannot get a free slot, try the paid special exhibition route.</p>
+        </div>
+        <div class="rounded-xl bg-red-50 border border-red-200 p-4 text-sm text-red-800">
+          <p class="font-semibold mb-1">Mistake: Paying for a "skip the line" tour at the Terracotta Warriors</p>
+          <p>There is no skip-the-line option at the Warriors. Everyone goes through the same entrance. "VIP" or "priority" tickets sold by third parties are just regular tickets with a markup. The only way to avoid crowds is to arrive at 8:30 AM when the museum opens.</p>
+        </div>
+        <div class="rounded-xl bg-red-50 border border-red-200 p-4 text-sm text-red-800">
+          <p class="font-semibold mb-1">Mistake: Underestimating Mount Huashan costs</p>
+          <p>The $24 entry fee is only the beginning. Cable cars ($12-$30), shuttle buses ($6), plank walk ($4), food and water on the mountain (2-3x normal prices), and an overnight stay if you want to see sunrise ($22-$75). Budget $60-$90 per person for a full Mount Huashan experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold text-stone-900 mb-4">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Can I use a foreign credit card to buy tickets at the gate?</p>
+          <p class="text-sm text-stone-600 mt-1">Usually not. Most ticket counters only accept WeChat Pay, Alipay, or cash (yuan). Bring cash as backup. For online purchases, trip.com accepts international cards.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Are tickets refundable if my plans change?</p>
+          <p class="text-sm text-stone-600 mt-1">Generally no for gate purchases. Online bookings through trip.com or WeChat may allow cancellation up to 24 hours before, but policies vary. Read the cancellation terms before booking.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 p-4">
+          <p class="font-semibold text-stone-800">Do I need to print my online ticket or is a phone screenshot OK?</p>
+          <p class="text-sm text-stone-600 mt-1">Phone screenshots are usually accepted. Some attractions require the QR code from within the WeChat mini-program or trip.com app (not a screenshot). At the Terracotta Warriors, bring your passport — the name on the ticket must match your ID.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="mt-12 pt-8 border-t border-stone-200 text-center">
+      <p class="text-stone-500 mb-4">Want to see how these fit into a full itinerary?</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/itineraries" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">See Itineraries <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+        <a href="/attractions/terracotta-warriors" class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 active:scale-[0.98]">Terracotta Warriors Guide</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

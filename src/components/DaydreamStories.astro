@@ -1,0 +1,58 @@
+---
+import { responsiveSrcset } from "../utils/images";
+---
+<section class="reveal max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28">
+  <div class="text-center mb-12">
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Experience Xi'an</p>
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">
+      Four seasons,<br/><em class="font-normal italic">four different cities</em>
+    </h2>
+    <p class="mt-4 text-stone-500 max-w-xl mx-auto leading-relaxed">
+      Xi'an transforms with the seasons. Here's what each one actually feels like.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    {[
+      {
+        season: 'Spring', month: 'April', city: 'Xi’an',
+        img: '/images/spring-city-wall.webp', imgAlt: 'Xi’an City Wall with cherry blossoms in April spring',
+        heading: 'Cherry Blossoms and Cycling the Wall',
+        temp: '16°C', rain: '7 rain days',
+        text: '7:00 AM. You pedal onto the South Gate ramp as the morning mist lifts off the city wall. Temperature: 16°C, no humidity, cherry blossoms lining the moat below. The 14km loop around the old city is nearly empty at this hour. You stop at the West Gate to watch tai chi practitioners moving in slow unison under ancient pagoda trees. Lunch is liangpi (cold skin noodles) from a street stall near the Bell Tower. Afternoon: the Shaanxi History Museum, cool and quiet, Tang Dynasty gold gleaming under museum lights. Evening: rooftop hot pot in the old city, the wall glowing amber above you.'
+      },
+      {
+        season: 'Summer', month: 'July', city: 'Muslim Quarter',
+        img: '/images/summer-muslim-quarter.webp', imgAlt: 'Xi’an Muslim Quarter night market with lanterns in July summer',
+        heading: 'Night Markets and Neon Lights',
+        temp: '32°C', rain: '12 rain days',
+        text: '8:00 PM. The sun finally sets and the Muslim Quarter comes alive. The heat of the day fades as lanterns flicker on above narrow stone streets. You follow the smell of cumin through the crowd: lamb skewers sizzling over charcoal, each one hand-turned by a Hui vendor who has worked this same corner for 30 years. A bowl of yangrou paomo, the bread torn by hand into tiny pieces before being drowned in rich lamb broth. Further down the alley: persimmon cakes, sticky and sweet, fried right in front of you. You wash it all down with cold suanmeitang (sour plum drink) and realize you have been eating for two hours straight.'
+      },
+      {
+        season: 'Autumn', month: 'October', city: 'Terracotta Warriors',
+        img: '/images/autumn-terracotta.webp', imgAlt: 'Terracotta Warriors in golden October autumn light',
+        heading: 'Golden Light and 2,000 Silent Soldiers',
+        temp: '19°C', rain: '6 rain days',
+        text: '8:30 AM. You are through the gates at Pit 1 as the first visitor. The low golden light of an October morning streams through the hangar windows, catching the edges of 2,000 terracotta soldiers standing in formation. No jostling, no selfie sticks. Just you and two millennia of silence. Each face is different, and you find yourself studying them one by one. After two hours, the tour groups arrive and the spell breaks. But you have already had your moment. Lunch at a farmhouse restaurant nearby: hand-pulled biangbiang noodles wider than your thumb. Afternoon: Huaqing Hot Springs, the imperial bath where Tang emperors wintered. The pomegranate trees are heavy with fruit.'
+      },
+      {
+        season: 'Winter', month: 'January', city: 'Huaqing Pool',
+        img: '/images/winter-huaqing.webp', imgAlt: 'Huaqing Hot Springs in winter snow near Xi’an',
+        heading: 'Hot Springs in the Snow',
+        temp: '-2°C to 5°C', rain: '2 rain days',
+        text: 'It is -2°C and snow is falling on Mount Li. You are sitting neck-deep in a hot spring pool at Huaqing Palace, steam rising around you into the freezing air. This is the same hot spring where Yang Guifei, the most beautiful woman in Chinese history, bathed during the Tang Dynasty. The contrast of freezing air and 40°C water is indescribable. Afterward: hot pot in downtown Xi’an, the windows fogged from boiling broth, lamb slices dipped in sesame paste. Outside, the city wall is lit with red lanterns for Chinese New Year. You have never been this warm while this cold.'
+      }
+    ].map((story) => (
+      <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden">
+        <img src={story.img} srcset={responsiveSrcset(story.img)} sizes="(min-width: 1024px) 640px, (min-width: 640px) 50vw, 100vw" alt={story.imgAlt} width="800" height="450" loading="lazy" decoding="async" class="w-full aspect-[16/9] object-cover bg-stone-200" />
+        <div class="p-6 md:p-8">
+          <p class="text-xs font-semibold tracking-widest text-terracotta-600 uppercase mb-4">{story.season} &middot; {story.month} &middot; {story.city}</p>
+          <h3 class="text-xl font-bold text-stone-900 mb-3">{story.heading}</h3>
+          <p class="text-sm text-stone-600 leading-relaxed">{story.text}</p>
+          <div class="flex items-center gap-3 mt-5 text-xs text-terracotta-600 font-medium">
+            <span>{story.temp}</span><span>&middot;</span><span>{story.rain}</span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

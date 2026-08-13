@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Contact Us — Xi'an Guide Questions & Feedback";
+const pageDesc = "Get in touch with the Xi'an Guide team for any reason. Questions, corrections, or partnerships — we read every message and reply within 48 hours.";
+
+const schema = {"@context":"https://schema.org","@graph":[
+  {"@type":"ContactPage","name":"Contact Xi'an Guide","description":pageDesc},
+  {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://xi-an-china.com/contact"}]}
+]};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} hasOwnBreadcrumb>
+  <slot name="head"><script type="application/ld+json" set:html={JSON.stringify(schema)}></script></slot>
+
+  <div class="mx-auto max-w-3xl px-4 md:px-6 pt-12 pb-20 md:pb-28">
+    
+
+    <p class="text-xs font-semibold tracking-[0.15em] uppercase text-stone-400 mb-5">Get in Touch</p>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Contact Us</h1>
+    <p class="mt-4 text-lg text-stone-500 leading-relaxed">Questions about your Xi'an trip? Found an error in our guides? Want to suggest a restaurant or hidden spot we have not covered? We read every message and respond personally.</p>
+
+    <!-- Team context -->
+    <div class="mt-8 rounded-xl bg-stone-50 border border-stone-200 p-5">
+      <p class="text-sm text-stone-600 leading-relaxed"><strong class="text-stone-800">Who you are emailing:</strong> A small team of Xi'an locals — Li Wei (history), Wang Fang (food), and Chen Yu (photography & practical guides). We have lived in this city for years and built this site because we were tired of AI-generated travel advice written by people who have never been here. When you email us, a real person reads it. No chatbots. No autoresponders. See our <a href="/about" class="text-terracotta-600 hover:text-terracotta-700 underline">About page</a> for more about us.</p>
+    </div>
+
+    <!-- Email -->
+    <div class="mt-8 space-y-6">
+      <div class="rounded-xl border border-stone-200 bg-white p-6">
+        <h2 class="text-lg font-semibold text-stone-900 mb-3">Email</h2>
+        <p class="text-stone-600 mb-2">For all inquiries — trip questions, corrections, suggestions, or just to say hello:</p>
+        <a href="mailto:hello@xi-an-china.com" class="text-terracotta-600 hover:text-terracotta-700 underline font-medium text-lg">hello@xi-an-china.com</a>
+        <p class="text-sm text-stone-400 mt-3">We typically respond within 24-48 hours. If you do not hear back within 3 days, check your spam folder — our replies occasionally get filtered.</p>
+      </div>
+
+      <!-- Before you email -->
+      <div class="rounded-xl border border-stone-200 bg-white p-6">
+        <h2 class="text-lg font-semibold text-stone-900 mb-3">Before You Write</h2>
+        <p class="text-sm text-stone-600 mb-4">Many common questions are already answered on the site. Checking these pages first may save you time:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+          <a href="/faq" class="flex items-center gap-2 rounded-lg border border-stone-200 px-3 py-2 hover:border-terracotta-200 transition-colors no-underline">
+            <span class="text-terracotta-500">?</span>
+            <span class="text-stone-700">FAQ</span>
+            <span class="text-xs text-stone-400 ml-auto">15 questions</span>
+          </a>
+          <a href="/tickets" class="flex items-center gap-2 rounded-lg border border-stone-200 px-3 py-2 hover:border-terracotta-200 transition-colors no-underline">
+            <span class="text-terracotta-500"></span>
+            <span class="text-stone-700">Ticket Prices</span>
+          </a>
+          <a href="/transportation" class="flex items-center gap-2 rounded-lg border border-stone-200 px-3 py-2 hover:border-terracotta-200 transition-colors no-underline">
+            <span class="text-terracotta-500"></span>
+            <span class="text-stone-700">Transportation</span>
+          </a>
+          <a href="/china-240-hour-transit-visa" class="flex items-center gap-2 rounded-lg border border-stone-200 px-3 py-2 hover:border-terracotta-200 transition-colors no-underline">
+            <span class="text-terracotta-500"></span>
+            <span class="text-stone-700">Visa Guide</span>
+          </a>
+          <a href="/payment-guide" class="flex items-center gap-2 rounded-lg border border-stone-200 px-3 py-2 hover:border-terracotta-200 transition-colors no-underline">
+            <span class="text-terracotta-500"></span>
+            <span class="text-stone-700">Payment Guide</span>
+          </a>
+          <a href="/itineraries" class="flex items-center gap-2 rounded-lg border border-stone-200 px-3 py-2 hover:border-terracotta-200 transition-colors no-underline">
+            <span class="text-terracotta-500"></span>
+            <span class="text-stone-700">Itineraries</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- What to include -->
+      <div class="rounded-xl border border-stone-200 bg-white p-6">
+        <h2 class="text-lg font-semibold text-stone-900 mb-3">What to Include in Your Email</h2>
+        <ul class="space-y-3 text-sm text-stone-600">
+          <li class="flex gap-2"><span class="text-terracotta-400 shrink-0 mt-0.5">1.</span><span><strong>Corrections:</strong> Tell us which page, what is wrong, and ideally what the correct information is. We verify every correction. If we publish your fix, we will credit you on the page.</span></li>
+          <li class="flex gap-2"><span class="text-terracotta-400 shrink-0 mt-0.5">2.</span><span><strong>Trip questions:</strong> Tell us your travel dates, group size, interests, and budget. The more context you give us, the more specific our advice will be. We cannot plan your entire trip, but we are happy to help with specific questions.</span></li>
+          <li class="flex gap-2"><span class="text-terracotta-400 shrink-0 mt-0.5">3.</span><span><strong>Restaurant or attraction suggestions:</strong> Tell us the name, location, what you loved about it, and roughly when you visited. We will check it out on our next round of site visits and consider adding it.</span></li>
+          <li class="flex gap-2"><span class="text-terracotta-400 shrink-0 mt-0.5">4.</span><span><strong>Collaboration inquiries:</strong> We do not accept paid reviews, sponsored content, or guest posts. We do not sell backlinks. If you represent a hotel, restaurant, or tour company, please understand that our editorial policy prohibits paid recommendations of any kind.</span></li>
+        </ul>
+      </div>
+
+      <!-- Response time -->
+      <div class="rounded-xl bg-blue-50 border border-blue-200 p-5">
+        <p class="text-sm font-semibold text-blue-800 mb-2">What to expect after you email us</p>
+        <ul class="space-y-1 text-sm text-blue-700">
+          <li>We respond to every genuine inquiry within <strong>24-48 hours</strong>.</li>
+          <li>If you email on a Friday, expect a reply by Tuesday.</li>
+          <li>If you do not hear back within 3 days, please check your spam folder.</li>
+          <li>We do not send marketing emails or newsletters. Your address is never shared.</li>
+        </ul>
+      </div>
+
+      <!-- No paid stuff -->
+      <div class="rounded-xl bg-amber-50 border border-amber-200 p-5">
+        <p class="text-sm font-semibold text-amber-800 mb-2">About paid recommendations</p>
+        <p class="text-sm text-amber-700 leading-relaxed">We do not accept payment for hotel listings, restaurant reviews, or tour recommendations. Every recommendation on this site is based on our own firsthand experience and paid visits. If a restaurant is good, it is because we ate there and liked it — not because anyone paid us to say so. If you find evidence to the contrary, please email us immediately.</p>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-stone-200 text-center">
+      <a href="/" class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98] no-underline">Home</a>
+      <a href="/about" class="ml-3 inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98] no-underline">About Us</a>
+    </div>
+
+    <section class="mt-10 rounded-xl bg-stone-50 border border-stone-200 p-5">
+      <h2 class="text-lg font-semibold text-stone-900 mb-3">Speaking Engagements & Press</h2>
+      <p class="text-sm text-stone-600 leading-relaxed">Our team members are available for interviews, podcast appearances, and speaking engagements about Xi'an travel, Chinese history, and the realities of independent travel content creation. Our guides are referenced by travelers planning independent trips, and we are happy to contribute to travel publications or academic research on a case-by-case basis. For press inquiries, use the email above with "Press" in the subject line.</p>
+    </section>
+  </div>
+</BaseLayout>
