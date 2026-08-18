@@ -234,13 +234,14 @@ const footerCols = [
     {pageHasArticle && !hasOwnArticle && <script type="application/ld+json" set:html={articleSchema}></script>}
     {!noindex && !hasOwnBreadcrumb && breadcrumbSchema && <script type="application/ld+json" set:html={breadcrumbSchema}></script>}
 
-    <!-- Google Analytics 4 — optional; set GA_MEASUREMENT_ID in production -->
-    {import.meta.env.PROD && import.meta.env.GA_MEASUREMENT_ID && (
-      <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.GA_MEASUREMENT_ID}`}></script>
-        <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${import.meta.env.GA_MEASUREMENT_ID}');`}></script>
-      </>
-    )}
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-8HMBSS384L"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8HMBSS384L');
+    </script>
 
     <slot name="head" />
   </head>
