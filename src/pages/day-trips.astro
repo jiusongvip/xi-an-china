@@ -5,7 +5,7 @@ import SectionHeader from "../components/SectionHeader.astro";
 import AuthorSignal from "../components/AuthorSignal.astro";
 const pageTitle = "Xi'an Day Trips — Huashan, Luoyang & Beyond";
 const pageDesc = "Best day trips from Xi'an: Mount Huashan, Luoyang, Hukou Waterfall, Famen Temple, and Foping pandas. Travel times, costs, and tips for each route.";
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Li Wei","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Day Trips","item":"https://xi-an-china.com/day-trips"}]}]};
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Li Wei","url":"https://www.xi-an-china.com/about/"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://www.xi-an-china.com/"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Day Trips","item":"https://www.xi-an-china.com/day-trips/"}]}]};
 
 const trips = [
   {
@@ -25,7 +25,7 @@ const trips = [
       "Bring water and snacks — prices on the mountain are 3–5× city prices",
       "Best in spring or autumn; summer is dangerously hot on exposed sections"
     ],
-    href: "/attractions/mount-huashan"
+    href: "/attractions/mount-huashan/"
   },
   {
     name: "Luoyang & Longmen Grottoes",
@@ -233,10 +233,10 @@ const trips = [
     </section>
 
     <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="/attractions/mount-huashan" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+      <a href="/attractions/mount-huashan/" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
         Mount Huashan Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
       </a>
-      <a href="/itineraries" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+      <a href="/itineraries/" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
         See All Itineraries
       </a>
     </div>

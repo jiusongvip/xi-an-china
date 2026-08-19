@@ -191,7 +191,7 @@ export default function AttractionMap() {
                 </div>
               </div>
               <a
-                href={`/attractions/${selectedA.slug}`}
+                href={`/attractions/${selectedA.slug}/`}
                 className="shrink-0 inline-flex items-center gap-1.5 rounded-lg bg-terracotta-500 px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-terracotta-600 shadow-sm shadow-terracotta-500/20 no-underline"
               >
                 Full Guide

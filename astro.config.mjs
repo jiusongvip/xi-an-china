@@ -5,8 +5,8 @@ import react from "@astrojs/react";
 import icon from "astro-icon";
 
 export default defineConfig({
-  site: "https://xi-an-china.com",
-  trailingSlash: "never",
+  site: "https://www.xi-an-china.com",
+  trailingSlash: "always",
   output: "static",
   integrations: [
     sitemap({

@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://xi-an-china.com/sitemap-index.xml
+Sitemap: https://www.xi-an-china.com/sitemap-index.xml
 
 # AI crawlers — allow for AI search visibility (ChatGPT, Perplexity, etc.)
 User-agent: GPTBot

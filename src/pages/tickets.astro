@@ -4,7 +4,7 @@ import AuthorSignal from "../components/AuthorSignal.astro";
 import { Icon } from "astro-icon/components";
 const pageTitle = "Xi'an Attraction Tickets — Prices & Booking";
 const pageDesc = "2026 Xi'an attraction tickets: Terracotta Warriors $18 City Wall $8 Huashan $24. Plus discounts, booking tips, and ways to save.";
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Chen Yu","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Tickets","item":"https://xi-an-china.com/tickets"}]}]};
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Chen Yu","url":"https://www.xi-an-china.com/about/"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://www.xi-an-china.com/"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Tickets","item":"https://www.xi-an-china.com/tickets/"}]}]};
 
 const tickets = [
   { name: "Terracotta Warriors", price: "$18", offPeak: "$15 (Dec-Feb)", student: "$9", booking: "WeChat mini-program. Book 1-7 days ahead." },
@@ -217,8 +217,8 @@ const tickets = [
     <div class="mt-12 pt-8 border-t border-stone-200 text-center">
       <p class="text-stone-500 mb-4">Want to see how these fit into a full itinerary?</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="/itineraries" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">See Itineraries <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
-        <a href="/attractions/terracotta-warriors" class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 active:scale-[0.98]">Terracotta Warriors Guide</a>
+        <a href="/itineraries/" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">See Itineraries <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+        <a href="/attractions/terracotta-warriors/" class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 active:scale-[0.98]">Terracotta Warriors Guide</a>
       </div>
     </div>
   </div>

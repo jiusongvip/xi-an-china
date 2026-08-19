@@ -16,11 +16,11 @@ const faqs = [
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "TouristAttraction", "name": "Han Yangling: The Quieter Emperor’s Tomb", "description": "A Han Dynasty mausoleum with thousands of miniature terracotta figurines, glass-floored museum walkways, and almost no crowds. A hidden gem 40 minutes from Xi’an.", "url": "https://xi-an-china.com/attractions/han-yangling/" },
+    { "@type": "TouristAttraction", "name": "Han Yangling: The Quieter Emperor’s Tomb", "description": "A Han Dynasty mausoleum with thousands of miniature terracotta figurines, glass-floored museum walkways, and almost no crowds. A hidden gem 40 minutes from Xi’an.", "url": "https://www.xi-an-china.com/attractions/han-yangling/" },
     { "@type": "BreadcrumbList", "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xi-an-china.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://xi-an-china.com/attractions" },
-      { "@type": "ListItem", "position": 3, "name": "Han Yangling: The Quieter Emperor’s Tomb", "item": "https://xi-an-china.com/attractions/han-yangling/" }
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.xi-an-china.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Attractions", "item": "https://www.xi-an-china.com/attractions/" },
+      { "@type": "ListItem", "position": 3, "name": "Han Yangling: The Quieter Emperor’s Tomb", "item": "https://www.xi-an-china.com/attractions/han-yangling/" }
     ]},
     { "@type": "FAQPage", "mainEntity": [{"@type":"Question","name":"Is Han Yangling worth visiting if I’ve seen the Terracotta Warriors?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. It is a completely different experience — miniature figurines instead of life-sized, glass-floored pits instead of open hangars, and peaceful solitude instead of crowds. Many visitors prefer the intimate atmosphere here."}},{"@type":"Question","name":"How do I get to Han Yangling?","acceptedAnswer":{"@type":"Answer","text":"Taxi from downtown: 40 min, $12-$15. Metro Line 2 to Shitushuguan Station, then bus or taxi (10-15 min). It is less convenient than the Warriors but the solitude is the reward."}},{"@type":"Question","name":"How is it different from the Terracotta Warriors?","acceptedAnswer":{"@type":"Answer","text":"Size: 60 cm figures vs. life-sized. Era: Han Dynasty (202 BC) vs. Qin (210 BC). Crowds: dozens per day vs. thousands. Experience: quiet and contemplative vs. bustling and spectacular. They complement rather than compete with each other."}},] }
   ]
@@ -92,15 +92,15 @@ const schema = {
       <h2 class="text-2xl font-semibold text-stone-900 mb-2">Related Attractions</h2>
       <p class="text-stone-500 text-sm mb-6 leading-relaxed">Pair these with your visit for the best itineraries.</p>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <a href="/attractions/terracotta-warriors" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+        <a href="/attractions/terracotta-warriors/" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
           <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Terracotta Warriors</p>
           <p class="text-xs text-stone-500 mt-0.5">Compare two imperial armies, 3,000 years apart.</p>
         </a>
-        <a href="/attractions/huaqing-pool" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+        <a href="/attractions/huaqing-pool/" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
           <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Huaqing Hot Springs</p>
           <p class="text-xs text-stone-500 mt-0.5">Both sit east of the city — plan them together.</p>
         </a>
-        <a href="/day-trips" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
+        <a href="/day-trips/" class="group rounded-xl border border-stone-200 bg-white p-4 hover:border-terracotta-200 transition-colors no-underline">
           <p class="text-sm font-bold text-stone-800 group-hover:text-terracotta-700 transition-colors">Day Trips from Xi'an</p>
           <p class="text-xs text-stone-500 mt-0.5">Where Han Yangling fits in your itinerary.</p>
         </a>
@@ -112,7 +112,7 @@ const schema = {
     </section>
 
     <div class="mt-12 text-center">
-      <a href="/attractions/tang-paradise" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+      <a href="/attractions/tang-paradise/" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
         Next: Tang Paradise <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
       </a>
     </div>

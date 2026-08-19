@@ -36,7 +36,10 @@ const {
   hasOwnBreadcrumb = false,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, "");
+const canonicalURL =
+  Astro.url.pathname === "/"
+    ? new URL("/", Astro.site).href.replace(/\/$/, "")
+    : new URL(Astro.url.pathname, Astro.site).href;
 const robotsContent = noindex ? "noindex, follow" : "index, follow";
 const ogImageURL = new URL(ogImage, Astro.site).href;
 const ogMeta = { width: ogImageWidth, height: ogImageHeight, alt: ogImageAlt || title };
@@ -104,7 +107,7 @@ if (pathParts.length > 0) {
   for (let i = 0; i < pathParts.length; i++) {
     const part = pathParts[i];
     const name = pageLabels[part] ?? part.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase());
-    itemUrl += "/" + part;
+    itemUrl += "/" + part + "/";
     crumbs.push({ name, item: itemUrl });
     items.push({ "@type": "ListItem", "position": i + 2, "name": name, "item": base + itemUrl });
   }
@@ -123,8 +126,8 @@ const articleSchema = pageHasArticle
       "headline": title,
       "description": description,
       "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalURL },
-      "author": { "@type": "Person", "name": author, "url": "https://xi-an-china.com/about" },
-      "publisher": { "@type": "Organization", "name": "Xi'an Guide", "url": "https://xi-an-china.com" },
+      "author": { "@type": "Person", "name": author, "url": "https://www.xi-an-china.com/about/" },
+      "publisher": { "@type": "Organization", "name": "Xi'an Guide", "url": "https://www.xi-an-china.com/" },
       "datePublished": isoDate(datePublished),
       "dateModified": isoDate(dateModified || datePublished),
       "image": ogImageURL,
@@ -132,64 +135,64 @@ const articleSchema = pageHasArticle
   : "";
 
 const navLinks = [
-  { href: "/attractions", label: "Attractions" },
-  { href: "/itineraries", label: "Itineraries" },
-  { href: "/food", label: "Food" },
-  { href: "/weather", label: "Weather" },
-  { href: "/day-trips", label: "Day Trips" },
-  { href: "/payment-guide", label: "Practical" },
+  { href: "/attractions/", label: "Attractions" },
+  { href: "/itineraries/", label: "Itineraries" },
+  { href: "/food/", label: "Food" },
+  { href: "/weather/", label: "Weather" },
+  { href: "/day-trips/", label: "Day Trips" },
+  { href: "/payment-guide/", label: "Practical" },
 ];
 
 const footerCols = [
   {
     label: "Plan",
     links: [
-      { href: "/attractions", label: "Attractions" },
-      { href: "/itineraries", label: "Itineraries" },
-      { href: "/weather", label: "Weather" },
-      { href: "/day-trips", label: "Day Trips" },
-      { href: "/transportation", label: "Getting There" },
-      { href: "/tickets", label: "Tickets" },
+      { href: "/attractions/", label: "Attractions" },
+      { href: "/itineraries/", label: "Itineraries" },
+      { href: "/weather/", label: "Weather" },
+      { href: "/day-trips/", label: "Day Trips" },
+      { href: "/transportation/", label: "Getting There" },
+      { href: "/tickets/", label: "Tickets" },
     ],
   },
   {
     label: "Explore",
     links: [
-      { href: "/attractions/terracotta-warriors", label: "Terracotta Warriors" },
-      { href: "/attractions/city-wall", label: "City Wall" },
-      { href: "/attractions/muslim-quarter", label: "Muslim Quarter" },
-      { href: "/attractions/mount-huashan", label: "Mount Huashan" },
-      { href: "/attractions/big-wild-goose-pagoda", label: "Big Wild Goose Pagoda" },
+      { href: "/attractions/terracotta-warriors/", label: "Terracotta Warriors" },
+      { href: "/attractions/city-wall/", label: "City Wall" },
+      { href: "/attractions/muslim-quarter/", label: "Muslim Quarter" },
+      { href: "/attractions/mount-huashan/", label: "Mount Huashan" },
+      { href: "/attractions/big-wild-goose-pagoda/", label: "Big Wild Goose Pagoda" },
     ],
   },
   {
     label: "Practical",
     links: [
-      { href: "/food", label: "Food Guide" },
-      { href: "/nightlife", label: "Nightlife" },
-      { href: "/shopping", label: "Shopping" },
-      { href: "/payment-guide", label: "Payment Guide" },
-      { href: "/phrasebook", label: "Phrasebook" },
-      { href: "/china-sim-card-tourist", label: "SIM Card" },
-      { href: "/china-240-hour-transit-visa", label: "Transit Visa" },
+      { href: "/food/", label: "Food Guide" },
+      { href: "/nightlife/", label: "Nightlife" },
+      { href: "/shopping/", label: "Shopping" },
+      { href: "/payment-guide/", label: "Payment Guide" },
+      { href: "/phrasebook/", label: "Phrasebook" },
+      { href: "/china-sim-card-tourist/", label: "SIM Card" },
+      { href: "/china-240-hour-transit-visa/", label: "Transit Visa" },
     ],
   },
   {
     label: "More",
     links: [
-      { href: "/hotels", label: "Where to Stay" },
-      { href: "/best-time-to-visit", label: "Best Time" },
-      { href: "/blog", label: "Blog" },
-      { href: "/comparison", label: "Compare" },
-      { href: "/faq", label: "FAQ" },
+      { href: "/hotels/", label: "Where to Stay" },
+      { href: "/best-time-to-visit/", label: "Best Time" },
+      { href: "/blog/", label: "Blog" },
+      { href: "/comparison/", label: "Compare" },
+      { href: "/faq/", label: "FAQ" },
     ],
   },
   {
     label: "About",
     links: [
-      { href: "/about", label: "Our Story" },
-      { href: "/contact", label: "Contact" },
-      { href: "/privacy", label: "Privacy Policy" },
+      { href: "/about/", label: "Our Story" },
+      { href: "/contact/", label: "Contact" },
+      { href: "/privacy/", label: "Privacy Policy" },
     ],
   },
 ];

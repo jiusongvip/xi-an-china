@@ -4,7 +4,7 @@ import AuthorSignal from "../components/AuthorSignal.astro";
 import { Icon } from "astro-icon/components";
 const pageTitle = "Xi'an Shopping — What to Buy & Where";
 const pageDesc = "What to buy in Xi'an: terracotta replicas, calligraphy brushes, jade, tea, and Muslim Quarter snacks. Where to shop, bargaining tips, and tourist traps.";
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Wang Fang","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Shopping","item":"https://xi-an-china.com/shopping"}]}]};
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Wang Fang","url":"https://www.xi-an-china.com/about/"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://www.xi-an-china.com/"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Shopping","item":"https://www.xi-an-china.com/shopping/"}]}]};
 
 const mustBuy = [
   { item: "Terracotta Warrior Replica", price: "$4-$75", where: "Terracotta Warriors gift shop, Muslim Quarter", quality: "Museum shop = authentic, certified. Street vendors = factory-made. A good replica costs $15-$45.", tip: "The official museum shop sells numbered, certified replicas. These make the best souvenirs. Street versions are $3-$7 but feel cheap." },
@@ -140,7 +140,7 @@ const bargainingTips = [
           </div>
         ))}
       </div>
-      <p class="mt-3 text-xs text-stone-400">More phrases available in our <a href="/phrasebook" class="text-terracotta-600 hover:text-terracotta-700 underline">complete phrasebook →</a></p>
+      <p class="mt-3 text-xs text-stone-400">More phrases available in our <a href="/phrasebook/" class="text-terracotta-600 hover:text-terracotta-700 underline">complete phrasebook →</a></p>
     </section>
 
     <!-- Tourist traps -->
@@ -162,10 +162,10 @@ const bargainingTips = [
     </section>
 
     <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="/food" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+      <a href="/food/" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
         Food Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
       </a>
-      <a href="/phrasebook" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+      <a href="/phrasebook/" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
         Shopping Phrases
       </a>
     </div>

@@ -10,7 +10,7 @@ const faqs = [
   { q: "When is the best time to visit Qinglong Temple for cherry blossoms?", a: "Peak bloom is usually March 25 to April 5. The temple is free and open during daytime hours. Weekday mornings have the fewest crowds. The blossoms last about 10 days depending on wind and rain." },
 ];
 
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08","author":{"@type":"Person","name":"Li Wei","jobTitle":"History & Culture Writer","url":"https://xi-an-china.com/about","description":"Xi'an-based historian and museum researcher since 2019. 200+ site visits across Shaanxi province.","sameAs":["https://xi-an-china.com/about"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://xi-an-china.com/blog"},{"@type":"ListItem","position":3,"name":"Hidden Gems","item":"https://xi-an-china.com/blog/xian-hidden-gems"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://www.xi-an-china.com/"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08","author":{"@type":"Person","name":"Li Wei","jobTitle":"History & Culture Writer","url":"https://www.xi-an-china.com/about/","description":"Xi'an-based historian and museum researcher since 2019. 200+ site visits across Shaanxi province.","sameAs":["https://www.xi-an-china.com/about/"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.xi-an-china.com/blog/"},{"@type":"ListItem","position":3,"name":"Hidden Gems","item":"https://www.xi-an-china.com/blog/xian-hidden-gems/"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
 
 const gems = [
   { name: "Han Yangling Museum", chinese: "汉阳陵博物馆", desc: "Thousands of miniature terracotta figurines from the Han Dynasty — and you walk over them on glass floors. Weekday mornings, you might be the only visitor. Far fewer crowds than the Terracotta Warriors, and arguably more atmospheric.", tip: "Take Metro Line 14 to the airport direction, get off at Han Yangling station. The museum is a 10-minute walk." },
@@ -85,7 +85,7 @@ const gems = [
       <p class="text-sm text-stone-600 leading-relaxed mb-4">We want you to love these places, so let's be honest about what "hidden" actually means in practice:</p>
       <div class="space-y-3 text-sm text-stone-600">
         <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">English signage disappears fast.</strong> Han Yangling, Banpo, and the Tang Dynasty City Wall Ruins Park have minimal English signage. Download an offline translator and screenshot this page before you go — you will not have a signal inside several of these places.</span></p>
-        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Some require a Chinese phone number.</strong> The Underground Book Market vendors and several Sajinqiao stalls only accept WeChat Pay or Alipay. Set up mobile payments before you leave the hotel — see our <a href="/payment-guide" class="text-terracotta-600 hover:text-terracotta-700 underline">payment guide</a>.</span></p>
+        <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Some require a Chinese phone number.</strong> The Underground Book Market vendors and several Sajinqiao stalls only accept WeChat Pay or Alipay. Set up mobile payments before you leave the hotel — see our <a href="/payment-guide/" class="text-terracotta-600 hover:text-terracotta-700 underline">payment guide</a>.</span></p>
         <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Weekday timing is the secret weapon.</strong> We visited every gem on a weekday at least once. The difference is extreme — Han Yangling on a Tuesday morning vs a Saturday is night and day.</span></p>
         <p class="flex gap-2"><span class="text-terracotta-500 shrink-0 mt-0.5">→</span><span><strong class="text-stone-800">Bring cash for small purchases.</strong> Even where cards work, a ¥10 bill or two makes the roujiamo stalls and book vendors happier, and it's faster.</span></p>
       </div>
@@ -112,10 +112,10 @@ const gems = [
       <h2 class="text-xl font-semibold text-stone-900 mb-2">Want the full Xi'an experience?</h2>
       <p class="text-sm text-stone-600 mb-4">Our attraction guide covers the must-sees. This list covers the rest.</p>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/attractions" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-terracotta-600">
+        <a href="/attractions/" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-terracotta-600">
           Top Attractions
         </a>
-        <a href="/food" class="inline-flex items-center gap-2 rounded-xl border border-terracotta-300 bg-white px-5 py-2.5 text-sm font-semibold text-terracotta-700 transition-all hover:bg-terracotta-50">
+        <a href="/food/" class="inline-flex items-center gap-2 rounded-xl border border-terracotta-300 bg-white px-5 py-2.5 text-sm font-semibold text-terracotta-700 transition-all hover:bg-terracotta-50">
           Food Guide
         </a>
       </div>

@@ -23,7 +23,7 @@ const faqs = [
   { q: "What is the total budget for a 3-day trip?", a: "$180-$220 per person including: all attraction tickets ($60), meals ($45-$60), 2 nights mid-range accommodation ($60-$90), and local transport ($15-$30). Flights/trains to Xi'an are not included. See our tickets page for a full price breakdown." },
 ];
 
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Li Wei","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-07-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Itineraries","item":"https://xi-an-china.com/itineraries"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Li Wei","url":"https://www.xi-an-china.com/about/"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://www.xi-an-china.com/"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-07-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Itineraries","item":"https://www.xi-an-china.com/itineraries/"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="July 2026" hasOwnArticle hasOwnBreadcrumb>
@@ -40,11 +40,11 @@ const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","au
       <div class="mt-6 rounded-xl border border-stone-200 overflow-hidden"><table class="w-full text-sm"><thead class="bg-stone-50 border-b border-stone-200"><tr><th class="text-left px-5 py-3 font-medium text-stone-700 w-28">Time</th><th class="text-left px-5 py-3 font-medium text-stone-700">Activity</th></tr></thead><tbody class="divide-y divide-stone-100">
         {morningTimes.map(item => (<tr class="hover:bg-stone-50"><td class="px-5 py-3 text-stone-500 font-medium whitespace-nowrap">{item.time}</td><td class="px-5 py-3 text-stone-600">{item.act}</td></tr>))}
       </tbody></table></div>
-      <p class="mt-4 text-sm text-stone-400">Budget: $60-$75 per person (<a <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
-      <p class="mt-4 text-sm text-stone-400">Budget: $60-$75 per person (<a   <img class="h-auto w-full" src="/images/hero-city-wall.webp" width="1440" height="810" alt="Xi'an City Wall at sunset with the Bell Tower in the distance — the backbone of any Xi'an itinerary" loading="lazy" decoding="async" />
-      <p class="mt-4 text-sm text-stone-400">Budget: $60-$75 per person (<a </div>
+      <div class="mt-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
+        <img class="h-auto w-full" src="/images/hero-city-wall.webp" width="1440" height="810" alt="Xi'an City Wall at sunset with the Bell Tower in the distance — the backbone of any Xi'an itinerary" loading="lazy" decoding="async" />
+      </div>
 
-      <p class="mt-4 text-sm text-stone-400">Budget: $60-$75 per person (<a href="/tickets" class="text-terracotta-600 underline">Terracotta Warriors $18</a> + Huaqing $18 + <a href="/attractions/city-wall" class="text-terracotta-600 underline">City Wall $8</a> + bike $7 + meals $12-$18)</p>
+      <p class="mt-4 text-sm text-stone-400">Budget: $60-$75 per person (<a href="/tickets/" class="text-terracotta-600 underline">Terracotta Warriors $18</a> + Huaqing $18 + <a href="/attractions/city-wall/" class="text-terracotta-600 underline">City Wall $8</a> + bike $7 + meals $12-$18)</p>
     </section>
 
     <section class="mt-12">
@@ -65,7 +65,7 @@ const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","au
           </div>
         ))}
       </div>
-      <p class="mt-4 text-sm text-stone-400">Budget: $180-$220 per person (all attractions + meals + <a href="/hotels" class="text-terracotta-600 underline">2 nights accommodation</a>)</p>
+      <p class="mt-4 text-sm text-stone-400">Budget: $180-$220 per person (all attractions + meals + <a href="/hotels/" class="text-terracotta-600 underline">2 nights accommodation</a>)</p>
     </section>
 
     <section class="mt-12">
@@ -85,7 +85,7 @@ const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","au
           </div>
         ))}
       </div>
-      <p class="mt-4 text-sm text-stone-400">Budget: $300-$370 per person (all attractions + <a href="/attractions/mount-huashan" class="text-terracotta-600 underline">Mount Huashan</a> + <a href="/hotels" class="text-terracotta-600 underline">4 nights accommodation</a>)</p>
+      <p class="mt-4 text-sm text-stone-400">Budget: $300-$370 per person (all attractions + <a href="/attractions/mount-huashan/" class="text-terracotta-600 underline">Mount Huashan</a> + <a href="/hotels/" class="text-terracotta-600 underline">4 nights accommodation</a>)</p>
     </section>
 
     <section class="mt-12">
@@ -111,13 +111,13 @@ const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","au
         <div class="rounded-xl border border-stone-200 p-4"><p class="font-semibold text-stone-800">3-Day Classic</p><p class="text-2xl font-bold text-terracotta-600 mt-1">$220-$330</p><p class="text-xs text-stone-400 mt-1">Hotel 3 nights + all tickets + food</p></div>
         <div class="rounded-xl border border-stone-200 p-4"><p class="font-semibold text-stone-800">5-Day Explorer</p><p class="text-2xl font-bold text-terracotta-600 mt-1">$370-$560</p><p class="text-xs text-stone-400 mt-1">Hotel 5 nights + all incl Huashan</p></div>
       </div>
-      <p class="mt-3 text-xs text-stone-400">Excludes flights/trains. See <a href="/tickets" class="text-terracotta-600 hover:text-terracotta-700 underline">ticket guide</a> for per-attraction costs.</p>
+      <p class="mt-3 text-xs text-stone-400">Excludes flights/trains. See <a href="/tickets/" class="text-terracotta-600 hover:text-terracotta-700 underline">ticket guide</a> for per-attraction costs.</p>
     </section>
 
 <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-center gap-3">
-      <a href="/comparison" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">Compare Attractions <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
-      <a href="/hotels" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">Where to Stay</a>
-      <a href="/best-time-to-visit" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">Best Time to Go</a>
+      <a href="/comparison/" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">Compare Attractions <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+      <a href="/hotels/" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">Where to Stay</a>
+      <a href="/best-time-to-visit/" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">Best Time to Go</a>
     </div>
   </div>
 </BaseLayout>

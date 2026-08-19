@@ -12,7 +12,7 @@ const faqs = [
   { q: "When is the cheapest time to book?", a: "January and February (excluding Chinese New Year week) are the cheapest months. Hotels drop 30-50% below peak prices. November and late August are also good value. Most expensive: October 1-7 (Golden Week), Chinese New Year week, and summer weekends." },
 ];
 
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Wang Fang","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Hotels","item":"https://xi-an-china.com/hotels"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Wang Fang","url":"https://www.xi-an-china.com/about/"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://www.xi-an-china.com/"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Hotels","item":"https://www.xi-an-china.com/hotels/"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
 
 const areas = [
   { name: "Beilin District", label: "Best for First-Timers", desc: "Inside the city wall, centered around the Bell Tower. Walk to the Muslim Quarter (5 min), South Gate of the city wall (10 min), and Bell & Drum Towers (1 min). The most convenient location with the best atmosphere. Streets are narrow, pedestrian-friendly, and full of restaurants.", hotels: "Budget: Han Tang Inn Hostel ($9-$22/dorm). Mid: Eastern House Boutique Hotel ($37-$60). Luxury: Sofitel Legend ($120-$180).", vibe: "Historic, walkable, lively" },
@@ -106,10 +106,10 @@ const areas = [
     </section>
 
     <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-center gap-3">
-      <a href="/itineraries" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+      <a href="/itineraries/" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
         See the Itineraries <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
       </a>
-      <a href="/tickets" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">
+      <a href="/tickets/" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">
         View Ticket Prices
       </a>
     </div>

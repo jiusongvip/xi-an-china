@@ -4,7 +4,7 @@ import AuthorSignal from "../components/AuthorSignal.astro";
 import { Icon } from "astro-icon/components";
 const pageTitle = "Xi'an Nightlife Guide 2026 - Bars, Night Markets & Shows";
 const pageDesc = "Where to go out at night in Xi'an: rooftop bars inside the City Wall, live music venues, night markets, Tang Dynasty shows, and the best late-night food spots.";
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Wang Fang","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Nightlife","item":"https://xi-an-china.com/nightlife"}]}]};
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Wang Fang","url":"https://www.xi-an-china.com/about/"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://www.xi-an-china.com/"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Nightlife","item":"https://www.xi-an-china.com/nightlife/"}]}]};
 
 const bars = [
   { name: "The Lounge at Sofitel", area: "Inside City Wall (Beilin)", type: "Rooftop cocktail bar", price: "$12-$22/drink", vibe: "Upscale, panoramic city views from the 28th floor. Best sunset cocktails in Xi'an.", music: "Chill house, jazz", bestTime: "6-9 PM for sunset" },
@@ -177,10 +177,10 @@ const lateNightFood = [
 
 
 <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="/food" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+      <a href="/food/" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
         Food Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
       </a>
-      <a href="/attractions/city-wall" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+      <a href="/attractions/city-wall/" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
         City Wall Guide
       </a>
     </div>

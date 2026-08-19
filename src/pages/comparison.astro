@@ -14,7 +14,7 @@ const faqs = [
   { q: "How accurate are the crowd level scores?", a: "Crowd scores (1-5) are based on our team's multiple visits across different months. They reflect average conditions — your experience on a random Tuesday in November will be very different from Golden Week. Use the crowd scores as relative comparisons between attractions, not absolute predictions." },
 ];
 
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Xi'an Attraction Comparison Tool","url":"https://xi-an-china.com/comparison","description":pageDesc,"applicationCategory":"TravelApplication","datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Compare","item":"https://xi-an-china.com/comparison"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Xi'an Attraction Comparison Tool","url":"https://www.xi-an-china.com/comparison/","description":pageDesc,"applicationCategory":"TravelApplication","datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Compare","item":"https://www.xi-an-china.com/comparison/"}]},{"@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))}]};
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc} author="Li Wei" datePublished="August 2026" hasOwnBreadcrumb>
@@ -65,10 +65,10 @@ const schema = {"@context":"https://schema.org","@graph":[{"@type":"WebApplicati
       <h2 class="text-2xl font-semibold text-stone-900">How to Choose Your Attractions</h2>
       <p class="mt-3 text-stone-600 leading-relaxed">Xi'an has 12+ major attractions, and most visitors have 2-4 days. Here is a quick framework to prioritize:</p>
       <div class="mt-6 space-y-4">
-        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span><p class="text-stone-600"><strong>Must-see first.</strong> The <a href="/attractions/terracotta-warriors" class="text-terracotta-600 underline">Terracotta Warriors</a> and <a href="/attractions/city-wall" class="text-terracotta-600 underline">City Wall</a> are non-negotiable. Every itinerary includes them.</p></div>
-        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span><p class="text-stone-600"><strong>History vs. nature.</strong> If you prefer history, prioritize <a href="/attractions/shaanxi-history-museum" class="text-terracotta-600 underline">Shaanxi Museum</a> + <a href="/attractions/han-yangling" class="text-terracotta-600 underline">Han Yangling</a>. If you prefer nature, add <a href="/attractions/mount-huashan" class="text-terracotta-600 underline">Mount Huashan</a>.</p></div>
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">1</span><p class="text-stone-600"><strong>Must-see first.</strong> The <a href="/attractions/terracotta-warriors/" class="text-terracotta-600 underline">Terracotta Warriors</a> and <a href="/attractions/city-wall/" class="text-terracotta-600 underline">City Wall</a> are non-negotiable. Every itinerary includes them.</p></div>
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">2</span><p class="text-stone-600"><strong>History vs. nature.</strong> If you prefer history, prioritize <a href="/attractions/shaanxi-history-museum/" class="text-terracotta-600 underline">Shaanxi Museum</a> + <a href="/attractions/han-yangling/" class="text-terracotta-600 underline">Han Yangling</a>. If you prefer nature, add <a href="/attractions/mount-huashan/" class="text-terracotta-600 underline">Mount Huashan</a>.</p></div>
         <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">3</span><p class="text-stone-600"><strong>Time budget.</strong> Full-day attractions: Mount Huashan, Terracotta Warriors + Huaqing. Half-day: City Wall, Muslim Quarter, Big Wild Goose Pagoda. Quick stops: Bell & Drum Towers (1-2 hours).</p></div>
-        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span><p class="text-stone-600"><strong>Budget check.</strong> All 12 attractions cost ~$100-$120 total. With student discounts: ~$50-$60. See our <a href="/tickets" class="text-terracotta-600 underline">complete ticket price guide</a>.</p></div>
+        <div class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-terracotta-100 text-terracotta-700 text-xs font-bold mt-0.5">4</span><p class="text-stone-600"><strong>Budget check.</strong> All 12 attractions cost ~$100-$120 total. With student discounts: ~$50-$60. See our <a href="/tickets/" class="text-terracotta-600 underline">complete ticket price guide</a>.</p></div>
       </div>
     </section>
 
@@ -88,10 +88,10 @@ const schema = {"@context":"https://schema.org","@graph":[{"@type":"WebApplicati
     </section>
 
     <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-center gap-3">
-      <a href="/attractions" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+      <a href="/attractions/" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
         View All Attractions <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
       </a>
-      <a href="/itineraries" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">
+      <a href="/itineraries/" class="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50">
         See Itineraries
       </a>
     </div>

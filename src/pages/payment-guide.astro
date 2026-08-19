@@ -3,10 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import AuthorSignal from "../components/AuthorSignal.astro";
 const pageTitle = "How to Pay in Xi'an — WeChat Pay & Alipay Guide";
 const pageDesc = "Set up WeChat Pay and Alipay in Xi'an with foreign cards easily. Step-by-step registration guide, cash backup tips, and where cards still work.";
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Chen Yu","url":"https://xi-an-china.com/about"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://xi-an-china.com"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Payment Guide","item":"https://xi-an-china.com/payment-guide"}]}]};
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Article","author":{"@type":"Person","name":"Chen Yu","url":"https://www.xi-an-china.com/about/"},"publisher":{"@type":"Organization","name":"Xi'an Guide","url":"https://www.xi-an-china.com/"},"headline":pageTitle,"description":pageDesc,"datePublished":"2026-08-01","dateModified":"2026-08-08"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Payment Guide","item":"https://www.xi-an-china.com/payment-guide/"}]}]};
 
 const steps = [
-  { step: "1", title: "Get a Chinese phone number", detail: "Buy a SIM card at the airport or in the city. You need a local number to register for WeChat Pay or Alipay. See our SIM card guide.", link: "/china-sim-card-tourist", linkText: "SIM Card Guide →" },
+  { step: "1", title: "Get a Chinese phone number", detail: "Buy a SIM card at the airport or in the city. You need a local number to register for WeChat Pay or Alipay. See our SIM card guide.", link: "/china-sim-card-tourist/", linkText: "SIM Card Guide →" },
   { step: "2", title: "Download WeChat or Alipay", detail: "Both are available on iOS and Android. WeChat (微信) is the all-in-one app — messaging, payments, mini-programs. Alipay (支付宝) is focused on payments and services." },
   { step: "3", title: "Register with your phone number", detail: "Open the app, enter your Chinese phone number, verify with the SMS code. Create a password." },
   { step: "4", title: "Add your international card", detail: "Both apps now accept Visa, Mastercard, JCB, and Diners Club. Go to Wallet → Add Bank Card → enter your card details. A small verification charge (refunded) may apply." },
@@ -181,10 +181,10 @@ const steps = [
     </section>
 
     <div class="mt-12 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="/china-sim-card-tourist" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
+      <a href="/china-sim-card-tourist/" class="inline-flex items-center justify-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98]">
         SIM Card Guide <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
       </a>
-      <a href="/phrasebook" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
+      <a href="/phrasebook/" class="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-700 transition-all hover:border-stone-400 hover:bg-stone-50 active:scale-[0.98]">
         Chinese Phrasebook
       </a>
     </div>

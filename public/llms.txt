@@ -2,15 +2,15 @@
 > Independent travel guide to Xi'an, China. Practical, honest advice from locals. Updated 2026.
 
 ## Key Pages
-- https://xi-an-china.com: Complete Xi'an travel guide for 2026 — Terracotta Warriors, City Wall, Muslim Quarter food, Mount Huashan hiking.
-- https://xi-an-china.com/attractions/terracotta-warriors: Terracotta Warriors guide — tickets, how to visit, insider tips.
-- https://xi-an-china.com/attractions/city-wall: Xi'an City Wall guide — cycling the 14km loop, sunset views, ticket info.
-- https://xi-an-china.com/attractions/muslim-quarter: Muslim Quarter street food guide — best dishes, when to go, what to try.
-- https://xi-an-china.com/attractions/mount-huashan: Mount Huashan hiking guide — plank walk, cable car, practical tips.
-- https://xi-an-china.com/food: Xi'an food guide — 20 must-try dishes, best food streets, budget tips.
-- https://xi-an-china.com/transportation: Getting to and around Xi'an — flights, high-speed trains, metro, buses.
-- https://xi-an-china.com/itineraries: Xi'an itineraries — 1, 3, and 5 day plans with budgets.
-- https://xi-an-china.com/best-time-to-visit: Best time to visit Xi'an — season-by-season weather, crowds, and prices.
-- https://xi-an-china.com/faq: Frequently asked questions about visiting Xi'an — tickets, visas, safety, food.
-- https://xi-an-china.com/china-240-hour-transit-visa: China 240-hour transit visa explained — eligibility, requirements, how to apply.
-- https://xi-an-china.com/hotels: Where to stay in Xi'an — best districts, budget to luxury, local advice.
+- https://www.xi-an-china.com/: Complete Xi'an travel guide for 2026 — Terracotta Warriors, City Wall, Muslim Quarter food, Mount Huashan hiking.
+- https://www.xi-an-china.com/attractions/terracotta-warriors/: Terracotta Warriors guide — tickets, how to visit, insider tips.
+- https://www.xi-an-china.com/attractions/city-wall/: Xi'an City Wall guide — cycling the 14km loop, sunset views, ticket info.
+- https://www.xi-an-china.com/attractions/muslim-quarter/: Muslim Quarter street food guide — best dishes, when to go, what to try.
+- https://www.xi-an-china.com/attractions/mount-huashan/: Mount Huashan hiking guide — plank walk, cable car, practical tips.
+- https://www.xi-an-china.com/food/: Xi'an food guide — 20 must-try dishes, best food streets, budget tips.
+- https://www.xi-an-china.com/transportation/: Getting to and around Xi'an — flights, high-speed trains, metro, buses.
+- https://www.xi-an-china.com/itineraries/: Xi'an itineraries — 1, 3, and 5 day plans with budgets.
+- https://www.xi-an-china.com/best-time-to-visit/: Best time to visit Xi'an — season-by-season weather, crowds, and prices.
+- https://www.xi-an-china.com/faq/: Frequently asked questions about visiting Xi'an — tickets, visas, safety, food.
+- https://www.xi-an-china.com/china-240-hour-transit-visa/: China 240-hour transit visa explained — eligibility, requirements, how to apply.
+- https://www.xi-an-china.com/hotels/: Where to stay in Xi'an — best districts, budget to luxury, local advice.

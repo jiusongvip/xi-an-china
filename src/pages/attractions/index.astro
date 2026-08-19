@@ -6,19 +6,19 @@ import { Icon } from "astro-icon/components";
 const pageTitle = "Top 12 Xi'an Attractions — 2026 Guide";
 const pageDesc = "Discover the best things to do in Xi'an: Terracotta Warriors, City Wall cycling, Muslim Quarter food, Big Wild Goose Pagoda, and more top attractions.";
 const attractions = [
-  { name: "Terracotta Warriors", url: "https://xi-an-china.com/attractions/terracotta-warriors" },
-  { name: "Ancient City Wall", url: "https://xi-an-china.com/attractions/city-wall" },
-  { name: "Muslim Quarter", url: "https://xi-an-china.com/attractions/muslim-quarter" },
-  { name: "Mount Huashan", url: "https://xi-an-china.com/attractions/mount-huashan" },
-  { name: "Big Wild Goose Pagoda", url: "https://xi-an-china.com/attractions/big-wild-goose-pagoda" },
-  { name: "Shaanxi History Museum", url: "https://xi-an-china.com/attractions/shaanxi-history-museum" },
-  { name: "Huaqing Hot Springs", url: "https://xi-an-china.com/attractions/huaqing-pool" },
-  { name: "Bell & Drum Towers", url: "https://xi-an-china.com/attractions/bell-drum-tower" },
-  { name: "Han Yangling Mausoleum", url: "https://xi-an-china.com/attractions/han-yangling" },
-  { name: "Tang Paradise", url: "https://xi-an-china.com/attractions/tang-paradise" },
-  { name: "Daming Palace Ruins", url: "https://xi-an-china.com/attractions/daming-palace" },
+  { name: "Terracotta Warriors", url: "https://www.xi-an-china.com/attractions/terracotta-warriors/" },
+  { name: "Ancient City Wall", url: "https://www.xi-an-china.com/attractions/city-wall/" },
+  { name: "Muslim Quarter", url: "https://www.xi-an-china.com/attractions/muslim-quarter/" },
+  { name: "Mount Huashan", url: "https://www.xi-an-china.com/attractions/mount-huashan/" },
+  { name: "Big Wild Goose Pagoda", url: "https://www.xi-an-china.com/attractions/big-wild-goose-pagoda/" },
+  { name: "Shaanxi History Museum", url: "https://www.xi-an-china.com/attractions/shaanxi-history-museum/" },
+  { name: "Huaqing Hot Springs", url: "https://www.xi-an-china.com/attractions/huaqing-pool/" },
+  { name: "Bell & Drum Towers", url: "https://www.xi-an-china.com/attractions/bell-drum-tower/" },
+  { name: "Han Yangling Mausoleum", url: "https://www.xi-an-china.com/attractions/han-yangling/" },
+  { name: "Tang Paradise", url: "https://www.xi-an-china.com/attractions/tang-paradise/" },
+  { name: "Daming Palace Ruins", url: "https://www.xi-an-china.com/attractions/daming-palace/" },
 ];
-const schema = {"@context":"https://schema.org","@graph":[{"@type":"ItemList","name":"Xi'an Attractions","itemListElement":attractions.map((a,i)=>({"@type":"ListItem","position":i+1,"name":a.name,"url":a.url}))},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Attractions","item":"https://xi-an-china.com/attractions"}]}]};
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"ItemList","name":"Xi'an Attractions","itemListElement":attractions.map((a,i)=>({"@type":"ListItem","position":i+1,"name":a.name,"url":a.url}))},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.xi-an-china.com/"},{"@type":"ListItem","position":2,"name":"Attractions","item":"https://www.xi-an-china.com/attractions/"}]}]};
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc} author="Xi'an Guide Team" datePublished="August 2026" hasOwnBreadcrumb>
@@ -98,22 +98,22 @@ const schema = {"@context":"https://schema.org","@graph":[{"@type":"ItemList","n
     </section>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <AttractionCard href="/attractions/terracotta-warriors" image="/images/terracotta-warriors.webp" imageAlt="Rows of terracotta warriors in Pit 1 at the Terracotta Army Museum" title="Terracotta Warriors" subtitle="The 8th Wonder of the World" icon="lucide:swords" badge="Must See" color="terracotta" highlights={["8,000 life-sized soldiers in Pit 1", "Arrive at 8:30 AM for empty halls", "Book online 7 days ahead"]} />
-      <AttractionCard href="/attractions/city-wall" image="/images/city-wall.webp" imageAlt="Xi'an Ancient City Wall with the South Gate tower" title="Ancient City Wall" subtitle="China's best-preserved fortification" icon="lucide:bike" badge="Must See" color="terracotta" highlights={["Cycle the 14km loop (2-3 hours)", "Sunset rides at South Gate", "Red lanterns after dark"]} />
-      <AttractionCard href="/attractions/muslim-quarter" image="/images/muslim-quarter.webp" imageAlt="Beiyuanmen street in Xi'an's Muslim Quarter lined with food stalls" title="Muslim Quarter" subtitle="Street food paradise" icon="lucide:utensils" badge="Must See" color="amber" highlights={["Go after 7 PM for peak energy", "Biangbiang noodles + lamb skewers", "1,300 years of Hui culture"]} />
-      <AttractionCard href="/attractions/mount-huashan" image="/images/mount-huashan.webp" imageAlt="The Chess Pavilion perched on Mount Huashan's rocky summit" title="Mount Huashan" subtitle="China's most dramatic hike" icon="lucide:mountain" badge="Adventure" color="rose" highlights={["The famous Plank Walk", "30 min by high-speed train", "Sunrise from East Peak"]} />
-      <AttractionCard href="/attractions/big-wild-goose-pagoda" image="/images/big-wild-goose-pagoda.webp" imageAlt="Big Wild Goose Pagoda beside Da Ci'en Temple" title="Big Wild Goose Pagoda" subtitle="1,300-year-old Buddhist landmark" icon="lucide:landmark" badge="Worth It" color="amber" highlights={["Free musical fountain show", "Climb for city skyline views", "Great Tang Mall at night"]} />
-      <AttractionCard href="/attractions/shaanxi-history-museum" image="/images/shaanxi-history-museum.webp" imageAlt="Tang-style architecture of the Shaanxi History Museum" title="Shaanxi History Museum" subtitle="China's best provincial museum" icon="lucide:archive" badge="Worth It" color="terracotta" highlights={["Free (must book online)", "Tang Dynasty gold and jade", "1.7 million artifacts"]} />
-      <AttractionCard href="/attractions/huaqing-pool" image="/images/huaqing-pool.webp" imageAlt="Huaqing Hot Springs palace pavilions below Mount Li" title="Huaqing Hot Springs" subtitle="Tang Dynasty imperial baths" icon="lucide:flame" badge="Worth It" color="rose" highlights={["10 min from Terracotta Warriors", "Winter hot springs in snow", "Night show: Song of Sorrow"]} />
-      <AttractionCard href="/attractions/bell-drum-tower" image="/images/bell-drum-tower.webp" imageAlt="Xi'an Bell Tower at the center of the old city" title="Bell & Drum Towers" subtitle="The heart of the old city" icon="lucide:bell" badge="Quick Stop" color="amber" highlights={["360-degree city views", "Live drum performances", "Gateway to Muslim Quarter"]} />
-      <AttractionCard href="/attractions/han-yangling" image="/images/han-yangling.webp" imageAlt="Excavated soldiers and pottery at the Han Yangling Mausoleum" title="Han Yangling Mausoleum" subtitle="The quieter mausoleum" icon="lucide:globe" badge="Hidden Gem" color="emerald" highlights={["Glass-floored museum walkways", "Almost zero crowds on weekdays", "Miniature Han Dynasty figurines"]} />
-      <AttractionCard href="/attractions/tang-paradise" image="/images/tang-paradise.webp" imageAlt="Classical garden and pavilions of Tang Paradise in the evening" title="Tang Paradise" subtitle="Tang Dynasty theme park" icon="lucide:lamp" badge="Worth It" color="rose" highlights={["Nightly water and light show", "Best visited after dusk", "Costume rentals for photos"]} />
-      <AttractionCard href="/attractions/daming-palace" image="/images/daming-palace.webp" imageAlt="Hanyuan Hall reconstruction in Daming Palace Heritage Park" title="Daming Palace Ruins" subtitle="Largest palace ever built" icon="lucide:castle" badge="Hidden Gem" color="emerald" highlights={["4.5x the size of Forbidden City", "Tang Dynasty imperial palace", "Underground museum"]} />
-      <AttractionCard href="/comparison" title="Compare Attractions" subtitle="Side-by-side comparison tool" icon="lucide:scale" badge="Tool" color="terracotta" highlights={["Compare any two attractions", "Prices, crowds, best times", "Find your perfect match"]} />
+      <AttractionCard href="/attractions/terracotta-warriors/" image="/images/terracotta-warriors.webp" imageAlt="Rows of terracotta warriors in Pit 1 at the Terracotta Army Museum" title="Terracotta Warriors" subtitle="The 8th Wonder of the World" icon="lucide:swords" badge="Must See" color="terracotta" highlights={["8,000 life-sized soldiers in Pit 1", "Arrive at 8:30 AM for empty halls", "Book online 7 days ahead"]} />
+      <AttractionCard href="/attractions/city-wall/" image="/images/city-wall.webp" imageAlt="Xi'an Ancient City Wall with the South Gate tower" title="Ancient City Wall" subtitle="China's best-preserved fortification" icon="lucide:bike" badge="Must See" color="terracotta" highlights={["Cycle the 14km loop (2-3 hours)", "Sunset rides at South Gate", "Red lanterns after dark"]} />
+      <AttractionCard href="/attractions/muslim-quarter/" image="/images/muslim-quarter.webp" imageAlt="Beiyuanmen street in Xi'an's Muslim Quarter lined with food stalls" title="Muslim Quarter" subtitle="Street food paradise" icon="lucide:utensils" badge="Must See" color="amber" highlights={["Go after 7 PM for peak energy", "Biangbiang noodles + lamb skewers", "1,300 years of Hui culture"]} />
+      <AttractionCard href="/attractions/mount-huashan/" image="/images/mount-huashan.webp" imageAlt="The Chess Pavilion perched on Mount Huashan's rocky summit" title="Mount Huashan" subtitle="China's most dramatic hike" icon="lucide:mountain" badge="Adventure" color="rose" highlights={["The famous Plank Walk", "30 min by high-speed train", "Sunrise from East Peak"]} />
+      <AttractionCard href="/attractions/big-wild-goose-pagoda/" image="/images/big-wild-goose-pagoda.webp" imageAlt="Big Wild Goose Pagoda beside Da Ci'en Temple" title="Big Wild Goose Pagoda" subtitle="1,300-year-old Buddhist landmark" icon="lucide:landmark" badge="Worth It" color="amber" highlights={["Free musical fountain show", "Climb for city skyline views", "Great Tang Mall at night"]} />
+      <AttractionCard href="/attractions/shaanxi-history-museum/" image="/images/shaanxi-history-museum.webp" imageAlt="Tang-style architecture of the Shaanxi History Museum" title="Shaanxi History Museum" subtitle="China's best provincial museum" icon="lucide:archive" badge="Worth It" color="terracotta" highlights={["Free (must book online)", "Tang Dynasty gold and jade", "1.7 million artifacts"]} />
+      <AttractionCard href="/attractions/huaqing-pool/" image="/images/huaqing-pool.webp" imageAlt="Huaqing Hot Springs palace pavilions below Mount Li" title="Huaqing Hot Springs" subtitle="Tang Dynasty imperial baths" icon="lucide:flame" badge="Worth It" color="rose" highlights={["10 min from Terracotta Warriors", "Winter hot springs in snow", "Night show: Song of Sorrow"]} />
+      <AttractionCard href="/attractions/bell-drum-tower/" image="/images/bell-drum-tower.webp" imageAlt="Xi'an Bell Tower at the center of the old city" title="Bell & Drum Towers" subtitle="The heart of the old city" icon="lucide:bell" badge="Quick Stop" color="amber" highlights={["360-degree city views", "Live drum performances", "Gateway to Muslim Quarter"]} />
+      <AttractionCard href="/attractions/han-yangling/" image="/images/han-yangling.webp" imageAlt="Excavated soldiers and pottery at the Han Yangling Mausoleum" title="Han Yangling Mausoleum" subtitle="The quieter mausoleum" icon="lucide:globe" badge="Hidden Gem" color="emerald" highlights={["Glass-floored museum walkways", "Almost zero crowds on weekdays", "Miniature Han Dynasty figurines"]} />
+      <AttractionCard href="/attractions/tang-paradise/" image="/images/tang-paradise.webp" imageAlt="Classical garden and pavilions of Tang Paradise in the evening" title="Tang Paradise" subtitle="Tang Dynasty theme park" icon="lucide:lamp" badge="Worth It" color="rose" highlights={["Nightly water and light show", "Best visited after dusk", "Costume rentals for photos"]} />
+      <AttractionCard href="/attractions/daming-palace/" image="/images/daming-palace.webp" imageAlt="Hanyuan Hall reconstruction in Daming Palace Heritage Park" title="Daming Palace Ruins" subtitle="Largest palace ever built" icon="lucide:castle" badge="Hidden Gem" color="emerald" highlights={["4.5x the size of Forbidden City", "Tang Dynasty imperial palace", "Underground museum"]} />
+      <AttractionCard href="/comparison/" title="Compare Attractions" subtitle="Side-by-side comparison tool" icon="lucide:scale" badge="Tool" color="terracotta" highlights={["Compare any two attractions", "Prices, crowds, best times", "Find your perfect match"]} />
     </div>
 
     <div class="mt-12 text-center">
-      <a href="/comparison" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98] shadow-lg shadow-terracotta-900/20">
+      <a href="/comparison/" class="inline-flex items-center gap-2 rounded-xl bg-terracotta-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-terracotta-600 active:scale-[0.98] shadow-lg shadow-terracotta-900/20">
         Try the Comparison Tool <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg>
       </a>
     </div>

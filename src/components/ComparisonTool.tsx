@@ -99,7 +99,7 @@ function AttractionCard({ a, selected }: { a: AttractionData; selected: boolean 
           ))}
         </ul>
       </div>
-      <a href={"/attractions/" + a.slug} className="inline-flex items-center gap-1 mt-4 text-xs font-medium text-terracotta-600 hover:text-terracotta-700 transition-colors">
+      <a href={"/attractions/" + a.slug + "/"} className="inline-flex items-center gap-1 mt-4 text-xs font-medium text-terracotta-600 hover:text-terracotta-700 transition-colors">
         Read full guide <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 3l5 5-5 5"/></svg>
       </a>
     </div>
